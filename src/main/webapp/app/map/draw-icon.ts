@@ -7,7 +7,7 @@ import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style';
 
 /** Inspired from https://openlayers.org/en/latest/examples/icon.html */
-export default ({ lat, long }: { lat: number; long: number }) => {
+export default ({ name, lat, long }: { name: string; lat: number; long: number }) => {
   const icon = new Image(32, 48);
   /** Download from https://openlayers.org/en/latest/examples/data/icon.png */
   icon.src =
@@ -15,9 +15,9 @@ export default ({ lat, long }: { lat: number; long: number }) => {
 
   const iconFeature = new Feature({
     geometry: new Point(transform([long, lat], 'EPSG:4326', 'EPSG:3857'), 1000),
-    name: 'Null Island',
-    population: 4000,
-    rainfall: 500,
+    name,
+    latitude: lat,
+    longitude: long,
   });
 
   const iconStyle = new Style({

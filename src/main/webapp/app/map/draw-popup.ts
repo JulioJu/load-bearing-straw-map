@@ -22,9 +22,12 @@ const registerMapEvents = (map: Map, popupContent: HTMLDivElement, overlay: Over
       popupContent.innerHTML = '';
       overlay.setPosition(evt.coordinate);
       const list = document.createElement('ul');
-      appendList(list, `name: ${feature.get('name')}`);
-      appendList(list, `population: ${feature.get('population')}`);
-      appendList(list, `rainfall: ${feature.get('rainfall')}`);
+      const name = feature.get('name');
+      if (name) {
+        appendList(list, `nom: ${name}`);
+      }
+      appendList(list, `latitude: ${feature.get('latitude')}`);
+      appendList(list, `longitude: ${feature.get('longitude')}`);
       popupContent.appendChild(list);
     } else {
       disposePopup(overlay, popupCloser);
