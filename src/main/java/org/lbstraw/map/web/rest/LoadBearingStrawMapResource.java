@@ -152,11 +152,11 @@ public class LoadBearingStrawMapResource {
                         if (loadBearingStrawMap.getName() != null) {
                             existingLoadBearingStrawMap.setName(loadBearingStrawMap.getName());
                         }
-                        if (loadBearingStrawMap.getLongitude() != null) {
-                            existingLoadBearingStrawMap.setLongitude(loadBearingStrawMap.getLongitude());
-                        }
                         if (loadBearingStrawMap.getLatitude() != null) {
                             existingLoadBearingStrawMap.setLatitude(loadBearingStrawMap.getLatitude());
+                        }
+                        if (loadBearingStrawMap.getLongitude() != null) {
+                            existingLoadBearingStrawMap.setLongitude(loadBearingStrawMap.getLongitude());
                         }
 
                         return existingLoadBearingStrawMap;

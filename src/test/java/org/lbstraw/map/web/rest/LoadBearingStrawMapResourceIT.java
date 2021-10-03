@@ -35,11 +35,11 @@ class LoadBearingStrawMapResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Float DEFAULT_LONGITUDE = 1F;
-    private static final Float UPDATED_LONGITUDE = 2F;
+    private static final Float DEFAULT_LATITUDE = -90F;
+    private static final Float UPDATED_LATITUDE = -89F;
 
-    private static final Float DEFAULT_LATITUDE = 1F;
-    private static final Float UPDATED_LATITUDE = 2F;
+    private static final Float DEFAULT_LONGITUDE = -90F;
+    private static final Float UPDATED_LONGITUDE = -89F;
 
     private static final String ENTITY_API_URL = "/api/load-bearing-straw-maps";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -67,8 +67,8 @@ class LoadBearingStrawMapResourceIT {
     public static LoadBearingStrawMap createEntity(EntityManager em) {
         LoadBearingStrawMap loadBearingStrawMap = new LoadBearingStrawMap()
             .name(DEFAULT_NAME)
-            .longitude(DEFAULT_LONGITUDE)
-            .latitude(DEFAULT_LATITUDE);
+            .latitude(DEFAULT_LATITUDE)
+            .longitude(DEFAULT_LONGITUDE);
         return loadBearingStrawMap;
     }
 
@@ -81,8 +81,8 @@ class LoadBearingStrawMapResourceIT {
     public static LoadBearingStrawMap createUpdatedEntity(EntityManager em) {
         LoadBearingStrawMap loadBearingStrawMap = new LoadBearingStrawMap()
             .name(UPDATED_NAME)
-            .longitude(UPDATED_LONGITUDE)
-            .latitude(UPDATED_LATITUDE);
+            .latitude(UPDATED_LATITUDE)
+            .longitude(UPDATED_LONGITUDE);
         return loadBearingStrawMap;
     }
 
@@ -123,8 +123,8 @@ class LoadBearingStrawMapResourceIT {
         assertThat(loadBearingStrawMapList).hasSize(databaseSizeBeforeCreate + 1);
         LoadBearingStrawMap testLoadBearingStrawMap = loadBearingStrawMapList.get(loadBearingStrawMapList.size() - 1);
         assertThat(testLoadBearingStrawMap.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
         assertThat(testLoadBearingStrawMap.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
+        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
     }
 
     @Test
@@ -150,10 +150,10 @@ class LoadBearingStrawMapResourceIT {
     }
 
     @Test
-    void checkNameIsRequired() throws Exception {
+    void checkLatitudeIsRequired() throws Exception {
         int databaseSizeBeforeTest = loadBearingStrawMapRepository.findAll().collectList().block().size();
         // set the field null
-        loadBearingStrawMap.setName(null);
+        loadBearingStrawMap.setLatitude(null);
 
         // Create the LoadBearingStrawMap, which fails.
 
@@ -175,27 +175,6 @@ class LoadBearingStrawMapResourceIT {
         int databaseSizeBeforeTest = loadBearingStrawMapRepository.findAll().collectList().block().size();
         // set the field null
         loadBearingStrawMap.setLongitude(null);
-
-        // Create the LoadBearingStrawMap, which fails.
-
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(loadBearingStrawMap))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
-
-        List<LoadBearingStrawMap> loadBearingStrawMapList = loadBearingStrawMapRepository.findAll().collectList().block();
-        assertThat(loadBearingStrawMapList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    void checkLatitudeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = loadBearingStrawMapRepository.findAll().collectList().block().size();
-        // set the field null
-        loadBearingStrawMap.setLatitude(null);
 
         // Create the LoadBearingStrawMap, which fails.
 
@@ -236,8 +215,8 @@ class LoadBearingStrawMapResourceIT {
         assertThat(loadBearingStrawMapList).hasSize(1);
         LoadBearingStrawMap testLoadBearingStrawMap = loadBearingStrawMapList.get(0);
         assertThat(testLoadBearingStrawMap.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
         assertThat(testLoadBearingStrawMap.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
+        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
     }
 
     @Test
@@ -260,10 +239,10 @@ class LoadBearingStrawMapResourceIT {
             .value(hasItem(loadBearingStrawMap.getId().intValue()))
             .jsonPath("$.[*].name")
             .value(hasItem(DEFAULT_NAME))
-            .jsonPath("$.[*].longitude")
-            .value(hasItem(DEFAULT_LONGITUDE.doubleValue()))
             .jsonPath("$.[*].latitude")
-            .value(hasItem(DEFAULT_LATITUDE.doubleValue()));
+            .value(hasItem(DEFAULT_LATITUDE.doubleValue()))
+            .jsonPath("$.[*].longitude")
+            .value(hasItem(DEFAULT_LONGITUDE.doubleValue()));
     }
 
     @Test
@@ -286,10 +265,10 @@ class LoadBearingStrawMapResourceIT {
             .value(is(loadBearingStrawMap.getId().intValue()))
             .jsonPath("$.name")
             .value(is(DEFAULT_NAME))
-            .jsonPath("$.longitude")
-            .value(is(DEFAULT_LONGITUDE.doubleValue()))
             .jsonPath("$.latitude")
-            .value(is(DEFAULT_LATITUDE.doubleValue()));
+            .value(is(DEFAULT_LATITUDE.doubleValue()))
+            .jsonPath("$.longitude")
+            .value(is(DEFAULT_LONGITUDE.doubleValue()));
     }
 
     @Test
@@ -313,7 +292,7 @@ class LoadBearingStrawMapResourceIT {
 
         // Update the loadBearingStrawMap
         LoadBearingStrawMap updatedLoadBearingStrawMap = loadBearingStrawMapRepository.findById(loadBearingStrawMap.getId()).block();
-        updatedLoadBearingStrawMap.name(UPDATED_NAME).longitude(UPDATED_LONGITUDE).latitude(UPDATED_LATITUDE);
+        updatedLoadBearingStrawMap.name(UPDATED_NAME).latitude(UPDATED_LATITUDE).longitude(UPDATED_LONGITUDE);
 
         webTestClient
             .put()
@@ -329,8 +308,8 @@ class LoadBearingStrawMapResourceIT {
         assertThat(loadBearingStrawMapList).hasSize(databaseSizeBeforeUpdate);
         LoadBearingStrawMap testLoadBearingStrawMap = loadBearingStrawMapList.get(loadBearingStrawMapList.size() - 1);
         assertThat(testLoadBearingStrawMap.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
         assertThat(testLoadBearingStrawMap.getLatitude()).isEqualTo(UPDATED_LATITUDE);
+        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
     }
 
     @Test
@@ -404,7 +383,7 @@ class LoadBearingStrawMapResourceIT {
         LoadBearingStrawMap partialUpdatedLoadBearingStrawMap = new LoadBearingStrawMap();
         partialUpdatedLoadBearingStrawMap.setId(loadBearingStrawMap.getId());
 
-        partialUpdatedLoadBearingStrawMap.longitude(UPDATED_LONGITUDE).latitude(UPDATED_LATITUDE);
+        partialUpdatedLoadBearingStrawMap.latitude(UPDATED_LATITUDE).longitude(UPDATED_LONGITUDE);
 
         webTestClient
             .patch()
@@ -420,8 +399,8 @@ class LoadBearingStrawMapResourceIT {
         assertThat(loadBearingStrawMapList).hasSize(databaseSizeBeforeUpdate);
         LoadBearingStrawMap testLoadBearingStrawMap = loadBearingStrawMapList.get(loadBearingStrawMapList.size() - 1);
         assertThat(testLoadBearingStrawMap.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
         assertThat(testLoadBearingStrawMap.getLatitude()).isEqualTo(UPDATED_LATITUDE);
+        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
     }
 
     @Test
@@ -435,7 +414,7 @@ class LoadBearingStrawMapResourceIT {
         LoadBearingStrawMap partialUpdatedLoadBearingStrawMap = new LoadBearingStrawMap();
         partialUpdatedLoadBearingStrawMap.setId(loadBearingStrawMap.getId());
 
-        partialUpdatedLoadBearingStrawMap.name(UPDATED_NAME).longitude(UPDATED_LONGITUDE).latitude(UPDATED_LATITUDE);
+        partialUpdatedLoadBearingStrawMap.name(UPDATED_NAME).latitude(UPDATED_LATITUDE).longitude(UPDATED_LONGITUDE);
 
         webTestClient
             .patch()
@@ -451,8 +430,8 @@ class LoadBearingStrawMapResourceIT {
         assertThat(loadBearingStrawMapList).hasSize(databaseSizeBeforeUpdate);
         LoadBearingStrawMap testLoadBearingStrawMap = loadBearingStrawMapList.get(loadBearingStrawMapList.size() - 1);
         assertThat(testLoadBearingStrawMap.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
         assertThat(testLoadBearingStrawMap.getLatitude()).isEqualTo(UPDATED_LATITUDE);
+        assertThat(testLoadBearingStrawMap.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
     }
 
     @Test

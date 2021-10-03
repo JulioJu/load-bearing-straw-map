@@ -27,8 +27,8 @@ public class LoadBearingStrawMapRowMapper implements BiFunction<Row, String, Loa
         LoadBearingStrawMap entity = new LoadBearingStrawMap();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setName(converter.fromRow(row, prefix + "_name", String.class));
-        entity.setLongitude(converter.fromRow(row, prefix + "_longitude", Float.class));
         entity.setLatitude(converter.fromRow(row, prefix + "_latitude", Float.class));
+        entity.setLongitude(converter.fromRow(row, prefix + "_longitude", Float.class));
         return entity;
     }
 }

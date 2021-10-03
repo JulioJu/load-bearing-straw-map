@@ -1,10 +1,10 @@
 export interface ILoadBearingStrawMap {
   id?: number;
-  name?: string;
-  longitude?: number;
+  name?: string | null;
   latitude?: number;
+  longitude?: number;
 }
 
 export class LoadBearingStrawMap implements ILoadBearingStrawMap {
-  constructor(public id?: number, public name?: string, public longitude?: number, public latitude?: number) {}
+  constructor(public id?: number, public name?: string | null, public latitude?: number, public longitude?: number) {}
 }

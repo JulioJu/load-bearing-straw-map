@@ -30,7 +30,7 @@ export default class MapContainer extends Vue {
         extent: [-1944469.271982851, 4954231.814876032, 2437325.1855209903, 6679563.3825181695],
       }),
     });
-    const icon = drawIcon({ long: 2.2137, lat: 46.2276 });
+    const icon = drawIcon({ lat: 46.2276, long: 2.2137 });
     map.addLayer(icon);
     drawPopup({
       map,

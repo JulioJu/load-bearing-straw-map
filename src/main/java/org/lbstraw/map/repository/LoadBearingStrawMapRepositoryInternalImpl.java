@@ -132,8 +132,8 @@ class LoadBearingStrawMapSqlHelper {
         List<Expression> columns = new ArrayList<>();
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("name", table, columnPrefix + "_name"));
-        columns.add(Column.aliased("longitude", table, columnPrefix + "_longitude"));
         columns.add(Column.aliased("latitude", table, columnPrefix + "_latitude"));
+        columns.add(Column.aliased("longitude", table, columnPrefix + "_longitude"));
 
         return columns;
     }

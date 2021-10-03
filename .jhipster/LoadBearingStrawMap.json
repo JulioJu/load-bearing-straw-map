@@ -3,18 +3,21 @@
   "fields": [
     {
       "fieldName": "name",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "longitude",
-      "fieldType": "Float",
-      "fieldValidateRules": ["required"]
+      "fieldType": "String"
     },
     {
       "fieldName": "latitude",
       "fieldType": "Float",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "-90",
+      "fieldValidateRulesMax": "90"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "-90",
+      "fieldValidateRulesMax": "90"
     }
   ],
   "relationships": [],

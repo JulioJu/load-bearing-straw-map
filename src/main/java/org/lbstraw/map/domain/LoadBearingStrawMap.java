@@ -19,17 +19,20 @@ public class LoadBearingStrawMap implements Serializable {
     @Column("id")
     private Long id;
 
-    @NotNull(message = "must not be null")
     @Column("name")
     private String name;
 
     @NotNull(message = "must not be null")
-    @Column("longitude")
-    private Float longitude;
-
-    @NotNull(message = "must not be null")
+    @DecimalMin(value = "-90")
+    @DecimalMax(value = "90")
     @Column("latitude")
     private Float latitude;
+
+    @NotNull(message = "must not be null")
+    @DecimalMin(value = "-90")
+    @DecimalMax(value = "90")
+    @Column("longitude")
+    private Float longitude;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -59,19 +62,6 @@ public class LoadBearingStrawMap implements Serializable {
         this.name = name;
     }
 
-    public Float getLongitude() {
-        return this.longitude;
-    }
-
-    public LoadBearingStrawMap longitude(Float longitude) {
-        this.setLongitude(longitude);
-        return this;
-    }
-
-    public void setLongitude(Float longitude) {
-        this.longitude = longitude;
-    }
-
     public Float getLatitude() {
         return this.latitude;
     }
@@ -83,6 +73,19 @@ public class LoadBearingStrawMap implements Serializable {
 
     public void setLatitude(Float latitude) {
         this.latitude = latitude;
+    }
+
+    public Float getLongitude() {
+        return this.longitude;
+    }
+
+    public LoadBearingStrawMap longitude(Float longitude) {
+        this.setLongitude(longitude);
+        return this;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -110,8 +113,8 @@ public class LoadBearingStrawMap implements Serializable {
         return "LoadBearingStrawMap{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", longitude=" + getLongitude() +
             ", latitude=" + getLatitude() +
+            ", longitude=" + getLongitude() +
             "}";
     }
 }

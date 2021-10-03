@@ -1,22 +1,24 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import { required, decimal } from 'vuelidate/lib/validators';
+import { decimal, required, minValue, maxValue } from 'vuelidate/lib/validators';
 
 import { ILoadBearingStrawMap, LoadBearingStrawMap } from '@/shared/model/load-bearing-straw-map.model';
 import LoadBearingStrawMapService from './load-bearing-straw-map.service';
 
 const validations: any = {
   loadBearingStrawMap: {
-    name: {
+    name: {},
+    latitude: {
       required,
+      decimal,
+      min: minValue(-90),
+      max: maxValue(90),
     },
     longitude: {
       required,
       decimal,
-    },
-    latitude: {
-      required,
-      decimal,
+      min: minValue(-90),
+      max: maxValue(90),
     },
   },
 };

@@ -1,5 +1,5 @@
 entity LoadBearingStrawMap {
-	name String required,
-	longitude Float required,
-	latitude Float required,
+	name String,
+	latitude Float required min(-90) max(90),
+	longitude Float required min(-90) max(90),
 }

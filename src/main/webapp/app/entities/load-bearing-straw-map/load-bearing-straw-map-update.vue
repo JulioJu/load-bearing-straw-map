@@ -26,11 +26,49 @@
               data-cy="name"
               :class="{ valid: !$v.loadBearingStrawMap.name.$invalid, invalid: $v.loadBearingStrawMap.name.$invalid }"
               v-model="$v.loadBearingStrawMap.name.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              class="form-control-label"
+              v-text="$t('lbstrawmapApp.loadBearingStrawMap.latitude')"
+              for="load-bearing-straw-map-latitude"
+              >Latitude</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              name="latitude"
+              id="load-bearing-straw-map-latitude"
+              data-cy="latitude"
+              :class="{ valid: !$v.loadBearingStrawMap.latitude.$invalid, invalid: $v.loadBearingStrawMap.latitude.$invalid }"
+              v-model.number="$v.loadBearingStrawMap.latitude.$model"
               required
             />
-            <div v-if="$v.loadBearingStrawMap.name.$anyDirty && $v.loadBearingStrawMap.name.$invalid">
-              <small class="form-text text-danger" v-if="!$v.loadBearingStrawMap.name.required" v-text="$t('entity.validation.required')">
+            <div v-if="$v.loadBearingStrawMap.latitude.$anyDirty && $v.loadBearingStrawMap.latitude.$invalid">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.loadBearingStrawMap.latitude.required"
+                v-text="$t('entity.validation.required')"
+              >
                 This field is required.
+              </small>
+              <small
+                class="form-text text-danger"
+                v-if="!$v.loadBearingStrawMap.latitude.min"
+                v-text="$t('entity.validation.min', { min: -90 })"
+              >
+                This field should be at least -90.
+              </small>
+              <small
+                class="form-text text-danger"
+                v-if="!$v.loadBearingStrawMap.latitude.max"
+                v-text="$t('entity.validation.max', { max: 90 })"
+              >
+                This field cannot be longer than 90 characters.
+              </small>
+              <small class="form-text text-danger" v-if="!$v.loadBearingStrawMap.latitude.numeric" v-text="$t('entity.validation.number')">
+                This field should be a number.
               </small>
             </div>
           </div>
@@ -59,37 +97,21 @@
               >
                 This field is required.
               </small>
-              <small class="form-text text-danger" v-if="!$v.loadBearingStrawMap.longitude.numeric" v-text="$t('entity.validation.number')">
-                This field should be a number.
-              </small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('lbstrawmapApp.loadBearingStrawMap.latitude')"
-              for="load-bearing-straw-map-latitude"
-              >Latitude</label
-            >
-            <input
-              type="number"
-              class="form-control"
-              name="latitude"
-              id="load-bearing-straw-map-latitude"
-              data-cy="latitude"
-              :class="{ valid: !$v.loadBearingStrawMap.latitude.$invalid, invalid: $v.loadBearingStrawMap.latitude.$invalid }"
-              v-model.number="$v.loadBearingStrawMap.latitude.$model"
-              required
-            />
-            <div v-if="$v.loadBearingStrawMap.latitude.$anyDirty && $v.loadBearingStrawMap.latitude.$invalid">
               <small
                 class="form-text text-danger"
-                v-if="!$v.loadBearingStrawMap.latitude.required"
-                v-text="$t('entity.validation.required')"
+                v-if="!$v.loadBearingStrawMap.longitude.min"
+                v-text="$t('entity.validation.min', { min: -90 })"
               >
-                This field is required.
+                This field should be at least -90.
               </small>
-              <small class="form-text text-danger" v-if="!$v.loadBearingStrawMap.latitude.numeric" v-text="$t('entity.validation.number')">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.loadBearingStrawMap.longitude.max"
+                v-text="$t('entity.validation.max', { max: 90 })"
+              >
+                This field cannot be longer than 90 characters.
+              </small>
+              <small class="form-text text-danger" v-if="!$v.loadBearingStrawMap.longitude.numeric" v-text="$t('entity.validation.number')">
                 This field should be a number.
               </small>
             </div>

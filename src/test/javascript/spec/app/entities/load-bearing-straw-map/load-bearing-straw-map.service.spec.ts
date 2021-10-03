@@ -82,8 +82,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             name: 'BBBBBB',
-            longitude: 1,
             latitude: 1,
+            longitude: 1,
           },
           elemDefault
         );
@@ -110,7 +110,7 @@ describe('Service Tests', () => {
       it('should partial update a LoadBearingStrawMap', async () => {
         const patchObject = Object.assign(
           {
-            longitude: 1,
+            latitude: 1,
           },
           new LoadBearingStrawMap()
         );
@@ -139,8 +139,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             name: 'BBBBBB',
-            longitude: 1,
             latitude: 1,
+            longitude: 1,
           },
           elemDefault
         );

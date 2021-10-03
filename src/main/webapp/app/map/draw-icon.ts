@@ -7,7 +7,7 @@ import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style';
 
 /** Inspired from https://openlayers.org/en/latest/examples/icon.html */
-export default ({ long, lat }: { long: number; lat: number }) => {
+export default ({ lat, long }: { lat: number; long: number }) => {
   const icon = new Image(32, 48);
   /** Download from https://openlayers.org/en/latest/examples/data/icon.png */
   icon.src =

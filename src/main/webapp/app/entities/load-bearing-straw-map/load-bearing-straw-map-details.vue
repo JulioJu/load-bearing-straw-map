@@ -13,16 +13,16 @@
             <span>{{ loadBearingStrawMap.name }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.loadBearingStrawMap.longitude')">Longitude</span>
-          </dt>
-          <dd>
-            <span>{{ loadBearingStrawMap.longitude }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('lbstrawmapApp.loadBearingStrawMap.latitude')">Latitude</span>
           </dt>
           <dd>
             <span>{{ loadBearingStrawMap.latitude }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.loadBearingStrawMap.longitude')">Longitude</span>
+          </dt>
+          <dd>
+            <span>{{ loadBearingStrawMap.longitude }}</span>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

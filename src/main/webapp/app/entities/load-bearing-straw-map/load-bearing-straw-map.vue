@@ -30,8 +30,8 @@
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
             <th scope="row"><span v-text="$t('lbstrawmapApp.loadBearingStrawMap.name')">Name</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.loadBearingStrawMap.longitude')">Longitude</span></th>
             <th scope="row"><span v-text="$t('lbstrawmapApp.loadBearingStrawMap.latitude')">Latitude</span></th>
+            <th scope="row"><span v-text="$t('lbstrawmapApp.loadBearingStrawMap.longitude')">Longitude</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -43,8 +43,8 @@
               }}</router-link>
             </td>
             <td>{{ loadBearingStrawMap.name }}</td>
-            <td>{{ loadBearingStrawMap.longitude }}</td>
             <td>{{ loadBearingStrawMap.latitude }}</td>
+            <td>{{ loadBearingStrawMap.longitude }}</td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link
