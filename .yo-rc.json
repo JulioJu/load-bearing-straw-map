@@ -42,6 +42,8 @@
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "languages": ["fr", "en"],
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["LoadBearingStrawMap"],
+    "lastLiquibaseTimestamp": 1633238810000
   }
 }
