@@ -1,6 +1,21 @@
 <!-- Inspired from https://openlayers.org/en/latest/examples/popup.html -->
 <template>
   <section>
+    <template v-if="authenticated">
+      <template v-if="isEditMode">
+        <strong> Double cliquer sur la carte pour ajouter un bâti </strong>
+      </template>
+      <br />
+      <button @click="toggleEditionMode" class="btn btn-primary jh-create-entity">
+        <template v-if="!isEditMode">
+          <font-awesome-icon icon="plus"></font-awesome-icon>
+          <span> Basculer en mode ajout d'un bâti </span>
+        </template>
+        <template v-else>
+          <span> Basculer en mode normal </span>
+        </template>
+      </button>
+    </template>
     <div class="map-container" ref="map-root"></div>
     <div ref="popup" class="ol-popup">
       <a ref="popup-closer" class="ol-popup-closer"></a>
@@ -15,6 +30,10 @@
 .map-container {
   width: 100%;
   height: 80vh;
+}
+
+.map-container--add {
+  cursor: pointer;
 }
 
 /** Inspired from https://openlayers.org/en/latest/examples/popup.html */

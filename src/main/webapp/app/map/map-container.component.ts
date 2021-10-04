@@ -13,6 +13,7 @@ import { Inject, Vue } from 'vue-property-decorator';
 import drawIcon from './draw-icon';
 import drawPopup from './draw-popup';
 import { AxiosResponse } from 'axios';
+import eventRetrieveCoordAndNavigate from './event-retrieve-coord-and-navigate';
 
 // https://openlayers.org/en/latest/doc/faq.html#why-is-my-map-centered-on-the-gulf-of-guinea-or-africa-the-ocean-null-island-
 // https://openlayers.org/en/latest/doc/faq.html#why-is-the-order-of-a-coordinate-lon-lat-and-not-lat-lon-
@@ -22,6 +23,8 @@ const franceLonLat = [2.2137, 46.2276];
 export default class MapContainer extends Vue {
   @Inject('loadBearingStrawMapService')
   private loadBearingStrawMapService: () => LoadBearingStrawMapService;
+  private map: Map;
+  public isEditMode = false;
 
   public async retrieveAllLoadBearingStrawMaps(): Promise<ILoadBearingStrawMap[]> {
     const result: AxiosResponse<ILoadBearingStrawMap[]> = await this.loadBearingStrawMapService().retrieve();
@@ -29,7 +32,7 @@ export default class MapContainer extends Vue {
   }
 
   public async mounted(): Promise<void> {
-    const map = new Map({
+    this.map = new Map({
       target: this.$refs['map-root'] as HTMLDivElement,
       layers: [
         new TileLayer({
@@ -50,13 +53,26 @@ export default class MapContainer extends Vue {
         lat: aLoadBearingStrawMap.latitude,
         long: aLoadBearingStrawMap.longitude,
       });
-      map.addLayer(icon);
+      this.map.addLayer(icon);
     });
     drawPopup({
-      map,
+      map: this.map,
       popup: this.$refs['popup'] as HTMLDivElement,
       popupCloser: this.$refs['popup-closer'] as HTMLDivElement,
       popupContent: this.$refs['popup-content'] as HTMLDivElement,
     });
+  }
+
+  public toggleEditionMode(): void {
+    if (!this.isEditMode) {
+      eventRetrieveCoordAndNavigate.register(this.map, this.$router, this.$refs['map-root'] as HTMLDivElement);
+    } else {
+      eventRetrieveCoordAndNavigate.unregister(this.map, this.$refs['map-root'] as HTMLDivElement);
+    }
+    this.isEditMode = !this.isEditMode;
+  }
+
+  public get authenticated(): boolean {
+    return this.$store.getters.authenticated;
   }
 }
