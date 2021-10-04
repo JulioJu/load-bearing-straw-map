@@ -1,5 +1,6 @@
 import 'ol/ol.css';
 import { Map, Overlay } from 'ol';
+import VueRouter from 'vue-router';
 
 const appendList = (list: HTMLUListElement, content: string) => {
   const li = document.createElement('li');
@@ -12,7 +13,7 @@ const disposePopup = (overlay: Overlay, popupCloser: HTMLDivElement) => {
   popupCloser.blur();
 };
 
-const registerMapEvents = (map: Map, popupContent: HTMLDivElement, overlay: Overlay, popupCloser: HTMLDivElement) => {
+const registerMapEvents = (map: Map, popupContent: HTMLDivElement, overlay: Overlay, popupCloser: HTMLDivElement, router: VueRouter) => {
   // display popup on click
   map.on('click', evt => {
     const feature = map.forEachFeatureAtPixel(evt.pixel, feature => {
@@ -28,6 +29,15 @@ const registerMapEvents = (map: Map, popupContent: HTMLDivElement, overlay: Over
       }
       appendList(list, `latitude: ${feature.get('latitude')}`);
       appendList(list, `longitude: ${feature.get('longitude')}`);
+      const li = document.createElement('li');
+      const anchor = document.createElement('a');
+      anchor.innerText = 'Voir +';
+      anchor.addEventListener('click', (ev: MouseEvent) => {
+        ev.preventDefault();
+        router.push({ name: 'LoadBearingStrawMapView', params: { loadBearingStrawMapId: feature.get('id') } });
+      });
+      li.appendChild(anchor);
+      list.appendChild(li);
       popupContent.appendChild(list);
     } else {
       disposePopup(overlay, popupCloser);
@@ -56,11 +66,13 @@ export default ({
   popup,
   popupCloser,
   popupContent,
+  router,
 }: {
   map: Map;
   popup: HTMLDivElement;
   popupCloser: HTMLDivElement;
   popupContent: HTMLDivElement;
+  router: VueRouter;
 }) => {
   const overlay = new Overlay({
     element: popup,
@@ -76,5 +88,5 @@ export default ({
     return false;
   };
 
-  registerMapEvents(map, popupContent, overlay, popupCloser);
+  registerMapEvents(map, popupContent, overlay, popupCloser, router);
 };

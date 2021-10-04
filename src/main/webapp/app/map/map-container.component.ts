@@ -49,6 +49,7 @@ export default class MapContainer extends Vue {
     const loadBearingStrawMap = await this.retrieveAllLoadBearingStrawMaps();
     loadBearingStrawMap.forEach(aLoadBearingStrawMap => {
       const icon = drawIcon({
+        id: aLoadBearingStrawMap.id,
         name: aLoadBearingStrawMap.name,
         lat: aLoadBearingStrawMap.latitude,
         long: aLoadBearingStrawMap.longitude,
@@ -60,6 +61,7 @@ export default class MapContainer extends Vue {
       popup: this.$refs['popup'] as HTMLDivElement,
       popupCloser: this.$refs['popup-closer'] as HTMLDivElement,
       popupContent: this.$refs['popup-content'] as HTMLDivElement,
+      router: this.$router,
     });
   }
 
