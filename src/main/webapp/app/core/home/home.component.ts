@@ -1,4 +1,5 @@
-import { Component, Inject, Vue } from 'vue-property-decorator';
+import Component from 'vue-class-component';
+import { Inject, Vue } from 'vue-property-decorator';
 import LoginService from '@/account/login.service';
 import MapContainer from '@/map/map-container.vue';
 

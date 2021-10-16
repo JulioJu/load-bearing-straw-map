@@ -11,11 +11,11 @@
     "jhiPrefix": "jhi",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
-    "testFrameworks": [],
+    "testFrameworks": ["cypress"],
     "blueprints": [],
     "otherModules": [],
     "pages": [],
-    "creationTimestamp": 1633238309471,
+    "creationTimestamp": 1634399369580,
     "serviceDiscoveryType": "no",
     "reactive": true,
     "authenticationType": "jwt",
@@ -24,7 +24,7 @@
     "cacheProvider": "no",
     "enableHibernateCache": false,
     "databaseType": "sql",
-    "devDatabaseType": "h2Disk",
+    "devDatabaseType": "postgresql",
     "prodDatabaseType": "postgresql",
     "buildTool": "maven",
     "serverSideOptions": [],
@@ -37,13 +37,13 @@
     "clientTheme": "none",
     "enableTranslation": true,
     "nativeLanguage": "fr",
-    "jwtSecretKey": "NTA2MjRlY2EwZmU0NTgyNWI2ZmU5MmI0NjNhNmI2OGYxMjBiYTE2YzVjZTk1ODcwNmY2NWE3YTdjYzUxZTM4ZDMzYTllNzg2MjI2OWFjMDNiZTdkMjljZGZhYjBjYWRiODU1NjAzOTY0MzljNjE5ZWNiNjhjYWE1Njc2MmM1YzI=",
+    "jwtSecretKey": "MDk1YTEzZTJhYmRhYWUwYTc5ZDBiODZmZDg0ZGJmNDAyZTU5YWE4Yjk3MmY0ZmUwNzFlMmU4YWQyOTAzZWVlNmU2YWRiN2I4YjE2YzI5ZGJhMzhiMWQ5ZGIxOWExZjIxMTAzOTAyZTU4MGE2MGY1ZWFjN2M5OTYzMmE0MjIwYjQ=",
     "devServerPort": 9060,
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "languages": ["fr", "en"],
     "enableGradleEnterprise": false,
     "entities": ["LoadBearingStrawMap"],
-    "lastLiquibaseTimestamp": 1633238810000
+    "lastLiquibaseTimestamp": 1634399912000
   }
 }
