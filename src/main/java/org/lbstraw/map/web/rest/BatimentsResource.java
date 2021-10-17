@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.lbstraw.map.domain.Batiments;
+import org.lbstraw.map.domain.BatimentsLazyView;
 import org.lbstraw.map.repository.BatimentsRepository;
 import org.lbstraw.map.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
@@ -248,6 +249,20 @@ public class BatimentsResource {
         log.debug("REST request to get all Batiments");
         return batimentsRepository.findAll();
     }
+
+    // START added by JulioJu
+    /**
+     * {@code GET  /batiments-lazy} : get all the batiments.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of batiments in body.
+     */
+    @GetMapping("/batiments-lazy")
+    public List<BatimentsLazyView> getAllBatimentsLazy() {
+        log.debug("REST request to get all Batiments (Lazy mode)");
+        return batimentsRepository.findAllLazy();
+    }
+
+    // END added by JulioJu
 
     /**
      * {@code GET  /batiments/:id} : get the "id" batiments.

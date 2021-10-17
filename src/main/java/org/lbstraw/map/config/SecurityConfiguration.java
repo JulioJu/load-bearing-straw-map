@@ -85,6 +85,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
             .authorizeRequests()
+
+            // START added by JulioJu
+            .antMatchers("/api/batiments-lazy").permitAll()
+            // END added by JulioJu
+
             .antMatchers("/api/authenticate").permitAll()
             .antMatchers("/api/register").permitAll()
             .antMatchers("/api/activate").permitAll()

@@ -27,7 +27,7 @@ export default class MapContainer extends Vue {
   public isEditMode = false;
 
   public async retrieveAllBatimentss(): Promise<IBatiments[]> {
-    const result: AxiosResponse<IBatiments[]> = await this.batimentsService().retrieve();
+    const result: AxiosResponse<IBatiments[]> = await this.batimentsService().retrieveLazy();
     return result.data;
   }
 

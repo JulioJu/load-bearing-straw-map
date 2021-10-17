@@ -31,6 +31,21 @@ export default class BatimentsService {
     });
   }
 
+  // START added by JulioJu
+  public retrieveLazy(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}-lazy`)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+  // END added by JulioJu
+
   public delete(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
