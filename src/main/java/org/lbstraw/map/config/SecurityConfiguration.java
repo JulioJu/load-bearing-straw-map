@@ -91,10 +91,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             // END added by JulioJu
 
             .antMatchers("/api/authenticate").permitAll()
-            .antMatchers("/api/register").permitAll()
-            .antMatchers("/api/activate").permitAll()
-            .antMatchers("/api/account/reset-password/init").permitAll()
-            .antMatchers("/api/account/reset-password/finish").permitAll()
+
+            // START added by JulioJu
+            // .antMatchers("/api/register").permitAll()
+            // .antMatchers("/api/activate").permitAll()
+            // .antMatchers("/api/account/reset-password/init").permitAll()
+            // .antMatchers("/api/account/reset-password/finish").permitAll()
+            // END added by JulioJu
+
             .antMatchers("/api/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/api/**").authenticated()
             .antMatchers("/management/health").permitAll()
