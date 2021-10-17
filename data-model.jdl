@@ -1,9 +1,3 @@
-entity LoadBearingStrawMap {
-    name String,
-    latitude Float required min(-90) max(90),
-    longitude Float required min(-90) max(90),
-}
-
 enum Cereale {
     BLE,
     ORGE,

@@ -29,10 +29,6 @@
             <font-awesome-icon icon="th-list" />
             <span class="no-bold" v-text="$t('global.menu.entities.main')">Entities</span>
           </span>
-          <b-dropdown-item to="/load-bearing-straw-map">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.loadBearingStrawMap')">Load Bearing Straw Map</span>
-          </b-dropdown-item>
           <b-dropdown-item to="/batiments">
             <font-awesome-icon icon="asterisk" />
             <span v-text="$t('global.menu.entities.batiments')">Batiments</span>

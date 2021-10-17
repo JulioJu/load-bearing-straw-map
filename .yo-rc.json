@@ -15,7 +15,6 @@
     "blueprints": [],
     "otherModules": [],
     "pages": [],
-    "creationTimestamp": 1634399369580,
     "serviceDiscoveryType": "no",
     "reactive": true,
     "authenticationType": "jwt",
@@ -37,13 +36,14 @@
     "clientTheme": "none",
     "enableTranslation": true,
     "nativeLanguage": "fr",
-    "jwtSecretKey": "MDk1YTEzZTJhYmRhYWUwYTc5ZDBiODZmZDg0ZGJmNDAyZTU5YWE4Yjk3MmY0ZmUwNzFlMmU4YWQyOTAzZWVlNmU2YWRiN2I4YjE2YzI5ZGJhMzhiMWQ5ZGIxOWExZjIxMTAzOTAyZTU4MGE2MGY1ZWFjN2M5OTYzMmE0MjIwYjQ=",
     "devServerPort": 9060,
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "languages": ["fr", "en"],
     "enableGradleEnterprise": false,
-    "entities": ["LoadBearingStrawMap", "Batiments"],
-    "lastLiquibaseTimestamp": 1634474999000
+    "creationTimestamp": 1634477716282,
+    "jwtSecretKey": "YzNhYjI0ZGQ0Zjk2Zjg4OGIxZWIwOGFmM2ExN2YwYTQyMjVlOTEzNTQ0ODM4ZDA0YjQ3YmViMDJlYmRhZDQ1NjhhNzYxNTIwMDk5ZDVjZmYzMTc1YzBhZmZhNTUyMTc0YjdjMDIyODg4YjJiNGVjMTlhMjIwMzQzNjg3ZTE2OTc=",
+    "entities": ["Batiments"],
+    "lastLiquibaseTimestamp": 1634477762000
   }
 }
