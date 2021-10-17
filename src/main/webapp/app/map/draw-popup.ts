@@ -34,7 +34,7 @@ const registerMapEvents = (map: Map, popupContent: HTMLDivElement, overlay: Over
       anchor.innerText = 'Voir +';
       anchor.addEventListener('click', (ev: MouseEvent) => {
         ev.preventDefault();
-        router.push({ name: 'LoadBearingStrawMapView', params: { loadBearingStrawMapId: feature.get('id') } });
+        router.push({ name: 'BatimentsView', params: { batimentsId: feature.get('id') } });
       });
       li.appendChild(anchor);
       list.appendChild(li);

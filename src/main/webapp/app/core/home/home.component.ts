@@ -3,11 +3,13 @@ import { Inject, Vue } from 'vue-property-decorator';
 import LoginService from '@/account/login.service';
 import MapContainer from '@/map/map-container.vue';
 
+// START added by JulioJu
 @Component({
   components: {
     'map-container': MapContainer,
   },
 })
+// END added by JulioJu
 export default class Home extends Vue {
   @Inject('loginService')
   private loginService: () => LoginService;

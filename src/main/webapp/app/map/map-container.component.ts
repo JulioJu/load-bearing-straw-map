@@ -1,7 +1,7 @@
 import 'ol/ol.css';
 
-import LoadBearingStrawMapService from '@/entities/load-bearing-straw-map/load-bearing-straw-map.service';
-import { ILoadBearingStrawMap } from '@/shared/model/load-bearing-straw-map.model';
+import BatimentsService from '@/entities/batiments/batiments.service';
+import { IBatiments } from '@/shared/model/batiments.model';
 import TileLayer from 'ol/layer/Tile';
 import Map from 'ol/Map';
 import { fromLonLat } from 'ol/proj';
@@ -21,13 +21,13 @@ const franceLonLat = [2.2137, 46.2276];
 
 @Component
 export default class MapContainer extends Vue {
-  @Inject('loadBearingStrawMapService')
-  private loadBearingStrawMapService: () => LoadBearingStrawMapService;
+  @Inject('batimentsService')
+  private batimentsService: () => BatimentsService;
   private map: Map;
   public isEditMode = false;
 
-  public async retrieveAllLoadBearingStrawMaps(): Promise<ILoadBearingStrawMap[]> {
-    const result: AxiosResponse<ILoadBearingStrawMap[]> = await this.loadBearingStrawMapService().retrieve();
+  public async retrieveAllBatimentss(): Promise<IBatiments[]> {
+    const result: AxiosResponse<IBatiments[]> = await this.batimentsService().retrieve();
     return result.data;
   }
 
@@ -46,13 +46,13 @@ export default class MapContainer extends Vue {
       }),
     });
 
-    const loadBearingStrawMap = await this.retrieveAllLoadBearingStrawMaps();
-    loadBearingStrawMap.forEach(aLoadBearingStrawMap => {
+    const batiments = await this.retrieveAllBatimentss();
+    batiments.forEach(aBatiments => {
       const icon = drawIcon({
-        id: aLoadBearingStrawMap.id,
-        name: aLoadBearingStrawMap.name,
-        lat: aLoadBearingStrawMap.latitude,
-        long: aLoadBearingStrawMap.longitude,
+        id: aBatiments.id,
+        name: aBatiments.nom,
+        lat: aBatiments.latitude,
+        long: aBatiments.longitude,
       });
       this.map.addLayer(icon);
     });

@@ -79,6 +79,22 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
       if (to.params.batimentsId) {
         vm.retrieveBatiments(to.params.batimentsId);
       }
+
+      // START added by JulioJu
+      if (
+        to.query.lat &&
+        to.query.long &&
+        !isNaN(to.query.lat) &&
+        !isNaN(to.query.long) &&
+        to.query.lat >= -90 &&
+        to.query.lat <= 90 &&
+        to.query.long >= -90 &&
+        to.query.long <= 90
+      ) {
+        vm.loadBearingStrawMap.latitude = to.query.lat;
+        vm.loadBearingStrawMap.longitude = to.query.long;
+      }
+      // END added by JulioJu
     });
   }
 
