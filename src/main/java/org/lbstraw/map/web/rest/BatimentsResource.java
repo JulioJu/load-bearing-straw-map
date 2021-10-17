@@ -13,16 +13,11 @@ import org.lbstraw.map.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import tech.jhipster.web.util.HeaderUtil;
-import tech.jhipster.web.util.reactive.ResponseUtil;
+import tech.jhipster.web.util.ResponseUtil;
 
 /**
  * REST controller for managing {@link org.lbstraw.map.domain.Batiments}.
@@ -53,23 +48,16 @@ public class BatimentsResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/batiments")
-    public Mono<ResponseEntity<Batiments>> createBatiments(@Valid @RequestBody Batiments batiments) throws URISyntaxException {
+    public ResponseEntity<Batiments> createBatiments(@Valid @RequestBody Batiments batiments) throws URISyntaxException {
         log.debug("REST request to save Batiments : {}", batiments);
         if (batiments.getId() != null) {
             throw new BadRequestAlertException("A new batiments cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        return batimentsRepository
-            .save(batiments)
-            .map(result -> {
-                try {
-                    return ResponseEntity
-                        .created(new URI("/api/batiments/" + result.getId()))
-                        .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-                        .body(result);
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+        Batiments result = batimentsRepository.save(batiments);
+        return ResponseEntity
+            .created(new URI("/api/batiments/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -83,7 +71,7 @@ public class BatimentsResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/batiments/{id}")
-    public Mono<ResponseEntity<Batiments>> updateBatiments(
+    public ResponseEntity<Batiments> updateBatiments(
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody Batiments batiments
     ) throws URISyntaxException {
@@ -95,23 +83,15 @@ public class BatimentsResource {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        return batimentsRepository
-            .existsById(id)
-            .flatMap(exists -> {
-                if (!exists) {
-                    return Mono.error(new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound"));
-                }
+        if (!batimentsRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
 
-                return batimentsRepository
-                    .save(batiments)
-                    .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND)))
-                    .map(result ->
-                        ResponseEntity
-                            .ok()
-                            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-                            .body(result)
-                    );
-            });
+        Batiments result = batimentsRepository.save(batiments);
+        return ResponseEntity
+            .ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, batiments.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -126,7 +106,7 @@ public class BatimentsResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/batiments/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public Mono<ResponseEntity<Batiments>> partialUpdateBatiments(
+    public ResponseEntity<Batiments> partialUpdateBatiments(
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody Batiments batiments
     ) throws URISyntaxException {
@@ -138,132 +118,124 @@ public class BatimentsResource {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        return batimentsRepository
-            .existsById(id)
-            .flatMap(exists -> {
-                if (!exists) {
-                    return Mono.error(new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound"));
+        if (!batimentsRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Batiments> result = batimentsRepository
+            .findById(batiments.getId())
+            .map(existingBatiments -> {
+                if (batiments.getLatitude() != null) {
+                    existingBatiments.setLatitude(batiments.getLatitude());
+                }
+                if (batiments.getLongitude() != null) {
+                    existingBatiments.setLongitude(batiments.getLongitude());
+                }
+                if (batiments.getNom() != null) {
+                    existingBatiments.setNom(batiments.getNom());
+                }
+                if (batiments.getContactNom() != null) {
+                    existingBatiments.setContactNom(batiments.getContactNom());
+                }
+                if (batiments.getContactMail() != null) {
+                    existingBatiments.setContactMail(batiments.getContactMail());
+                }
+                if (batiments.getContactPhone() != null) {
+                    existingBatiments.setContactPhone(batiments.getContactPhone());
+                }
+                if (batiments.getConstructionDebut() != null) {
+                    existingBatiments.setConstructionDebut(batiments.getConstructionDebut());
+                }
+                if (batiments.getConstructionFin() != null) {
+                    existingBatiments.setConstructionFin(batiments.getConstructionFin());
+                }
+                if (batiments.getSurface() != null) {
+                    existingBatiments.setSurface(batiments.getSurface());
+                }
+                if (batiments.getCout() != null) {
+                    existingBatiments.setCout(batiments.getCout());
+                }
+                if (batiments.getBottesTaille() != null) {
+                    existingBatiments.setBottesTaille(batiments.getBottesTaille());
+                }
+                if (batiments.getAutoconstruction() != null) {
+                    existingBatiments.setAutoconstruction(batiments.getAutoconstruction());
+                }
+                if (batiments.getConcepteur() != null) {
+                    existingBatiments.setConcepteur(batiments.getConcepteur());
+                }
+                if (batiments.getRealisateur() != null) {
+                    existingBatiments.setRealisateur(batiments.getRealisateur());
+                }
+                if (batiments.getParticipatif() != null) {
+                    existingBatiments.setParticipatif(batiments.getParticipatif());
+                }
+                if (batiments.getUsage() != null) {
+                    existingBatiments.setUsage(batiments.getUsage());
+                }
+                if (batiments.getNoteCalcul() != null) {
+                    existingBatiments.setNoteCalcul(batiments.getNoteCalcul());
+                }
+                if (batiments.getTravauxNeuf() != null) {
+                    existingBatiments.setTravauxNeuf(batiments.getTravauxNeuf());
+                }
+                if (batiments.getTravauxExtension() != null) {
+                    existingBatiments.setTravauxExtension(batiments.getTravauxExtension());
+                }
+                if (batiments.getTravauxRenov() != null) {
+                    existingBatiments.setTravauxRenov(batiments.getTravauxRenov());
+                }
+                if (batiments.getTravauxIte() != null) {
+                    existingBatiments.setTravauxIte(batiments.getTravauxIte());
+                }
+                if (batiments.getTravauxIti() != null) {
+                    existingBatiments.setTravauxIti(batiments.getTravauxIti());
+                }
+                if (batiments.getNiveaux() != null) {
+                    existingBatiments.setNiveaux(batiments.getNiveaux());
+                }
+                if (batiments.getBottesDensite() != null) {
+                    existingBatiments.setBottesDensite(batiments.getBottesDensite());
+                }
+                if (batiments.getDistanceAppro() != null) {
+                    existingBatiments.setDistanceAppro(batiments.getDistanceAppro());
+                }
+                if (batiments.getBottesCereale() != null) {
+                    existingBatiments.setBottesCereale(batiments.getBottesCereale());
+                }
+                if (batiments.getStructSuppl() != null) {
+                    existingBatiments.setStructSuppl(batiments.getStructSuppl());
+                }
+                if (batiments.getRevetInt() != null) {
+                    existingBatiments.setRevetInt(batiments.getRevetInt());
+                }
+                if (batiments.getRevetExt() != null) {
+                    existingBatiments.setRevetExt(batiments.getRevetExt());
+                }
+                if (batiments.getTechniqueSecondaire() != null) {
+                    existingBatiments.setTechniqueSecondaire(batiments.getTechniqueSecondaire());
+                }
+                if (batiments.getCodePostal() != null) {
+                    existingBatiments.setCodePostal(batiments.getCodePostal());
+                }
+                if (batiments.getIntegBaie() != null) {
+                    existingBatiments.setIntegBaie(batiments.getIntegBaie());
+                }
+                if (batiments.getMateriauSb() != null) {
+                    existingBatiments.setMateriauSb(batiments.getMateriauSb());
+                }
+                if (batiments.getDescription() != null) {
+                    existingBatiments.setDescription(batiments.getDescription());
                 }
 
-                Mono<Batiments> result = batimentsRepository
-                    .findById(batiments.getId())
-                    .map(existingBatiments -> {
-                        if (batiments.getLatitude() != null) {
-                            existingBatiments.setLatitude(batiments.getLatitude());
-                        }
-                        if (batiments.getLongitude() != null) {
-                            existingBatiments.setLongitude(batiments.getLongitude());
-                        }
-                        if (batiments.getNom() != null) {
-                            existingBatiments.setNom(batiments.getNom());
-                        }
-                        if (batiments.getContactNom() != null) {
-                            existingBatiments.setContactNom(batiments.getContactNom());
-                        }
-                        if (batiments.getContactMail() != null) {
-                            existingBatiments.setContactMail(batiments.getContactMail());
-                        }
-                        if (batiments.getContactPhone() != null) {
-                            existingBatiments.setContactPhone(batiments.getContactPhone());
-                        }
-                        if (batiments.getConstructionDebut() != null) {
-                            existingBatiments.setConstructionDebut(batiments.getConstructionDebut());
-                        }
-                        if (batiments.getConstructionFin() != null) {
-                            existingBatiments.setConstructionFin(batiments.getConstructionFin());
-                        }
-                        if (batiments.getSurface() != null) {
-                            existingBatiments.setSurface(batiments.getSurface());
-                        }
-                        if (batiments.getCout() != null) {
-                            existingBatiments.setCout(batiments.getCout());
-                        }
-                        if (batiments.getBottesTaille() != null) {
-                            existingBatiments.setBottesTaille(batiments.getBottesTaille());
-                        }
-                        if (batiments.getAutoconstruction() != null) {
-                            existingBatiments.setAutoconstruction(batiments.getAutoconstruction());
-                        }
-                        if (batiments.getConcepteur() != null) {
-                            existingBatiments.setConcepteur(batiments.getConcepteur());
-                        }
-                        if (batiments.getRealisateur() != null) {
-                            existingBatiments.setRealisateur(batiments.getRealisateur());
-                        }
-                        if (batiments.getParticipatif() != null) {
-                            existingBatiments.setParticipatif(batiments.getParticipatif());
-                        }
-                        if (batiments.getUsage() != null) {
-                            existingBatiments.setUsage(batiments.getUsage());
-                        }
-                        if (batiments.getNoteCalcul() != null) {
-                            existingBatiments.setNoteCalcul(batiments.getNoteCalcul());
-                        }
-                        if (batiments.getTravauxNeuf() != null) {
-                            existingBatiments.setTravauxNeuf(batiments.getTravauxNeuf());
-                        }
-                        if (batiments.getTravauxExtension() != null) {
-                            existingBatiments.setTravauxExtension(batiments.getTravauxExtension());
-                        }
-                        if (batiments.getTravauxRenov() != null) {
-                            existingBatiments.setTravauxRenov(batiments.getTravauxRenov());
-                        }
-                        if (batiments.getTravauxIte() != null) {
-                            existingBatiments.setTravauxIte(batiments.getTravauxIte());
-                        }
-                        if (batiments.getTravauxIti() != null) {
-                            existingBatiments.setTravauxIti(batiments.getTravauxIti());
-                        }
-                        if (batiments.getNiveaux() != null) {
-                            existingBatiments.setNiveaux(batiments.getNiveaux());
-                        }
-                        if (batiments.getBottesDensite() != null) {
-                            existingBatiments.setBottesDensite(batiments.getBottesDensite());
-                        }
-                        if (batiments.getDistanceAppro() != null) {
-                            existingBatiments.setDistanceAppro(batiments.getDistanceAppro());
-                        }
-                        if (batiments.getBottesCereale() != null) {
-                            existingBatiments.setBottesCereale(batiments.getBottesCereale());
-                        }
-                        if (batiments.getStructSuppl() != null) {
-                            existingBatiments.setStructSuppl(batiments.getStructSuppl());
-                        }
-                        if (batiments.getRevetInt() != null) {
-                            existingBatiments.setRevetInt(batiments.getRevetInt());
-                        }
-                        if (batiments.getRevetExt() != null) {
-                            existingBatiments.setRevetExt(batiments.getRevetExt());
-                        }
-                        if (batiments.getTechniqueSecondaire() != null) {
-                            existingBatiments.setTechniqueSecondaire(batiments.getTechniqueSecondaire());
-                        }
-                        if (batiments.getCodePostal() != null) {
-                            existingBatiments.setCodePostal(batiments.getCodePostal());
-                        }
-                        if (batiments.getIntegBaie() != null) {
-                            existingBatiments.setIntegBaie(batiments.getIntegBaie());
-                        }
-                        if (batiments.getMateriauSb() != null) {
-                            existingBatiments.setMateriauSb(batiments.getMateriauSb());
-                        }
-                        if (batiments.getDescription() != null) {
-                            existingBatiments.setDescription(batiments.getDescription());
-                        }
+                return existingBatiments;
+            })
+            .map(batimentsRepository::save);
 
-                        return existingBatiments;
-                    })
-                    .flatMap(batimentsRepository::save);
-
-                return result
-                    .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND)))
-                    .map(res ->
-                        ResponseEntity
-                            .ok()
-                            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, res.getId().toString()))
-                            .body(res)
-                    );
-            });
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, batiments.getId().toString())
+        );
     }
 
     /**
@@ -272,18 +244,8 @@ public class BatimentsResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of batiments in body.
      */
     @GetMapping("/batiments")
-    public Mono<List<Batiments>> getAllBatiments() {
+    public List<Batiments> getAllBatiments() {
         log.debug("REST request to get all Batiments");
-        return batimentsRepository.findAll().collectList();
-    }
-
-    /**
-     * {@code GET  /batiments} : get all the batiments as a stream.
-     * @return the {@link Flux} of batiments.
-     */
-    @GetMapping(value = "/batiments", produces = MediaType.APPLICATION_NDJSON_VALUE)
-    public Flux<Batiments> getAllBatimentsAsStream() {
-        log.debug("REST request to get all Batiments as a stream");
         return batimentsRepository.findAll();
     }
 
@@ -294,9 +256,9 @@ public class BatimentsResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the batiments, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/batiments/{id}")
-    public Mono<ResponseEntity<Batiments>> getBatiments(@PathVariable Long id) {
+    public ResponseEntity<Batiments> getBatiments(@PathVariable Long id) {
         log.debug("REST request to get Batiments : {}", id);
-        Mono<Batiments> batiments = batimentsRepository.findById(id);
+        Optional<Batiments> batiments = batimentsRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(batiments);
     }
 
@@ -307,16 +269,12 @@ public class BatimentsResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/batiments/{id}")
-    @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public Mono<ResponseEntity<Void>> deleteBatiments(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBatiments(@PathVariable Long id) {
         log.debug("REST request to delete Batiments : {}", id);
-        return batimentsRepository
-            .deleteById(id)
-            .map(result ->
-                ResponseEntity
-                    .noContent()
-                    .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
-                    .build()
-            );
+        batimentsRepository.deleteById(id);
+        return ResponseEntity
+            .noContent()
+            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
+            .build();
     }
 }

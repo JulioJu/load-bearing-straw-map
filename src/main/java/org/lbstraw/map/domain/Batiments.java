@@ -2,7 +2,11 @@ package org.lbstraw.map.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import javax.persistence.*;
 import javax.validation.constraints.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
 import org.lbstraw.map.domain.enumeration.Cereale;
 import org.lbstraw.map.domain.enumeration.IntegBaie;
 import org.lbstraw.map.domain.enumeration.MateriauSb;
@@ -11,133 +15,144 @@ import org.lbstraw.map.domain.enumeration.RevetInt;
 import org.lbstraw.map.domain.enumeration.TaillesBottes;
 import org.lbstraw.map.domain.enumeration.UsageBatiment;
 import org.lbstraw.map.domain.enumeration.YesNoPartial;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
 
 /**
  * A Batiments.
  */
-@Table("batiments")
+@Entity
+@Table(name = "batiments")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Batiments implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column("id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "id")
     private Long id;
 
-    @NotNull(message = "must not be null")
+    @NotNull
     @DecimalMin(value = "-90")
     @DecimalMax(value = "90")
-    @Column("latitude")
+    @Column(name = "latitude", nullable = false)
     private Float latitude;
 
-    @NotNull(message = "must not be null")
+    @NotNull
     @DecimalMin(value = "-90")
     @DecimalMax(value = "90")
-    @Column("longitude")
+    @Column(name = "longitude", nullable = false)
     private Float longitude;
 
     @Size(max = 40)
-    @Column("nom")
+    @Column(name = "nom", length = 40)
     private String nom;
 
-    @Column("contact_nom")
+    @Column(name = "contact_nom")
     private String contactNom;
 
-    @Column("contact_mail")
+    @Column(name = "contact_mail")
     private String contactMail;
 
-    @Column("contact_phone")
+    @Column(name = "contact_phone")
     private String contactPhone;
 
-    @Column("construction_debut")
+    @Column(name = "construction_debut")
     private LocalDate constructionDebut;
 
-    @Column("construction_fin")
+    @Column(name = "construction_fin")
     private LocalDate constructionFin;
 
-    @Column("surface")
+    @Column(name = "surface")
     private Integer surface;
 
-    @Column("cout")
+    @Column(name = "cout")
     private Integer cout;
 
-    @Column("bottes_taille")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "bottes_taille")
     private TaillesBottes bottesTaille;
 
-    @Column("autoconstruction")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "autoconstruction")
     private YesNoPartial autoconstruction;
 
     @Size(max = 128)
-    @Column("concepteur")
+    @Column(name = "concepteur", length = 128)
     private String concepteur;
 
     @Size(max = 512)
-    @Column("realisateur")
+    @Column(name = "realisateur", length = 512)
     private String realisateur;
 
-    @Column("participatif")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "participatif")
     private YesNoPartial participatif;
 
-    @Column("usage")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "usage")
     private UsageBatiment usage;
 
-    @Column("note_calcul")
+    @Column(name = "note_calcul")
     private Boolean noteCalcul;
 
-    @Column("travaux_neuf")
+    @Column(name = "travaux_neuf")
     private Boolean travauxNeuf;
 
-    @Column("travaux_extension")
+    @Column(name = "travaux_extension")
     private Boolean travauxExtension;
 
-    @Column("travaux_renov")
+    @Column(name = "travaux_renov")
     private Boolean travauxRenov;
 
-    @Column("travaux_ite")
+    @Column(name = "travaux_ite")
     private Boolean travauxIte;
 
-    @Column("travaux_iti")
+    @Column(name = "travaux_iti")
     private Boolean travauxIti;
 
-    @Column("niveaux")
+    @Column(name = "niveaux")
     private Integer niveaux;
 
-    @Column("bottes_densite")
+    @Column(name = "bottes_densite")
     private Integer bottesDensite;
 
-    @Column("distance_appro")
+    @Column(name = "distance_appro")
     private Integer distanceAppro;
 
-    @Column("bottes_cereale")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "bottes_cereale")
     private Cereale bottesCereale;
 
-    @Column("struct_suppl")
+    @Column(name = "struct_suppl")
     private Boolean structSuppl;
 
-    @Column("revet_int")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "revet_int")
     private RevetInt revetInt;
 
-    @Column("revet_ext")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "revet_ext")
     private RevetExt revetExt;
 
-    @Column("technique_secondaire")
+    @Column(name = "technique_secondaire")
     private Boolean techniqueSecondaire;
 
     @Size(max = 6)
-    @Column("code_postal")
+    @Column(name = "code_postal", length = 6)
     private String codePostal;
 
-    @Column("integ_baie")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "integ_baie")
     private IntegBaie integBaie;
 
-    @Column("materiau_sb")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "materiau_sb")
     private MateriauSb materiauSb;
 
-    @Column("description")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "description")
     private String description;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

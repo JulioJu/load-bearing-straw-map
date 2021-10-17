@@ -2,18 +2,17 @@ package org.lbstraw.map.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
-import org.junit.jupiter.api.AfterEach;
+import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.lbstraw.map.IntegrationTest;
 import org.lbstraw.map.domain.Batiments;
 import org.lbstraw.map.domain.enumeration.Cereale;
@@ -26,21 +25,19 @@ import org.lbstraw.map.domain.enumeration.UsageBatiment;
 import org.lbstraw.map.domain.enumeration.YesNoPartial;
 import org.lbstraw.map.domain.enumeration.YesNoPartial;
 import org.lbstraw.map.repository.BatimentsRepository;
-import org.lbstraw.map.service.EntityManager;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
 
 /**
  * Integration tests for the {@link BatimentsResource} REST controller.
  */
 @IntegrationTest
-@AutoConfigureWebTestClient
+@AutoConfigureMockMvc
 @WithMockUser
 class BatimentsResourceIT {
 
@@ -159,7 +156,7 @@ class BatimentsResourceIT {
     private EntityManager em;
 
     @Autowired
-    private WebTestClient webTestClient;
+    private MockMvc restBatimentsMockMvc;
 
     private Batiments batiments;
 
@@ -253,40 +250,22 @@ class BatimentsResourceIT {
         return batiments;
     }
 
-    public static void deleteEntities(EntityManager em) {
-        try {
-            em.deleteAll(Batiments.class).block();
-        } catch (Exception e) {
-            // It can fail, if other entities are still referring this - it will be removed later.
-        }
-    }
-
-    @AfterEach
-    public void cleanup() {
-        deleteEntities(em);
-    }
-
     @BeforeEach
     public void initTest() {
-        deleteEntities(em);
         batiments = createEntity(em);
     }
 
     @Test
+    @Transactional
     void createBatiments() throws Exception {
-        int databaseSizeBeforeCreate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeCreate = batimentsRepository.findAll().size();
         // Create the Batiments
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isCreated();
+        restBatimentsMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiments)))
+            .andExpect(status().isCreated());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeCreate + 1);
         Batiments testBatiments = batimentsList.get(batimentsList.size() - 1);
         assertThat(testBatiments.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
@@ -326,325 +305,172 @@ class BatimentsResourceIT {
     }
 
     @Test
+    @Transactional
     void createBatimentsWithExistingId() throws Exception {
         // Create the Batiments with an existing ID
         batiments.setId(1L);
 
-        int databaseSizeBeforeCreate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeCreate = batimentsRepository.findAll().size();
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
+        restBatimentsMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiments)))
+            .andExpect(status().isBadRequest());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeCreate);
     }
 
     @Test
+    @Transactional
     void checkLatitudeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeTest = batimentsRepository.findAll().size();
         // set the field null
         batiments.setLatitude(null);
 
         // Create the Batiments, which fails.
 
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
+        restBatimentsMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiments)))
+            .andExpect(status().isBadRequest());
 
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
+    @Transactional
     void checkLongitudeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeTest = batimentsRepository.findAll().size();
         // set the field null
         batiments.setLongitude(null);
 
         // Create the Batiments, which fails.
 
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
+        restBatimentsMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiments)))
+            .andExpect(status().isBadRequest());
 
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
-    void getAllBatimentsAsStream() {
+    @Transactional
+    void getAllBatiments() throws Exception {
         // Initialize the database
-        batimentsRepository.save(batiments).block();
-
-        List<Batiments> batimentsList = webTestClient
-            .get()
-            .uri(ENTITY_API_URL)
-            .accept(MediaType.APPLICATION_NDJSON)
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectHeader()
-            .contentTypeCompatibleWith(MediaType.APPLICATION_NDJSON)
-            .returnResult(Batiments.class)
-            .getResponseBody()
-            .filter(batiments::equals)
-            .collectList()
-            .block(Duration.ofSeconds(5));
-
-        assertThat(batimentsList).isNotNull();
-        assertThat(batimentsList).hasSize(1);
-        Batiments testBatiments = batimentsList.get(0);
-        assertThat(testBatiments.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
-        assertThat(testBatiments.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
-        assertThat(testBatiments.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testBatiments.getContactNom()).isEqualTo(DEFAULT_CONTACT_NOM);
-        assertThat(testBatiments.getContactMail()).isEqualTo(DEFAULT_CONTACT_MAIL);
-        assertThat(testBatiments.getContactPhone()).isEqualTo(DEFAULT_CONTACT_PHONE);
-        assertThat(testBatiments.getConstructionDebut()).isEqualTo(DEFAULT_CONSTRUCTION_DEBUT);
-        assertThat(testBatiments.getConstructionFin()).isEqualTo(DEFAULT_CONSTRUCTION_FIN);
-        assertThat(testBatiments.getSurface()).isEqualTo(DEFAULT_SURFACE);
-        assertThat(testBatiments.getCout()).isEqualTo(DEFAULT_COUT);
-        assertThat(testBatiments.getBottesTaille()).isEqualTo(DEFAULT_BOTTES_TAILLE);
-        assertThat(testBatiments.getAutoconstruction()).isEqualTo(DEFAULT_AUTOCONSTRUCTION);
-        assertThat(testBatiments.getConcepteur()).isEqualTo(DEFAULT_CONCEPTEUR);
-        assertThat(testBatiments.getRealisateur()).isEqualTo(DEFAULT_REALISATEUR);
-        assertThat(testBatiments.getParticipatif()).isEqualTo(DEFAULT_PARTICIPATIF);
-        assertThat(testBatiments.getUsage()).isEqualTo(DEFAULT_USAGE);
-        assertThat(testBatiments.getNoteCalcul()).isEqualTo(DEFAULT_NOTE_CALCUL);
-        assertThat(testBatiments.getTravauxNeuf()).isEqualTo(DEFAULT_TRAVAUX_NEUF);
-        assertThat(testBatiments.getTravauxExtension()).isEqualTo(DEFAULT_TRAVAUX_EXTENSION);
-        assertThat(testBatiments.getTravauxRenov()).isEqualTo(DEFAULT_TRAVAUX_RENOV);
-        assertThat(testBatiments.getTravauxIte()).isEqualTo(DEFAULT_TRAVAUX_ITE);
-        assertThat(testBatiments.getTravauxIti()).isEqualTo(DEFAULT_TRAVAUX_ITI);
-        assertThat(testBatiments.getNiveaux()).isEqualTo(DEFAULT_NIVEAUX);
-        assertThat(testBatiments.getBottesDensite()).isEqualTo(DEFAULT_BOTTES_DENSITE);
-        assertThat(testBatiments.getDistanceAppro()).isEqualTo(DEFAULT_DISTANCE_APPRO);
-        assertThat(testBatiments.getBottesCereale()).isEqualTo(DEFAULT_BOTTES_CEREALE);
-        assertThat(testBatiments.getStructSuppl()).isEqualTo(DEFAULT_STRUCT_SUPPL);
-        assertThat(testBatiments.getRevetInt()).isEqualTo(DEFAULT_REVET_INT);
-        assertThat(testBatiments.getRevetExt()).isEqualTo(DEFAULT_REVET_EXT);
-        assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(DEFAULT_TECHNIQUE_SECONDAIRE);
-        assertThat(testBatiments.getCodePostal()).isEqualTo(DEFAULT_CODE_POSTAL);
-        assertThat(testBatiments.getIntegBaie()).isEqualTo(DEFAULT_INTEG_BAIE);
-        assertThat(testBatiments.getMateriauSb()).isEqualTo(DEFAULT_MATERIAU_SB);
-        assertThat(testBatiments.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-    }
-
-    @Test
-    void getAllBatiments() {
-        // Initialize the database
-        batimentsRepository.save(batiments).block();
+        batimentsRepository.saveAndFlush(batiments);
 
         // Get all the batimentsList
-        webTestClient
-            .get()
-            .uri(ENTITY_API_URL + "?sort=id,desc")
-            .accept(MediaType.APPLICATION_JSON)
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectHeader()
-            .contentType(MediaType.APPLICATION_JSON)
-            .expectBody()
-            .jsonPath("$.[*].id")
-            .value(hasItem(batiments.getId().intValue()))
-            .jsonPath("$.[*].latitude")
-            .value(hasItem(DEFAULT_LATITUDE.doubleValue()))
-            .jsonPath("$.[*].longitude")
-            .value(hasItem(DEFAULT_LONGITUDE.doubleValue()))
-            .jsonPath("$.[*].nom")
-            .value(hasItem(DEFAULT_NOM))
-            .jsonPath("$.[*].contactNom")
-            .value(hasItem(DEFAULT_CONTACT_NOM))
-            .jsonPath("$.[*].contactMail")
-            .value(hasItem(DEFAULT_CONTACT_MAIL))
-            .jsonPath("$.[*].contactPhone")
-            .value(hasItem(DEFAULT_CONTACT_PHONE))
-            .jsonPath("$.[*].constructionDebut")
-            .value(hasItem(DEFAULT_CONSTRUCTION_DEBUT.toString()))
-            .jsonPath("$.[*].constructionFin")
-            .value(hasItem(DEFAULT_CONSTRUCTION_FIN.toString()))
-            .jsonPath("$.[*].surface")
-            .value(hasItem(DEFAULT_SURFACE))
-            .jsonPath("$.[*].cout")
-            .value(hasItem(DEFAULT_COUT))
-            .jsonPath("$.[*].bottesTaille")
-            .value(hasItem(DEFAULT_BOTTES_TAILLE.toString()))
-            .jsonPath("$.[*].autoconstruction")
-            .value(hasItem(DEFAULT_AUTOCONSTRUCTION.toString()))
-            .jsonPath("$.[*].concepteur")
-            .value(hasItem(DEFAULT_CONCEPTEUR))
-            .jsonPath("$.[*].realisateur")
-            .value(hasItem(DEFAULT_REALISATEUR))
-            .jsonPath("$.[*].participatif")
-            .value(hasItem(DEFAULT_PARTICIPATIF.toString()))
-            .jsonPath("$.[*].usage")
-            .value(hasItem(DEFAULT_USAGE.toString()))
-            .jsonPath("$.[*].noteCalcul")
-            .value(hasItem(DEFAULT_NOTE_CALCUL.booleanValue()))
-            .jsonPath("$.[*].travauxNeuf")
-            .value(hasItem(DEFAULT_TRAVAUX_NEUF.booleanValue()))
-            .jsonPath("$.[*].travauxExtension")
-            .value(hasItem(DEFAULT_TRAVAUX_EXTENSION.booleanValue()))
-            .jsonPath("$.[*].travauxRenov")
-            .value(hasItem(DEFAULT_TRAVAUX_RENOV.booleanValue()))
-            .jsonPath("$.[*].travauxIte")
-            .value(hasItem(DEFAULT_TRAVAUX_ITE.booleanValue()))
-            .jsonPath("$.[*].travauxIti")
-            .value(hasItem(DEFAULT_TRAVAUX_ITI.booleanValue()))
-            .jsonPath("$.[*].niveaux")
-            .value(hasItem(DEFAULT_NIVEAUX))
-            .jsonPath("$.[*].bottesDensite")
-            .value(hasItem(DEFAULT_BOTTES_DENSITE))
-            .jsonPath("$.[*].distanceAppro")
-            .value(hasItem(DEFAULT_DISTANCE_APPRO))
-            .jsonPath("$.[*].bottesCereale")
-            .value(hasItem(DEFAULT_BOTTES_CEREALE.toString()))
-            .jsonPath("$.[*].structSuppl")
-            .value(hasItem(DEFAULT_STRUCT_SUPPL.booleanValue()))
-            .jsonPath("$.[*].revetInt")
-            .value(hasItem(DEFAULT_REVET_INT.toString()))
-            .jsonPath("$.[*].revetExt")
-            .value(hasItem(DEFAULT_REVET_EXT.toString()))
-            .jsonPath("$.[*].techniqueSecondaire")
-            .value(hasItem(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue()))
-            .jsonPath("$.[*].codePostal")
-            .value(hasItem(DEFAULT_CODE_POSTAL))
-            .jsonPath("$.[*].integBaie")
-            .value(hasItem(DEFAULT_INTEG_BAIE.toString()))
-            .jsonPath("$.[*].materiauSb")
-            .value(hasItem(DEFAULT_MATERIAU_SB.toString()))
-            .jsonPath("$.[*].description")
-            .value(hasItem(DEFAULT_DESCRIPTION.toString()));
+        restBatimentsMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(batiments.getId().intValue())))
+            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())))
+            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.doubleValue())))
+            .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
+            .andExpect(jsonPath("$.[*].contactNom").value(hasItem(DEFAULT_CONTACT_NOM)))
+            .andExpect(jsonPath("$.[*].contactMail").value(hasItem(DEFAULT_CONTACT_MAIL)))
+            .andExpect(jsonPath("$.[*].contactPhone").value(hasItem(DEFAULT_CONTACT_PHONE)))
+            .andExpect(jsonPath("$.[*].constructionDebut").value(hasItem(DEFAULT_CONSTRUCTION_DEBUT.toString())))
+            .andExpect(jsonPath("$.[*].constructionFin").value(hasItem(DEFAULT_CONSTRUCTION_FIN.toString())))
+            .andExpect(jsonPath("$.[*].surface").value(hasItem(DEFAULT_SURFACE)))
+            .andExpect(jsonPath("$.[*].cout").value(hasItem(DEFAULT_COUT)))
+            .andExpect(jsonPath("$.[*].bottesTaille").value(hasItem(DEFAULT_BOTTES_TAILLE.toString())))
+            .andExpect(jsonPath("$.[*].autoconstruction").value(hasItem(DEFAULT_AUTOCONSTRUCTION.toString())))
+            .andExpect(jsonPath("$.[*].concepteur").value(hasItem(DEFAULT_CONCEPTEUR)))
+            .andExpect(jsonPath("$.[*].realisateur").value(hasItem(DEFAULT_REALISATEUR)))
+            .andExpect(jsonPath("$.[*].participatif").value(hasItem(DEFAULT_PARTICIPATIF.toString())))
+            .andExpect(jsonPath("$.[*].usage").value(hasItem(DEFAULT_USAGE.toString())))
+            .andExpect(jsonPath("$.[*].noteCalcul").value(hasItem(DEFAULT_NOTE_CALCUL.booleanValue())))
+            .andExpect(jsonPath("$.[*].travauxNeuf").value(hasItem(DEFAULT_TRAVAUX_NEUF.booleanValue())))
+            .andExpect(jsonPath("$.[*].travauxExtension").value(hasItem(DEFAULT_TRAVAUX_EXTENSION.booleanValue())))
+            .andExpect(jsonPath("$.[*].travauxRenov").value(hasItem(DEFAULT_TRAVAUX_RENOV.booleanValue())))
+            .andExpect(jsonPath("$.[*].travauxIte").value(hasItem(DEFAULT_TRAVAUX_ITE.booleanValue())))
+            .andExpect(jsonPath("$.[*].travauxIti").value(hasItem(DEFAULT_TRAVAUX_ITI.booleanValue())))
+            .andExpect(jsonPath("$.[*].niveaux").value(hasItem(DEFAULT_NIVEAUX)))
+            .andExpect(jsonPath("$.[*].bottesDensite").value(hasItem(DEFAULT_BOTTES_DENSITE)))
+            .andExpect(jsonPath("$.[*].distanceAppro").value(hasItem(DEFAULT_DISTANCE_APPRO)))
+            .andExpect(jsonPath("$.[*].bottesCereale").value(hasItem(DEFAULT_BOTTES_CEREALE.toString())))
+            .andExpect(jsonPath("$.[*].structSuppl").value(hasItem(DEFAULT_STRUCT_SUPPL.booleanValue())))
+            .andExpect(jsonPath("$.[*].revetInt").value(hasItem(DEFAULT_REVET_INT.toString())))
+            .andExpect(jsonPath("$.[*].revetExt").value(hasItem(DEFAULT_REVET_EXT.toString())))
+            .andExpect(jsonPath("$.[*].techniqueSecondaire").value(hasItem(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue())))
+            .andExpect(jsonPath("$.[*].codePostal").value(hasItem(DEFAULT_CODE_POSTAL)))
+            .andExpect(jsonPath("$.[*].integBaie").value(hasItem(DEFAULT_INTEG_BAIE.toString())))
+            .andExpect(jsonPath("$.[*].materiauSb").value(hasItem(DEFAULT_MATERIAU_SB.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
 
     @Test
-    void getBatiments() {
+    @Transactional
+    void getBatiments() throws Exception {
         // Initialize the database
-        batimentsRepository.save(batiments).block();
+        batimentsRepository.saveAndFlush(batiments);
 
         // Get the batiments
-        webTestClient
-            .get()
-            .uri(ENTITY_API_URL_ID, batiments.getId())
-            .accept(MediaType.APPLICATION_JSON)
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectHeader()
-            .contentType(MediaType.APPLICATION_JSON)
-            .expectBody()
-            .jsonPath("$.id")
-            .value(is(batiments.getId().intValue()))
-            .jsonPath("$.latitude")
-            .value(is(DEFAULT_LATITUDE.doubleValue()))
-            .jsonPath("$.longitude")
-            .value(is(DEFAULT_LONGITUDE.doubleValue()))
-            .jsonPath("$.nom")
-            .value(is(DEFAULT_NOM))
-            .jsonPath("$.contactNom")
-            .value(is(DEFAULT_CONTACT_NOM))
-            .jsonPath("$.contactMail")
-            .value(is(DEFAULT_CONTACT_MAIL))
-            .jsonPath("$.contactPhone")
-            .value(is(DEFAULT_CONTACT_PHONE))
-            .jsonPath("$.constructionDebut")
-            .value(is(DEFAULT_CONSTRUCTION_DEBUT.toString()))
-            .jsonPath("$.constructionFin")
-            .value(is(DEFAULT_CONSTRUCTION_FIN.toString()))
-            .jsonPath("$.surface")
-            .value(is(DEFAULT_SURFACE))
-            .jsonPath("$.cout")
-            .value(is(DEFAULT_COUT))
-            .jsonPath("$.bottesTaille")
-            .value(is(DEFAULT_BOTTES_TAILLE.toString()))
-            .jsonPath("$.autoconstruction")
-            .value(is(DEFAULT_AUTOCONSTRUCTION.toString()))
-            .jsonPath("$.concepteur")
-            .value(is(DEFAULT_CONCEPTEUR))
-            .jsonPath("$.realisateur")
-            .value(is(DEFAULT_REALISATEUR))
-            .jsonPath("$.participatif")
-            .value(is(DEFAULT_PARTICIPATIF.toString()))
-            .jsonPath("$.usage")
-            .value(is(DEFAULT_USAGE.toString()))
-            .jsonPath("$.noteCalcul")
-            .value(is(DEFAULT_NOTE_CALCUL.booleanValue()))
-            .jsonPath("$.travauxNeuf")
-            .value(is(DEFAULT_TRAVAUX_NEUF.booleanValue()))
-            .jsonPath("$.travauxExtension")
-            .value(is(DEFAULT_TRAVAUX_EXTENSION.booleanValue()))
-            .jsonPath("$.travauxRenov")
-            .value(is(DEFAULT_TRAVAUX_RENOV.booleanValue()))
-            .jsonPath("$.travauxIte")
-            .value(is(DEFAULT_TRAVAUX_ITE.booleanValue()))
-            .jsonPath("$.travauxIti")
-            .value(is(DEFAULT_TRAVAUX_ITI.booleanValue()))
-            .jsonPath("$.niveaux")
-            .value(is(DEFAULT_NIVEAUX))
-            .jsonPath("$.bottesDensite")
-            .value(is(DEFAULT_BOTTES_DENSITE))
-            .jsonPath("$.distanceAppro")
-            .value(is(DEFAULT_DISTANCE_APPRO))
-            .jsonPath("$.bottesCereale")
-            .value(is(DEFAULT_BOTTES_CEREALE.toString()))
-            .jsonPath("$.structSuppl")
-            .value(is(DEFAULT_STRUCT_SUPPL.booleanValue()))
-            .jsonPath("$.revetInt")
-            .value(is(DEFAULT_REVET_INT.toString()))
-            .jsonPath("$.revetExt")
-            .value(is(DEFAULT_REVET_EXT.toString()))
-            .jsonPath("$.techniqueSecondaire")
-            .value(is(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue()))
-            .jsonPath("$.codePostal")
-            .value(is(DEFAULT_CODE_POSTAL))
-            .jsonPath("$.integBaie")
-            .value(is(DEFAULT_INTEG_BAIE.toString()))
-            .jsonPath("$.materiauSb")
-            .value(is(DEFAULT_MATERIAU_SB.toString()))
-            .jsonPath("$.description")
-            .value(is(DEFAULT_DESCRIPTION.toString()));
+        restBatimentsMockMvc
+            .perform(get(ENTITY_API_URL_ID, batiments.getId()))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.id").value(batiments.getId().intValue()))
+            .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.doubleValue()))
+            .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.doubleValue()))
+            .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
+            .andExpect(jsonPath("$.contactNom").value(DEFAULT_CONTACT_NOM))
+            .andExpect(jsonPath("$.contactMail").value(DEFAULT_CONTACT_MAIL))
+            .andExpect(jsonPath("$.contactPhone").value(DEFAULT_CONTACT_PHONE))
+            .andExpect(jsonPath("$.constructionDebut").value(DEFAULT_CONSTRUCTION_DEBUT.toString()))
+            .andExpect(jsonPath("$.constructionFin").value(DEFAULT_CONSTRUCTION_FIN.toString()))
+            .andExpect(jsonPath("$.surface").value(DEFAULT_SURFACE))
+            .andExpect(jsonPath("$.cout").value(DEFAULT_COUT))
+            .andExpect(jsonPath("$.bottesTaille").value(DEFAULT_BOTTES_TAILLE.toString()))
+            .andExpect(jsonPath("$.autoconstruction").value(DEFAULT_AUTOCONSTRUCTION.toString()))
+            .andExpect(jsonPath("$.concepteur").value(DEFAULT_CONCEPTEUR))
+            .andExpect(jsonPath("$.realisateur").value(DEFAULT_REALISATEUR))
+            .andExpect(jsonPath("$.participatif").value(DEFAULT_PARTICIPATIF.toString()))
+            .andExpect(jsonPath("$.usage").value(DEFAULT_USAGE.toString()))
+            .andExpect(jsonPath("$.noteCalcul").value(DEFAULT_NOTE_CALCUL.booleanValue()))
+            .andExpect(jsonPath("$.travauxNeuf").value(DEFAULT_TRAVAUX_NEUF.booleanValue()))
+            .andExpect(jsonPath("$.travauxExtension").value(DEFAULT_TRAVAUX_EXTENSION.booleanValue()))
+            .andExpect(jsonPath("$.travauxRenov").value(DEFAULT_TRAVAUX_RENOV.booleanValue()))
+            .andExpect(jsonPath("$.travauxIte").value(DEFAULT_TRAVAUX_ITE.booleanValue()))
+            .andExpect(jsonPath("$.travauxIti").value(DEFAULT_TRAVAUX_ITI.booleanValue()))
+            .andExpect(jsonPath("$.niveaux").value(DEFAULT_NIVEAUX))
+            .andExpect(jsonPath("$.bottesDensite").value(DEFAULT_BOTTES_DENSITE))
+            .andExpect(jsonPath("$.distanceAppro").value(DEFAULT_DISTANCE_APPRO))
+            .andExpect(jsonPath("$.bottesCereale").value(DEFAULT_BOTTES_CEREALE.toString()))
+            .andExpect(jsonPath("$.structSuppl").value(DEFAULT_STRUCT_SUPPL.booleanValue()))
+            .andExpect(jsonPath("$.revetInt").value(DEFAULT_REVET_INT.toString()))
+            .andExpect(jsonPath("$.revetExt").value(DEFAULT_REVET_EXT.toString()))
+            .andExpect(jsonPath("$.techniqueSecondaire").value(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue()))
+            .andExpect(jsonPath("$.codePostal").value(DEFAULT_CODE_POSTAL))
+            .andExpect(jsonPath("$.integBaie").value(DEFAULT_INTEG_BAIE.toString()))
+            .andExpect(jsonPath("$.materiauSb").value(DEFAULT_MATERIAU_SB.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
 
     @Test
-    void getNonExistingBatiments() {
+    @Transactional
+    void getNonExistingBatiments() throws Exception {
         // Get the batiments
-        webTestClient
-            .get()
-            .uri(ENTITY_API_URL_ID, Long.MAX_VALUE)
-            .accept(MediaType.APPLICATION_JSON)
-            .exchange()
-            .expectStatus()
-            .isNotFound();
+        restBatimentsMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
+    @Transactional
     void putNewBatiments() throws Exception {
         // Initialize the database
-        batimentsRepository.save(batiments).block();
+        batimentsRepository.saveAndFlush(batiments);
 
-        int databaseSizeBeforeUpdate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeUpdate = batimentsRepository.findAll().size();
 
         // Update the batiments
-        Batiments updatedBatiments = batimentsRepository.findById(batiments.getId()).block();
+        Batiments updatedBatiments = batimentsRepository.findById(batiments.getId()).get();
+        // Disconnect from session so that the updates on updatedBatiments are not directly saved in db
+        em.detach(updatedBatiments);
         updatedBatiments
             .latitude(UPDATED_LATITUDE)
             .longitude(UPDATED_LONGITUDE)
@@ -681,17 +507,16 @@ class BatimentsResourceIT {
             .materiauSb(UPDATED_MATERIAU_SB)
             .description(UPDATED_DESCRIPTION);
 
-        webTestClient
-            .put()
-            .uri(ENTITY_API_URL_ID, updatedBatiments.getId())
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(updatedBatiments))
-            .exchange()
-            .expectStatus()
-            .isOk();
+        restBatimentsMockMvc
+            .perform(
+                put(ENTITY_API_URL_ID, updatedBatiments.getId())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(updatedBatiments))
+            )
+            .andExpect(status().isOk());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeUpdate);
         Batiments testBatiments = batimentsList.get(batimentsList.size() - 1);
         assertThat(testBatiments.getLatitude()).isEqualTo(UPDATED_LATITUDE);
@@ -731,71 +556,68 @@ class BatimentsResourceIT {
     }
 
     @Test
+    @Transactional
     void putNonExistingBatiments() throws Exception {
-        int databaseSizeBeforeUpdate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeUpdate = batimentsRepository.findAll().size();
         batiments.setId(count.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        webTestClient
-            .put()
-            .uri(ENTITY_API_URL_ID, batiments.getId())
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
+        restBatimentsMockMvc
+            .perform(
+                put(ENTITY_API_URL_ID, batiments.getId())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(batiments))
+            )
+            .andExpect(status().isBadRequest());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeUpdate);
     }
 
     @Test
+    @Transactional
     void putWithIdMismatchBatiments() throws Exception {
-        int databaseSizeBeforeUpdate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeUpdate = batimentsRepository.findAll().size();
         batiments.setId(count.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        webTestClient
-            .put()
-            .uri(ENTITY_API_URL_ID, count.incrementAndGet())
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
+        restBatimentsMockMvc
+            .perform(
+                put(ENTITY_API_URL_ID, count.incrementAndGet())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(batiments))
+            )
+            .andExpect(status().isBadRequest());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeUpdate);
     }
 
     @Test
+    @Transactional
     void putWithMissingIdPathParamBatiments() throws Exception {
-        int databaseSizeBeforeUpdate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeUpdate = batimentsRepository.findAll().size();
         batiments.setId(count.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        webTestClient
-            .put()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isEqualTo(405);
+        restBatimentsMockMvc
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiments)))
+            .andExpect(status().isMethodNotAllowed());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeUpdate);
     }
 
     @Test
+    @Transactional
     void partialUpdateBatimentsWithPatch() throws Exception {
         // Initialize the database
-        batimentsRepository.save(batiments).block();
+        batimentsRepository.saveAndFlush(batiments);
 
-        int databaseSizeBeforeUpdate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeUpdate = batimentsRepository.findAll().size();
 
         // Update the batiments using partial update
         Batiments partialUpdatedBatiments = new Batiments();
@@ -825,17 +647,16 @@ class BatimentsResourceIT {
             .integBaie(UPDATED_INTEG_BAIE)
             .materiauSb(UPDATED_MATERIAU_SB);
 
-        webTestClient
-            .patch()
-            .uri(ENTITY_API_URL_ID, partialUpdatedBatiments.getId())
-            .contentType(MediaType.valueOf("application/merge-patch+json"))
-            .bodyValue(TestUtil.convertObjectToJsonBytes(partialUpdatedBatiments))
-            .exchange()
-            .expectStatus()
-            .isOk();
+        restBatimentsMockMvc
+            .perform(
+                patch(ENTITY_API_URL_ID, partialUpdatedBatiments.getId())
+                    .contentType("application/merge-patch+json")
+                    .content(TestUtil.convertObjectToJsonBytes(partialUpdatedBatiments))
+            )
+            .andExpect(status().isOk());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeUpdate);
         Batiments testBatiments = batimentsList.get(batimentsList.size() - 1);
         assertThat(testBatiments.getLatitude()).isEqualTo(UPDATED_LATITUDE);
@@ -875,11 +696,12 @@ class BatimentsResourceIT {
     }
 
     @Test
+    @Transactional
     void fullUpdateBatimentsWithPatch() throws Exception {
         // Initialize the database
-        batimentsRepository.save(batiments).block();
+        batimentsRepository.saveAndFlush(batiments);
 
-        int databaseSizeBeforeUpdate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeUpdate = batimentsRepository.findAll().size();
 
         // Update the batiments using partial update
         Batiments partialUpdatedBatiments = new Batiments();
@@ -921,17 +743,16 @@ class BatimentsResourceIT {
             .materiauSb(UPDATED_MATERIAU_SB)
             .description(UPDATED_DESCRIPTION);
 
-        webTestClient
-            .patch()
-            .uri(ENTITY_API_URL_ID, partialUpdatedBatiments.getId())
-            .contentType(MediaType.valueOf("application/merge-patch+json"))
-            .bodyValue(TestUtil.convertObjectToJsonBytes(partialUpdatedBatiments))
-            .exchange()
-            .expectStatus()
-            .isOk();
+        restBatimentsMockMvc
+            .perform(
+                patch(ENTITY_API_URL_ID, partialUpdatedBatiments.getId())
+                    .contentType("application/merge-patch+json")
+                    .content(TestUtil.convertObjectToJsonBytes(partialUpdatedBatiments))
+            )
+            .andExpect(status().isOk());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeUpdate);
         Batiments testBatiments = batimentsList.get(batimentsList.size() - 1);
         assertThat(testBatiments.getLatitude()).isEqualTo(UPDATED_LATITUDE);
@@ -971,83 +792,78 @@ class BatimentsResourceIT {
     }
 
     @Test
+    @Transactional
     void patchNonExistingBatiments() throws Exception {
-        int databaseSizeBeforeUpdate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeUpdate = batimentsRepository.findAll().size();
         batiments.setId(count.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        webTestClient
-            .patch()
-            .uri(ENTITY_API_URL_ID, batiments.getId())
-            .contentType(MediaType.valueOf("application/merge-patch+json"))
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
+        restBatimentsMockMvc
+            .perform(
+                patch(ENTITY_API_URL_ID, batiments.getId())
+                    .contentType("application/merge-patch+json")
+                    .content(TestUtil.convertObjectToJsonBytes(batiments))
+            )
+            .andExpect(status().isBadRequest());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeUpdate);
     }
 
     @Test
+    @Transactional
     void patchWithIdMismatchBatiments() throws Exception {
-        int databaseSizeBeforeUpdate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeUpdate = batimentsRepository.findAll().size();
         batiments.setId(count.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        webTestClient
-            .patch()
-            .uri(ENTITY_API_URL_ID, count.incrementAndGet())
-            .contentType(MediaType.valueOf("application/merge-patch+json"))
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
+        restBatimentsMockMvc
+            .perform(
+                patch(ENTITY_API_URL_ID, count.incrementAndGet())
+                    .contentType("application/merge-patch+json")
+                    .content(TestUtil.convertObjectToJsonBytes(batiments))
+            )
+            .andExpect(status().isBadRequest());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeUpdate);
     }
 
     @Test
+    @Transactional
     void patchWithMissingIdPathParamBatiments() throws Exception {
-        int databaseSizeBeforeUpdate = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeUpdate = batimentsRepository.findAll().size();
         batiments.setId(count.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        webTestClient
-            .patch()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.valueOf("application/merge-patch+json"))
-            .bodyValue(TestUtil.convertObjectToJsonBytes(batiments))
-            .exchange()
-            .expectStatus()
-            .isEqualTo(405);
+        restBatimentsMockMvc
+            .perform(
+                patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(TestUtil.convertObjectToJsonBytes(batiments))
+            )
+            .andExpect(status().isMethodNotAllowed());
 
         // Validate the Batiments in the database
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeUpdate);
     }
 
     @Test
-    void deleteBatiments() {
+    @Transactional
+    void deleteBatiments() throws Exception {
         // Initialize the database
-        batimentsRepository.save(batiments).block();
+        batimentsRepository.saveAndFlush(batiments);
 
-        int databaseSizeBeforeDelete = batimentsRepository.findAll().collectList().block().size();
+        int databaseSizeBeforeDelete = batimentsRepository.findAll().size();
 
         // Delete the batiments
-        webTestClient
-            .delete()
-            .uri(ENTITY_API_URL_ID, batiments.getId())
-            .accept(MediaType.APPLICATION_JSON)
-            .exchange()
-            .expectStatus()
-            .isNoContent();
+        restBatimentsMockMvc
+            .perform(delete(ENTITY_API_URL_ID, batiments.getId()).accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
-        List<Batiments> batimentsList = batimentsRepository.findAll().collectList().block();
+        List<Batiments> batimentsList = batimentsRepository.findAll();
         assertThat(batimentsList).hasSize(databaseSizeBeforeDelete - 1);
     }
 }
