@@ -43,7 +43,7 @@
     "clientThemeVariant": "",
     "languages": ["fr", "en"],
     "enableGradleEnterprise": false,
-    "entities": ["LoadBearingStrawMap"],
-    "lastLiquibaseTimestamp": 1634399912000
+    "entities": ["LoadBearingStrawMap", "Batiments"],
+    "lastLiquibaseTimestamp": 1634474999000
   }
 }

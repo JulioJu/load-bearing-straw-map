@@ -1,0 +1,57 @@
+{
+  "lbstrawmapApp": {
+    "batiments": {
+      "home": {
+        "title": "Batiments",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Batiments",
+        "createOrEditLabel": "Créer ou éditer un Batiments",
+        "notFound": "Aucun Batiments trouvé"
+      },
+      "created": "Un nouveau Batiments a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Batiments avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Batiments avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Batiments {{ id }} ?"
+      },
+      "detail": {
+        "title": "Batiments"
+      },
+      "id": "ID",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "nom": "Nom",
+      "contactNom": "Contact Nom",
+      "contactMail": "Contact Mail",
+      "contactPhone": "Contact Phone",
+      "constructionDebut": "Construction Debut",
+      "constructionFin": "Construction Fin",
+      "surface": "Surface",
+      "cout": "Cout",
+      "bottesTaille": "Bottes Taille",
+      "autoconstruction": "Autoconstruction",
+      "concepteur": "Concepteur",
+      "realisateur": "Realisateur",
+      "participatif": "Participatif",
+      "usage": "Usage",
+      "noteCalcul": "Note Calcul",
+      "travauxNeuf": "Travaux Neuf",
+      "travauxExtension": "Travaux Extension",
+      "travauxRenov": "Travaux Renov",
+      "travauxIte": "Travaux Ite",
+      "travauxIti": "Travaux Iti",
+      "niveaux": "Niveaux",
+      "bottesDensite": "Bottes Densite",
+      "distanceAppro": "Distance Appro",
+      "bottesCereale": "Bottes Cereale",
+      "structSuppl": "Struct Suppl",
+      "revetInt": "Revet Int",
+      "revetExt": "Revet Ext",
+      "techniqueSecondaire": "Technique Secondaire",
+      "codePostal": "Code Postal",
+      "integBaie": "Integ Baie",
+      "materiauSb": "Materiau Sb",
+      "description": "Description"
+    }
+  }
+}

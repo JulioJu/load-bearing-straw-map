@@ -1,0 +1,9 @@
+export enum IntegBaie {
+  PRE_CADRE_FLOTTANT = 'PRE_CADRE_FLOTTANT',
+
+  COULISSANT = 'COULISSANT',
+
+  BLOQUEURS = 'BLOQUEURS',
+
+  AUTRE = 'AUTRE',
+}

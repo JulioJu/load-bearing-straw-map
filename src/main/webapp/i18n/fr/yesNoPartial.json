@@ -1,0 +1,10 @@
+{
+  "lbstrawmapApp": {
+    "YesNoPartial": {
+      "null": "",
+      "OUI": "OUI",
+      "NON": "NON",
+      "PARTIEL": "PARTIEL"
+    }
+  }
+}

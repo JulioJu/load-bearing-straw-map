@@ -1,0 +1,176 @@
+{
+  "name": "Batiments",
+  "fields": [
+    {
+      "fieldName": "latitude",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "-90",
+      "fieldValidateRulesMax": "90"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "-90",
+      "fieldValidateRulesMax": "90"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "40"
+    },
+    {
+      "fieldName": "contactNom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactMail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactPhone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "constructionDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "constructionFin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "surface",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cout",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bottesTaille",
+      "fieldType": "TaillesBottes",
+      "fieldValues": "T_80_X_120_CM,T_50_X_80_CM,T_37_X_47_CM,T_26_X_45_CM,AUTRE"
+    },
+    {
+      "fieldName": "autoconstruction",
+      "fieldType": "YesNoPartial",
+      "fieldValues": "OUI,NON,PARTIEL"
+    },
+    {
+      "fieldName": "concepteur",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "128"
+    },
+    {
+      "fieldName": "realisateur",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "participatif",
+      "fieldType": "YesNoPartial",
+      "fieldValues": "OUI,NON,PARTIEL"
+    },
+    {
+      "fieldName": "usage",
+      "fieldType": "UsageBatiment",
+      "fieldValues": "LOGEMENT_COLLECTIF,LOGEMENT_INDIVIDUEL,LOGEMENT_INDIVIDUEL_GROUPE,BATIMENT_ADMINISTRATIF,BATIMENT_COMMERCIAL,BATIMENT_INDUSTRIEL,BATIMENT_DE_LOISIRS,BATIMENT_DE_SANTE,BATIMENT_DE_RETRAITE,BATIMENT_EDUCATIF,BATIMENT_SOCIO_CULTUREl,BATIMENT_AGRICOLE,OUVRAGE_EXCEPTIONNEL,AUTRE"
+    },
+    {
+      "fieldName": "noteCalcul",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "travauxNeuf",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "travauxExtension",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "travauxRenov",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "travauxIte",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "travauxIti",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "niveaux",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bottesDensite",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "distanceAppro",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bottesCereale",
+      "fieldType": "Cereale",
+      "fieldValues": "BLE,ORGE,AVOINE,SEIGLE,TRITICALE,RIZ,AUTRE"
+    },
+    {
+      "fieldName": "structSuppl",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "revetInt",
+      "fieldType": "RevetInt",
+      "fieldValues": "PLAQUE_DE_PLATRE,LAMBRIS,ENDUIT_TERRE,ENDUIT_CHAUX,ENDUIT_TERRE_ET_CHAUX,ENDUIT_PLATRE,AUTRE"
+    },
+    {
+      "fieldName": "revetExt",
+      "fieldType": "RevetExt",
+      "fieldValues": "BARDAGE_VENTILE,ENDUIT_TERRE,ENDUIT_CHAUX,ENDUIT_TERRE_ET_CHAUX,ENDUIT_PLATRE,AUTRE"
+    },
+    {
+      "fieldName": "techniqueSecondaire",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "codePostal",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "6"
+    },
+    {
+      "fieldName": "integBaie",
+      "fieldType": "IntegBaie",
+      "fieldValues": "PRE_CADRE_FLOTTANT,COULISSANT,BLOQUEURS,AUTRE"
+    },
+    {
+      "fieldName": "materiauSb",
+      "fieldType": "MateriauSb",
+      "fieldValues": "BETON_ARME,PARPAING_DE_CIMENT,BRIQUE_DE_TERRE_CUITE,BRIQUE_DE_PIERRE_PONCE,BETON_LEGER_ISOLANT,PIERRE,AUTRE"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "batiments",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211017124959"
+}
