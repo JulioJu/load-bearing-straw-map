@@ -1,10 +1,32 @@
-## Import database
+<!-- vim-markdown-toc GFM -->
 
-To import a qgis database. With pgadmin, make a backup from qgis database and on dump options disable enable `Do not save` `Owner` and `Privilege`.
+* [Import remote database locally](#import-remote-database-locally)
+* [Create latitude and longitude row](#create-latitude-and-longitude-row)
+* [Convert PostGIS database to normal database](#convert-postgis-database-to-normal-database)
+    * [Optional (not useful for JHipster migration)](#optional-not-useful-for-jhipster-migration)
+    * [Convert table "batiments" to JHipster](#convert-table-batiments-to-jhipster)
 
-Then restore it in an other database. You could use Format `custom` and restore backup in the other database thanks pgadmin.
+<!-- vim-markdown-toc -->
 
-postgis installed in the OS is mandatory.
+## Import remote database locally
+
+Before all, you should have PostgreSQL installed with postGIS and started (check official doc).
+
+Dump database with
+
+```sh
+pg_dump db_name --host aHost --port 5432 --username aUsername --format tar --verbose --file "/tmp/filename.tar" --no-owner --no-privileges
+```
+
+To restore it, run
+
+```sql
+CREATE DATABASE db_name;
+```
+
+```bash
+pg_restore --no-owner --dbname db_name --verbose /tmp/filename.tar
+```
 
 ## Create latitude and longitude row
 
@@ -12,48 +34,62 @@ postgis installed in the OS is mandatory.
 - https://gis.stackexchange.com/questions/145007/creating-geometry-from-lat-lon-in-table-using-postgis
 
 ```sql
-qgis=# alter table batiments add column latitude real;
-qgis=# alter table batiments add column longitude real;
-qgis=# UPDATE batiments SET latitude = ST_Y (ST_Transform (geom, 4326));
-qgis=# UPDATE batiments SET longitude = ST_X (ST_Transform (geom, 4326));
+ALTER TABLE batiments ADD COLUMN latitude real;
+ALTER TABLE batiments ADD COLUMN longitude real;
+UPDATE batiments SET latitude = ST_Y (ST_Transform (geom, 4326));
+UPDATE batiments SET longitude = ST_X (ST_Transform (geom, 4326));
 ```
 
-## Convert postgis database to normal database
+## Convert PostGIS database to normal database
 
 1.  create latitude and longitude columns (see above)
-2.  You could remove row without `fid` (i.e. feature id) and with only null informations
-3.  if there are element with fid, and adresse but without latitude and longitude, complete it.
+
+2.  If there are elements with fid, and adresse but without latitude and longitude, complete it.
     Check all save with
-    `sql select * from batiments where latitude is null; `
-
-    We could extract and save in a file some request thanks
 
     ```sql
-    sql \copy (select * from batiments where id=2927) to '/tmp/recordWithoutLatAndLong.csv' (for mat csv, header, delimiter ',');
+    SELECT * FROM batiments WHERE latitude IS NULL; `
     ```
 
-4.  Delete batiments where latitude is null
+    To better access it, we could backup data as CSV then read it thanks LibreOffice. To extract, run:
 
     ```sql
-    delete from batiments where latitude is null;
+    \COPY (SELECT * FROM batiments WHERE id=2927) TO '/tmp/recordWithoutLatAndLong.csv' (format csv, header, delimiter ',');
     ```
 
-5.  Delete column `fid`
+    Add latitude and longitude where you want
 
     ```sql
-    ALTER TABLE batiments
-    DROP COLUMN fid;
+    UPDATE batiments
+    SET latitude = 0, longitude = 0
+    WHERE id = 1;
     ```
 
-6.  Set columns latitude and longitude `NOT NULL`
+3.  Delete batiments where latitude is null
 
-```sql
-ALTER TABLE batiments ALTER COLUMN latitude SET NOT NULL;
-ALTER TABLE batiments ALTER COLUMN longitude SET NOT NULL;
-```
+    ```sql
+    DELETE FROM batiments WHERE latitude IS NULL;
+    ```
 
-7.  Backup again (see above), but this time with format "Plain"
-8.  I advise to use a git project and commit file retrieved to check what we will delete
+4.  Set columns latitude and longitude `NOT NULL`
+
+    ```sql
+    ALTER TABLE batiments ALTER COLUMN latitude SET NOT NULL;
+    ALTER TABLE batiments ALTER COLUMN longitude SET NOT NULL;
+    ```
+
+5.  DROP not useful columns
+
+    ```sql
+    ALTER TABLE batiments DROP COLUMN geom;
+    ALTER TABLE batiments DROP COLUMN fid;
+    ```
+
+### Optional (not useful for JHipster migration)
+
+1.  Backup again (see above), but this time with format "Plain"
+
+2.  I advise to use a git project and commit file retrieved to check what we will delete
 
     1. Remove all lines with
 
@@ -79,17 +115,19 @@ ALTER TABLE batiments ALTER COLUMN longitude SET NOT NULL;
     SELECT pg_catalog.setval('public."batiments-paille-porteuse_id_seq"', 2920, true);
     ```
 
-9.  Restore the new sql file (mandatory with psql)
+3.  Restore the new sql file (mandatory with psql)
+
     ```sql
     create database load_bearing_straw_map;
     ```
+
     ```bash
     psql -U postgres -d load_bearing_straw_map < ~/Downloads/leniaw_pailleporteusesql/postgis_without_geo_column.sql
     ```
-10. Check that postgis is not installed
+
+4.  Check that postgis is not installed
     (see also https://wiki.archlinux.org/title/PostGIS)
     If installed version column is empty, it's cool!
-
 
     ```
     qgis=# \c load_bearing_straw_map
@@ -105,3 +143,113 @@ ALTER TABLE batiments ALTER COLUMN longitude SET NOT NULL;
      postgis_tiger_geocoder | 3.1.4           |
     (4 rows)
     ```
+
+### Convert table "batiments" to JHipster
+
+1. Rename some types to match what will be generated by JHipster.
+
+Copy and past following long text into psql interactive shell cause past errors
+
+Copy following into a new sql file, then
+
+```sh
+\i /tmp/sql.sql
+```
+
+```sql
+ALTER TYPE cereale RENAME VALUE 'Blé'        TO 'BLE';
+ALTER TYPE cereale RENAME VALUE 'Orge'       TO 'ORGE';
+ALTER TYPE cereale RENAME VALUE 'Avoine'     TO 'AVOINE';
+ALTER TYPE cereale RENAME VALUE 'Seigle'     TO 'SEIGLE';
+ALTER TYPE cereale RENAME VALUE 'Triticale'  TO 'TRITICALE';
+ALTER TYPE cereale RENAME VALUE 'Riz'        TO 'RIZ';
+ALTER TYPE cereale RENAME VALUE 'Autre'      TO 'AUTRE';
+;
+;
+ALTER TYPE integ_baie RENAME VALUE 'pré-cadre flottant'      TO 'PRE_CADRE_FLOTTANT';
+ALTER TYPE integ_baie RENAME VALUE 'coulissant'              TO 'COULISSANT';
+ALTER TYPE integ_baie RENAME VALUE 'bloqueurs'               TO 'BLOQUEURS';
+ALTER TYPE integ_baie RENAME VALUE 'autre'                   TO 'AUTRE';
+;
+ALTER TYPE materiau_sb RENAME VALUE 'Béton armé'                   TO 'BETON_ARME';
+ALTER TYPE materiau_sb RENAME VALUE 'Parpaing de ciment'           TO 'PARPAING_DE_CIMENT';
+ALTER TYPE materiau_sb RENAME VALUE 'Brique de terre cuite'        TO 'BRIQUE_DE_TERRE_CUITE';
+ALTER TYPE materiau_sb RENAME VALUE 'Brique de pierre ponce'       TO 'BRIQUE_DE_PIERRE_PONCE';
+ALTER TYPE materiau_sb RENAME VALUE 'Béton léger isolant'          TO 'BETON_LEGER_ISOLANT';
+ALTER TYPE materiau_sb RENAME VALUE 'Pierre'                       TO 'PIERRE';
+ALTER TYPE materiau_sb RENAME VALUE 'Autre'                        TO 'AUTRE';
+;
+ALTER TYPE revet_ext RENAME VALUE 'Bardage ventilé'                              TO 'BARDAGE_VENTILE';
+ALTER TYPE revet_ext RENAME VALUE 'Enduit terre'                                 TO 'ENDUIT_TERRE';
+ALTER TYPE revet_ext RENAME VALUE 'Enduit chaux'                                 TO 'ENDUIT_CHAUX';
+ALTER TYPE revet_ext RENAME VALUE 'Enduit terre et chaux'                        TO 'ENDUIT_TERRE_ET_CHAUX';
+ALTER TYPE revet_ext RENAME VALUE 'Enduit plâtre'                                TO 'ENDUIT_PLATRE';
+ALTER TYPE revet_ext RENAME VALUE 'Autre'                                        TO 'AUTRE';
+;
+ALTER TYPE revet_int RENAME VALUE 'Plaque de plâtre'                              TO 'PLAQUE_DE_PLATRE';
+ALTER TYPE revet_int RENAME VALUE 'Lambris'                                       TO 'LAMBRIS';
+ALTER TYPE revet_int RENAME VALUE 'Enduit terre'                                  TO 'ENDUIT_TERRE';
+ALTER TYPE revet_int RENAME VALUE 'Enduit chaux'                                  TO 'ENDUIT_CHAUX';
+ALTER TYPE revet_int RENAME VALUE 'Enduit terre et chaux'                         TO 'ENDUIT_TERRE_ET_CHAUX';
+ALTER TYPE revet_int RENAME VALUE 'Enduit plâtre'                                 TO 'ENDUIT_PLATRE';
+ALTER TYPE revet_int RENAME VALUE 'Autre'                                         TO 'AUTRE';
+;
+ALTER TYPE tailles_bottes RENAME VALUE '80 x 120 cm'                  TO 'T_80_X_120_CM';
+ALTER TYPE tailles_bottes RENAME VALUE '50 x 80 cm'                   TO 'T_50_X_80_CM';
+ALTER TYPE tailles_bottes RENAME VALUE '37 x 47 cm'                   TO 'T_37_X_47_CM';
+ALTER TYPE tailles_bottes RENAME VALUE '26 x 45 cm'                   TO 'T_26_X_45_CM';
+ALTER TYPE tailles_bottes RENAME VALUE 'Autre'                        TO 'AUTRE';
+;
+ALTER TYPE usage_batiment RENAME VALUE 'Logement collectif'                                  TO 'LOGEMENT_COLLECTIF';
+ALTER TYPE usage_batiment RENAME VALUE 'Logement individuel'                                 TO 'LOGEMENT_INDIVIDUEL';
+ALTER TYPE usage_batiment RENAME VALUE 'Logement individuel groupé'                          TO 'LOGEMENT_INDIVIDUEL_GROUPE';
+ALTER TYPE usage_batiment RENAME VALUE 'Bâtiment administratif'                              TO 'BATIMENT_ADMINISTRATIF';
+ALTER TYPE usage_batiment RENAME VALUE 'Bâtiment commercial'                                 TO 'BATIMENT_COMMERCIAL';
+ALTER TYPE usage_batiment RENAME VALUE 'Bâtiment industriel'                                 TO 'BATIMENT_INDUSTRIEL';
+ALTER TYPE usage_batiment RENAME VALUE 'Bâtiment de loisirs'                                 TO 'BATIMENT_DE_LOISIRS';
+ALTER TYPE usage_batiment RENAME VALUE 'Bâtiment de santé'                                   TO 'BATIMENT_DE_SANTE';
+ALTER TYPE usage_batiment RENAME VALUE 'Bâtiment de retraite'                                TO 'BATIMENT_DE_RETRAITE';
+ALTER TYPE usage_batiment RENAME VALUE 'Bâtiment éducatif'                                   TO 'BATIMENT_EDUCATIF';
+ALTER TYPE usage_batiment RENAME VALUE 'Bâtiment socio-culturel'                             TO 'BATIMENT_SOCIO_CULTUREl';
+ALTER TYPE usage_batiment RENAME VALUE 'Bâtiment agricole'                                   TO 'BATIMENT_AGRICOLE';
+ALTER TYPE usage_batiment RENAME VALUE 'Ouvrage exceptionnel'                                TO 'OUVRAGE_EXCEPTIONNEL';
+ALTER TYPE usage_batiment RENAME VALUE 'Autre'                                         TO 'AUTRE';
+;
+ALTER TYPE yes_no_partial RENAME VALUE 'Oui'                     TO 'OUI';
+ALTER TYPE yes_no_partial RENAME VALUE 'Non'                     TO 'NON';
+ALTER TYPE yes_no_partial RENAME VALUE 'Partiel'                 TO 'PARTIEL';
+
+```
+
+2. Dump database
+
+   ```sh
+   pg_dump load_bearing_straw_map --host localhost --port 5432 --username postgres --format plain --verbose --file "/tmp/data_batiments.sql" --table public.batiments --data-only
+   ```
+
+3. Check schema of this table then create and create JDL file with the best match of types (see https://www.jhipster.tech/jdl/intro)
+
+   To simply check schema created by JHipster or by QGIS, run for instance:
+
+   ```sh
+   pg_dump load_bearing_straw_map --host localhost --port 5432 --username postgres --format plain --verbose --file "/tmp/schema_batiments.sql" --table public.batiments --schema-only --no-owner --no-privileges
+   ```
+
+   Note:
+
+   - _JDL `Enum` does not generate PostgreSQL type_
+   - JDL type `String` create `varying(255)` PostgreSQL type, by default. Add `maxlength` change the number.
+
+4. Do not forget to remove datas generaged automatically by JHipster
+
+```sql
+delete from batiments;
+```
+
+5. Restore on jhipster database
+
+```
+\i "/tmp/data_batiments.sql"
+```
+
+6. You could also restore comments (see file schema_batiments.sql)

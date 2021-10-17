@@ -1,5 +1,126 @@
 entity LoadBearingStrawMap {
-	name String,
-	latitude Float required min(-90) max(90),
-	longitude Float required min(-90) max(90),
+    name String,
+    latitude Float required min(-90) max(90),
+    longitude Float required min(-90) max(90),
+}
+
+enum Cereale {
+    BLE,
+    ORGE,
+    AVOINE,
+    SEIGLE,
+    TRITICALE,
+    RIZ,
+    AUTRE
+}
+
+
+enum IntegBaie {
+    PRE_CADRE_FLOTTANT,
+    COULISSANT,
+    BLOQUEURS,
+    AUTRE
+}
+
+
+enum MateriauSb {
+    BETON_ARME,
+    PARPAING_DE_CIMENT,
+    BRIQUE_DE_TERRE_CUITE,
+    BRIQUE_DE_PIERRE_PONCE,
+    BETON_LEGER_ISOLANT,
+    PIERRE,
+    AUTRE
+}
+
+
+enum RevetExt {
+    BARDAGE_VENTILE,
+    ENDUIT_TERRE,
+    ENDUIT_CHAUX,
+    ENDUIT_TERRE_ET_CHAUX,
+    ENDUIT_PLATRE,
+    AUTRE
+}
+
+
+enum RevetInt {
+    PLAQUE_DE_PLATRE,
+    LAMBRIS,
+    ENDUIT_TERRE,
+    ENDUIT_CHAUX,
+    ENDUIT_TERRE_ET_CHAUX,
+    ENDUIT_PLATRE,
+    AUTRE
+}
+
+
+enum TaillesBottes {
+    T_80_X_120_CM,
+    T_50_X_80_CM,
+    T_37_X_47_CM,
+    T_26_X_45_CM,
+    AUTRE
+}
+
+
+enum UsageBatiment {
+    LOGEMENT_COLLECTIF,
+    LOGEMENT_INDIVIDUEL,
+    LOGEMENT_INDIVIDUEL_GROUPE,
+    BATIMENT_ADMINISTRATIF,
+    BATIMENT_COMMERCIAL,
+    BATIMENT_INDUSTRIEL,
+    BATIMENT_DE_LOISIRS,
+    BATIMENT_DE_SANTE,
+    BATIMENT_DE_RETRAITE,
+    BATIMENT_EDUCATIF,
+    BATIMENT_SOCIO_CULTUREl,
+    BATIMENT_AGRICOLE,
+    OUVRAGE_EXCEPTIONNEL,
+    AUTRE
+}
+
+
+enum YesNoPartial {
+    OUI,
+    NON,
+    PARTIEL
+}
+
+entity Batiments {
+    latitude Float required min(-90) max(90),
+    longitude Float required min(-90) max(90),
+    nom String maxlength(40),
+    contactNom String,
+    contactMail String,
+    contactPhone String,
+    constructionDebut LocalDate,
+    constructionFin LocalDate,
+    surface Integer,
+    cout Integer,
+    bottesTaille TaillesBottes,
+    autoconstruction YesNoPartial,
+    concepteur String maxlength(128),
+    realisateur String maxlength(512),
+    participatif YesNoPartial,
+    usage UsageBatiment,
+    noteCalcul Boolean,
+    travauxNeuf Boolean,
+    travauxExtension Boolean,
+    travauxRenov Boolean,
+    travauxIte Boolean,
+    travauxIti Boolean,
+    niveaux Integer,
+    bottesDensite Integer,
+    distanceAppro Integer,
+    bottesCereale Cereale,
+    structSuppl Boolean,
+    revetInt RevetInt,
+    revetExt RevetExt,
+    techniqueSecondaire Boolean,
+    codePostal String maxlength(6),
+    integBaie IntegBaie,
+    materiauSb MateriauSb,
+    description TextBlob
 }
