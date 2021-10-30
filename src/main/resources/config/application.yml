@@ -159,8 +159,8 @@ jhipster:
   api-docs:
     default-include-pattern: ${server.servlet.context-path:}/api/.*
     management-include-pattern: ${server.servlet.context-path:}/management/.*
-    title: lbstrawmap API
-    description: lbstrawmap API documentation
+    title: Lbstrawmap API
+    description: Lbstrawmap API documentation
     version: 0.0.1
     terms-of-service-url:
     contact-name:

@@ -6,6 +6,7 @@ import * as config from '@/shared/config/config';
 import BatimentsComponent from '@/entities/batiments/batiments.vue';
 import BatimentsClass from '@/entities/batiments/batiments.component';
 import BatimentsService from '@/entities/batiments/batiments.service';
+import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
 
@@ -43,6 +44,7 @@ describe('Component Tests', () => {
         stubs: { bModal: bModalStub as any },
         provide: {
           batimentsService: () => batimentsServiceStub,
+          alertService: () => new AlertService(),
         },
       });
       comp = wrapper.vm;

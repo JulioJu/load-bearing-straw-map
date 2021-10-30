@@ -8,6 +8,7 @@ import BatimentsDetailComponent from '@/entities/batiments/batiments-details.vue
 import BatimentsClass from '@/entities/batiments/batiments-details.component';
 import BatimentsService from '@/entities/batiments/batiments.service';
 import router from '@/router';
+import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
@@ -32,7 +33,7 @@ describe('Component Tests', () => {
         i18n,
         localVue,
         router,
-        provide: { batimentsService: () => batimentsServiceStub },
+        provide: { batimentsService: () => batimentsServiceStub, alertService: () => new AlertService() },
       });
       comp = wrapper.vm;
     });

@@ -76,6 +76,16 @@ export const configurationPageHeadingSelector = '[data-cy="configurationPageHead
 
 export const classInvalid = 'invalid';
 export const classValid = 'valid';
+Cypress.Commands.add('authenticatedRequest', (data: any) => {
+  const bearerToken = sessionStorage.getItem(Cypress.env('jwtStorageName'));
+  return cy.request({
+    ...data,
+    auth: {
+      bearer: bearerToken,
+    },
+  });
+});
+
 Cypress.Commands.add('login', (username: string, password: string) => {
   cy.clickOnLoginItem();
   cy.get(usernameLoginSelector).type(username);
@@ -85,8 +95,9 @@ Cypress.Commands.add('login', (username: string, password: string) => {
 
 declare global {
   namespace Cypress {
-    interface Chainable<Subject> {
+    interface Chainable {
       login(username: string, password: string): Cypress.Chainable;
+      authenticatedRequest(data: any): Cypress.Chainable;
     }
   }
 }

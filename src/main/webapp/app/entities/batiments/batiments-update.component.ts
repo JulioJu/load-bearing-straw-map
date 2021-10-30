@@ -5,8 +5,18 @@ import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import { decimal, required, minValue, maxValue, maxLength } from 'vuelidate/lib/validators';
 
+import AlertService from '@/shared/alert/alert.service';
+
 import { IBatiments, Batiments } from '@/shared/model/batiments.model';
 import BatimentsService from './batiments.service';
+import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model';
+import { TaillesBottes } from '@/shared/model/enumerations/tailles-bottes.model';
+import { Cereale } from '@/shared/model/enumerations/cereale.model';
+import { YesNoPartial } from '@/shared/model/enumerations/yes-no-partial.model';
+import { IntegBaie } from '@/shared/model/enumerations/integ-baie.model';
+import { MateriauSb } from '@/shared/model/enumerations/materiau-sb.model';
+import { RevetInt } from '@/shared/model/enumerations/revet-int.model';
+import { RevetExt } from '@/shared/model/enumerations/revet-ext.model';
 
 const validations: any = {
   batiments: {
@@ -70,7 +80,17 @@ const validations: any = {
 })
 export default class BatimentsUpdate extends mixins(JhiDataUtils) {
   @Inject('batimentsService') private batimentsService: () => BatimentsService;
+  @Inject('alertService') private alertService: () => AlertService;
+
   public batiments: IBatiments = new Batiments();
+  public usageBatimentValues: string[] = Object.keys(UsageBatiment);
+  public taillesBottesValues: string[] = Object.keys(TaillesBottes);
+  public cerealeValues: string[] = Object.keys(Cereale);
+  public yesNoPartialValues: string[] = Object.keys(YesNoPartial);
+  public integBaieValues: string[] = Object.keys(IntegBaie);
+  public materiauSbValues: string[] = Object.keys(MateriauSb);
+  public revetIntValues: string[] = Object.keys(RevetInt);
+  public revetExtValues: string[] = Object.keys(RevetExt);
   public isSaving = false;
   public currentLanguage = '';
 
@@ -124,6 +144,10 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
             solid: true,
             autoHideDelay: 5000,
           });
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService().showHttpError(this, error.response);
         });
     } else {
       this.batimentsService()
@@ -139,6 +163,10 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
             solid: true,
             autoHideDelay: 5000,
           });
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService().showHttpError(this, error.response);
         });
     }
   }
@@ -148,6 +176,9 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
       .find(batimentsId)
       .then(res => {
         this.batiments = res;
+      })
+      .catch(error => {
+        this.alertService().showHttpError(this, error.response);
       });
   }
 

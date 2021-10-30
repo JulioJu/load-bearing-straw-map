@@ -113,46 +113,14 @@
               id="batiments-usage"
               data-cy="usage"
             >
-              <option value="LOGEMENT_COLLECTIF" v-bind:label="$t('lbstrawmapApp.UsageBatiment.LOGEMENT_COLLECTIF')">
-                LOGEMENT_COLLECTIF
+              <option
+                v-for="usageBatiment in usageBatimentValues"
+                :key="usageBatiment"
+                v-bind:value="usageBatiment"
+                v-bind:label="$t('lbstrawmapApp.UsageBatiment.' + usageBatiment)"
+              >
+                {{ usageBatiment }}
               </option>
-              <option value="LOGEMENT_INDIVIDUEL" v-bind:label="$t('lbstrawmapApp.UsageBatiment.LOGEMENT_INDIVIDUEL')">
-                LOGEMENT_INDIVIDUEL
-              </option>
-              <option value="LOGEMENT_INDIVIDUEL_GROUPE" v-bind:label="$t('lbstrawmapApp.UsageBatiment.LOGEMENT_INDIVIDUEL_GROUPE')">
-                LOGEMENT_INDIVIDUEL_GROUPE
-              </option>
-              <option value="BATIMENT_ADMINISTRATIF" v-bind:label="$t('lbstrawmapApp.UsageBatiment.BATIMENT_ADMINISTRATIF')">
-                BATIMENT_ADMINISTRATIF
-              </option>
-              <option value="BATIMENT_COMMERCIAL" v-bind:label="$t('lbstrawmapApp.UsageBatiment.BATIMENT_COMMERCIAL')">
-                BATIMENT_COMMERCIAL
-              </option>
-              <option value="BATIMENT_INDUSTRIEL" v-bind:label="$t('lbstrawmapApp.UsageBatiment.BATIMENT_INDUSTRIEL')">
-                BATIMENT_INDUSTRIEL
-              </option>
-              <option value="BATIMENT_DE_LOISIRS" v-bind:label="$t('lbstrawmapApp.UsageBatiment.BATIMENT_DE_LOISIRS')">
-                BATIMENT_DE_LOISIRS
-              </option>
-              <option value="BATIMENT_DE_SANTE" v-bind:label="$t('lbstrawmapApp.UsageBatiment.BATIMENT_DE_SANTE')">
-                BATIMENT_DE_SANTE
-              </option>
-              <option value="BATIMENT_DE_RETRAITE" v-bind:label="$t('lbstrawmapApp.UsageBatiment.BATIMENT_DE_RETRAITE')">
-                BATIMENT_DE_RETRAITE
-              </option>
-              <option value="BATIMENT_EDUCATIF" v-bind:label="$t('lbstrawmapApp.UsageBatiment.BATIMENT_EDUCATIF')">
-                BATIMENT_EDUCATIF
-              </option>
-              <option value="BATIMENT_SOCIO_CULTUREl" v-bind:label="$t('lbstrawmapApp.UsageBatiment.BATIMENT_SOCIO_CULTUREl')">
-                BATIMENT_SOCIO_CULTUREl
-              </option>
-              <option value="BATIMENT_AGRICOLE" v-bind:label="$t('lbstrawmapApp.UsageBatiment.BATIMENT_AGRICOLE')">
-                BATIMENT_AGRICOLE
-              </option>
-              <option value="OUVRAGE_EXCEPTIONNEL" v-bind:label="$t('lbstrawmapApp.UsageBatiment.OUVRAGE_EXCEPTIONNEL')">
-                OUVRAGE_EXCEPTIONNEL
-              </option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.UsageBatiment.AUTRE')">AUTRE</option>
             </select>
           </div>
           <div class="form-group">
@@ -333,11 +301,14 @@
               id="batiments-bottesTaille"
               data-cy="bottesTaille"
             >
-              <option value="T_80_X_120_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_80_X_120_CM')">T_80_X_120_CM</option>
-              <option value="T_50_X_80_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_50_X_80_CM')">T_50_X_80_CM</option>
-              <option value="T_37_X_47_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_37_X_47_CM')">T_37_X_47_CM</option>
-              <option value="T_26_X_45_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_26_X_45_CM')">T_26_X_45_CM</option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.TaillesBottes.AUTRE')">AUTRE</option>
+              <option
+                v-for="taillesBottes in taillesBottesValues"
+                :key="taillesBottes"
+                v-bind:value="taillesBottes"
+                v-bind:label="$t('lbstrawmapApp.TaillesBottes.' + taillesBottes)"
+              >
+                {{ taillesBottes }}
+              </option>
             </select>
           </div>
           <div class="form-group">
@@ -366,13 +337,14 @@
               id="batiments-bottesCereale"
               data-cy="bottesCereale"
             >
-              <option value="BLE" v-bind:label="$t('lbstrawmapApp.Cereale.BLE')">BLE</option>
-              <option value="ORGE" v-bind:label="$t('lbstrawmapApp.Cereale.ORGE')">ORGE</option>
-              <option value="AVOINE" v-bind:label="$t('lbstrawmapApp.Cereale.AVOINE')">AVOINE</option>
-              <option value="SEIGLE" v-bind:label="$t('lbstrawmapApp.Cereale.SEIGLE')">SEIGLE</option>
-              <option value="TRITICALE" v-bind:label="$t('lbstrawmapApp.Cereale.TRITICALE')">TRITICALE</option>
-              <option value="RIZ" v-bind:label="$t('lbstrawmapApp.Cereale.RIZ')">RIZ</option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.Cereale.AUTRE')">AUTRE</option>
+              <option
+                v-for="cereale in cerealeValues"
+                :key="cereale"
+                v-bind:value="cereale"
+                v-bind:label="$t('lbstrawmapApp.Cereale.' + cereale)"
+              >
+                {{ cereale }}
+              </option>
             </select>
           </div>
           <div class="form-group">
@@ -401,9 +373,14 @@
               id="batiments-autoconstruction"
               data-cy="autoconstruction"
             >
-              <option value="OUI" v-bind:label="$t('lbstrawmapApp.YesNoPartial.OUI')">OUI</option>
-              <option value="NON" v-bind:label="$t('lbstrawmapApp.YesNoPartial.NON')">NON</option>
-              <option value="PARTIEL" v-bind:label="$t('lbstrawmapApp.YesNoPartial.PARTIEL')">PARTIEL</option>
+              <option
+                v-for="yesNoPartial in yesNoPartialValues"
+                :key="yesNoPartial"
+                v-bind:value="yesNoPartial"
+                v-bind:label="$t('lbstrawmapApp.YesNoPartial.' + yesNoPartial)"
+              >
+                {{ yesNoPartial }}
+              </option>
             </select>
           </div>
           <div class="form-group">
@@ -418,9 +395,14 @@
               id="batiments-participatif"
               data-cy="participatif"
             >
-              <option value="OUI" v-bind:label="$t('lbstrawmapApp.YesNoPartial.OUI')">OUI</option>
-              <option value="NON" v-bind:label="$t('lbstrawmapApp.YesNoPartial.NON')">NON</option>
-              <option value="PARTIEL" v-bind:label="$t('lbstrawmapApp.YesNoPartial.PARTIEL')">PARTIEL</option>
+              <option
+                v-for="yesNoPartial in yesNoPartialValues"
+                :key="yesNoPartial"
+                v-bind:value="yesNoPartial"
+                v-bind:label="$t('lbstrawmapApp.YesNoPartial.' + yesNoPartial)"
+              >
+                {{ yesNoPartial }}
+              </option>
             </select>
           </div>
           <div class="form-group">
@@ -433,10 +415,14 @@
               id="batiments-integBaie"
               data-cy="integBaie"
             >
-              <option value="PRE_CADRE_FLOTTANT" v-bind:label="$t('lbstrawmapApp.IntegBaie.PRE_CADRE_FLOTTANT')">PRE_CADRE_FLOTTANT</option>
-              <option value="COULISSANT" v-bind:label="$t('lbstrawmapApp.IntegBaie.COULISSANT')">COULISSANT</option>
-              <option value="BLOQUEURS" v-bind:label="$t('lbstrawmapApp.IntegBaie.BLOQUEURS')">BLOQUEURS</option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.IntegBaie.AUTRE')">AUTRE</option>
+              <option
+                v-for="integBaie in integBaieValues"
+                :key="integBaie"
+                v-bind:value="integBaie"
+                v-bind:label="$t('lbstrawmapApp.IntegBaie.' + integBaie)"
+              >
+                {{ integBaie }}
+              </option>
             </select>
           </div>
           <div class="form-group">
@@ -479,21 +465,14 @@
               id="batiments-materiauSb"
               data-cy="materiauSb"
             >
-              <option value="BETON_ARME" v-bind:label="$t('lbstrawmapApp.MateriauSb.BETON_ARME')">BETON_ARME</option>
-              <option value="PARPAING_DE_CIMENT" v-bind:label="$t('lbstrawmapApp.MateriauSb.PARPAING_DE_CIMENT')">
-                PARPAING_DE_CIMENT
+              <option
+                v-for="materiauSb in materiauSbValues"
+                :key="materiauSb"
+                v-bind:value="materiauSb"
+                v-bind:label="$t('lbstrawmapApp.MateriauSb.' + materiauSb)"
+              >
+                {{ materiauSb }}
               </option>
-              <option value="BRIQUE_DE_TERRE_CUITE" v-bind:label="$t('lbstrawmapApp.MateriauSb.BRIQUE_DE_TERRE_CUITE')">
-                BRIQUE_DE_TERRE_CUITE
-              </option>
-              <option value="BRIQUE_DE_PIERRE_PONCE" v-bind:label="$t('lbstrawmapApp.MateriauSb.BRIQUE_DE_PIERRE_PONCE')">
-                BRIQUE_DE_PIERRE_PONCE
-              </option>
-              <option value="BETON_LEGER_ISOLANT" v-bind:label="$t('lbstrawmapApp.MateriauSb.BETON_LEGER_ISOLANT')">
-                BETON_LEGER_ISOLANT
-              </option>
-              <option value="PIERRE" v-bind:label="$t('lbstrawmapApp.MateriauSb.PIERRE')">PIERRE</option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.MateriauSb.AUTRE')">AUTRE</option>
             </select>
           </div>
           <div class="form-group">
@@ -506,15 +485,14 @@
               id="batiments-revetInt"
               data-cy="revetInt"
             >
-              <option value="PLAQUE_DE_PLATRE" v-bind:label="$t('lbstrawmapApp.RevetInt.PLAQUE_DE_PLATRE')">PLAQUE_DE_PLATRE</option>
-              <option value="LAMBRIS" v-bind:label="$t('lbstrawmapApp.RevetInt.LAMBRIS')">LAMBRIS</option>
-              <option value="ENDUIT_TERRE" v-bind:label="$t('lbstrawmapApp.RevetInt.ENDUIT_TERRE')">ENDUIT_TERRE</option>
-              <option value="ENDUIT_CHAUX" v-bind:label="$t('lbstrawmapApp.RevetInt.ENDUIT_CHAUX')">ENDUIT_CHAUX</option>
-              <option value="ENDUIT_TERRE_ET_CHAUX" v-bind:label="$t('lbstrawmapApp.RevetInt.ENDUIT_TERRE_ET_CHAUX')">
-                ENDUIT_TERRE_ET_CHAUX
+              <option
+                v-for="revetInt in revetIntValues"
+                :key="revetInt"
+                v-bind:value="revetInt"
+                v-bind:label="$t('lbstrawmapApp.RevetInt.' + revetInt)"
+              >
+                {{ revetInt }}
               </option>
-              <option value="ENDUIT_PLATRE" v-bind:label="$t('lbstrawmapApp.RevetInt.ENDUIT_PLATRE')">ENDUIT_PLATRE</option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.RevetInt.AUTRE')">AUTRE</option>
             </select>
           </div>
           <div class="form-group">
@@ -527,14 +505,14 @@
               id="batiments-revetExt"
               data-cy="revetExt"
             >
-              <option value="BARDAGE_VENTILE" v-bind:label="$t('lbstrawmapApp.RevetExt.BARDAGE_VENTILE')">BARDAGE_VENTILE</option>
-              <option value="ENDUIT_TERRE" v-bind:label="$t('lbstrawmapApp.RevetExt.ENDUIT_TERRE')">ENDUIT_TERRE</option>
-              <option value="ENDUIT_CHAUX" v-bind:label="$t('lbstrawmapApp.RevetExt.ENDUIT_CHAUX')">ENDUIT_CHAUX</option>
-              <option value="ENDUIT_TERRE_ET_CHAUX" v-bind:label="$t('lbstrawmapApp.RevetExt.ENDUIT_TERRE_ET_CHAUX')">
-                ENDUIT_TERRE_ET_CHAUX
+              <option
+                v-for="revetExt in revetExtValues"
+                :key="revetExt"
+                v-bind:value="revetExt"
+                v-bind:label="$t('lbstrawmapApp.RevetExt.' + revetExt)"
+              >
+                {{ revetExt }}
               </option>
-              <option value="ENDUIT_PLATRE" v-bind:label="$t('lbstrawmapApp.RevetExt.ENDUIT_PLATRE')">ENDUIT_PLATRE</option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.RevetExt.AUTRE')">AUTRE</option>
             </select>
           </div>
           <div class="form-group">

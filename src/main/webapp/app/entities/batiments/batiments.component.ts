@@ -7,12 +7,15 @@ import { IBatiments } from '@/shared/model/batiments.model';
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import BatimentsService from './batiments.service';
+import AlertService from '@/shared/alert/alert.service';
 
 @Component({
   mixins: [Vue2Filters.mixin],
 })
 export default class Batiments extends mixins(JhiDataUtils) {
   @Inject('batimentsService') private batimentsService: () => BatimentsService;
+  @Inject('alertService') private alertService: () => AlertService;
+
   private removeId: number = null;
 
   public batiments: IBatiments[] = [];
@@ -38,6 +41,7 @@ export default class Batiments extends mixins(JhiDataUtils) {
         },
         err => {
           this.isFetching = false;
+          this.alertService().showHttpError(this, err.response);
         }
       );
   }
@@ -68,6 +72,9 @@ export default class Batiments extends mixins(JhiDataUtils) {
         this.removeId = null;
         this.retrieveAllBatimentss();
         this.closeDialog();
+      })
+      .catch(error => {
+        this.alertService().showHttpError(this, error.response);
       });
   }
 
