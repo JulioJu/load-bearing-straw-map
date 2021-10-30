@@ -8,9 +8,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.lbstraw.map.domain.Batiments;
-// START added by JulioJu
-import org.lbstraw.map.domain.BatimentsLazyView;
-// END added by JulioJu
 import org.lbstraw.map.repository.BatimentsRepository;
 import org.lbstraw.map.service.BatimentsService;
 import org.lbstraw.map.web.rest.errors.BadRequestAlertException;
@@ -40,10 +37,39 @@ public class BatimentsResource {
 
     private final BatimentsRepository batimentsRepository;
 
-    public BatimentsResource(BatimentsService batimentsService, BatimentsRepository batimentsRepository) {
+    // START added by JulioJu
+    private final org.lbstraw.map.service.UserService userService;
+
+    public BatimentsResource(
+        BatimentsService batimentsService,
+        BatimentsRepository batimentsRepository,
+        org.lbstraw.map.service.UserService userService
+    ) {
         this.batimentsService = batimentsService;
         this.batimentsRepository = batimentsRepository;
+        this.userService = userService;
     }
+
+    private org.lbstraw.map.domain.User currentUser() {
+        var currentUser = userService.getUserWithAuthorities();
+        if (currentUser.isEmpty()) {
+            throw new BadRequestAlertException("Logged user does not exist", ENTITY_NAME, "loggedUserDoesNotExist");
+        }
+        return currentUser.get();
+    }
+
+    private void updateOrDeleteCheckUser(Long batimentId) {
+        Long batimentCreatorId = batimentsRepository.findWithOnlyCreatorIds(batimentId).get(0).getCreatorId();
+        if (!this.currentUser().getId().equals(batimentCreatorId)) {
+            throw new BadRequestAlertException(
+                "You are not the creator, you could not change this",
+                ENTITY_NAME,
+                "notAllowedAsYouAreNotTheCreator"
+            );
+        }
+    }
+
+    // END added by JulioJu
 
     /**
      * {@code POST  /batiments} : Create a new batiments.
@@ -58,6 +84,11 @@ public class BatimentsResource {
         if (batiments.getId() != null) {
             throw new BadRequestAlertException("A new batiments cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        // START added by JulioJu
+        batiments.setCreator(this.currentUser());
+        // END added by JulioJu
+
         Batiments result = batimentsService.save(batiments);
         return ResponseEntity
             .created(new URI("/api/batiments/" + result.getId()))
@@ -91,6 +122,10 @@ public class BatimentsResource {
         if (!batimentsRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
+
+        // START added by JulioJu
+        this.updateOrDeleteCheckUser(batiments.getId());
+        // END added by JulioJu
 
         Batiments result = batimentsService.save(batiments);
         return ResponseEntity
@@ -127,6 +162,10 @@ public class BatimentsResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
+        // START added by JulioJu
+        this.updateOrDeleteCheckUser(batiments.getId());
+        // END added by JulioJu
+
         Optional<Batiments> result = batimentsService.partialUpdate(batiments);
 
         return ResponseUtil.wrapOrNotFound(
@@ -153,7 +192,7 @@ public class BatimentsResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of batiments in body.
      */
     @GetMapping("/batiments-lazy")
-    public List<BatimentsLazyView> getAllBatimentsLazy() {
+    public List<org.lbstraw.map.domain.BatimentsLazyView> getAllBatimentsLazy() {
         log.debug("REST request to get all Batiments (Lazy mode)");
         return batimentsRepository.findAllLazy();
     }
@@ -182,6 +221,11 @@ public class BatimentsResource {
     @DeleteMapping("/batiments/{id}")
     public ResponseEntity<Void> deleteBatiments(@PathVariable Long id) {
         log.debug("REST request to delete Batiments : {}", id);
+
+        // START added by JulioJu
+        this.updateOrDeleteCheckUser(id);
+        // END added by JulioJu
+
         batimentsService.delete(id);
         return ResponseEntity
             .noContent()
