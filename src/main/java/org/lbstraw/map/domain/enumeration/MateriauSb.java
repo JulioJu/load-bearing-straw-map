@@ -9,41 +9,51 @@ public enum MateriauSb {
      *       * Béton armé
      *
      */
-    BETON_ARME,
+    BETON_ARME("Béton armé"),
     /**
      *
      *       * Parpaing de ciment
      *
      */
-    PARPAING_DE_CIMENT,
+    PARPAING_DE_CIMENT("Parpaing de ciment"),
     /**
      *
      *       * Brique de terre cuite
      *
      */
-    BRIQUE_DE_TERRE_CUITE,
+    BRIQUE_DE_TERRE_CUITE("Brique de terre cuite"),
     /**
      *
      *       * Brique de pierre ponce
      *
      */
-    BRIQUE_DE_PIERRE_PONCE,
+    BRIQUE_DE_PIERRE_PONCE("Brique de pierre ponce"),
     /**
      *
      *       * Béton léger isolant
      *
      */
-    BETON_LEGER_ISOLANT,
+    BETON_LEGER_ISOLANT("Béton léger isolant"),
     /**
      *
      *       * Pierre
      *
      */
-    PIERRE,
+    PIERRE("Pierre"),
     /**
      *
      *       * Autre
      *
      */
-    AUTRE,
+    AUTRE("Autre");
+
+    private final String value;
+
+    MateriauSb(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

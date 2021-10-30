@@ -2,10 +2,10 @@
   "lbstrawmapApp": {
     "IntegBaie": {
       "null": "",
-      "PRE_CADRE_FLOTTANT": "PRE_CADRE_FLOTTANT",
-      "COULISSANT": "COULISSANT",
-      "BLOQUEURS": "BLOQUEURS",
-      "AUTRE": "AUTRE"
+      "PRE_CADRE_FLOTTANT": "Pré-cadre flottant",
+      "COULISSANT": "Coulissant",
+      "BLOQUEURS": "Bloqueurs",
+      "AUTRE": "Autre"
     }
   }
 }

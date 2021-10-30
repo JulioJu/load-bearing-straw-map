@@ -2,13 +2,13 @@
   "lbstrawmapApp": {
     "Cereale": {
       "null": "",
-      "BLE": "BLE",
-      "ORGE": "ORGE",
-      "AVOINE": "AVOINE",
-      "SEIGLE": "SEIGLE",
-      "TRITICALE": "TRITICALE",
-      "RIZ": "RIZ",
-      "AUTRE": "AUTRE"
+      "BLE": "Blé",
+      "ORGE": "Orge",
+      "AVOINE": "Avoine",
+      "SEIGLE": "Seigle",
+      "TRITICALE": "Triticale",
+      "RIZ": "Riz",
+      "AUTRE": "Autre"
     }
   }
 }

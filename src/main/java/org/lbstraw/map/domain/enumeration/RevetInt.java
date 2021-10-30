@@ -9,41 +9,51 @@ public enum RevetInt {
      *       * Plaque de plâtre
      *
      */
-    PLAQUE_DE_PLATRE,
+    PLAQUE_DE_PLATRE("Plaque de plâtre"),
     /**
      *
      *       * Lambris
      *
      */
-    LAMBRIS,
+    LAMBRIS("Lambris"),
     /**
      *
      *       * Enduit terre
      *
      */
-    ENDUIT_TERRE,
+    ENDUIT_TERRE("Enduit terre"),
     /**
      *
      *       * Enduit chaux
      *
      */
-    ENDUIT_CHAUX,
+    ENDUIT_CHAUX("Enduit chaux"),
     /**
      *
      *       * Enduit terre et chaux
      *
      */
-    ENDUIT_TERRE_ET_CHAUX,
+    ENDUIT_TERRE_ET_CHAUX("Enduit terre et chaux"),
     /**
      *
      *       * Enduit plâtre
      *
      */
-    ENDUIT_PLATRE,
+    ENDUIT_PLATRE("Enduit plâtre"),
     /**
      *
      *       * Autre
      *
      */
-    AUTRE,
+    AUTRE("Autre");
+
+    private final String value;
+
+    RevetInt(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

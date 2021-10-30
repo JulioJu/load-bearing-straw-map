@@ -2,20 +2,20 @@
   "lbstrawmapApp": {
     "UsageBatiment": {
       "null": "",
-      "LOGEMENT_COLLECTIF": "LOGEMENT_COLLECTIF",
-      "LOGEMENT_INDIVIDUEL": "LOGEMENT_INDIVIDUEL",
-      "LOGEMENT_INDIVIDUEL_GROUPE": "LOGEMENT_INDIVIDUEL_GROUPE",
-      "BATIMENT_ADMINISTRATIF": "BATIMENT_ADMINISTRATIF",
-      "BATIMENT_COMMERCIAL": "BATIMENT_COMMERCIAL",
-      "BATIMENT_INDUSTRIEL": "BATIMENT_INDUSTRIEL",
-      "BATIMENT_DE_LOISIRS": "BATIMENT_DE_LOISIRS",
-      "BATIMENT_DE_SANTE": "BATIMENT_DE_SANTE",
-      "BATIMENT_DE_RETRAITE": "BATIMENT_DE_RETRAITE",
-      "BATIMENT_EDUCATIF": "BATIMENT_EDUCATIF",
-      "BATIMENT_SOCIO_CULTUREl": "BATIMENT_SOCIO_CULTUREl",
-      "BATIMENT_AGRICOLE": "BATIMENT_AGRICOLE",
-      "OUVRAGE_EXCEPTIONNEL": "OUVRAGE_EXCEPTIONNEL",
-      "AUTRE": "AUTRE"
+      "LOGEMENT_COLLECTIF": "Logement collectif",
+      "LOGEMENT_INDIVIDUEL": "Logement individuel",
+      "LOGEMENT_INDIVIDUEL_GROUPE": "Logement individuel groupé",
+      "BATIMENT_ADMINISTRATIF": "Bâtiment administratif",
+      "BATIMENT_COMMERCIAL": "Bâtiment commercial",
+      "BATIMENT_INDUSTRIEL": "Bâtiment industriel",
+      "BATIMENT_DE_LOISIRS": "Bâtiment de loisirs",
+      "BATIMENT_DE_SANTE": "Bâtiment de santé",
+      "BATIMENT_DE_RETRAITE": "Bâtiment de retraite",
+      "BATIMENT_EDUCATIF": "Bâtiment éducatif",
+      "BATIMENT_SOCIO_CULTUREl": "Bâtiment socio-culturel",
+      "BATIMENT_AGRICOLE": "Bâtiment agricole",
+      "OUVRAGE_EXCEPTIONNEL": "Ouvrage exceptionnel",
+      "AUTRE": "Autre"
     }
   }
 }

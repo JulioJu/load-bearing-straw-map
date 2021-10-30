@@ -9,23 +9,33 @@ public enum IntegBaie {
      *       * Pré-cadre flottant
      *
      */
-    PRE_CADRE_FLOTTANT,
+    PRE_CADRE_FLOTTANT("Pré-cadre flottant"),
     /**
      *
      *       * Coulissant
      *
      */
-    COULISSANT,
+    COULISSANT("Coulissant"),
     /**
      *
      *       * Bloqueurs
      *
      */
-    BLOQUEURS,
+    BLOQUEURS("Bloqueurs"),
     /**
      *
      *       * Autre
      *
      */
-    AUTRE,
+    AUTRE("Autre");
+
+    private final String value;
+
+    IntegBaie(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

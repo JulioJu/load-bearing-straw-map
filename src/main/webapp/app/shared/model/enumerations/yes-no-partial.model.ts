@@ -1,7 +1,7 @@
 export enum YesNoPartial {
-  OUI = 'OUI',
+  OUI = 'Oui',
 
-  NON = 'NON',
+  NON = 'Non',
 
-  PARTIEL = 'PARTIEL',
+  PARTIEL = 'Partiel',
 }

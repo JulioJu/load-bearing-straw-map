@@ -1,13 +1,13 @@
 export enum RevetExt {
-  BARDAGE_VENTILE = 'BARDAGE_VENTILE',
+  BARDAGE_VENTILE = 'Bardage ventilé',
 
-  ENDUIT_TERRE = 'ENDUIT_TERRE',
+  ENDUIT_TERRE = 'Enduit terre',
 
-  ENDUIT_CHAUX = 'ENDUIT_CHAUX',
+  ENDUIT_CHAUX = 'Enduit chaux',
 
-  ENDUIT_TERRE_ET_CHAUX = 'ENDUIT_TERRE_ET_CHAUX',
+  ENDUIT_TERRE_ET_CHAUX = 'Enduit terre et chaux',
 
-  ENDUIT_PLATRE = 'ENDUIT_PLATRE',
+  ENDUIT_PLATRE = 'Enduit plâtre',
 
-  AUTRE = 'AUTRE',
+  AUTRE = 'Autre',
 }

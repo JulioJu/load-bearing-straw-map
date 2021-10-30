@@ -2,12 +2,12 @@
   "lbstrawmapApp": {
     "RevetExt": {
       "null": "",
-      "BARDAGE_VENTILE": "BARDAGE_VENTILE",
-      "ENDUIT_TERRE": "ENDUIT_TERRE",
-      "ENDUIT_CHAUX": "ENDUIT_CHAUX",
-      "ENDUIT_TERRE_ET_CHAUX": "ENDUIT_TERRE_ET_CHAUX",
-      "ENDUIT_PLATRE": "ENDUIT_PLATRE",
-      "AUTRE": "AUTRE"
+      "BARDAGE_VENTILE": "Bardage ventilé",
+      "ENDUIT_TERRE": "Enduit terre",
+      "ENDUIT_CHAUX": "Enduit chaux",
+      "ENDUIT_TERRE_ET_CHAUX": "Enduit terre et chaux",
+      "ENDUIT_PLATRE": "Enduit plâtre",
+      "AUTRE": "Autre"
     }
   }
 }

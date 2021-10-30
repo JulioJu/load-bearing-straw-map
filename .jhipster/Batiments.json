@@ -31,7 +31,7 @@
       "fieldName": "usage",
       "fieldType": "UsageBatiment",
       "javadoc": "Usage",
-      "fieldValues": "LOGEMENT_COLLECTIF,LOGEMENT_INDIVIDUEL,LOGEMENT_INDIVIDUEL_GROUPE,BATIMENT_ADMINISTRATIF,BATIMENT_COMMERCIAL,BATIMENT_INDUSTRIEL,BATIMENT_DE_LOISIRS,BATIMENT_DE_SANTE,BATIMENT_DE_RETRAITE,BATIMENT_EDUCATIF,BATIMENT_SOCIO_CULTUREl,BATIMENT_AGRICOLE,OUVRAGE_EXCEPTIONNEL,AUTRE",
+      "fieldValues": "LOGEMENT_COLLECTIF (Logement collectif),LOGEMENT_INDIVIDUEL (Logement individuel),LOGEMENT_INDIVIDUEL_GROUPE (Logement individuel groupé),BATIMENT_ADMINISTRATIF (Bâtiment administratif),BATIMENT_COMMERCIAL (Bâtiment commercial),BATIMENT_INDUSTRIEL (Bâtiment industriel),BATIMENT_DE_LOISIRS (Bâtiment de loisirs),BATIMENT_DE_SANTE (Bâtiment de santé),BATIMENT_DE_RETRAITE (Bâtiment de retraite),BATIMENT_EDUCATIF (Bâtiment éducatif),BATIMENT_SOCIO_CULTUREl (Bâtiment socio-culturel),BATIMENT_AGRICOLE (Bâtiment agricole),OUVRAGE_EXCEPTIONNEL (Ouvrage exceptionnel),AUTRE (Autre)",
       "fieldValuesJavadocs": {
         "LOGEMENT_COLLECTIF": "\n      * Logement collectif\n",
         "LOGEMENT_INDIVIDUEL": "\n      * Logement individuel\n",
@@ -103,7 +103,7 @@
       "fieldName": "bottesTaille",
       "fieldType": "TaillesBottes",
       "javadoc": "Taille",
-      "fieldValues": "T_80_X_120_CM,T_50_X_80_CM,T_37_X_47_CM,T_26_X_45_CM,AUTRE",
+      "fieldValues": "T_80_X_120_CM (80 x 120 cm),T_50_X_80_CM (50 x 80 cm),T_37_X_47_CM (37 x 47 cm),T_26_X_45_CM (26 x 45 cm),AUTRE (Autre)",
       "fieldTypeJavadoc": "Taille des bottes",
       "fieldValuesJavadocs": {
         "T_80_X_120_CM": "\n      * 80 x 120 cm\n",
@@ -122,7 +122,7 @@
       "fieldName": "bottesCereale",
       "fieldType": "Cereale",
       "javadoc": "Céréale",
-      "fieldValues": "BLE,ORGE,AVOINE,SEIGLE,TRITICALE,RIZ,AUTRE",
+      "fieldValues": "BLE (Blé),ORGE (Orge),AVOINE (Avoine),SEIGLE (Seigle),TRITICALE (Triticale),RIZ (Riz),AUTRE (Autre)",
       "fieldTypeJavadoc": "Céréale",
       "fieldValuesJavadocs": {
         "BLE": "\n      * Blé\n",
@@ -143,7 +143,7 @@
       "fieldName": "autoconstruction",
       "fieldType": "YesNoPartial",
       "javadoc": "Autoconstruction",
-      "fieldValues": "OUI,NON,PARTIEL",
+      "fieldValues": "OUI (Oui),NON (Non),PARTIEL (Partiel)",
       "fieldValuesJavadocs": {
         "OUI": "\n      * Oui\n",
         "NON": "\n      * Non\n",
@@ -154,7 +154,7 @@
       "fieldName": "participatif",
       "fieldType": "YesNoPartial",
       "javadoc": "Participatif",
-      "fieldValues": "OUI,NON,PARTIEL",
+      "fieldValues": "OUI (Oui),NON (Non),PARTIEL (Partiel)",
       "fieldValuesJavadocs": {
         "OUI": "\n      * Oui\n",
         "NON": "\n      * Non\n",
@@ -165,7 +165,7 @@
       "fieldName": "integBaie",
       "fieldType": "IntegBaie",
       "javadoc": "Intégration des baies",
-      "fieldValues": "PRE_CADRE_FLOTTANT,COULISSANT,BLOQUEURS,AUTRE",
+      "fieldValues": "PRE_CADRE_FLOTTANT (Pré-cadre flottant),COULISSANT (Coulissant),BLOQUEURS (Bloqueurs),AUTRE (Autre)",
       "fieldTypeJavadoc": "Intégration des baies",
       "fieldValuesJavadocs": {
         "PRE_CADRE_FLOTTANT": "\n      * Pré-cadre flottant\n",
@@ -188,7 +188,7 @@
       "fieldName": "materiauSb",
       "fieldType": "MateriauSb",
       "javadoc": "Matériau de soubassement",
-      "fieldValues": "BETON_ARME,PARPAING_DE_CIMENT,BRIQUE_DE_TERRE_CUITE,BRIQUE_DE_PIERRE_PONCE,BETON_LEGER_ISOLANT,PIERRE,AUTRE",
+      "fieldValues": "BETON_ARME (Béton armé),PARPAING_DE_CIMENT (Parpaing de ciment),BRIQUE_DE_TERRE_CUITE (Brique de terre cuite),BRIQUE_DE_PIERRE_PONCE (Brique de pierre ponce),BETON_LEGER_ISOLANT (Béton léger isolant),PIERRE (Pierre),AUTRE (Autre)",
       "fieldTypeJavadoc": "Matériau de soubassement",
       "fieldValuesJavadocs": {
         "BETON_ARME": "\n      * Béton armé\n",
@@ -204,7 +204,7 @@
       "fieldName": "revetInt",
       "fieldType": "RevetInt",
       "javadoc": "Revêtement intérieur",
-      "fieldValues": "PLAQUE_DE_PLATRE,LAMBRIS,ENDUIT_TERRE,ENDUIT_CHAUX,ENDUIT_TERRE_ET_CHAUX,ENDUIT_PLATRE,AUTRE",
+      "fieldValues": "PLAQUE_DE_PLATRE (Plaque de plâtre),LAMBRIS (Lambris),ENDUIT_TERRE (Enduit terre),ENDUIT_CHAUX (Enduit chaux),ENDUIT_TERRE_ET_CHAUX (Enduit terre et chaux),ENDUIT_PLATRE (Enduit plâtre),AUTRE (Autre)",
       "fieldTypeJavadoc": "Revêtement intérieur",
       "fieldValuesJavadocs": {
         "PLAQUE_DE_PLATRE": "\n      * Plaque de plâtre\n",
@@ -220,7 +220,7 @@
       "fieldName": "revetExt",
       "fieldType": "RevetExt",
       "javadoc": "Revêtement extérieur",
-      "fieldValues": "BARDAGE_VENTILE,ENDUIT_TERRE,ENDUIT_CHAUX,ENDUIT_TERRE_ET_CHAUX,ENDUIT_PLATRE,AUTRE",
+      "fieldValues": "BARDAGE_VENTILE (Bardage ventilé),ENDUIT_TERRE (Enduit terre),ENDUIT_CHAUX (Enduit chaux),ENDUIT_TERRE_ET_CHAUX (Enduit terre et chaux),ENDUIT_PLATRE (Enduit plâtre),AUTRE (Autre)",
       "fieldTypeJavadoc": "Revêtement extérieur",
       "fieldValuesJavadocs": {
         "BARDAGE_VENTILE": "\n      * Bardage ventilé\n",

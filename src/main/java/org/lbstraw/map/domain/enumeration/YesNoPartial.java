@@ -9,17 +9,27 @@ public enum YesNoPartial {
      *       * Oui
      *
      */
-    OUI,
+    OUI("Oui"),
     /**
      *
      *       * Non
      *
      */
-    NON,
+    NON("Non"),
     /**
      *
      *       * Partiel
      *
      */
-    PARTIEL,
+    PARTIEL("Partiel");
+
+    private final String value;
+
+    YesNoPartial(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

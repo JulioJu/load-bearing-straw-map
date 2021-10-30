@@ -9,41 +9,51 @@ public enum Cereale {
      *       * Blé
      *
      */
-    BLE,
+    BLE("Blé"),
     /**
      *
      *       * Orge
      *
      */
-    ORGE,
+    ORGE("Orge"),
     /**
      *
      *       * Avoine
      *
      */
-    AVOINE,
+    AVOINE("Avoine"),
     /**
      *
      *       * Seigle
      *
      */
-    SEIGLE,
+    SEIGLE("Seigle"),
     /**
      *
      *       * Triticale
      *
      */
-    TRITICALE,
+    TRITICALE("Triticale"),
     /**
      *
      *       * Riz
      *
      */
-    RIZ,
+    RIZ("Riz"),
     /**
      *
      *       * Autre
      *
      */
-    AUTRE,
+    AUTRE("Autre");
+
+    private final String value;
+
+    Cereale(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

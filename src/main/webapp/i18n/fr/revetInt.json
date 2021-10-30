@@ -2,13 +2,13 @@
   "lbstrawmapApp": {
     "RevetInt": {
       "null": "",
-      "PLAQUE_DE_PLATRE": "PLAQUE_DE_PLATRE",
-      "LAMBRIS": "LAMBRIS",
-      "ENDUIT_TERRE": "ENDUIT_TERRE",
-      "ENDUIT_CHAUX": "ENDUIT_CHAUX",
-      "ENDUIT_TERRE_ET_CHAUX": "ENDUIT_TERRE_ET_CHAUX",
-      "ENDUIT_PLATRE": "ENDUIT_PLATRE",
-      "AUTRE": "AUTRE"
+      "PLAQUE_DE_PLATRE": "Plaque de plâtre",
+      "LAMBRIS": "Lambris",
+      "ENDUIT_TERRE": "Enduit terre",
+      "ENDUIT_CHAUX": "Enduit chaux",
+      "ENDUIT_TERRE_ET_CHAUX": "Enduit terre et chaux",
+      "ENDUIT_PLATRE": "Enduit plâtre",
+      "AUTRE": "Autre"
     }
   }
 }

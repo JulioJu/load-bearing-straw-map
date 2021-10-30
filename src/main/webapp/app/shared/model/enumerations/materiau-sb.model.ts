@@ -1,15 +1,15 @@
 export enum MateriauSb {
-  BETON_ARME = 'BETON_ARME',
+  BETON_ARME = 'Béton armé',
 
-  PARPAING_DE_CIMENT = 'PARPAING_DE_CIMENT',
+  PARPAING_DE_CIMENT = 'Parpaing de ciment',
 
-  BRIQUE_DE_TERRE_CUITE = 'BRIQUE_DE_TERRE_CUITE',
+  BRIQUE_DE_TERRE_CUITE = 'Brique de terre cuite',
 
-  BRIQUE_DE_PIERRE_PONCE = 'BRIQUE_DE_PIERRE_PONCE',
+  BRIQUE_DE_PIERRE_PONCE = 'Brique de pierre ponce',
 
-  BETON_LEGER_ISOLANT = 'BETON_LEGER_ISOLANT',
+  BETON_LEGER_ISOLANT = 'Béton léger isolant',
 
-  PIERRE = 'PIERRE',
+  PIERRE = 'Pierre',
 
-  AUTRE = 'AUTRE',
+  AUTRE = 'Autre',
 }

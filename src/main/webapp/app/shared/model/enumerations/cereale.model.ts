@@ -1,15 +1,15 @@
 export enum Cereale {
-  BLE = 'BLE',
+  BLE = 'Blé',
 
-  ORGE = 'ORGE',
+  ORGE = 'Orge',
 
-  AVOINE = 'AVOINE',
+  AVOINE = 'Avoine',
 
-  SEIGLE = 'SEIGLE',
+  SEIGLE = 'Seigle',
 
-  TRITICALE = 'TRITICALE',
+  TRITICALE = 'Triticale',
 
-  RIZ = 'RIZ',
+  RIZ = 'Riz',
 
-  AUTRE = 'AUTRE',
+  AUTRE = 'Autre',
 }
