@@ -5,31 +5,31 @@ enum Cereale {
     /**
       * Blé
       */
-    BLE,
+    BLE ("Blé"),
     /**
       * Orge
       */
-    ORGE,
+    ORGE ("Orge"),
     /**
       * Avoine
       */
-    AVOINE,
+    AVOINE ("Avoine"),
     /**
       * Seigle
       */
-    SEIGLE,
+    SEIGLE ("Seigle"),
     /**
       * Triticale
       */
-    TRITICALE,
+    TRITICALE ("Triticale"),
     /**
       * Riz
       */
-    RIZ,
+    RIZ ("Riz"),
     /**
       * Autre
       */
-    AUTRE
+    AUTRE ("Autre")
 }
 
 
@@ -40,19 +40,19 @@ enum IntegBaie {
     /**
       * Pré-cadre flottant
       */
-    PRE_CADRE_FLOTTANT,
+    PRE_CADRE_FLOTTANT ("Pré-cadre flottant"),
     /**
       * Coulissant
       */
-    COULISSANT,
+    COULISSANT ("Coulissant"),
     /**
       * Bloqueurs
       */
-    BLOQUEURS,
+    BLOQUEURS ("Bloqueurs"),
     /**
       * Autre
       */
-    AUTRE
+    AUTRE ("Autre")
 }
 
 
@@ -63,31 +63,31 @@ enum MateriauSb {
     /**
       * Béton armé
       */
-    BETON_ARME,
+    BETON_ARME ("Béton armé"),
     /**
       * Parpaing de ciment
       */
-    PARPAING_DE_CIMENT,
+    PARPAING_DE_CIMENT ("Parpaing de ciment"),
     /**
       * Brique de terre cuite
       */
-    BRIQUE_DE_TERRE_CUITE,
+    BRIQUE_DE_TERRE_CUITE ("Brique de terre cuite"),
     /**
       * Brique de pierre ponce
       */
-    BRIQUE_DE_PIERRE_PONCE,
+    BRIQUE_DE_PIERRE_PONCE ("Brique de pierre ponce"),
     /**
       * Béton léger isolant
       */
-    BETON_LEGER_ISOLANT,
+    BETON_LEGER_ISOLANT ("Béton léger isolant"),
     /**
       * Pierre
       */
-    PIERRE,
+    PIERRE ("Pierre"),
     /**
       * Autre
       */
-    AUTRE
+    AUTRE ("Autre")
 }
 
 
@@ -98,27 +98,27 @@ enum RevetExt {
     /**
       * Bardage ventilé
       */
-    BARDAGE_VENTILE,
+    BARDAGE_VENTILE ("Bardage ventilé"),
     /**
       * Enduit terre
       */
-    ENDUIT_TERRE,
+    ENDUIT_TERRE ("Enduit terre"),
     /**
       * Enduit chaux
       */
-    ENDUIT_CHAUX,
+    ENDUIT_CHAUX ("Enduit chaux"),
     /**
       * Enduit terre et chaux
       */
-    ENDUIT_TERRE_ET_CHAUX,
+    ENDUIT_TERRE_ET_CHAUX ("Enduit terre et chaux"),
     /**
       * Enduit plâtre
       */
-    ENDUIT_PLATRE,
+    ENDUIT_PLATRE ("Enduit plâtre"),
     /**
       * Autre
       */
-    AUTRE
+    AUTRE ("Autre")
 }
 
 
@@ -129,31 +129,31 @@ enum RevetInt {
     /**
       * Plaque de plâtre
       */
-    PLAQUE_DE_PLATRE,
+    PLAQUE_DE_PLATRE ("Plaque de plâtre"),
     /**
       * Lambris
       */
-    LAMBRIS,
+    LAMBRIS ("Lambris"),
     /**
       * Enduit terre
       */
-    ENDUIT_TERRE,
+    ENDUIT_TERRE ("Enduit terre"),
     /**
       * Enduit chaux
       */
-    ENDUIT_CHAUX,
+    ENDUIT_CHAUX ("Enduit chaux"),
     /**
       * Enduit terre et chaux
       */
-    ENDUIT_TERRE_ET_CHAUX,
+    ENDUIT_TERRE_ET_CHAUX ("Enduit terre et chaux"),
     /**
       * Enduit plâtre
       */
-    ENDUIT_PLATRE,
+    ENDUIT_PLATRE ("Enduit plâtre"),
     /**
       * Autre
       */
-    AUTRE
+    AUTRE ("Autre")
 }
 
 
@@ -164,23 +164,23 @@ enum TaillesBottes {
     /**
       * 80 x 120 cm
       */
-    T_80_X_120_CM,
+    T_80_X_120_CM ("80 x 120 cm"),
     /**
       * 50 x 80 cm
       */
-    T_50_X_80_CM,
+    T_50_X_80_CM ("50 x 80 cm"),
     /**
       * 37 x 47 cm
       */
-    T_37_X_47_CM,
+    T_37_X_47_CM ("37 x 47 cm"),
     /**
       * 26 x 45 cm
       */
-    T_26_X_45_CM,
+    T_26_X_45_CM ("26 x 45 cm"),
     /**
       * Autre
       */
-    AUTRE
+    AUTRE ("Autre")
 }
 
 
@@ -188,59 +188,59 @@ enum UsageBatiment {
     /**
       * Logement collectif
       */
-    LOGEMENT_COLLECTIF,
+    LOGEMENT_COLLECTIF ("Logement collectif"),
     /**
       * Logement individuel
       */
-    LOGEMENT_INDIVIDUEL,
+    LOGEMENT_INDIVIDUEL ("Logement individuel"),
     /**
       * Logement individuel groupé
       */
-    LOGEMENT_INDIVIDUEL_GROUPE,
+    LOGEMENT_INDIVIDUEL_GROUPE ("Logement individuel groupé"),
     /**
       * Bâtiment administratif
       */
-    BATIMENT_ADMINISTRATIF,
+    BATIMENT_ADMINISTRATIF ("Bâtiment administratif"),
     /**
       * Bâtiment commercial
       */
-    BATIMENT_COMMERCIAL,
+    BATIMENT_COMMERCIAL ("Bâtiment commercial"),
     /**
       * Bâtiment industriel
       */
-    BATIMENT_INDUSTRIEL,
+    BATIMENT_INDUSTRIEL ("Bâtiment industriel"),
     /**
       * Bâtiment de loisirs
       */
-    BATIMENT_DE_LOISIRS,
+    BATIMENT_DE_LOISIRS ("Bâtiment de loisirs"),
     /**
       * Bâtiment de santé
       */
-    BATIMENT_DE_SANTE,
+    BATIMENT_DE_SANTE ("Bâtiment de santé"),
     /**
       * Bâtiment de retraite
       */
-    BATIMENT_DE_RETRAITE,
+    BATIMENT_DE_RETRAITE ("Bâtiment de retraite"),
     /**
       * Bâtiment éducatif
       */
-    BATIMENT_EDUCATIF,
+    BATIMENT_EDUCATIF ("Bâtiment éducatif"),
     /**
       * Bâtiment socio-culturel
       */
-    BATIMENT_SOCIO_CULTUREl,
+    BATIMENT_SOCIO_CULTUREl ("Bâtiment socio-culturel"),
     /**
       * Bâtiment agricole
       */
-    BATIMENT_AGRICOLE,
+    BATIMENT_AGRICOLE ("Bâtiment agricole"),
     /**
       * Ouvrage exceptionnel
       */
-    OUVRAGE_EXCEPTIONNEL,
+    OUVRAGE_EXCEPTIONNEL ("Ouvrage exceptionnel"),
     /**
       * Autre
       */
-    AUTRE
+    AUTRE ("Autre")
 }
 
 
@@ -248,15 +248,15 @@ enum YesNoPartial {
     /**
       * Oui
       */
-    OUI,
+    OUI ("Oui"),
     /**
       * Non
       */
-    NON,
+    NON ("Non"),
     /**
       * Partiel
       */
-    PARTIEL
+    PARTIEL ("Partiel")
 }
 
 entity Batiments {
