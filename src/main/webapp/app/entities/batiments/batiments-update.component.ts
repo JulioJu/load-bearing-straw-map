@@ -117,8 +117,8 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
         to.query.long >= -90 &&
         to.query.long <= 90
       ) {
-        vm.loadBearingStrawMap.latitude = to.query.lat;
-        vm.loadBearingStrawMap.longitude = to.query.long;
+        vm.batiments.latitude = to.query.lat;
+        vm.batiments.longitude = to.query.long;
       }
       // END added by JulioJu
       vm.initRelationships();
