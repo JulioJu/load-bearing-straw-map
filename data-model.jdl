@@ -1,120 +1,434 @@
+/**
+ * Céréale
+ */
 enum Cereale {
+    /**
+      * Blé
+      */
     BLE,
+    /**
+      * Orge
+      */
     ORGE,
+    /**
+      * Avoine
+      */
     AVOINE,
+    /**
+      * Seigle
+      */
     SEIGLE,
+    /**
+      * Triticale
+      */
     TRITICALE,
+    /**
+      * Riz
+      */
     RIZ,
+    /**
+      * Autre
+      */
     AUTRE
 }
 
 
+/**
+  * Intégration des baies
+  */
 enum IntegBaie {
+    /**
+      * Pré-cadre flottant
+      */
     PRE_CADRE_FLOTTANT,
+    /**
+      * Coulissant
+      */
     COULISSANT,
+    /**
+      * Bloqueurs
+      */
     BLOQUEURS,
+    /**
+      * Autre
+      */
     AUTRE
 }
 
 
+/**
+  * Matériau de soubassement
+  */
 enum MateriauSb {
+    /**
+      * Béton armé
+      */
     BETON_ARME,
+    /**
+      * Parpaing de ciment
+      */
     PARPAING_DE_CIMENT,
+    /**
+      * Brique de terre cuite
+      */
     BRIQUE_DE_TERRE_CUITE,
+    /**
+      * Brique de pierre ponce
+      */
     BRIQUE_DE_PIERRE_PONCE,
+    /**
+      * Béton léger isolant
+      */
     BETON_LEGER_ISOLANT,
+    /**
+      * Pierre
+      */
     PIERRE,
+    /**
+      * Autre
+      */
     AUTRE
 }
 
 
+/**
+ * Revêtement extérieur
+ */
 enum RevetExt {
+    /**
+      * Bardage ventilé
+      */
     BARDAGE_VENTILE,
+    /**
+      * Enduit terre
+      */
     ENDUIT_TERRE,
+    /**
+      * Enduit chaux
+      */
     ENDUIT_CHAUX,
+    /**
+      * Enduit terre et chaux
+      */
     ENDUIT_TERRE_ET_CHAUX,
+    /**
+      * Enduit plâtre
+      */
     ENDUIT_PLATRE,
+    /**
+      * Autre
+      */
     AUTRE
 }
 
 
+/**
+ * Revêtement intérieur
+ */
 enum RevetInt {
+    /**
+      * Plaque de plâtre
+      */
     PLAQUE_DE_PLATRE,
+    /**
+      * Lambris
+      */
     LAMBRIS,
+    /**
+      * Enduit terre
+      */
     ENDUIT_TERRE,
+    /**
+      * Enduit chaux
+      */
     ENDUIT_CHAUX,
+    /**
+      * Enduit terre et chaux
+      */
     ENDUIT_TERRE_ET_CHAUX,
+    /**
+      * Enduit plâtre
+      */
     ENDUIT_PLATRE,
+    /**
+      * Autre
+      */
     AUTRE
 }
 
 
+/**
+ * Taille des bottes
+ */
 enum TaillesBottes {
+    /**
+      * 80 x 120 cm
+      */
     T_80_X_120_CM,
+    /**
+      * 50 x 80 cm
+      */
     T_50_X_80_CM,
+    /**
+      * 37 x 47 cm
+      */
     T_37_X_47_CM,
+    /**
+      * 26 x 45 cm
+      */
     T_26_X_45_CM,
+    /**
+      * Autre
+      */
     AUTRE
 }
 
 
 enum UsageBatiment {
+    /**
+      * Logement collectif
+      */
     LOGEMENT_COLLECTIF,
+    /**
+      * Logement individuel
+      */
     LOGEMENT_INDIVIDUEL,
+    /**
+      * Logement individuel groupé
+      */
     LOGEMENT_INDIVIDUEL_GROUPE,
+    /**
+      * Bâtiment administratif
+      */
     BATIMENT_ADMINISTRATIF,
+    /**
+      * Bâtiment commercial
+      */
     BATIMENT_COMMERCIAL,
+    /**
+      * Bâtiment industriel
+      */
     BATIMENT_INDUSTRIEL,
+    /**
+      * Bâtiment de loisirs
+      */
     BATIMENT_DE_LOISIRS,
+    /**
+      * Bâtiment de santé
+      */
     BATIMENT_DE_SANTE,
+    /**
+      * Bâtiment de retraite
+      */
     BATIMENT_DE_RETRAITE,
+    /**
+      * Bâtiment éducatif
+      */
     BATIMENT_EDUCATIF,
+    /**
+      * Bâtiment socio-culturel
+      */
     BATIMENT_SOCIO_CULTUREl,
+    /**
+      * Bâtiment agricole
+      */
     BATIMENT_AGRICOLE,
+    /**
+      * Ouvrage exceptionnel
+      */
     OUVRAGE_EXCEPTIONNEL,
+    /**
+      * Autre
+      */
     AUTRE
 }
 
 
 enum YesNoPartial {
+    /**
+      * Oui
+      */
     OUI,
+    /**
+      * Non
+      */
     NON,
+    /**
+      * Partiel
+      */
     PARTIEL
 }
 
 entity Batiments {
     latitude Float required min(-90) max(90),
     longitude Float required min(-90) max(90),
+
+// =========================================================================
+// Corresponding to tab "Batiments" into the old QGIS form
+// =========================================================================
+
+    /**
+      * Nom du bâtiment
+      */
     nom String maxlength(40),
-    contactNom String,
-    contactMail String,
-    contactPhone String,
-    constructionDebut LocalDate,
-    constructionFin LocalDate,
-    surface Integer,
-    cout Integer,
-    bottesTaille TaillesBottes,
-    autoconstruction YesNoPartial,
-    concepteur String maxlength(128),
-    realisateur String maxlength(512),
-    participatif YesNoPartial,
-    usage UsageBatiment,
-    noteCalcul Boolean,
-    travauxNeuf Boolean,
-    travauxExtension Boolean,
-    travauxRenov Boolean,
-    travauxIte Boolean,
-    travauxIti Boolean,
-    niveaux Integer,
-    bottesDensite Integer,
-    distanceAppro Integer,
-    bottesCereale Cereale,
-    structSuppl Boolean,
-    revetInt RevetInt,
-    revetExt RevetExt,
+    /**
+      * Paille porteuse en technique secondaire
+      */
     techniqueSecondaire Boolean,
-    codePostal String maxlength(6),
+
+    // Corresponding to section "Informations générales" into the old QGIS form
+    // =========================================================================
+    /**
+      * Usage
+      */
+    usage UsageBatiment,
+    /**
+      * Coût [€]
+      */
+    cout Integer,
+    /**
+      * Surface [m²]
+      */
+    surface Integer,
+    /**
+      * Niveaux
+      */
+    niveaux Integer,
+
+    // Corresponding to section "Nature des travaux" into the old QGIS form
+    // =========================================================================
+    /**
+      * Neuf
+      */
+    travauxNeuf Boolean,
+    /**
+      * Extension
+      */
+    travauxExtension Boolean,
+    /**
+      * Rénovation
+      */
+    travauxRenov Boolean,
+    /**
+      * ITE
+      */
+    travauxIte Boolean,
+    /**
+      * ITI
+      */
+    travauxIti Boolean,
+
+    // Corresponding to section "Chronologie" into the old QGIS form
+    // =========================================================================
+    /**
+      * Début de construction
+      */
+    constructionDebut LocalDate,
+    /**
+      * Achèvement
+      */
+    constructionFin LocalDate,
+
+    // Corresponding to section "Botte de paille" into the old QGIS form
+    // =========================================================================
+    /**
+      * Taille
+      */
+    bottesTaille TaillesBottes,
+    /**
+      * Densité [kg/m³]
+      */
+    bottesDensite Integer,
+    /**
+      * Céréale
+      */
+    bottesCereale Cereale,
+    /**
+      * Distance d'appro [km]
+      */
+    distanceAppro Integer,
+
+    // Corresponding to section "Chantier" into the old QGIS form
+    // =========================================================================
+    /**
+      * Autoconstruction
+      */
+    autoconstruction YesNoPartial,
+    /**
+      * Participatif
+      */
+    participatif YesNoPartial,
+
+    // Corresponding to section "Construction" into the old QGIS form
+    // =========================================================================
+    /**
+      * Intégration des baies
+      */
     integBaie IntegBaie,
+    /**
+      * Structure supplémentaire
+      */
+    structSuppl Boolean,
+    /**
+      * Note de calcul
+      */
+    noteCalcul Boolean,
+    /**
+      * Matériau de soubassement
+      */
     materiauSb MateriauSb,
+
+        // Corresponding to sub-section "Revêtement" into the old QGIS form
+        // ==============
+        /**
+         * Revêtement intérieur
+         */
+        revetInt RevetInt,
+        /**
+         * Revêtement extérieur
+         */
+        revetExt RevetExt,
+
+    // Corresponding to section "Acteurs" into the old QGIS form
+    // =========================================================================
+    /**
+     * Concepteurs / conceptrices
+     */
+    concepteur String maxlength(512),
+    /**
+     * Réalisateurs / réalisatrices
+     */
+    realisateur String maxlength(512),
+
+
+    // Corresponding to "Construction" into the old QGIS form
+    // =========================================================================
+
+// =========================================================================
+// Corresponding to tab "Description" into the old QGIS form
+// =========================================================================
+    /**
+     * Description
+     */
     description TextBlob
+
+// =========================================================================
+// Corresponding to tab "Contact" into the old QGIS form
+// =========================================================================
+    /**
+     * Nom
+     */
+    contactNom String,
+    /**
+     * Mail
+     */
+    contactMail String,
+    /**
+     * Téléphone
+     */
+    contactPhone String,
+    /**
+     * Code postal
+     */
+    codePostal String maxlength(6),
 }
