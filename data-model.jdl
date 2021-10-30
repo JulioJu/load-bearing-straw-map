@@ -259,6 +259,7 @@ enum YesNoPartial {
     PARTIEL ("Partiel")
 }
 
+@service(serviceClass)
 entity Batiments {
     latitude Float required min(-90) max(90),
     longitude Float required min(-90) max(90),
@@ -431,4 +432,12 @@ entity Batiments {
      * Code postal
      */
     codePostal String maxlength(6),
+}
+
+relationship ManyToOne {
+
+    /**
+     * Only creator (set in back at creation) of a Batiments could update or delete it
+     */
+    Batiments{creator(email)} to User
 }

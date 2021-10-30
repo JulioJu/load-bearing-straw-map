@@ -274,11 +274,20 @@
       "fieldValidateRulesMaxlength": "6"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "batiments",
+      "javadoc": "Only creator (set in back at creation) of a Batiments could update or delete it",
+      "relationshipName": "creator",
+      "otherEntityField": "email"
+    }
+  ],
   "entityTableName": "batiments",
   "dto": "no",
   "pagination": "no",
-  "service": "no",
+  "service": "serviceClass",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,

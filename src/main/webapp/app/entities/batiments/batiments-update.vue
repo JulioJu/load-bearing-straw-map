@@ -639,6 +639,19 @@
               </small>
             </div>
           </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.creator')" for="batiments-creator">Creator</label>
+            <select class="form-control" id="batiments-creator" data-cy="creator" name="creator" v-model="batiments.creator">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="batiments.creator && userOption.id === batiments.creator.id ? batiments.creator : userOption"
+                v-for="userOption in users"
+                :key="userOption.id"
+              >
+                {{ userOption.email }}
+              </option>
+            </select>
+          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">

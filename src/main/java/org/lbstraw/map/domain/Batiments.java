@@ -284,6 +284,13 @@ public class Batiments implements Serializable {
     @Column(name = "code_postal", length = 6)
     private String codePostal;
 
+    /**
+     * Only creator (set in back at creation) of a Batiments could update or delete it
+     */
+    @ApiModelProperty(value = "Only creator (set in back at creation) of a Batiments could update or delete it")
+    @ManyToOne
+    private User creator;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -739,6 +746,19 @@ public class Batiments implements Serializable {
 
     public void setCodePostal(String codePostal) {
         this.codePostal = codePostal;
+    }
+
+    public User getCreator() {
+        return this.creator;
+    }
+
+    public void setCreator(User user) {
+        this.creator = user;
+    }
+
+    public Batiments creator(User user) {
+        this.setCreator(user);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

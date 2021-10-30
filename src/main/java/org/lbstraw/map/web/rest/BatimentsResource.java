@@ -12,12 +12,12 @@ import org.lbstraw.map.domain.Batiments;
 import org.lbstraw.map.domain.BatimentsLazyView;
 // END added by JulioJu
 import org.lbstraw.map.repository.BatimentsRepository;
+import org.lbstraw.map.service.BatimentsService;
 import org.lbstraw.map.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -27,7 +27,6 @@ import tech.jhipster.web.util.ResponseUtil;
  */
 @RestController
 @RequestMapping("/api")
-@Transactional
 public class BatimentsResource {
 
     private final Logger log = LoggerFactory.getLogger(BatimentsResource.class);
@@ -37,9 +36,12 @@ public class BatimentsResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
+    private final BatimentsService batimentsService;
+
     private final BatimentsRepository batimentsRepository;
 
-    public BatimentsResource(BatimentsRepository batimentsRepository) {
+    public BatimentsResource(BatimentsService batimentsService, BatimentsRepository batimentsRepository) {
+        this.batimentsService = batimentsService;
         this.batimentsRepository = batimentsRepository;
     }
 
@@ -56,7 +58,7 @@ public class BatimentsResource {
         if (batiments.getId() != null) {
             throw new BadRequestAlertException("A new batiments cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Batiments result = batimentsRepository.save(batiments);
+        Batiments result = batimentsService.save(batiments);
         return ResponseEntity
             .created(new URI("/api/batiments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -90,7 +92,7 @@ public class BatimentsResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Batiments result = batimentsRepository.save(batiments);
+        Batiments result = batimentsService.save(batiments);
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, batiments.getId().toString()))
@@ -125,115 +127,7 @@ public class BatimentsResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<Batiments> result = batimentsRepository
-            .findById(batiments.getId())
-            .map(existingBatiments -> {
-                if (batiments.getLatitude() != null) {
-                    existingBatiments.setLatitude(batiments.getLatitude());
-                }
-                if (batiments.getLongitude() != null) {
-                    existingBatiments.setLongitude(batiments.getLongitude());
-                }
-                if (batiments.getNom() != null) {
-                    existingBatiments.setNom(batiments.getNom());
-                }
-                if (batiments.getTechniqueSecondaire() != null) {
-                    existingBatiments.setTechniqueSecondaire(batiments.getTechniqueSecondaire());
-                }
-                if (batiments.getUsage() != null) {
-                    existingBatiments.setUsage(batiments.getUsage());
-                }
-                if (batiments.getCout() != null) {
-                    existingBatiments.setCout(batiments.getCout());
-                }
-                if (batiments.getSurface() != null) {
-                    existingBatiments.setSurface(batiments.getSurface());
-                }
-                if (batiments.getNiveaux() != null) {
-                    existingBatiments.setNiveaux(batiments.getNiveaux());
-                }
-                if (batiments.getTravauxNeuf() != null) {
-                    existingBatiments.setTravauxNeuf(batiments.getTravauxNeuf());
-                }
-                if (batiments.getTravauxExtension() != null) {
-                    existingBatiments.setTravauxExtension(batiments.getTravauxExtension());
-                }
-                if (batiments.getTravauxRenov() != null) {
-                    existingBatiments.setTravauxRenov(batiments.getTravauxRenov());
-                }
-                if (batiments.getTravauxIte() != null) {
-                    existingBatiments.setTravauxIte(batiments.getTravauxIte());
-                }
-                if (batiments.getTravauxIti() != null) {
-                    existingBatiments.setTravauxIti(batiments.getTravauxIti());
-                }
-                if (batiments.getConstructionDebut() != null) {
-                    existingBatiments.setConstructionDebut(batiments.getConstructionDebut());
-                }
-                if (batiments.getConstructionFin() != null) {
-                    existingBatiments.setConstructionFin(batiments.getConstructionFin());
-                }
-                if (batiments.getBottesTaille() != null) {
-                    existingBatiments.setBottesTaille(batiments.getBottesTaille());
-                }
-                if (batiments.getBottesDensite() != null) {
-                    existingBatiments.setBottesDensite(batiments.getBottesDensite());
-                }
-                if (batiments.getBottesCereale() != null) {
-                    existingBatiments.setBottesCereale(batiments.getBottesCereale());
-                }
-                if (batiments.getDistanceAppro() != null) {
-                    existingBatiments.setDistanceAppro(batiments.getDistanceAppro());
-                }
-                if (batiments.getAutoconstruction() != null) {
-                    existingBatiments.setAutoconstruction(batiments.getAutoconstruction());
-                }
-                if (batiments.getParticipatif() != null) {
-                    existingBatiments.setParticipatif(batiments.getParticipatif());
-                }
-                if (batiments.getIntegBaie() != null) {
-                    existingBatiments.setIntegBaie(batiments.getIntegBaie());
-                }
-                if (batiments.getStructSuppl() != null) {
-                    existingBatiments.setStructSuppl(batiments.getStructSuppl());
-                }
-                if (batiments.getNoteCalcul() != null) {
-                    existingBatiments.setNoteCalcul(batiments.getNoteCalcul());
-                }
-                if (batiments.getMateriauSb() != null) {
-                    existingBatiments.setMateriauSb(batiments.getMateriauSb());
-                }
-                if (batiments.getRevetInt() != null) {
-                    existingBatiments.setRevetInt(batiments.getRevetInt());
-                }
-                if (batiments.getRevetExt() != null) {
-                    existingBatiments.setRevetExt(batiments.getRevetExt());
-                }
-                if (batiments.getConcepteur() != null) {
-                    existingBatiments.setConcepteur(batiments.getConcepteur());
-                }
-                if (batiments.getRealisateur() != null) {
-                    existingBatiments.setRealisateur(batiments.getRealisateur());
-                }
-                if (batiments.getDescription() != null) {
-                    existingBatiments.setDescription(batiments.getDescription());
-                }
-                if (batiments.getContactNom() != null) {
-                    existingBatiments.setContactNom(batiments.getContactNom());
-                }
-                if (batiments.getContactMail() != null) {
-                    existingBatiments.setContactMail(batiments.getContactMail());
-                }
-                if (batiments.getContactPhone() != null) {
-                    existingBatiments.setContactPhone(batiments.getContactPhone());
-                }
-                if (batiments.getCodePostal() != null) {
-                    existingBatiments.setCodePostal(batiments.getCodePostal());
-                }
-
-                return existingBatiments;
-            })
-            .map(batimentsRepository::save);
+        Optional<Batiments> result = batimentsService.partialUpdate(batiments);
 
         return ResponseUtil.wrapOrNotFound(
             result,
@@ -249,7 +143,7 @@ public class BatimentsResource {
     @GetMapping("/batiments")
     public List<Batiments> getAllBatiments() {
         log.debug("REST request to get all Batiments");
-        return batimentsRepository.findAll();
+        return batimentsService.findAll();
     }
 
     // START added by JulioJu
@@ -275,7 +169,7 @@ public class BatimentsResource {
     @GetMapping("/batiments/{id}")
     public ResponseEntity<Batiments> getBatiments(@PathVariable Long id) {
         log.debug("REST request to get Batiments : {}", id);
-        Optional<Batiments> batiments = batimentsRepository.findById(id);
+        Optional<Batiments> batiments = batimentsService.findOne(id);
         return ResponseUtil.wrapOrNotFound(batiments);
     }
 
@@ -288,7 +182,7 @@ public class BatimentsResource {
     @DeleteMapping("/batiments/{id}")
     public ResponseEntity<Void> deleteBatiments(@PathVariable Long id) {
         log.debug("REST request to delete Batiments : {}", id);
-        batimentsRepository.deleteById(id);
+        batimentsService.delete(id);
         return ResponseEntity
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

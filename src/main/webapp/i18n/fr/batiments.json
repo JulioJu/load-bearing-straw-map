@@ -52,6 +52,7 @@
       "contactMail": "Contact Mail",
       "contactPhone": "Contact Phone",
       "codePostal": "Code Postal",
+      "creator": "Creator",
       "help": {
         "nom": "Nom du bâtiment",
         "techniqueSecondaire": "Paille porteuse en technique secondaire",

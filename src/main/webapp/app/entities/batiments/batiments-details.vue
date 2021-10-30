@@ -210,6 +210,12 @@
           <dd>
             <span>{{ batiments.codePostal }}</span>
           </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.creator')">Creator</span>
+          </dt>
+          <dd>
+            {{ batiments.creator ? batiments.creator.email : '' }}
+          </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')"> Back</span>

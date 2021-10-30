@@ -63,6 +63,7 @@
             <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.contactMail')">Contact Mail</span></th>
             <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.contactPhone')">Contact Phone</span></th>
             <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.codePostal')">Code Postal</span></th>
+            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.creator')">Creator</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -105,6 +106,9 @@
             <td>{{ batiments.contactMail }}</td>
             <td>{{ batiments.contactPhone }}</td>
             <td>{{ batiments.codePostal }}</td>
+            <td>
+              {{ batiments.creator ? batiments.creator.email : '' }}
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'BatimentsView', params: { batimentsId: batiments.id } }" custom v-slot="{ navigate }">

@@ -7,6 +7,8 @@ import { decimal, required, minValue, maxValue, maxLength } from 'vuelidate/lib/
 
 import AlertService from '@/shared/alert/alert.service';
 
+import UserService from '@/admin/user-management/user-management.service';
+
 import { IBatiments, Batiments } from '@/shared/model/batiments.model';
 import BatimentsService from './batiments.service';
 import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model';
@@ -83,6 +85,10 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
   @Inject('alertService') private alertService: () => AlertService;
 
   public batiments: IBatiments = new Batiments();
+
+  @Inject('userService') private userService: () => UserService;
+
+  public users: Array<any> = [];
   public usageBatimentValues: string[] = Object.keys(UsageBatiment);
   public taillesBottesValues: string[] = Object.keys(TaillesBottes);
   public cerealeValues: string[] = Object.keys(Cereale);
@@ -115,6 +121,7 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
         vm.loadBearingStrawMap.longitude = to.query.long;
       }
       // END added by JulioJu
+      vm.initRelationships();
     });
   }
 
@@ -186,5 +193,11 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.userService()
+      .retrieve()
+      .then(res => {
+        this.users = res.data;
+      });
+  }
 }

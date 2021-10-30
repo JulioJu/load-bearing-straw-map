@@ -1,3 +1,5 @@
+import { IUser } from '@/shared/model/user.model';
+
 import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model';
 import { TaillesBottes } from '@/shared/model/enumerations/tailles-bottes.model';
 import { Cereale } from '@/shared/model/enumerations/cereale.model';
@@ -42,6 +44,7 @@ export interface IBatiments {
   contactMail?: string | null;
   contactPhone?: string | null;
   codePostal?: string | null;
+  creator?: IUser | null;
 }
 
 export class Batiments implements IBatiments {
@@ -80,7 +83,8 @@ export class Batiments implements IBatiments {
     public contactNom?: string | null,
     public contactMail?: string | null,
     public contactPhone?: string | null,
-    public codePostal?: string | null
+    public codePostal?: string | null,
+    public creator?: IUser | null
   ) {
     this.techniqueSecondaire = this.techniqueSecondaire ?? false;
     this.travauxNeuf = this.travauxNeuf ?? false;
