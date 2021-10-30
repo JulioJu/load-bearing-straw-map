@@ -25,76 +25,10 @@
             <span>{{ batiments.nom }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.contactNom')">Contact Nom</span>
+            <span v-text="$t('lbstrawmapApp.batiments.techniqueSecondaire')">Technique Secondaire</span>
           </dt>
           <dd>
-            <span>{{ batiments.contactNom }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.contactMail')">Contact Mail</span>
-          </dt>
-          <dd>
-            <span>{{ batiments.contactMail }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.contactPhone')">Contact Phone</span>
-          </dt>
-          <dd>
-            <span>{{ batiments.contactPhone }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.constructionDebut')">Construction Debut</span>
-          </dt>
-          <dd>
-            <span>{{ batiments.constructionDebut }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.constructionFin')">Construction Fin</span>
-          </dt>
-          <dd>
-            <span>{{ batiments.constructionFin }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.surface')">Surface</span>
-          </dt>
-          <dd>
-            <span>{{ batiments.surface }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.cout')">Cout</span>
-          </dt>
-          <dd>
-            <span>{{ batiments.cout }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.bottesTaille')">Bottes Taille</span>
-          </dt>
-          <dd>
-            <span v-text="$t('lbstrawmapApp.TaillesBottes.' + batiments.bottesTaille)">{{ batiments.bottesTaille }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.autoconstruction')">Autoconstruction</span>
-          </dt>
-          <dd>
-            <span v-text="$t('lbstrawmapApp.YesNoPartial.' + batiments.autoconstruction)">{{ batiments.autoconstruction }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.concepteur')">Concepteur</span>
-          </dt>
-          <dd>
-            <span>{{ batiments.concepteur }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.realisateur')">Realisateur</span>
-          </dt>
-          <dd>
-            <span>{{ batiments.realisateur }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.participatif')">Participatif</span>
-          </dt>
-          <dd>
-            <span v-text="$t('lbstrawmapApp.YesNoPartial.' + batiments.participatif)">{{ batiments.participatif }}</span>
+            <span>{{ batiments.techniqueSecondaire }}</span>
           </dd>
           <dt>
             <span v-text="$t('lbstrawmapApp.batiments.usage')">Usage</span>
@@ -103,10 +37,22 @@
             <span v-text="$t('lbstrawmapApp.UsageBatiment.' + batiments.usage)">{{ batiments.usage }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.noteCalcul')">Note Calcul</span>
+            <span v-text="$t('lbstrawmapApp.batiments.cout')">Cout</span>
           </dt>
           <dd>
-            <span>{{ batiments.noteCalcul }}</span>
+            <span>{{ batiments.cout }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.surface')">Surface</span>
+          </dt>
+          <dd>
+            <span>{{ batiments.surface }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.niveaux')">Niveaux</span>
+          </dt>
+          <dd>
+            <span>{{ batiments.niveaux }}</span>
           </dd>
           <dt>
             <span v-text="$t('lbstrawmapApp.batiments.travauxNeuf')">Travaux Neuf</span>
@@ -139,10 +85,22 @@
             <span>{{ batiments.travauxIti }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.niveaux')">Niveaux</span>
+            <span v-text="$t('lbstrawmapApp.batiments.constructionDebut')">Construction Debut</span>
           </dt>
           <dd>
-            <span>{{ batiments.niveaux }}</span>
+            <span>{{ batiments.constructionDebut }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.constructionFin')">Construction Fin</span>
+          </dt>
+          <dd>
+            <span>{{ batiments.constructionFin }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.bottesTaille')">Bottes Taille</span>
+          </dt>
+          <dd>
+            <span v-text="$t('lbstrawmapApp.TaillesBottes.' + batiments.bottesTaille)">{{ batiments.bottesTaille }}</span>
           </dd>
           <dt>
             <span v-text="$t('lbstrawmapApp.batiments.bottesDensite')">Bottes Densite</span>
@@ -151,22 +109,52 @@
             <span>{{ batiments.bottesDensite }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.distanceAppro')">Distance Appro</span>
-          </dt>
-          <dd>
-            <span>{{ batiments.distanceAppro }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('lbstrawmapApp.batiments.bottesCereale')">Bottes Cereale</span>
           </dt>
           <dd>
             <span v-text="$t('lbstrawmapApp.Cereale.' + batiments.bottesCereale)">{{ batiments.bottesCereale }}</span>
           </dd>
           <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.distanceAppro')">Distance Appro</span>
+          </dt>
+          <dd>
+            <span>{{ batiments.distanceAppro }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.autoconstruction')">Autoconstruction</span>
+          </dt>
+          <dd>
+            <span v-text="$t('lbstrawmapApp.YesNoPartial.' + batiments.autoconstruction)">{{ batiments.autoconstruction }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.participatif')">Participatif</span>
+          </dt>
+          <dd>
+            <span v-text="$t('lbstrawmapApp.YesNoPartial.' + batiments.participatif)">{{ batiments.participatif }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.integBaie')">Integ Baie</span>
+          </dt>
+          <dd>
+            <span v-text="$t('lbstrawmapApp.IntegBaie.' + batiments.integBaie)">{{ batiments.integBaie }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('lbstrawmapApp.batiments.structSuppl')">Struct Suppl</span>
           </dt>
           <dd>
             <span>{{ batiments.structSuppl }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.noteCalcul')">Note Calcul</span>
+          </dt>
+          <dd>
+            <span>{{ batiments.noteCalcul }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.materiauSb')">Materiau Sb</span>
+          </dt>
+          <dd>
+            <span v-text="$t('lbstrawmapApp.MateriauSb.' + batiments.materiauSb)">{{ batiments.materiauSb }}</span>
           </dd>
           <dt>
             <span v-text="$t('lbstrawmapApp.batiments.revetInt')">Revet Int</span>
@@ -181,34 +169,46 @@
             <span v-text="$t('lbstrawmapApp.RevetExt.' + batiments.revetExt)">{{ batiments.revetExt }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.techniqueSecondaire')">Technique Secondaire</span>
+            <span v-text="$t('lbstrawmapApp.batiments.concepteur')">Concepteur</span>
           </dt>
           <dd>
-            <span>{{ batiments.techniqueSecondaire }}</span>
+            <span>{{ batiments.concepteur }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.codePostal')">Code Postal</span>
+            <span v-text="$t('lbstrawmapApp.batiments.realisateur')">Realisateur</span>
           </dt>
           <dd>
-            <span>{{ batiments.codePostal }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.integBaie')">Integ Baie</span>
-          </dt>
-          <dd>
-            <span v-text="$t('lbstrawmapApp.IntegBaie.' + batiments.integBaie)">{{ batiments.integBaie }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('lbstrawmapApp.batiments.materiauSb')">Materiau Sb</span>
-          </dt>
-          <dd>
-            <span v-text="$t('lbstrawmapApp.MateriauSb.' + batiments.materiauSb)">{{ batiments.materiauSb }}</span>
+            <span>{{ batiments.realisateur }}</span>
           </dd>
           <dt>
             <span v-text="$t('lbstrawmapApp.batiments.description')">Description</span>
           </dt>
           <dd>
             <span>{{ batiments.description }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.contactNom')">Contact Nom</span>
+          </dt>
+          <dd>
+            <span>{{ batiments.contactNom }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.contactMail')">Contact Mail</span>
+          </dt>
+          <dd>
+            <span>{{ batiments.contactMail }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.contactPhone')">Contact Phone</span>
+          </dt>
+          <dd>
+            <span>{{ batiments.contactPhone }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.codePostal')">Code Postal</span>
+          </dt>
+          <dd>
+            <span>{{ batiments.codePostal }}</span>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

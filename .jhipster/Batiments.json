@@ -18,148 +18,260 @@
     {
       "fieldName": "nom",
       "fieldType": "String",
+      "javadoc": "Nom du bâtiment",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "40"
     },
     {
-      "fieldName": "contactNom",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "contactMail",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "contactPhone",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "constructionDebut",
-      "fieldType": "LocalDate"
-    },
-    {
-      "fieldName": "constructionFin",
-      "fieldType": "LocalDate"
-    },
-    {
-      "fieldName": "surface",
-      "fieldType": "Integer"
-    },
-    {
-      "fieldName": "cout",
-      "fieldType": "Integer"
-    },
-    {
-      "fieldName": "bottesTaille",
-      "fieldType": "TaillesBottes",
-      "fieldValues": "T_80_X_120_CM,T_50_X_80_CM,T_37_X_47_CM,T_26_X_45_CM,AUTRE"
-    },
-    {
-      "fieldName": "autoconstruction",
-      "fieldType": "YesNoPartial",
-      "fieldValues": "OUI,NON,PARTIEL"
-    },
-    {
-      "fieldName": "concepteur",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "128"
-    },
-    {
-      "fieldName": "realisateur",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "512"
-    },
-    {
-      "fieldName": "participatif",
-      "fieldType": "YesNoPartial",
-      "fieldValues": "OUI,NON,PARTIEL"
+      "fieldName": "techniqueSecondaire",
+      "fieldType": "Boolean",
+      "javadoc": "Paille porteuse en technique secondaire"
     },
     {
       "fieldName": "usage",
       "fieldType": "UsageBatiment",
-      "fieldValues": "LOGEMENT_COLLECTIF,LOGEMENT_INDIVIDUEL,LOGEMENT_INDIVIDUEL_GROUPE,BATIMENT_ADMINISTRATIF,BATIMENT_COMMERCIAL,BATIMENT_INDUSTRIEL,BATIMENT_DE_LOISIRS,BATIMENT_DE_SANTE,BATIMENT_DE_RETRAITE,BATIMENT_EDUCATIF,BATIMENT_SOCIO_CULTUREl,BATIMENT_AGRICOLE,OUVRAGE_EXCEPTIONNEL,AUTRE"
+      "javadoc": "Usage",
+      "fieldValues": "LOGEMENT_COLLECTIF,LOGEMENT_INDIVIDUEL,LOGEMENT_INDIVIDUEL_GROUPE,BATIMENT_ADMINISTRATIF,BATIMENT_COMMERCIAL,BATIMENT_INDUSTRIEL,BATIMENT_DE_LOISIRS,BATIMENT_DE_SANTE,BATIMENT_DE_RETRAITE,BATIMENT_EDUCATIF,BATIMENT_SOCIO_CULTUREl,BATIMENT_AGRICOLE,OUVRAGE_EXCEPTIONNEL,AUTRE",
+      "fieldValuesJavadocs": {
+        "LOGEMENT_COLLECTIF": "\n      * Logement collectif\n",
+        "LOGEMENT_INDIVIDUEL": "\n      * Logement individuel\n",
+        "LOGEMENT_INDIVIDUEL_GROUPE": "\n      * Logement individuel groupé\n",
+        "BATIMENT_ADMINISTRATIF": "\n      * Bâtiment administratif\n",
+        "BATIMENT_COMMERCIAL": "\n      * Bâtiment commercial\n",
+        "BATIMENT_INDUSTRIEL": "\n      * Bâtiment industriel\n",
+        "BATIMENT_DE_LOISIRS": "\n      * Bâtiment de loisirs\n",
+        "BATIMENT_DE_SANTE": "\n      * Bâtiment de santé\n",
+        "BATIMENT_DE_RETRAITE": "\n      * Bâtiment de retraite\n",
+        "BATIMENT_EDUCATIF": "\n      * Bâtiment éducatif\n",
+        "BATIMENT_SOCIO_CULTUREl": "\n      * Bâtiment socio-culturel\n",
+        "BATIMENT_AGRICOLE": "\n      * Bâtiment agricole\n",
+        "OUVRAGE_EXCEPTIONNEL": "\n      * Ouvrage exceptionnel\n",
+        "AUTRE": "\n      * Autre\n"
+      }
     },
     {
-      "fieldName": "noteCalcul",
-      "fieldType": "Boolean"
+      "fieldName": "cout",
+      "fieldType": "Integer",
+      "javadoc": "Coût [€]"
     },
     {
-      "fieldName": "travauxNeuf",
-      "fieldType": "Boolean"
-    },
-    {
-      "fieldName": "travauxExtension",
-      "fieldType": "Boolean"
-    },
-    {
-      "fieldName": "travauxRenov",
-      "fieldType": "Boolean"
-    },
-    {
-      "fieldName": "travauxIte",
-      "fieldType": "Boolean"
-    },
-    {
-      "fieldName": "travauxIti",
-      "fieldType": "Boolean"
+      "fieldName": "surface",
+      "fieldType": "Integer",
+      "javadoc": "Surface [m²]"
     },
     {
       "fieldName": "niveaux",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "javadoc": "Niveaux"
+    },
+    {
+      "fieldName": "travauxNeuf",
+      "fieldType": "Boolean",
+      "javadoc": "Neuf"
+    },
+    {
+      "fieldName": "travauxExtension",
+      "fieldType": "Boolean",
+      "javadoc": "Extension"
+    },
+    {
+      "fieldName": "travauxRenov",
+      "fieldType": "Boolean",
+      "javadoc": "Rénovation"
+    },
+    {
+      "fieldName": "travauxIte",
+      "fieldType": "Boolean",
+      "javadoc": "ITE"
+    },
+    {
+      "fieldName": "travauxIti",
+      "fieldType": "Boolean",
+      "javadoc": "ITI"
+    },
+    {
+      "fieldName": "constructionDebut",
+      "fieldType": "LocalDate",
+      "javadoc": "Début de construction"
+    },
+    {
+      "fieldName": "constructionFin",
+      "fieldType": "LocalDate",
+      "javadoc": "Achèvement"
+    },
+    {
+      "fieldName": "bottesTaille",
+      "fieldType": "TaillesBottes",
+      "javadoc": "Taille",
+      "fieldValues": "T_80_X_120_CM,T_50_X_80_CM,T_37_X_47_CM,T_26_X_45_CM,AUTRE",
+      "fieldTypeJavadoc": "Taille des bottes",
+      "fieldValuesJavadocs": {
+        "T_80_X_120_CM": "\n      * 80 x 120 cm\n",
+        "T_50_X_80_CM": "\n      * 50 x 80 cm\n",
+        "T_37_X_47_CM": "\n      * 37 x 47 cm\n",
+        "T_26_X_45_CM": "\n      * 26 x 45 cm\n",
+        "AUTRE": "\n      * Autre\n"
+      }
     },
     {
       "fieldName": "bottesDensite",
-      "fieldType": "Integer"
-    },
-    {
-      "fieldName": "distanceAppro",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "javadoc": "Densité [kg/m³]"
     },
     {
       "fieldName": "bottesCereale",
       "fieldType": "Cereale",
-      "fieldValues": "BLE,ORGE,AVOINE,SEIGLE,TRITICALE,RIZ,AUTRE"
+      "javadoc": "Céréale",
+      "fieldValues": "BLE,ORGE,AVOINE,SEIGLE,TRITICALE,RIZ,AUTRE",
+      "fieldTypeJavadoc": "Céréale",
+      "fieldValuesJavadocs": {
+        "BLE": "\n      * Blé\n",
+        "ORGE": "\n      * Orge\n",
+        "AVOINE": "\n      * Avoine\n",
+        "SEIGLE": "\n      * Seigle\n",
+        "TRITICALE": "\n      * Triticale\n",
+        "RIZ": "\n      * Riz\n",
+        "AUTRE": "\n      * Autre\n"
+      }
     },
     {
-      "fieldName": "structSuppl",
-      "fieldType": "Boolean"
+      "fieldName": "distanceAppro",
+      "fieldType": "Integer",
+      "javadoc": "Distance d'appro [km]"
     },
     {
-      "fieldName": "revetInt",
-      "fieldType": "RevetInt",
-      "fieldValues": "PLAQUE_DE_PLATRE,LAMBRIS,ENDUIT_TERRE,ENDUIT_CHAUX,ENDUIT_TERRE_ET_CHAUX,ENDUIT_PLATRE,AUTRE"
+      "fieldName": "autoconstruction",
+      "fieldType": "YesNoPartial",
+      "javadoc": "Autoconstruction",
+      "fieldValues": "OUI,NON,PARTIEL",
+      "fieldValuesJavadocs": {
+        "OUI": "\n      * Oui\n",
+        "NON": "\n      * Non\n",
+        "PARTIEL": "\n      * Partiel\n"
+      }
     },
     {
-      "fieldName": "revetExt",
-      "fieldType": "RevetExt",
-      "fieldValues": "BARDAGE_VENTILE,ENDUIT_TERRE,ENDUIT_CHAUX,ENDUIT_TERRE_ET_CHAUX,ENDUIT_PLATRE,AUTRE"
-    },
-    {
-      "fieldName": "techniqueSecondaire",
-      "fieldType": "Boolean"
-    },
-    {
-      "fieldName": "codePostal",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "6"
+      "fieldName": "participatif",
+      "fieldType": "YesNoPartial",
+      "javadoc": "Participatif",
+      "fieldValues": "OUI,NON,PARTIEL",
+      "fieldValuesJavadocs": {
+        "OUI": "\n      * Oui\n",
+        "NON": "\n      * Non\n",
+        "PARTIEL": "\n      * Partiel\n"
+      }
     },
     {
       "fieldName": "integBaie",
       "fieldType": "IntegBaie",
-      "fieldValues": "PRE_CADRE_FLOTTANT,COULISSANT,BLOQUEURS,AUTRE"
+      "javadoc": "Intégration des baies",
+      "fieldValues": "PRE_CADRE_FLOTTANT,COULISSANT,BLOQUEURS,AUTRE",
+      "fieldTypeJavadoc": "Intégration des baies",
+      "fieldValuesJavadocs": {
+        "PRE_CADRE_FLOTTANT": "\n      * Pré-cadre flottant\n",
+        "COULISSANT": "\n      * Coulissant\n",
+        "BLOQUEURS": "\n      * Bloqueurs\n",
+        "AUTRE": "\n      * Autre\n"
+      }
+    },
+    {
+      "fieldName": "structSuppl",
+      "fieldType": "Boolean",
+      "javadoc": "Structure supplémentaire"
+    },
+    {
+      "fieldName": "noteCalcul",
+      "fieldType": "Boolean",
+      "javadoc": "Note de calcul"
     },
     {
       "fieldName": "materiauSb",
       "fieldType": "MateriauSb",
-      "fieldValues": "BETON_ARME,PARPAING_DE_CIMENT,BRIQUE_DE_TERRE_CUITE,BRIQUE_DE_PIERRE_PONCE,BETON_LEGER_ISOLANT,PIERRE,AUTRE"
+      "javadoc": "Matériau de soubassement",
+      "fieldValues": "BETON_ARME,PARPAING_DE_CIMENT,BRIQUE_DE_TERRE_CUITE,BRIQUE_DE_PIERRE_PONCE,BETON_LEGER_ISOLANT,PIERRE,AUTRE",
+      "fieldTypeJavadoc": "Matériau de soubassement",
+      "fieldValuesJavadocs": {
+        "BETON_ARME": "\n      * Béton armé\n",
+        "PARPAING_DE_CIMENT": "\n      * Parpaing de ciment\n",
+        "BRIQUE_DE_TERRE_CUITE": "\n      * Brique de terre cuite\n",
+        "BRIQUE_DE_PIERRE_PONCE": "\n      * Brique de pierre ponce\n",
+        "BETON_LEGER_ISOLANT": "\n      * Béton léger isolant\n",
+        "PIERRE": "\n      * Pierre\n",
+        "AUTRE": "\n      * Autre\n"
+      }
+    },
+    {
+      "fieldName": "revetInt",
+      "fieldType": "RevetInt",
+      "javadoc": "Revêtement intérieur",
+      "fieldValues": "PLAQUE_DE_PLATRE,LAMBRIS,ENDUIT_TERRE,ENDUIT_CHAUX,ENDUIT_TERRE_ET_CHAUX,ENDUIT_PLATRE,AUTRE",
+      "fieldTypeJavadoc": "Revêtement intérieur",
+      "fieldValuesJavadocs": {
+        "PLAQUE_DE_PLATRE": "\n      * Plaque de plâtre\n",
+        "LAMBRIS": "\n      * Lambris\n",
+        "ENDUIT_TERRE": "\n      * Enduit terre\n",
+        "ENDUIT_CHAUX": "\n      * Enduit chaux\n",
+        "ENDUIT_TERRE_ET_CHAUX": "\n      * Enduit terre et chaux\n",
+        "ENDUIT_PLATRE": "\n      * Enduit plâtre\n",
+        "AUTRE": "\n      * Autre\n"
+      }
+    },
+    {
+      "fieldName": "revetExt",
+      "fieldType": "RevetExt",
+      "javadoc": "Revêtement extérieur",
+      "fieldValues": "BARDAGE_VENTILE,ENDUIT_TERRE,ENDUIT_CHAUX,ENDUIT_TERRE_ET_CHAUX,ENDUIT_PLATRE,AUTRE",
+      "fieldTypeJavadoc": "Revêtement extérieur",
+      "fieldValuesJavadocs": {
+        "BARDAGE_VENTILE": "\n      * Bardage ventilé\n",
+        "ENDUIT_TERRE": "\n      * Enduit terre\n",
+        "ENDUIT_CHAUX": "\n      * Enduit chaux\n",
+        "ENDUIT_TERRE_ET_CHAUX": "\n      * Enduit terre et chaux\n",
+        "ENDUIT_PLATRE": "\n      * Enduit plâtre\n",
+        "AUTRE": "\n      * Autre\n"
+      }
+    },
+    {
+      "fieldName": "concepteur",
+      "fieldType": "String",
+      "javadoc": "Concepteurs / conceptrices",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "realisateur",
+      "fieldType": "String",
+      "javadoc": "Réalisateurs / réalisatrices",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
     },
     {
       "fieldName": "description",
       "fieldType": "byte[]",
+      "javadoc": "Description",
       "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "contactNom",
+      "fieldType": "String",
+      "javadoc": "Nom"
+    },
+    {
+      "fieldName": "contactMail",
+      "fieldType": "String",
+      "javadoc": "Mail"
+    },
+    {
+      "fieldName": "contactPhone",
+      "fieldType": "String",
+      "javadoc": "Téléphone"
+    },
+    {
+      "fieldName": "codePostal",
+      "fieldType": "String",
+      "javadoc": "Code postal",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "6"
     }
   ],
   "relationships": [],

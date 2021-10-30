@@ -8,7 +8,9 @@ import java.util.Optional;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.lbstraw.map.domain.Batiments;
+// START added by JulioJu
 import org.lbstraw.map.domain.BatimentsLazyView;
+// END added by JulioJu
 import org.lbstraw.map.repository.BatimentsRepository;
 import org.lbstraw.map.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
@@ -135,47 +137,20 @@ public class BatimentsResource {
                 if (batiments.getNom() != null) {
                     existingBatiments.setNom(batiments.getNom());
                 }
-                if (batiments.getContactNom() != null) {
-                    existingBatiments.setContactNom(batiments.getContactNom());
-                }
-                if (batiments.getContactMail() != null) {
-                    existingBatiments.setContactMail(batiments.getContactMail());
-                }
-                if (batiments.getContactPhone() != null) {
-                    existingBatiments.setContactPhone(batiments.getContactPhone());
-                }
-                if (batiments.getConstructionDebut() != null) {
-                    existingBatiments.setConstructionDebut(batiments.getConstructionDebut());
-                }
-                if (batiments.getConstructionFin() != null) {
-                    existingBatiments.setConstructionFin(batiments.getConstructionFin());
-                }
-                if (batiments.getSurface() != null) {
-                    existingBatiments.setSurface(batiments.getSurface());
-                }
-                if (batiments.getCout() != null) {
-                    existingBatiments.setCout(batiments.getCout());
-                }
-                if (batiments.getBottesTaille() != null) {
-                    existingBatiments.setBottesTaille(batiments.getBottesTaille());
-                }
-                if (batiments.getAutoconstruction() != null) {
-                    existingBatiments.setAutoconstruction(batiments.getAutoconstruction());
-                }
-                if (batiments.getConcepteur() != null) {
-                    existingBatiments.setConcepteur(batiments.getConcepteur());
-                }
-                if (batiments.getRealisateur() != null) {
-                    existingBatiments.setRealisateur(batiments.getRealisateur());
-                }
-                if (batiments.getParticipatif() != null) {
-                    existingBatiments.setParticipatif(batiments.getParticipatif());
+                if (batiments.getTechniqueSecondaire() != null) {
+                    existingBatiments.setTechniqueSecondaire(batiments.getTechniqueSecondaire());
                 }
                 if (batiments.getUsage() != null) {
                     existingBatiments.setUsage(batiments.getUsage());
                 }
-                if (batiments.getNoteCalcul() != null) {
-                    existingBatiments.setNoteCalcul(batiments.getNoteCalcul());
+                if (batiments.getCout() != null) {
+                    existingBatiments.setCout(batiments.getCout());
+                }
+                if (batiments.getSurface() != null) {
+                    existingBatiments.setSurface(batiments.getSurface());
+                }
+                if (batiments.getNiveaux() != null) {
+                    existingBatiments.setNiveaux(batiments.getNiveaux());
                 }
                 if (batiments.getTravauxNeuf() != null) {
                     existingBatiments.setTravauxNeuf(batiments.getTravauxNeuf());
@@ -192,20 +167,41 @@ public class BatimentsResource {
                 if (batiments.getTravauxIti() != null) {
                     existingBatiments.setTravauxIti(batiments.getTravauxIti());
                 }
-                if (batiments.getNiveaux() != null) {
-                    existingBatiments.setNiveaux(batiments.getNiveaux());
+                if (batiments.getConstructionDebut() != null) {
+                    existingBatiments.setConstructionDebut(batiments.getConstructionDebut());
+                }
+                if (batiments.getConstructionFin() != null) {
+                    existingBatiments.setConstructionFin(batiments.getConstructionFin());
+                }
+                if (batiments.getBottesTaille() != null) {
+                    existingBatiments.setBottesTaille(batiments.getBottesTaille());
                 }
                 if (batiments.getBottesDensite() != null) {
                     existingBatiments.setBottesDensite(batiments.getBottesDensite());
                 }
-                if (batiments.getDistanceAppro() != null) {
-                    existingBatiments.setDistanceAppro(batiments.getDistanceAppro());
-                }
                 if (batiments.getBottesCereale() != null) {
                     existingBatiments.setBottesCereale(batiments.getBottesCereale());
                 }
+                if (batiments.getDistanceAppro() != null) {
+                    existingBatiments.setDistanceAppro(batiments.getDistanceAppro());
+                }
+                if (batiments.getAutoconstruction() != null) {
+                    existingBatiments.setAutoconstruction(batiments.getAutoconstruction());
+                }
+                if (batiments.getParticipatif() != null) {
+                    existingBatiments.setParticipatif(batiments.getParticipatif());
+                }
+                if (batiments.getIntegBaie() != null) {
+                    existingBatiments.setIntegBaie(batiments.getIntegBaie());
+                }
                 if (batiments.getStructSuppl() != null) {
                     existingBatiments.setStructSuppl(batiments.getStructSuppl());
+                }
+                if (batiments.getNoteCalcul() != null) {
+                    existingBatiments.setNoteCalcul(batiments.getNoteCalcul());
+                }
+                if (batiments.getMateriauSb() != null) {
+                    existingBatiments.setMateriauSb(batiments.getMateriauSb());
                 }
                 if (batiments.getRevetInt() != null) {
                     existingBatiments.setRevetInt(batiments.getRevetInt());
@@ -213,20 +209,26 @@ public class BatimentsResource {
                 if (batiments.getRevetExt() != null) {
                     existingBatiments.setRevetExt(batiments.getRevetExt());
                 }
-                if (batiments.getTechniqueSecondaire() != null) {
-                    existingBatiments.setTechniqueSecondaire(batiments.getTechniqueSecondaire());
+                if (batiments.getConcepteur() != null) {
+                    existingBatiments.setConcepteur(batiments.getConcepteur());
                 }
-                if (batiments.getCodePostal() != null) {
-                    existingBatiments.setCodePostal(batiments.getCodePostal());
-                }
-                if (batiments.getIntegBaie() != null) {
-                    existingBatiments.setIntegBaie(batiments.getIntegBaie());
-                }
-                if (batiments.getMateriauSb() != null) {
-                    existingBatiments.setMateriauSb(batiments.getMateriauSb());
+                if (batiments.getRealisateur() != null) {
+                    existingBatiments.setRealisateur(batiments.getRealisateur());
                 }
                 if (batiments.getDescription() != null) {
                     existingBatiments.setDescription(batiments.getDescription());
+                }
+                if (batiments.getContactNom() != null) {
+                    existingBatiments.setContactNom(batiments.getContactNom());
+                }
+                if (batiments.getContactMail() != null) {
+                    existingBatiments.setContactMail(batiments.getContactMail());
+                }
+                if (batiments.getContactPhone() != null) {
+                    existingBatiments.setContactPhone(batiments.getContactPhone());
+                }
+                if (batiments.getCodePostal() != null) {
+                    existingBatiments.setCodePostal(batiments.getCodePostal());
                 }
 
                 return existingBatiments;

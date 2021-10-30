@@ -90,229 +90,18 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.contactNom')" for="batiments-contactNom"
-              >Contact Nom</label
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.techniqueSecondaire')" for="batiments-techniqueSecondaire"
+              >Technique Secondaire</label
             >
             <input
-              type="text"
-              class="form-control"
-              name="contactNom"
-              id="batiments-contactNom"
-              data-cy="contactNom"
-              :class="{ valid: !$v.batiments.contactNom.$invalid, invalid: $v.batiments.contactNom.$invalid }"
-              v-model="$v.batiments.contactNom.$model"
+              type="checkbox"
+              class="form-check"
+              name="techniqueSecondaire"
+              id="batiments-techniqueSecondaire"
+              data-cy="techniqueSecondaire"
+              :class="{ valid: !$v.batiments.techniqueSecondaire.$invalid, invalid: $v.batiments.techniqueSecondaire.$invalid }"
+              v-model="$v.batiments.techniqueSecondaire.$model"
             />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.contactMail')" for="batiments-contactMail"
-              >Contact Mail</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="contactMail"
-              id="batiments-contactMail"
-              data-cy="contactMail"
-              :class="{ valid: !$v.batiments.contactMail.$invalid, invalid: $v.batiments.contactMail.$invalid }"
-              v-model="$v.batiments.contactMail.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.contactPhone')" for="batiments-contactPhone"
-              >Contact Phone</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="contactPhone"
-              id="batiments-contactPhone"
-              data-cy="contactPhone"
-              :class="{ valid: !$v.batiments.contactPhone.$invalid, invalid: $v.batiments.contactPhone.$invalid }"
-              v-model="$v.batiments.contactPhone.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.constructionDebut')" for="batiments-constructionDebut"
-              >Construction Debut</label
-            >
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="batiments-constructionDebut"
-                  v-model="$v.batiments.constructionDebut.$model"
-                  name="constructionDebut"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="batiments-constructionDebut"
-                data-cy="constructionDebut"
-                type="text"
-                class="form-control"
-                name="constructionDebut"
-                :class="{ valid: !$v.batiments.constructionDebut.$invalid, invalid: $v.batiments.constructionDebut.$invalid }"
-                v-model="$v.batiments.constructionDebut.$model"
-              />
-            </b-input-group>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.constructionFin')" for="batiments-constructionFin"
-              >Construction Fin</label
-            >
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="batiments-constructionFin"
-                  v-model="$v.batiments.constructionFin.$model"
-                  name="constructionFin"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="batiments-constructionFin"
-                data-cy="constructionFin"
-                type="text"
-                class="form-control"
-                name="constructionFin"
-                :class="{ valid: !$v.batiments.constructionFin.$invalid, invalid: $v.batiments.constructionFin.$invalid }"
-                v-model="$v.batiments.constructionFin.$model"
-              />
-            </b-input-group>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.surface')" for="batiments-surface">Surface</label>
-            <input
-              type="number"
-              class="form-control"
-              name="surface"
-              id="batiments-surface"
-              data-cy="surface"
-              :class="{ valid: !$v.batiments.surface.$invalid, invalid: $v.batiments.surface.$invalid }"
-              v-model.number="$v.batiments.surface.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.cout')" for="batiments-cout">Cout</label>
-            <input
-              type="number"
-              class="form-control"
-              name="cout"
-              id="batiments-cout"
-              data-cy="cout"
-              :class="{ valid: !$v.batiments.cout.$invalid, invalid: $v.batiments.cout.$invalid }"
-              v-model.number="$v.batiments.cout.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.bottesTaille')" for="batiments-bottesTaille"
-              >Bottes Taille</label
-            >
-            <select
-              class="form-control"
-              name="bottesTaille"
-              :class="{ valid: !$v.batiments.bottesTaille.$invalid, invalid: $v.batiments.bottesTaille.$invalid }"
-              v-model="$v.batiments.bottesTaille.$model"
-              id="batiments-bottesTaille"
-              data-cy="bottesTaille"
-            >
-              <option value="T_80_X_120_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_80_X_120_CM')">T_80_X_120_CM</option>
-              <option value="T_50_X_80_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_50_X_80_CM')">T_50_X_80_CM</option>
-              <option value="T_37_X_47_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_37_X_47_CM')">T_37_X_47_CM</option>
-              <option value="T_26_X_45_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_26_X_45_CM')">T_26_X_45_CM</option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.TaillesBottes.AUTRE')">AUTRE</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.autoconstruction')" for="batiments-autoconstruction"
-              >Autoconstruction</label
-            >
-            <select
-              class="form-control"
-              name="autoconstruction"
-              :class="{ valid: !$v.batiments.autoconstruction.$invalid, invalid: $v.batiments.autoconstruction.$invalid }"
-              v-model="$v.batiments.autoconstruction.$model"
-              id="batiments-autoconstruction"
-              data-cy="autoconstruction"
-            >
-              <option value="OUI" v-bind:label="$t('lbstrawmapApp.YesNoPartial.OUI')">OUI</option>
-              <option value="NON" v-bind:label="$t('lbstrawmapApp.YesNoPartial.NON')">NON</option>
-              <option value="PARTIEL" v-bind:label="$t('lbstrawmapApp.YesNoPartial.PARTIEL')">PARTIEL</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.concepteur')" for="batiments-concepteur"
-              >Concepteur</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="concepteur"
-              id="batiments-concepteur"
-              data-cy="concepteur"
-              :class="{ valid: !$v.batiments.concepteur.$invalid, invalid: $v.batiments.concepteur.$invalid }"
-              v-model="$v.batiments.concepteur.$model"
-            />
-            <div v-if="$v.batiments.concepteur.$anyDirty && $v.batiments.concepteur.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.batiments.concepteur.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 128 })"
-              >
-                This field cannot be longer than 128 characters.
-              </small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.realisateur')" for="batiments-realisateur"
-              >Realisateur</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="realisateur"
-              id="batiments-realisateur"
-              data-cy="realisateur"
-              :class="{ valid: !$v.batiments.realisateur.$invalid, invalid: $v.batiments.realisateur.$invalid }"
-              v-model="$v.batiments.realisateur.$model"
-            />
-            <div v-if="$v.batiments.realisateur.$anyDirty && $v.batiments.realisateur.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.batiments.realisateur.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 512 })"
-              >
-                This field cannot be longer than 512 characters.
-              </small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.participatif')" for="batiments-participatif"
-              >Participatif</label
-            >
-            <select
-              class="form-control"
-              name="participatif"
-              :class="{ valid: !$v.batiments.participatif.$invalid, invalid: $v.batiments.participatif.$invalid }"
-              v-model="$v.batiments.participatif.$model"
-              id="batiments-participatif"
-              data-cy="participatif"
-            >
-              <option value="OUI" v-bind:label="$t('lbstrawmapApp.YesNoPartial.OUI')">OUI</option>
-              <option value="NON" v-bind:label="$t('lbstrawmapApp.YesNoPartial.NON')">NON</option>
-              <option value="PARTIEL" v-bind:label="$t('lbstrawmapApp.YesNoPartial.PARTIEL')">PARTIEL</option>
-            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.usage')" for="batiments-usage">Usage</label>
@@ -367,17 +156,39 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.noteCalcul')" for="batiments-noteCalcul"
-              >Note Calcul</label
-            >
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.cout')" for="batiments-cout">Cout</label>
             <input
-              type="checkbox"
-              class="form-check"
-              name="noteCalcul"
-              id="batiments-noteCalcul"
-              data-cy="noteCalcul"
-              :class="{ valid: !$v.batiments.noteCalcul.$invalid, invalid: $v.batiments.noteCalcul.$invalid }"
-              v-model="$v.batiments.noteCalcul.$model"
+              type="number"
+              class="form-control"
+              name="cout"
+              id="batiments-cout"
+              data-cy="cout"
+              :class="{ valid: !$v.batiments.cout.$invalid, invalid: $v.batiments.cout.$invalid }"
+              v-model.number="$v.batiments.cout.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.surface')" for="batiments-surface">Surface</label>
+            <input
+              type="number"
+              class="form-control"
+              name="surface"
+              id="batiments-surface"
+              data-cy="surface"
+              :class="{ valid: !$v.batiments.surface.$invalid, invalid: $v.batiments.surface.$invalid }"
+              v-model.number="$v.batiments.surface.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.niveaux')" for="batiments-niveaux">Niveaux</label>
+            <input
+              type="number"
+              class="form-control"
+              name="niveaux"
+              id="batiments-niveaux"
+              data-cy="niveaux"
+              :class="{ valid: !$v.batiments.niveaux.$invalid, invalid: $v.batiments.niveaux.$invalid }"
+              v-model.number="$v.batiments.niveaux.$model"
             />
           </div>
           <div class="form-group">
@@ -451,16 +262,83 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.niveaux')" for="batiments-niveaux">Niveaux</label>
-            <input
-              type="number"
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.constructionDebut')" for="batiments-constructionDebut"
+              >Construction Debut</label
+            >
+            <b-input-group class="mb-3">
+              <b-input-group-prepend>
+                <b-form-datepicker
+                  aria-controls="batiments-constructionDebut"
+                  v-model="$v.batiments.constructionDebut.$model"
+                  name="constructionDebut"
+                  class="form-control"
+                  :locale="currentLanguage"
+                  button-only
+                  today-button
+                  reset-button
+                  close-button
+                >
+                </b-form-datepicker>
+              </b-input-group-prepend>
+              <b-form-input
+                id="batiments-constructionDebut"
+                data-cy="constructionDebut"
+                type="text"
+                class="form-control"
+                name="constructionDebut"
+                :class="{ valid: !$v.batiments.constructionDebut.$invalid, invalid: $v.batiments.constructionDebut.$invalid }"
+                v-model="$v.batiments.constructionDebut.$model"
+              />
+            </b-input-group>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.constructionFin')" for="batiments-constructionFin"
+              >Construction Fin</label
+            >
+            <b-input-group class="mb-3">
+              <b-input-group-prepend>
+                <b-form-datepicker
+                  aria-controls="batiments-constructionFin"
+                  v-model="$v.batiments.constructionFin.$model"
+                  name="constructionFin"
+                  class="form-control"
+                  :locale="currentLanguage"
+                  button-only
+                  today-button
+                  reset-button
+                  close-button
+                >
+                </b-form-datepicker>
+              </b-input-group-prepend>
+              <b-form-input
+                id="batiments-constructionFin"
+                data-cy="constructionFin"
+                type="text"
+                class="form-control"
+                name="constructionFin"
+                :class="{ valid: !$v.batiments.constructionFin.$invalid, invalid: $v.batiments.constructionFin.$invalid }"
+                v-model="$v.batiments.constructionFin.$model"
+              />
+            </b-input-group>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.bottesTaille')" for="batiments-bottesTaille"
+              >Bottes Taille</label
+            >
+            <select
               class="form-control"
-              name="niveaux"
-              id="batiments-niveaux"
-              data-cy="niveaux"
-              :class="{ valid: !$v.batiments.niveaux.$invalid, invalid: $v.batiments.niveaux.$invalid }"
-              v-model.number="$v.batiments.niveaux.$model"
-            />
+              name="bottesTaille"
+              :class="{ valid: !$v.batiments.bottesTaille.$invalid, invalid: $v.batiments.bottesTaille.$invalid }"
+              v-model="$v.batiments.bottesTaille.$model"
+              id="batiments-bottesTaille"
+              data-cy="bottesTaille"
+            >
+              <option value="T_80_X_120_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_80_X_120_CM')">T_80_X_120_CM</option>
+              <option value="T_50_X_80_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_50_X_80_CM')">T_50_X_80_CM</option>
+              <option value="T_37_X_47_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_37_X_47_CM')">T_37_X_47_CM</option>
+              <option value="T_26_X_45_CM" v-bind:label="$t('lbstrawmapApp.TaillesBottes.T_26_X_45_CM')">T_26_X_45_CM</option>
+              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.TaillesBottes.AUTRE')">AUTRE</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.bottesDensite')" for="batiments-bottesDensite"
@@ -474,20 +352,6 @@
               data-cy="bottesDensite"
               :class="{ valid: !$v.batiments.bottesDensite.$invalid, invalid: $v.batiments.bottesDensite.$invalid }"
               v-model.number="$v.batiments.bottesDensite.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.distanceAppro')" for="batiments-distanceAppro"
-              >Distance Appro</label
-            >
-            <input
-              type="number"
-              class="form-control"
-              name="distanceAppro"
-              id="batiments-distanceAppro"
-              data-cy="distanceAppro"
-              :class="{ valid: !$v.batiments.distanceAppro.$invalid, invalid: $v.batiments.distanceAppro.$invalid }"
-              v-model.number="$v.batiments.distanceAppro.$model"
             />
           </div>
           <div class="form-group">
@@ -512,6 +376,70 @@
             </select>
           </div>
           <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.distanceAppro')" for="batiments-distanceAppro"
+              >Distance Appro</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              name="distanceAppro"
+              id="batiments-distanceAppro"
+              data-cy="distanceAppro"
+              :class="{ valid: !$v.batiments.distanceAppro.$invalid, invalid: $v.batiments.distanceAppro.$invalid }"
+              v-model.number="$v.batiments.distanceAppro.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.autoconstruction')" for="batiments-autoconstruction"
+              >Autoconstruction</label
+            >
+            <select
+              class="form-control"
+              name="autoconstruction"
+              :class="{ valid: !$v.batiments.autoconstruction.$invalid, invalid: $v.batiments.autoconstruction.$invalid }"
+              v-model="$v.batiments.autoconstruction.$model"
+              id="batiments-autoconstruction"
+              data-cy="autoconstruction"
+            >
+              <option value="OUI" v-bind:label="$t('lbstrawmapApp.YesNoPartial.OUI')">OUI</option>
+              <option value="NON" v-bind:label="$t('lbstrawmapApp.YesNoPartial.NON')">NON</option>
+              <option value="PARTIEL" v-bind:label="$t('lbstrawmapApp.YesNoPartial.PARTIEL')">PARTIEL</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.participatif')" for="batiments-participatif"
+              >Participatif</label
+            >
+            <select
+              class="form-control"
+              name="participatif"
+              :class="{ valid: !$v.batiments.participatif.$invalid, invalid: $v.batiments.participatif.$invalid }"
+              v-model="$v.batiments.participatif.$model"
+              id="batiments-participatif"
+              data-cy="participatif"
+            >
+              <option value="OUI" v-bind:label="$t('lbstrawmapApp.YesNoPartial.OUI')">OUI</option>
+              <option value="NON" v-bind:label="$t('lbstrawmapApp.YesNoPartial.NON')">NON</option>
+              <option value="PARTIEL" v-bind:label="$t('lbstrawmapApp.YesNoPartial.PARTIEL')">PARTIEL</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.integBaie')" for="batiments-integBaie">Integ Baie</label>
+            <select
+              class="form-control"
+              name="integBaie"
+              :class="{ valid: !$v.batiments.integBaie.$invalid, invalid: $v.batiments.integBaie.$invalid }"
+              v-model="$v.batiments.integBaie.$model"
+              id="batiments-integBaie"
+              data-cy="integBaie"
+            >
+              <option value="PRE_CADRE_FLOTTANT" v-bind:label="$t('lbstrawmapApp.IntegBaie.PRE_CADRE_FLOTTANT')">PRE_CADRE_FLOTTANT</option>
+              <option value="COULISSANT" v-bind:label="$t('lbstrawmapApp.IntegBaie.COULISSANT')">COULISSANT</option>
+              <option value="BLOQUEURS" v-bind:label="$t('lbstrawmapApp.IntegBaie.BLOQUEURS')">BLOQUEURS</option>
+              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.IntegBaie.AUTRE')">AUTRE</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.structSuppl')" for="batiments-structSuppl"
               >Struct Suppl</label
             >
@@ -524,6 +452,49 @@
               :class="{ valid: !$v.batiments.structSuppl.$invalid, invalid: $v.batiments.structSuppl.$invalid }"
               v-model="$v.batiments.structSuppl.$model"
             />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.noteCalcul')" for="batiments-noteCalcul"
+              >Note Calcul</label
+            >
+            <input
+              type="checkbox"
+              class="form-check"
+              name="noteCalcul"
+              id="batiments-noteCalcul"
+              data-cy="noteCalcul"
+              :class="{ valid: !$v.batiments.noteCalcul.$invalid, invalid: $v.batiments.noteCalcul.$invalid }"
+              v-model="$v.batiments.noteCalcul.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.materiauSb')" for="batiments-materiauSb"
+              >Materiau Sb</label
+            >
+            <select
+              class="form-control"
+              name="materiauSb"
+              :class="{ valid: !$v.batiments.materiauSb.$invalid, invalid: $v.batiments.materiauSb.$invalid }"
+              v-model="$v.batiments.materiauSb.$model"
+              id="batiments-materiauSb"
+              data-cy="materiauSb"
+            >
+              <option value="BETON_ARME" v-bind:label="$t('lbstrawmapApp.MateriauSb.BETON_ARME')">BETON_ARME</option>
+              <option value="PARPAING_DE_CIMENT" v-bind:label="$t('lbstrawmapApp.MateriauSb.PARPAING_DE_CIMENT')">
+                PARPAING_DE_CIMENT
+              </option>
+              <option value="BRIQUE_DE_TERRE_CUITE" v-bind:label="$t('lbstrawmapApp.MateriauSb.BRIQUE_DE_TERRE_CUITE')">
+                BRIQUE_DE_TERRE_CUITE
+              </option>
+              <option value="BRIQUE_DE_PIERRE_PONCE" v-bind:label="$t('lbstrawmapApp.MateriauSb.BRIQUE_DE_PIERRE_PONCE')">
+                BRIQUE_DE_PIERRE_PONCE
+              </option>
+              <option value="BETON_LEGER_ISOLANT" v-bind:label="$t('lbstrawmapApp.MateriauSb.BETON_LEGER_ISOLANT')">
+                BETON_LEGER_ISOLANT
+              </option>
+              <option value="PIERRE" v-bind:label="$t('lbstrawmapApp.MateriauSb.PIERRE')">PIERRE</option>
+              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.MateriauSb.AUTRE')">AUTRE</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.revetInt')" for="batiments-revetInt">Revet Int</label>
@@ -567,17 +538,104 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.techniqueSecondaire')" for="batiments-techniqueSecondaire"
-              >Technique Secondaire</label
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.concepteur')" for="batiments-concepteur"
+              >Concepteur</label
             >
             <input
-              type="checkbox"
-              class="form-check"
-              name="techniqueSecondaire"
-              id="batiments-techniqueSecondaire"
-              data-cy="techniqueSecondaire"
-              :class="{ valid: !$v.batiments.techniqueSecondaire.$invalid, invalid: $v.batiments.techniqueSecondaire.$invalid }"
-              v-model="$v.batiments.techniqueSecondaire.$model"
+              type="text"
+              class="form-control"
+              name="concepteur"
+              id="batiments-concepteur"
+              data-cy="concepteur"
+              :class="{ valid: !$v.batiments.concepteur.$invalid, invalid: $v.batiments.concepteur.$invalid }"
+              v-model="$v.batiments.concepteur.$model"
+            />
+            <div v-if="$v.batiments.concepteur.$anyDirty && $v.batiments.concepteur.$invalid">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.batiments.concepteur.maxLength"
+                v-text="$t('entity.validation.maxlength', { max: 512 })"
+              >
+                This field cannot be longer than 512 characters.
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.realisateur')" for="batiments-realisateur"
+              >Realisateur</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="realisateur"
+              id="batiments-realisateur"
+              data-cy="realisateur"
+              :class="{ valid: !$v.batiments.realisateur.$invalid, invalid: $v.batiments.realisateur.$invalid }"
+              v-model="$v.batiments.realisateur.$model"
+            />
+            <div v-if="$v.batiments.realisateur.$anyDirty && $v.batiments.realisateur.$invalid">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.batiments.realisateur.maxLength"
+                v-text="$t('entity.validation.maxlength', { max: 512 })"
+              >
+                This field cannot be longer than 512 characters.
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.description')" for="batiments-description"
+              >Description</label
+            >
+            <textarea
+              class="form-control"
+              name="description"
+              id="batiments-description"
+              data-cy="description"
+              :class="{ valid: !$v.batiments.description.$invalid, invalid: $v.batiments.description.$invalid }"
+              v-model="$v.batiments.description.$model"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.contactNom')" for="batiments-contactNom"
+              >Contact Nom</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="contactNom"
+              id="batiments-contactNom"
+              data-cy="contactNom"
+              :class="{ valid: !$v.batiments.contactNom.$invalid, invalid: $v.batiments.contactNom.$invalid }"
+              v-model="$v.batiments.contactNom.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.contactMail')" for="batiments-contactMail"
+              >Contact Mail</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="contactMail"
+              id="batiments-contactMail"
+              data-cy="contactMail"
+              :class="{ valid: !$v.batiments.contactMail.$invalid, invalid: $v.batiments.contactMail.$invalid }"
+              v-model="$v.batiments.contactMail.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.contactPhone')" for="batiments-contactPhone"
+              >Contact Phone</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="contactPhone"
+              id="batiments-contactPhone"
+              data-cy="contactPhone"
+              :class="{ valid: !$v.batiments.contactPhone.$invalid, invalid: $v.batiments.contactPhone.$invalid }"
+              v-model="$v.batiments.contactPhone.$model"
             />
           </div>
           <div class="form-group">
@@ -602,64 +660,6 @@
                 This field cannot be longer than 6 characters.
               </small>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.integBaie')" for="batiments-integBaie">Integ Baie</label>
-            <select
-              class="form-control"
-              name="integBaie"
-              :class="{ valid: !$v.batiments.integBaie.$invalid, invalid: $v.batiments.integBaie.$invalid }"
-              v-model="$v.batiments.integBaie.$model"
-              id="batiments-integBaie"
-              data-cy="integBaie"
-            >
-              <option value="PRE_CADRE_FLOTTANT" v-bind:label="$t('lbstrawmapApp.IntegBaie.PRE_CADRE_FLOTTANT')">PRE_CADRE_FLOTTANT</option>
-              <option value="COULISSANT" v-bind:label="$t('lbstrawmapApp.IntegBaie.COULISSANT')">COULISSANT</option>
-              <option value="BLOQUEURS" v-bind:label="$t('lbstrawmapApp.IntegBaie.BLOQUEURS')">BLOQUEURS</option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.IntegBaie.AUTRE')">AUTRE</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.materiauSb')" for="batiments-materiauSb"
-              >Materiau Sb</label
-            >
-            <select
-              class="form-control"
-              name="materiauSb"
-              :class="{ valid: !$v.batiments.materiauSb.$invalid, invalid: $v.batiments.materiauSb.$invalid }"
-              v-model="$v.batiments.materiauSb.$model"
-              id="batiments-materiauSb"
-              data-cy="materiauSb"
-            >
-              <option value="BETON_ARME" v-bind:label="$t('lbstrawmapApp.MateriauSb.BETON_ARME')">BETON_ARME</option>
-              <option value="PARPAING_DE_CIMENT" v-bind:label="$t('lbstrawmapApp.MateriauSb.PARPAING_DE_CIMENT')">
-                PARPAING_DE_CIMENT
-              </option>
-              <option value="BRIQUE_DE_TERRE_CUITE" v-bind:label="$t('lbstrawmapApp.MateriauSb.BRIQUE_DE_TERRE_CUITE')">
-                BRIQUE_DE_TERRE_CUITE
-              </option>
-              <option value="BRIQUE_DE_PIERRE_PONCE" v-bind:label="$t('lbstrawmapApp.MateriauSb.BRIQUE_DE_PIERRE_PONCE')">
-                BRIQUE_DE_PIERRE_PONCE
-              </option>
-              <option value="BETON_LEGER_ISOLANT" v-bind:label="$t('lbstrawmapApp.MateriauSb.BETON_LEGER_ISOLANT')">
-                BETON_LEGER_ISOLANT
-              </option>
-              <option value="PIERRE" v-bind:label="$t('lbstrawmapApp.MateriauSb.PIERRE')">PIERRE</option>
-              <option value="AUTRE" v-bind:label="$t('lbstrawmapApp.MateriauSb.AUTRE')">AUTRE</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.description')" for="batiments-description"
-              >Description</label
-            >
-            <textarea
-              class="form-control"
-              name="description"
-              id="batiments-description"
-              data-cy="description"
-              :class="{ valid: !$v.batiments.description.$invalid, invalid: $v.batiments.description.$invalid }"
-              v-model="$v.batiments.description.$model"
-            ></textarea>
           </div>
         </div>
         <div>

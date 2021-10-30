@@ -50,47 +50,20 @@ class BatimentsResourceIT {
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CONTACT_NOM = "AAAAAAAAAA";
-    private static final String UPDATED_CONTACT_NOM = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CONTACT_MAIL = "AAAAAAAAAA";
-    private static final String UPDATED_CONTACT_MAIL = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CONTACT_PHONE = "AAAAAAAAAA";
-    private static final String UPDATED_CONTACT_PHONE = "BBBBBBBBBB";
-
-    private static final LocalDate DEFAULT_CONSTRUCTION_DEBUT = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CONSTRUCTION_DEBUT = LocalDate.now(ZoneId.systemDefault());
-
-    private static final LocalDate DEFAULT_CONSTRUCTION_FIN = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CONSTRUCTION_FIN = LocalDate.now(ZoneId.systemDefault());
-
-    private static final Integer DEFAULT_SURFACE = 1;
-    private static final Integer UPDATED_SURFACE = 2;
-
-    private static final Integer DEFAULT_COUT = 1;
-    private static final Integer UPDATED_COUT = 2;
-
-    private static final TaillesBottes DEFAULT_BOTTES_TAILLE = TaillesBottes.T_80_X_120_CM;
-    private static final TaillesBottes UPDATED_BOTTES_TAILLE = TaillesBottes.T_50_X_80_CM;
-
-    private static final YesNoPartial DEFAULT_AUTOCONSTRUCTION = YesNoPartial.OUI;
-    private static final YesNoPartial UPDATED_AUTOCONSTRUCTION = YesNoPartial.NON;
-
-    private static final String DEFAULT_CONCEPTEUR = "AAAAAAAAAA";
-    private static final String UPDATED_CONCEPTEUR = "BBBBBBBBBB";
-
-    private static final String DEFAULT_REALISATEUR = "AAAAAAAAAA";
-    private static final String UPDATED_REALISATEUR = "BBBBBBBBBB";
-
-    private static final YesNoPartial DEFAULT_PARTICIPATIF = YesNoPartial.OUI;
-    private static final YesNoPartial UPDATED_PARTICIPATIF = YesNoPartial.NON;
+    private static final Boolean DEFAULT_TECHNIQUE_SECONDAIRE = false;
+    private static final Boolean UPDATED_TECHNIQUE_SECONDAIRE = true;
 
     private static final UsageBatiment DEFAULT_USAGE = UsageBatiment.LOGEMENT_COLLECTIF;
     private static final UsageBatiment UPDATED_USAGE = UsageBatiment.LOGEMENT_INDIVIDUEL;
 
-    private static final Boolean DEFAULT_NOTE_CALCUL = false;
-    private static final Boolean UPDATED_NOTE_CALCUL = true;
+    private static final Integer DEFAULT_COUT = 1;
+    private static final Integer UPDATED_COUT = 2;
+
+    private static final Integer DEFAULT_SURFACE = 1;
+    private static final Integer UPDATED_SURFACE = 2;
+
+    private static final Integer DEFAULT_NIVEAUX = 1;
+    private static final Integer UPDATED_NIVEAUX = 2;
 
     private static final Boolean DEFAULT_TRAVAUX_NEUF = false;
     private static final Boolean UPDATED_TRAVAUX_NEUF = true;
@@ -107,20 +80,41 @@ class BatimentsResourceIT {
     private static final Boolean DEFAULT_TRAVAUX_ITI = false;
     private static final Boolean UPDATED_TRAVAUX_ITI = true;
 
-    private static final Integer DEFAULT_NIVEAUX = 1;
-    private static final Integer UPDATED_NIVEAUX = 2;
+    private static final LocalDate DEFAULT_CONSTRUCTION_DEBUT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CONSTRUCTION_DEBUT = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_CONSTRUCTION_FIN = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CONSTRUCTION_FIN = LocalDate.now(ZoneId.systemDefault());
+
+    private static final TaillesBottes DEFAULT_BOTTES_TAILLE = TaillesBottes.T_80_X_120_CM;
+    private static final TaillesBottes UPDATED_BOTTES_TAILLE = TaillesBottes.T_50_X_80_CM;
 
     private static final Integer DEFAULT_BOTTES_DENSITE = 1;
     private static final Integer UPDATED_BOTTES_DENSITE = 2;
 
-    private static final Integer DEFAULT_DISTANCE_APPRO = 1;
-    private static final Integer UPDATED_DISTANCE_APPRO = 2;
-
     private static final Cereale DEFAULT_BOTTES_CEREALE = Cereale.BLE;
     private static final Cereale UPDATED_BOTTES_CEREALE = Cereale.ORGE;
 
+    private static final Integer DEFAULT_DISTANCE_APPRO = 1;
+    private static final Integer UPDATED_DISTANCE_APPRO = 2;
+
+    private static final YesNoPartial DEFAULT_AUTOCONSTRUCTION = YesNoPartial.OUI;
+    private static final YesNoPartial UPDATED_AUTOCONSTRUCTION = YesNoPartial.NON;
+
+    private static final YesNoPartial DEFAULT_PARTICIPATIF = YesNoPartial.OUI;
+    private static final YesNoPartial UPDATED_PARTICIPATIF = YesNoPartial.NON;
+
+    private static final IntegBaie DEFAULT_INTEG_BAIE = IntegBaie.PRE_CADRE_FLOTTANT;
+    private static final IntegBaie UPDATED_INTEG_BAIE = IntegBaie.COULISSANT;
+
     private static final Boolean DEFAULT_STRUCT_SUPPL = false;
     private static final Boolean UPDATED_STRUCT_SUPPL = true;
+
+    private static final Boolean DEFAULT_NOTE_CALCUL = false;
+    private static final Boolean UPDATED_NOTE_CALCUL = true;
+
+    private static final MateriauSb DEFAULT_MATERIAU_SB = MateriauSb.BETON_ARME;
+    private static final MateriauSb UPDATED_MATERIAU_SB = MateriauSb.PARPAING_DE_CIMENT;
 
     private static final RevetInt DEFAULT_REVET_INT = RevetInt.PLAQUE_DE_PLATRE;
     private static final RevetInt UPDATED_REVET_INT = RevetInt.LAMBRIS;
@@ -128,20 +122,26 @@ class BatimentsResourceIT {
     private static final RevetExt DEFAULT_REVET_EXT = RevetExt.BARDAGE_VENTILE;
     private static final RevetExt UPDATED_REVET_EXT = RevetExt.ENDUIT_TERRE;
 
-    private static final Boolean DEFAULT_TECHNIQUE_SECONDAIRE = false;
-    private static final Boolean UPDATED_TECHNIQUE_SECONDAIRE = true;
+    private static final String DEFAULT_CONCEPTEUR = "AAAAAAAAAA";
+    private static final String UPDATED_CONCEPTEUR = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CODE_POSTAL = "AAAAAA";
-    private static final String UPDATED_CODE_POSTAL = "BBBBBB";
-
-    private static final IntegBaie DEFAULT_INTEG_BAIE = IntegBaie.PRE_CADRE_FLOTTANT;
-    private static final IntegBaie UPDATED_INTEG_BAIE = IntegBaie.COULISSANT;
-
-    private static final MateriauSb DEFAULT_MATERIAU_SB = MateriauSb.BETON_ARME;
-    private static final MateriauSb UPDATED_MATERIAU_SB = MateriauSb.PARPAING_DE_CIMENT;
+    private static final String DEFAULT_REALISATEUR = "AAAAAAAAAA";
+    private static final String UPDATED_REALISATEUR = "BBBBBBBBBB";
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CONTACT_NOM = "AAAAAAAAAA";
+    private static final String UPDATED_CONTACT_NOM = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CONTACT_MAIL = "AAAAAAAAAA";
+    private static final String UPDATED_CONTACT_MAIL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CONTACT_PHONE = "AAAAAAAAAA";
+    private static final String UPDATED_CONTACT_PHONE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE_POSTAL = "AAAAAA";
+    private static final String UPDATED_CODE_POSTAL = "BBBBBB";
 
     private static final String ENTITY_API_URL = "/api/batiments";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -171,37 +171,37 @@ class BatimentsResourceIT {
             .latitude(DEFAULT_LATITUDE)
             .longitude(DEFAULT_LONGITUDE)
             .nom(DEFAULT_NOM)
-            .contactNom(DEFAULT_CONTACT_NOM)
-            .contactMail(DEFAULT_CONTACT_MAIL)
-            .contactPhone(DEFAULT_CONTACT_PHONE)
-            .constructionDebut(DEFAULT_CONSTRUCTION_DEBUT)
-            .constructionFin(DEFAULT_CONSTRUCTION_FIN)
-            .surface(DEFAULT_SURFACE)
-            .cout(DEFAULT_COUT)
-            .bottesTaille(DEFAULT_BOTTES_TAILLE)
-            .autoconstruction(DEFAULT_AUTOCONSTRUCTION)
-            .concepteur(DEFAULT_CONCEPTEUR)
-            .realisateur(DEFAULT_REALISATEUR)
-            .participatif(DEFAULT_PARTICIPATIF)
+            .techniqueSecondaire(DEFAULT_TECHNIQUE_SECONDAIRE)
             .usage(DEFAULT_USAGE)
-            .noteCalcul(DEFAULT_NOTE_CALCUL)
+            .cout(DEFAULT_COUT)
+            .surface(DEFAULT_SURFACE)
+            .niveaux(DEFAULT_NIVEAUX)
             .travauxNeuf(DEFAULT_TRAVAUX_NEUF)
             .travauxExtension(DEFAULT_TRAVAUX_EXTENSION)
             .travauxRenov(DEFAULT_TRAVAUX_RENOV)
             .travauxIte(DEFAULT_TRAVAUX_ITE)
             .travauxIti(DEFAULT_TRAVAUX_ITI)
-            .niveaux(DEFAULT_NIVEAUX)
+            .constructionDebut(DEFAULT_CONSTRUCTION_DEBUT)
+            .constructionFin(DEFAULT_CONSTRUCTION_FIN)
+            .bottesTaille(DEFAULT_BOTTES_TAILLE)
             .bottesDensite(DEFAULT_BOTTES_DENSITE)
-            .distanceAppro(DEFAULT_DISTANCE_APPRO)
             .bottesCereale(DEFAULT_BOTTES_CEREALE)
+            .distanceAppro(DEFAULT_DISTANCE_APPRO)
+            .autoconstruction(DEFAULT_AUTOCONSTRUCTION)
+            .participatif(DEFAULT_PARTICIPATIF)
+            .integBaie(DEFAULT_INTEG_BAIE)
             .structSuppl(DEFAULT_STRUCT_SUPPL)
+            .noteCalcul(DEFAULT_NOTE_CALCUL)
+            .materiauSb(DEFAULT_MATERIAU_SB)
             .revetInt(DEFAULT_REVET_INT)
             .revetExt(DEFAULT_REVET_EXT)
-            .techniqueSecondaire(DEFAULT_TECHNIQUE_SECONDAIRE)
-            .codePostal(DEFAULT_CODE_POSTAL)
-            .integBaie(DEFAULT_INTEG_BAIE)
-            .materiauSb(DEFAULT_MATERIAU_SB)
-            .description(DEFAULT_DESCRIPTION);
+            .concepteur(DEFAULT_CONCEPTEUR)
+            .realisateur(DEFAULT_REALISATEUR)
+            .description(DEFAULT_DESCRIPTION)
+            .contactNom(DEFAULT_CONTACT_NOM)
+            .contactMail(DEFAULT_CONTACT_MAIL)
+            .contactPhone(DEFAULT_CONTACT_PHONE)
+            .codePostal(DEFAULT_CODE_POSTAL);
         return batiments;
     }
 
@@ -216,37 +216,37 @@ class BatimentsResourceIT {
             .latitude(UPDATED_LATITUDE)
             .longitude(UPDATED_LONGITUDE)
             .nom(UPDATED_NOM)
-            .contactNom(UPDATED_CONTACT_NOM)
-            .contactMail(UPDATED_CONTACT_MAIL)
-            .contactPhone(UPDATED_CONTACT_PHONE)
-            .constructionDebut(UPDATED_CONSTRUCTION_DEBUT)
-            .constructionFin(UPDATED_CONSTRUCTION_FIN)
-            .surface(UPDATED_SURFACE)
-            .cout(UPDATED_COUT)
-            .bottesTaille(UPDATED_BOTTES_TAILLE)
-            .autoconstruction(UPDATED_AUTOCONSTRUCTION)
-            .concepteur(UPDATED_CONCEPTEUR)
-            .realisateur(UPDATED_REALISATEUR)
-            .participatif(UPDATED_PARTICIPATIF)
+            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
             .usage(UPDATED_USAGE)
-            .noteCalcul(UPDATED_NOTE_CALCUL)
+            .cout(UPDATED_COUT)
+            .surface(UPDATED_SURFACE)
+            .niveaux(UPDATED_NIVEAUX)
             .travauxNeuf(UPDATED_TRAVAUX_NEUF)
             .travauxExtension(UPDATED_TRAVAUX_EXTENSION)
             .travauxRenov(UPDATED_TRAVAUX_RENOV)
             .travauxIte(UPDATED_TRAVAUX_ITE)
             .travauxIti(UPDATED_TRAVAUX_ITI)
-            .niveaux(UPDATED_NIVEAUX)
+            .constructionDebut(UPDATED_CONSTRUCTION_DEBUT)
+            .constructionFin(UPDATED_CONSTRUCTION_FIN)
+            .bottesTaille(UPDATED_BOTTES_TAILLE)
             .bottesDensite(UPDATED_BOTTES_DENSITE)
-            .distanceAppro(UPDATED_DISTANCE_APPRO)
             .bottesCereale(UPDATED_BOTTES_CEREALE)
+            .distanceAppro(UPDATED_DISTANCE_APPRO)
+            .autoconstruction(UPDATED_AUTOCONSTRUCTION)
+            .participatif(UPDATED_PARTICIPATIF)
+            .integBaie(UPDATED_INTEG_BAIE)
             .structSuppl(UPDATED_STRUCT_SUPPL)
+            .noteCalcul(UPDATED_NOTE_CALCUL)
+            .materiauSb(UPDATED_MATERIAU_SB)
             .revetInt(UPDATED_REVET_INT)
             .revetExt(UPDATED_REVET_EXT)
-            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
-            .codePostal(UPDATED_CODE_POSTAL)
-            .integBaie(UPDATED_INTEG_BAIE)
-            .materiauSb(UPDATED_MATERIAU_SB)
-            .description(UPDATED_DESCRIPTION);
+            .concepteur(UPDATED_CONCEPTEUR)
+            .realisateur(UPDATED_REALISATEUR)
+            .description(UPDATED_DESCRIPTION)
+            .contactNom(UPDATED_CONTACT_NOM)
+            .contactMail(UPDATED_CONTACT_MAIL)
+            .contactPhone(UPDATED_CONTACT_PHONE)
+            .codePostal(UPDATED_CODE_POSTAL);
         return batiments;
     }
 
@@ -271,37 +271,37 @@ class BatimentsResourceIT {
         assertThat(testBatiments.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
         assertThat(testBatiments.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
         assertThat(testBatiments.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testBatiments.getContactNom()).isEqualTo(DEFAULT_CONTACT_NOM);
-        assertThat(testBatiments.getContactMail()).isEqualTo(DEFAULT_CONTACT_MAIL);
-        assertThat(testBatiments.getContactPhone()).isEqualTo(DEFAULT_CONTACT_PHONE);
-        assertThat(testBatiments.getConstructionDebut()).isEqualTo(DEFAULT_CONSTRUCTION_DEBUT);
-        assertThat(testBatiments.getConstructionFin()).isEqualTo(DEFAULT_CONSTRUCTION_FIN);
-        assertThat(testBatiments.getSurface()).isEqualTo(DEFAULT_SURFACE);
-        assertThat(testBatiments.getCout()).isEqualTo(DEFAULT_COUT);
-        assertThat(testBatiments.getBottesTaille()).isEqualTo(DEFAULT_BOTTES_TAILLE);
-        assertThat(testBatiments.getAutoconstruction()).isEqualTo(DEFAULT_AUTOCONSTRUCTION);
-        assertThat(testBatiments.getConcepteur()).isEqualTo(DEFAULT_CONCEPTEUR);
-        assertThat(testBatiments.getRealisateur()).isEqualTo(DEFAULT_REALISATEUR);
-        assertThat(testBatiments.getParticipatif()).isEqualTo(DEFAULT_PARTICIPATIF);
+        assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(DEFAULT_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiments.getUsage()).isEqualTo(DEFAULT_USAGE);
-        assertThat(testBatiments.getNoteCalcul()).isEqualTo(DEFAULT_NOTE_CALCUL);
+        assertThat(testBatiments.getCout()).isEqualTo(DEFAULT_COUT);
+        assertThat(testBatiments.getSurface()).isEqualTo(DEFAULT_SURFACE);
+        assertThat(testBatiments.getNiveaux()).isEqualTo(DEFAULT_NIVEAUX);
         assertThat(testBatiments.getTravauxNeuf()).isEqualTo(DEFAULT_TRAVAUX_NEUF);
         assertThat(testBatiments.getTravauxExtension()).isEqualTo(DEFAULT_TRAVAUX_EXTENSION);
         assertThat(testBatiments.getTravauxRenov()).isEqualTo(DEFAULT_TRAVAUX_RENOV);
         assertThat(testBatiments.getTravauxIte()).isEqualTo(DEFAULT_TRAVAUX_ITE);
         assertThat(testBatiments.getTravauxIti()).isEqualTo(DEFAULT_TRAVAUX_ITI);
-        assertThat(testBatiments.getNiveaux()).isEqualTo(DEFAULT_NIVEAUX);
+        assertThat(testBatiments.getConstructionDebut()).isEqualTo(DEFAULT_CONSTRUCTION_DEBUT);
+        assertThat(testBatiments.getConstructionFin()).isEqualTo(DEFAULT_CONSTRUCTION_FIN);
+        assertThat(testBatiments.getBottesTaille()).isEqualTo(DEFAULT_BOTTES_TAILLE);
         assertThat(testBatiments.getBottesDensite()).isEqualTo(DEFAULT_BOTTES_DENSITE);
-        assertThat(testBatiments.getDistanceAppro()).isEqualTo(DEFAULT_DISTANCE_APPRO);
         assertThat(testBatiments.getBottesCereale()).isEqualTo(DEFAULT_BOTTES_CEREALE);
+        assertThat(testBatiments.getDistanceAppro()).isEqualTo(DEFAULT_DISTANCE_APPRO);
+        assertThat(testBatiments.getAutoconstruction()).isEqualTo(DEFAULT_AUTOCONSTRUCTION);
+        assertThat(testBatiments.getParticipatif()).isEqualTo(DEFAULT_PARTICIPATIF);
+        assertThat(testBatiments.getIntegBaie()).isEqualTo(DEFAULT_INTEG_BAIE);
         assertThat(testBatiments.getStructSuppl()).isEqualTo(DEFAULT_STRUCT_SUPPL);
+        assertThat(testBatiments.getNoteCalcul()).isEqualTo(DEFAULT_NOTE_CALCUL);
+        assertThat(testBatiments.getMateriauSb()).isEqualTo(DEFAULT_MATERIAU_SB);
         assertThat(testBatiments.getRevetInt()).isEqualTo(DEFAULT_REVET_INT);
         assertThat(testBatiments.getRevetExt()).isEqualTo(DEFAULT_REVET_EXT);
-        assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(DEFAULT_TECHNIQUE_SECONDAIRE);
-        assertThat(testBatiments.getCodePostal()).isEqualTo(DEFAULT_CODE_POSTAL);
-        assertThat(testBatiments.getIntegBaie()).isEqualTo(DEFAULT_INTEG_BAIE);
-        assertThat(testBatiments.getMateriauSb()).isEqualTo(DEFAULT_MATERIAU_SB);
+        assertThat(testBatiments.getConcepteur()).isEqualTo(DEFAULT_CONCEPTEUR);
+        assertThat(testBatiments.getRealisateur()).isEqualTo(DEFAULT_REALISATEUR);
         assertThat(testBatiments.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testBatiments.getContactNom()).isEqualTo(DEFAULT_CONTACT_NOM);
+        assertThat(testBatiments.getContactMail()).isEqualTo(DEFAULT_CONTACT_MAIL);
+        assertThat(testBatiments.getContactPhone()).isEqualTo(DEFAULT_CONTACT_PHONE);
+        assertThat(testBatiments.getCodePostal()).isEqualTo(DEFAULT_CODE_POSTAL);
     }
 
     @Test
@@ -371,37 +371,37 @@ class BatimentsResourceIT {
             .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())))
             .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.doubleValue())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
-            .andExpect(jsonPath("$.[*].contactNom").value(hasItem(DEFAULT_CONTACT_NOM)))
-            .andExpect(jsonPath("$.[*].contactMail").value(hasItem(DEFAULT_CONTACT_MAIL)))
-            .andExpect(jsonPath("$.[*].contactPhone").value(hasItem(DEFAULT_CONTACT_PHONE)))
-            .andExpect(jsonPath("$.[*].constructionDebut").value(hasItem(DEFAULT_CONSTRUCTION_DEBUT.toString())))
-            .andExpect(jsonPath("$.[*].constructionFin").value(hasItem(DEFAULT_CONSTRUCTION_FIN.toString())))
-            .andExpect(jsonPath("$.[*].surface").value(hasItem(DEFAULT_SURFACE)))
-            .andExpect(jsonPath("$.[*].cout").value(hasItem(DEFAULT_COUT)))
-            .andExpect(jsonPath("$.[*].bottesTaille").value(hasItem(DEFAULT_BOTTES_TAILLE.toString())))
-            .andExpect(jsonPath("$.[*].autoconstruction").value(hasItem(DEFAULT_AUTOCONSTRUCTION.toString())))
-            .andExpect(jsonPath("$.[*].concepteur").value(hasItem(DEFAULT_CONCEPTEUR)))
-            .andExpect(jsonPath("$.[*].realisateur").value(hasItem(DEFAULT_REALISATEUR)))
-            .andExpect(jsonPath("$.[*].participatif").value(hasItem(DEFAULT_PARTICIPATIF.toString())))
+            .andExpect(jsonPath("$.[*].techniqueSecondaire").value(hasItem(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue())))
             .andExpect(jsonPath("$.[*].usage").value(hasItem(DEFAULT_USAGE.toString())))
-            .andExpect(jsonPath("$.[*].noteCalcul").value(hasItem(DEFAULT_NOTE_CALCUL.booleanValue())))
+            .andExpect(jsonPath("$.[*].cout").value(hasItem(DEFAULT_COUT)))
+            .andExpect(jsonPath("$.[*].surface").value(hasItem(DEFAULT_SURFACE)))
+            .andExpect(jsonPath("$.[*].niveaux").value(hasItem(DEFAULT_NIVEAUX)))
             .andExpect(jsonPath("$.[*].travauxNeuf").value(hasItem(DEFAULT_TRAVAUX_NEUF.booleanValue())))
             .andExpect(jsonPath("$.[*].travauxExtension").value(hasItem(DEFAULT_TRAVAUX_EXTENSION.booleanValue())))
             .andExpect(jsonPath("$.[*].travauxRenov").value(hasItem(DEFAULT_TRAVAUX_RENOV.booleanValue())))
             .andExpect(jsonPath("$.[*].travauxIte").value(hasItem(DEFAULT_TRAVAUX_ITE.booleanValue())))
             .andExpect(jsonPath("$.[*].travauxIti").value(hasItem(DEFAULT_TRAVAUX_ITI.booleanValue())))
-            .andExpect(jsonPath("$.[*].niveaux").value(hasItem(DEFAULT_NIVEAUX)))
+            .andExpect(jsonPath("$.[*].constructionDebut").value(hasItem(DEFAULT_CONSTRUCTION_DEBUT.toString())))
+            .andExpect(jsonPath("$.[*].constructionFin").value(hasItem(DEFAULT_CONSTRUCTION_FIN.toString())))
+            .andExpect(jsonPath("$.[*].bottesTaille").value(hasItem(DEFAULT_BOTTES_TAILLE.toString())))
             .andExpect(jsonPath("$.[*].bottesDensite").value(hasItem(DEFAULT_BOTTES_DENSITE)))
-            .andExpect(jsonPath("$.[*].distanceAppro").value(hasItem(DEFAULT_DISTANCE_APPRO)))
             .andExpect(jsonPath("$.[*].bottesCereale").value(hasItem(DEFAULT_BOTTES_CEREALE.toString())))
+            .andExpect(jsonPath("$.[*].distanceAppro").value(hasItem(DEFAULT_DISTANCE_APPRO)))
+            .andExpect(jsonPath("$.[*].autoconstruction").value(hasItem(DEFAULT_AUTOCONSTRUCTION.toString())))
+            .andExpect(jsonPath("$.[*].participatif").value(hasItem(DEFAULT_PARTICIPATIF.toString())))
+            .andExpect(jsonPath("$.[*].integBaie").value(hasItem(DEFAULT_INTEG_BAIE.toString())))
             .andExpect(jsonPath("$.[*].structSuppl").value(hasItem(DEFAULT_STRUCT_SUPPL.booleanValue())))
+            .andExpect(jsonPath("$.[*].noteCalcul").value(hasItem(DEFAULT_NOTE_CALCUL.booleanValue())))
+            .andExpect(jsonPath("$.[*].materiauSb").value(hasItem(DEFAULT_MATERIAU_SB.toString())))
             .andExpect(jsonPath("$.[*].revetInt").value(hasItem(DEFAULT_REVET_INT.toString())))
             .andExpect(jsonPath("$.[*].revetExt").value(hasItem(DEFAULT_REVET_EXT.toString())))
-            .andExpect(jsonPath("$.[*].techniqueSecondaire").value(hasItem(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue())))
-            .andExpect(jsonPath("$.[*].codePostal").value(hasItem(DEFAULT_CODE_POSTAL)))
-            .andExpect(jsonPath("$.[*].integBaie").value(hasItem(DEFAULT_INTEG_BAIE.toString())))
-            .andExpect(jsonPath("$.[*].materiauSb").value(hasItem(DEFAULT_MATERIAU_SB.toString())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
+            .andExpect(jsonPath("$.[*].concepteur").value(hasItem(DEFAULT_CONCEPTEUR)))
+            .andExpect(jsonPath("$.[*].realisateur").value(hasItem(DEFAULT_REALISATEUR)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].contactNom").value(hasItem(DEFAULT_CONTACT_NOM)))
+            .andExpect(jsonPath("$.[*].contactMail").value(hasItem(DEFAULT_CONTACT_MAIL)))
+            .andExpect(jsonPath("$.[*].contactPhone").value(hasItem(DEFAULT_CONTACT_PHONE)))
+            .andExpect(jsonPath("$.[*].codePostal").value(hasItem(DEFAULT_CODE_POSTAL)));
     }
 
     @Test
@@ -419,37 +419,37 @@ class BatimentsResourceIT {
             .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.doubleValue()))
             .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.doubleValue()))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
-            .andExpect(jsonPath("$.contactNom").value(DEFAULT_CONTACT_NOM))
-            .andExpect(jsonPath("$.contactMail").value(DEFAULT_CONTACT_MAIL))
-            .andExpect(jsonPath("$.contactPhone").value(DEFAULT_CONTACT_PHONE))
-            .andExpect(jsonPath("$.constructionDebut").value(DEFAULT_CONSTRUCTION_DEBUT.toString()))
-            .andExpect(jsonPath("$.constructionFin").value(DEFAULT_CONSTRUCTION_FIN.toString()))
-            .andExpect(jsonPath("$.surface").value(DEFAULT_SURFACE))
-            .andExpect(jsonPath("$.cout").value(DEFAULT_COUT))
-            .andExpect(jsonPath("$.bottesTaille").value(DEFAULT_BOTTES_TAILLE.toString()))
-            .andExpect(jsonPath("$.autoconstruction").value(DEFAULT_AUTOCONSTRUCTION.toString()))
-            .andExpect(jsonPath("$.concepteur").value(DEFAULT_CONCEPTEUR))
-            .andExpect(jsonPath("$.realisateur").value(DEFAULT_REALISATEUR))
-            .andExpect(jsonPath("$.participatif").value(DEFAULT_PARTICIPATIF.toString()))
+            .andExpect(jsonPath("$.techniqueSecondaire").value(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue()))
             .andExpect(jsonPath("$.usage").value(DEFAULT_USAGE.toString()))
-            .andExpect(jsonPath("$.noteCalcul").value(DEFAULT_NOTE_CALCUL.booleanValue()))
+            .andExpect(jsonPath("$.cout").value(DEFAULT_COUT))
+            .andExpect(jsonPath("$.surface").value(DEFAULT_SURFACE))
+            .andExpect(jsonPath("$.niveaux").value(DEFAULT_NIVEAUX))
             .andExpect(jsonPath("$.travauxNeuf").value(DEFAULT_TRAVAUX_NEUF.booleanValue()))
             .andExpect(jsonPath("$.travauxExtension").value(DEFAULT_TRAVAUX_EXTENSION.booleanValue()))
             .andExpect(jsonPath("$.travauxRenov").value(DEFAULT_TRAVAUX_RENOV.booleanValue()))
             .andExpect(jsonPath("$.travauxIte").value(DEFAULT_TRAVAUX_ITE.booleanValue()))
             .andExpect(jsonPath("$.travauxIti").value(DEFAULT_TRAVAUX_ITI.booleanValue()))
-            .andExpect(jsonPath("$.niveaux").value(DEFAULT_NIVEAUX))
+            .andExpect(jsonPath("$.constructionDebut").value(DEFAULT_CONSTRUCTION_DEBUT.toString()))
+            .andExpect(jsonPath("$.constructionFin").value(DEFAULT_CONSTRUCTION_FIN.toString()))
+            .andExpect(jsonPath("$.bottesTaille").value(DEFAULT_BOTTES_TAILLE.toString()))
             .andExpect(jsonPath("$.bottesDensite").value(DEFAULT_BOTTES_DENSITE))
-            .andExpect(jsonPath("$.distanceAppro").value(DEFAULT_DISTANCE_APPRO))
             .andExpect(jsonPath("$.bottesCereale").value(DEFAULT_BOTTES_CEREALE.toString()))
+            .andExpect(jsonPath("$.distanceAppro").value(DEFAULT_DISTANCE_APPRO))
+            .andExpect(jsonPath("$.autoconstruction").value(DEFAULT_AUTOCONSTRUCTION.toString()))
+            .andExpect(jsonPath("$.participatif").value(DEFAULT_PARTICIPATIF.toString()))
+            .andExpect(jsonPath("$.integBaie").value(DEFAULT_INTEG_BAIE.toString()))
             .andExpect(jsonPath("$.structSuppl").value(DEFAULT_STRUCT_SUPPL.booleanValue()))
+            .andExpect(jsonPath("$.noteCalcul").value(DEFAULT_NOTE_CALCUL.booleanValue()))
+            .andExpect(jsonPath("$.materiauSb").value(DEFAULT_MATERIAU_SB.toString()))
             .andExpect(jsonPath("$.revetInt").value(DEFAULT_REVET_INT.toString()))
             .andExpect(jsonPath("$.revetExt").value(DEFAULT_REVET_EXT.toString()))
-            .andExpect(jsonPath("$.techniqueSecondaire").value(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue()))
-            .andExpect(jsonPath("$.codePostal").value(DEFAULT_CODE_POSTAL))
-            .andExpect(jsonPath("$.integBaie").value(DEFAULT_INTEG_BAIE.toString()))
-            .andExpect(jsonPath("$.materiauSb").value(DEFAULT_MATERIAU_SB.toString()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
+            .andExpect(jsonPath("$.concepteur").value(DEFAULT_CONCEPTEUR))
+            .andExpect(jsonPath("$.realisateur").value(DEFAULT_REALISATEUR))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.contactNom").value(DEFAULT_CONTACT_NOM))
+            .andExpect(jsonPath("$.contactMail").value(DEFAULT_CONTACT_MAIL))
+            .andExpect(jsonPath("$.contactPhone").value(DEFAULT_CONTACT_PHONE))
+            .andExpect(jsonPath("$.codePostal").value(DEFAULT_CODE_POSTAL));
     }
 
     @Test
@@ -475,37 +475,37 @@ class BatimentsResourceIT {
             .latitude(UPDATED_LATITUDE)
             .longitude(UPDATED_LONGITUDE)
             .nom(UPDATED_NOM)
-            .contactNom(UPDATED_CONTACT_NOM)
-            .contactMail(UPDATED_CONTACT_MAIL)
-            .contactPhone(UPDATED_CONTACT_PHONE)
-            .constructionDebut(UPDATED_CONSTRUCTION_DEBUT)
-            .constructionFin(UPDATED_CONSTRUCTION_FIN)
-            .surface(UPDATED_SURFACE)
-            .cout(UPDATED_COUT)
-            .bottesTaille(UPDATED_BOTTES_TAILLE)
-            .autoconstruction(UPDATED_AUTOCONSTRUCTION)
-            .concepteur(UPDATED_CONCEPTEUR)
-            .realisateur(UPDATED_REALISATEUR)
-            .participatif(UPDATED_PARTICIPATIF)
+            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
             .usage(UPDATED_USAGE)
-            .noteCalcul(UPDATED_NOTE_CALCUL)
+            .cout(UPDATED_COUT)
+            .surface(UPDATED_SURFACE)
+            .niveaux(UPDATED_NIVEAUX)
             .travauxNeuf(UPDATED_TRAVAUX_NEUF)
             .travauxExtension(UPDATED_TRAVAUX_EXTENSION)
             .travauxRenov(UPDATED_TRAVAUX_RENOV)
             .travauxIte(UPDATED_TRAVAUX_ITE)
             .travauxIti(UPDATED_TRAVAUX_ITI)
-            .niveaux(UPDATED_NIVEAUX)
+            .constructionDebut(UPDATED_CONSTRUCTION_DEBUT)
+            .constructionFin(UPDATED_CONSTRUCTION_FIN)
+            .bottesTaille(UPDATED_BOTTES_TAILLE)
             .bottesDensite(UPDATED_BOTTES_DENSITE)
-            .distanceAppro(UPDATED_DISTANCE_APPRO)
             .bottesCereale(UPDATED_BOTTES_CEREALE)
+            .distanceAppro(UPDATED_DISTANCE_APPRO)
+            .autoconstruction(UPDATED_AUTOCONSTRUCTION)
+            .participatif(UPDATED_PARTICIPATIF)
+            .integBaie(UPDATED_INTEG_BAIE)
             .structSuppl(UPDATED_STRUCT_SUPPL)
+            .noteCalcul(UPDATED_NOTE_CALCUL)
+            .materiauSb(UPDATED_MATERIAU_SB)
             .revetInt(UPDATED_REVET_INT)
             .revetExt(UPDATED_REVET_EXT)
-            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
-            .codePostal(UPDATED_CODE_POSTAL)
-            .integBaie(UPDATED_INTEG_BAIE)
-            .materiauSb(UPDATED_MATERIAU_SB)
-            .description(UPDATED_DESCRIPTION);
+            .concepteur(UPDATED_CONCEPTEUR)
+            .realisateur(UPDATED_REALISATEUR)
+            .description(UPDATED_DESCRIPTION)
+            .contactNom(UPDATED_CONTACT_NOM)
+            .contactMail(UPDATED_CONTACT_MAIL)
+            .contactPhone(UPDATED_CONTACT_PHONE)
+            .codePostal(UPDATED_CODE_POSTAL);
 
         restBatimentsMockMvc
             .perform(
@@ -522,37 +522,37 @@ class BatimentsResourceIT {
         assertThat(testBatiments.getLatitude()).isEqualTo(UPDATED_LATITUDE);
         assertThat(testBatiments.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
         assertThat(testBatiments.getNom()).isEqualTo(UPDATED_NOM);
-        assertThat(testBatiments.getContactNom()).isEqualTo(UPDATED_CONTACT_NOM);
-        assertThat(testBatiments.getContactMail()).isEqualTo(UPDATED_CONTACT_MAIL);
-        assertThat(testBatiments.getContactPhone()).isEqualTo(UPDATED_CONTACT_PHONE);
-        assertThat(testBatiments.getConstructionDebut()).isEqualTo(UPDATED_CONSTRUCTION_DEBUT);
-        assertThat(testBatiments.getConstructionFin()).isEqualTo(UPDATED_CONSTRUCTION_FIN);
-        assertThat(testBatiments.getSurface()).isEqualTo(UPDATED_SURFACE);
-        assertThat(testBatiments.getCout()).isEqualTo(UPDATED_COUT);
-        assertThat(testBatiments.getBottesTaille()).isEqualTo(UPDATED_BOTTES_TAILLE);
-        assertThat(testBatiments.getAutoconstruction()).isEqualTo(UPDATED_AUTOCONSTRUCTION);
-        assertThat(testBatiments.getConcepteur()).isEqualTo(UPDATED_CONCEPTEUR);
-        assertThat(testBatiments.getRealisateur()).isEqualTo(UPDATED_REALISATEUR);
-        assertThat(testBatiments.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
+        assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(UPDATED_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiments.getUsage()).isEqualTo(UPDATED_USAGE);
-        assertThat(testBatiments.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
+        assertThat(testBatiments.getCout()).isEqualTo(UPDATED_COUT);
+        assertThat(testBatiments.getSurface()).isEqualTo(UPDATED_SURFACE);
+        assertThat(testBatiments.getNiveaux()).isEqualTo(UPDATED_NIVEAUX);
         assertThat(testBatiments.getTravauxNeuf()).isEqualTo(UPDATED_TRAVAUX_NEUF);
         assertThat(testBatiments.getTravauxExtension()).isEqualTo(UPDATED_TRAVAUX_EXTENSION);
         assertThat(testBatiments.getTravauxRenov()).isEqualTo(UPDATED_TRAVAUX_RENOV);
         assertThat(testBatiments.getTravauxIte()).isEqualTo(UPDATED_TRAVAUX_ITE);
         assertThat(testBatiments.getTravauxIti()).isEqualTo(UPDATED_TRAVAUX_ITI);
-        assertThat(testBatiments.getNiveaux()).isEqualTo(UPDATED_NIVEAUX);
+        assertThat(testBatiments.getConstructionDebut()).isEqualTo(UPDATED_CONSTRUCTION_DEBUT);
+        assertThat(testBatiments.getConstructionFin()).isEqualTo(UPDATED_CONSTRUCTION_FIN);
+        assertThat(testBatiments.getBottesTaille()).isEqualTo(UPDATED_BOTTES_TAILLE);
         assertThat(testBatiments.getBottesDensite()).isEqualTo(UPDATED_BOTTES_DENSITE);
-        assertThat(testBatiments.getDistanceAppro()).isEqualTo(UPDATED_DISTANCE_APPRO);
         assertThat(testBatiments.getBottesCereale()).isEqualTo(UPDATED_BOTTES_CEREALE);
+        assertThat(testBatiments.getDistanceAppro()).isEqualTo(UPDATED_DISTANCE_APPRO);
+        assertThat(testBatiments.getAutoconstruction()).isEqualTo(UPDATED_AUTOCONSTRUCTION);
+        assertThat(testBatiments.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
+        assertThat(testBatiments.getIntegBaie()).isEqualTo(UPDATED_INTEG_BAIE);
         assertThat(testBatiments.getStructSuppl()).isEqualTo(UPDATED_STRUCT_SUPPL);
+        assertThat(testBatiments.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
+        assertThat(testBatiments.getMateriauSb()).isEqualTo(UPDATED_MATERIAU_SB);
         assertThat(testBatiments.getRevetInt()).isEqualTo(UPDATED_REVET_INT);
         assertThat(testBatiments.getRevetExt()).isEqualTo(UPDATED_REVET_EXT);
-        assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(UPDATED_TECHNIQUE_SECONDAIRE);
-        assertThat(testBatiments.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
-        assertThat(testBatiments.getIntegBaie()).isEqualTo(UPDATED_INTEG_BAIE);
-        assertThat(testBatiments.getMateriauSb()).isEqualTo(UPDATED_MATERIAU_SB);
+        assertThat(testBatiments.getConcepteur()).isEqualTo(UPDATED_CONCEPTEUR);
+        assertThat(testBatiments.getRealisateur()).isEqualTo(UPDATED_REALISATEUR);
         assertThat(testBatiments.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testBatiments.getContactNom()).isEqualTo(UPDATED_CONTACT_NOM);
+        assertThat(testBatiments.getContactMail()).isEqualTo(UPDATED_CONTACT_MAIL);
+        assertThat(testBatiments.getContactPhone()).isEqualTo(UPDATED_CONTACT_PHONE);
+        assertThat(testBatiments.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
     }
 
     @Test
@@ -625,27 +625,27 @@ class BatimentsResourceIT {
 
         partialUpdatedBatiments
             .latitude(UPDATED_LATITUDE)
-            .contactPhone(UPDATED_CONTACT_PHONE)
-            .constructionDebut(UPDATED_CONSTRUCTION_DEBUT)
-            .constructionFin(UPDATED_CONSTRUCTION_FIN)
-            .surface(UPDATED_SURFACE)
             .cout(UPDATED_COUT)
-            .bottesTaille(UPDATED_BOTTES_TAILLE)
-            .autoconstruction(UPDATED_AUTOCONSTRUCTION)
-            .concepteur(UPDATED_CONCEPTEUR)
-            .participatif(UPDATED_PARTICIPATIF)
-            .usage(UPDATED_USAGE)
-            .noteCalcul(UPDATED_NOTE_CALCUL)
+            .surface(UPDATED_SURFACE)
+            .niveaux(UPDATED_NIVEAUX)
             .travauxNeuf(UPDATED_TRAVAUX_NEUF)
             .travauxExtension(UPDATED_TRAVAUX_EXTENSION)
+            .travauxRenov(UPDATED_TRAVAUX_RENOV)
             .travauxIte(UPDATED_TRAVAUX_ITE)
             .travauxIti(UPDATED_TRAVAUX_ITI)
+            .constructionFin(UPDATED_CONSTRUCTION_FIN)
+            .bottesTaille(UPDATED_BOTTES_TAILLE)
             .bottesDensite(UPDATED_BOTTES_DENSITE)
             .bottesCereale(UPDATED_BOTTES_CEREALE)
-            .structSuppl(UPDATED_STRUCT_SUPPL)
-            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
+            .distanceAppro(UPDATED_DISTANCE_APPRO)
+            .participatif(UPDATED_PARTICIPATIF)
             .integBaie(UPDATED_INTEG_BAIE)
-            .materiauSb(UPDATED_MATERIAU_SB);
+            .noteCalcul(UPDATED_NOTE_CALCUL)
+            .revetInt(UPDATED_REVET_INT)
+            .revetExt(UPDATED_REVET_EXT)
+            .description(UPDATED_DESCRIPTION)
+            .contactMail(UPDATED_CONTACT_MAIL)
+            .contactPhone(UPDATED_CONTACT_PHONE);
 
         restBatimentsMockMvc
             .perform(
@@ -662,37 +662,37 @@ class BatimentsResourceIT {
         assertThat(testBatiments.getLatitude()).isEqualTo(UPDATED_LATITUDE);
         assertThat(testBatiments.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
         assertThat(testBatiments.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testBatiments.getContactNom()).isEqualTo(DEFAULT_CONTACT_NOM);
-        assertThat(testBatiments.getContactMail()).isEqualTo(DEFAULT_CONTACT_MAIL);
-        assertThat(testBatiments.getContactPhone()).isEqualTo(UPDATED_CONTACT_PHONE);
-        assertThat(testBatiments.getConstructionDebut()).isEqualTo(UPDATED_CONSTRUCTION_DEBUT);
-        assertThat(testBatiments.getConstructionFin()).isEqualTo(UPDATED_CONSTRUCTION_FIN);
-        assertThat(testBatiments.getSurface()).isEqualTo(UPDATED_SURFACE);
+        assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(DEFAULT_TECHNIQUE_SECONDAIRE);
+        assertThat(testBatiments.getUsage()).isEqualTo(DEFAULT_USAGE);
         assertThat(testBatiments.getCout()).isEqualTo(UPDATED_COUT);
-        assertThat(testBatiments.getBottesTaille()).isEqualTo(UPDATED_BOTTES_TAILLE);
-        assertThat(testBatiments.getAutoconstruction()).isEqualTo(UPDATED_AUTOCONSTRUCTION);
-        assertThat(testBatiments.getConcepteur()).isEqualTo(UPDATED_CONCEPTEUR);
-        assertThat(testBatiments.getRealisateur()).isEqualTo(DEFAULT_REALISATEUR);
-        assertThat(testBatiments.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
-        assertThat(testBatiments.getUsage()).isEqualTo(UPDATED_USAGE);
-        assertThat(testBatiments.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
+        assertThat(testBatiments.getSurface()).isEqualTo(UPDATED_SURFACE);
+        assertThat(testBatiments.getNiveaux()).isEqualTo(UPDATED_NIVEAUX);
         assertThat(testBatiments.getTravauxNeuf()).isEqualTo(UPDATED_TRAVAUX_NEUF);
         assertThat(testBatiments.getTravauxExtension()).isEqualTo(UPDATED_TRAVAUX_EXTENSION);
-        assertThat(testBatiments.getTravauxRenov()).isEqualTo(DEFAULT_TRAVAUX_RENOV);
+        assertThat(testBatiments.getTravauxRenov()).isEqualTo(UPDATED_TRAVAUX_RENOV);
         assertThat(testBatiments.getTravauxIte()).isEqualTo(UPDATED_TRAVAUX_ITE);
         assertThat(testBatiments.getTravauxIti()).isEqualTo(UPDATED_TRAVAUX_ITI);
-        assertThat(testBatiments.getNiveaux()).isEqualTo(DEFAULT_NIVEAUX);
+        assertThat(testBatiments.getConstructionDebut()).isEqualTo(DEFAULT_CONSTRUCTION_DEBUT);
+        assertThat(testBatiments.getConstructionFin()).isEqualTo(UPDATED_CONSTRUCTION_FIN);
+        assertThat(testBatiments.getBottesTaille()).isEqualTo(UPDATED_BOTTES_TAILLE);
         assertThat(testBatiments.getBottesDensite()).isEqualTo(UPDATED_BOTTES_DENSITE);
-        assertThat(testBatiments.getDistanceAppro()).isEqualTo(DEFAULT_DISTANCE_APPRO);
         assertThat(testBatiments.getBottesCereale()).isEqualTo(UPDATED_BOTTES_CEREALE);
-        assertThat(testBatiments.getStructSuppl()).isEqualTo(UPDATED_STRUCT_SUPPL);
-        assertThat(testBatiments.getRevetInt()).isEqualTo(DEFAULT_REVET_INT);
-        assertThat(testBatiments.getRevetExt()).isEqualTo(DEFAULT_REVET_EXT);
-        assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(UPDATED_TECHNIQUE_SECONDAIRE);
-        assertThat(testBatiments.getCodePostal()).isEqualTo(DEFAULT_CODE_POSTAL);
+        assertThat(testBatiments.getDistanceAppro()).isEqualTo(UPDATED_DISTANCE_APPRO);
+        assertThat(testBatiments.getAutoconstruction()).isEqualTo(DEFAULT_AUTOCONSTRUCTION);
+        assertThat(testBatiments.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
         assertThat(testBatiments.getIntegBaie()).isEqualTo(UPDATED_INTEG_BAIE);
-        assertThat(testBatiments.getMateriauSb()).isEqualTo(UPDATED_MATERIAU_SB);
-        assertThat(testBatiments.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testBatiments.getStructSuppl()).isEqualTo(DEFAULT_STRUCT_SUPPL);
+        assertThat(testBatiments.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
+        assertThat(testBatiments.getMateriauSb()).isEqualTo(DEFAULT_MATERIAU_SB);
+        assertThat(testBatiments.getRevetInt()).isEqualTo(UPDATED_REVET_INT);
+        assertThat(testBatiments.getRevetExt()).isEqualTo(UPDATED_REVET_EXT);
+        assertThat(testBatiments.getConcepteur()).isEqualTo(DEFAULT_CONCEPTEUR);
+        assertThat(testBatiments.getRealisateur()).isEqualTo(DEFAULT_REALISATEUR);
+        assertThat(testBatiments.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testBatiments.getContactNom()).isEqualTo(DEFAULT_CONTACT_NOM);
+        assertThat(testBatiments.getContactMail()).isEqualTo(UPDATED_CONTACT_MAIL);
+        assertThat(testBatiments.getContactPhone()).isEqualTo(UPDATED_CONTACT_PHONE);
+        assertThat(testBatiments.getCodePostal()).isEqualTo(DEFAULT_CODE_POSTAL);
     }
 
     @Test
@@ -711,37 +711,37 @@ class BatimentsResourceIT {
             .latitude(UPDATED_LATITUDE)
             .longitude(UPDATED_LONGITUDE)
             .nom(UPDATED_NOM)
-            .contactNom(UPDATED_CONTACT_NOM)
-            .contactMail(UPDATED_CONTACT_MAIL)
-            .contactPhone(UPDATED_CONTACT_PHONE)
-            .constructionDebut(UPDATED_CONSTRUCTION_DEBUT)
-            .constructionFin(UPDATED_CONSTRUCTION_FIN)
-            .surface(UPDATED_SURFACE)
-            .cout(UPDATED_COUT)
-            .bottesTaille(UPDATED_BOTTES_TAILLE)
-            .autoconstruction(UPDATED_AUTOCONSTRUCTION)
-            .concepteur(UPDATED_CONCEPTEUR)
-            .realisateur(UPDATED_REALISATEUR)
-            .participatif(UPDATED_PARTICIPATIF)
+            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
             .usage(UPDATED_USAGE)
-            .noteCalcul(UPDATED_NOTE_CALCUL)
+            .cout(UPDATED_COUT)
+            .surface(UPDATED_SURFACE)
+            .niveaux(UPDATED_NIVEAUX)
             .travauxNeuf(UPDATED_TRAVAUX_NEUF)
             .travauxExtension(UPDATED_TRAVAUX_EXTENSION)
             .travauxRenov(UPDATED_TRAVAUX_RENOV)
             .travauxIte(UPDATED_TRAVAUX_ITE)
             .travauxIti(UPDATED_TRAVAUX_ITI)
-            .niveaux(UPDATED_NIVEAUX)
+            .constructionDebut(UPDATED_CONSTRUCTION_DEBUT)
+            .constructionFin(UPDATED_CONSTRUCTION_FIN)
+            .bottesTaille(UPDATED_BOTTES_TAILLE)
             .bottesDensite(UPDATED_BOTTES_DENSITE)
-            .distanceAppro(UPDATED_DISTANCE_APPRO)
             .bottesCereale(UPDATED_BOTTES_CEREALE)
+            .distanceAppro(UPDATED_DISTANCE_APPRO)
+            .autoconstruction(UPDATED_AUTOCONSTRUCTION)
+            .participatif(UPDATED_PARTICIPATIF)
+            .integBaie(UPDATED_INTEG_BAIE)
             .structSuppl(UPDATED_STRUCT_SUPPL)
+            .noteCalcul(UPDATED_NOTE_CALCUL)
+            .materiauSb(UPDATED_MATERIAU_SB)
             .revetInt(UPDATED_REVET_INT)
             .revetExt(UPDATED_REVET_EXT)
-            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
-            .codePostal(UPDATED_CODE_POSTAL)
-            .integBaie(UPDATED_INTEG_BAIE)
-            .materiauSb(UPDATED_MATERIAU_SB)
-            .description(UPDATED_DESCRIPTION);
+            .concepteur(UPDATED_CONCEPTEUR)
+            .realisateur(UPDATED_REALISATEUR)
+            .description(UPDATED_DESCRIPTION)
+            .contactNom(UPDATED_CONTACT_NOM)
+            .contactMail(UPDATED_CONTACT_MAIL)
+            .contactPhone(UPDATED_CONTACT_PHONE)
+            .codePostal(UPDATED_CODE_POSTAL);
 
         restBatimentsMockMvc
             .perform(
@@ -758,37 +758,37 @@ class BatimentsResourceIT {
         assertThat(testBatiments.getLatitude()).isEqualTo(UPDATED_LATITUDE);
         assertThat(testBatiments.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
         assertThat(testBatiments.getNom()).isEqualTo(UPDATED_NOM);
-        assertThat(testBatiments.getContactNom()).isEqualTo(UPDATED_CONTACT_NOM);
-        assertThat(testBatiments.getContactMail()).isEqualTo(UPDATED_CONTACT_MAIL);
-        assertThat(testBatiments.getContactPhone()).isEqualTo(UPDATED_CONTACT_PHONE);
-        assertThat(testBatiments.getConstructionDebut()).isEqualTo(UPDATED_CONSTRUCTION_DEBUT);
-        assertThat(testBatiments.getConstructionFin()).isEqualTo(UPDATED_CONSTRUCTION_FIN);
-        assertThat(testBatiments.getSurface()).isEqualTo(UPDATED_SURFACE);
-        assertThat(testBatiments.getCout()).isEqualTo(UPDATED_COUT);
-        assertThat(testBatiments.getBottesTaille()).isEqualTo(UPDATED_BOTTES_TAILLE);
-        assertThat(testBatiments.getAutoconstruction()).isEqualTo(UPDATED_AUTOCONSTRUCTION);
-        assertThat(testBatiments.getConcepteur()).isEqualTo(UPDATED_CONCEPTEUR);
-        assertThat(testBatiments.getRealisateur()).isEqualTo(UPDATED_REALISATEUR);
-        assertThat(testBatiments.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
+        assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(UPDATED_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiments.getUsage()).isEqualTo(UPDATED_USAGE);
-        assertThat(testBatiments.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
+        assertThat(testBatiments.getCout()).isEqualTo(UPDATED_COUT);
+        assertThat(testBatiments.getSurface()).isEqualTo(UPDATED_SURFACE);
+        assertThat(testBatiments.getNiveaux()).isEqualTo(UPDATED_NIVEAUX);
         assertThat(testBatiments.getTravauxNeuf()).isEqualTo(UPDATED_TRAVAUX_NEUF);
         assertThat(testBatiments.getTravauxExtension()).isEqualTo(UPDATED_TRAVAUX_EXTENSION);
         assertThat(testBatiments.getTravauxRenov()).isEqualTo(UPDATED_TRAVAUX_RENOV);
         assertThat(testBatiments.getTravauxIte()).isEqualTo(UPDATED_TRAVAUX_ITE);
         assertThat(testBatiments.getTravauxIti()).isEqualTo(UPDATED_TRAVAUX_ITI);
-        assertThat(testBatiments.getNiveaux()).isEqualTo(UPDATED_NIVEAUX);
+        assertThat(testBatiments.getConstructionDebut()).isEqualTo(UPDATED_CONSTRUCTION_DEBUT);
+        assertThat(testBatiments.getConstructionFin()).isEqualTo(UPDATED_CONSTRUCTION_FIN);
+        assertThat(testBatiments.getBottesTaille()).isEqualTo(UPDATED_BOTTES_TAILLE);
         assertThat(testBatiments.getBottesDensite()).isEqualTo(UPDATED_BOTTES_DENSITE);
-        assertThat(testBatiments.getDistanceAppro()).isEqualTo(UPDATED_DISTANCE_APPRO);
         assertThat(testBatiments.getBottesCereale()).isEqualTo(UPDATED_BOTTES_CEREALE);
+        assertThat(testBatiments.getDistanceAppro()).isEqualTo(UPDATED_DISTANCE_APPRO);
+        assertThat(testBatiments.getAutoconstruction()).isEqualTo(UPDATED_AUTOCONSTRUCTION);
+        assertThat(testBatiments.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
+        assertThat(testBatiments.getIntegBaie()).isEqualTo(UPDATED_INTEG_BAIE);
         assertThat(testBatiments.getStructSuppl()).isEqualTo(UPDATED_STRUCT_SUPPL);
+        assertThat(testBatiments.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
+        assertThat(testBatiments.getMateriauSb()).isEqualTo(UPDATED_MATERIAU_SB);
         assertThat(testBatiments.getRevetInt()).isEqualTo(UPDATED_REVET_INT);
         assertThat(testBatiments.getRevetExt()).isEqualTo(UPDATED_REVET_EXT);
-        assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(UPDATED_TECHNIQUE_SECONDAIRE);
-        assertThat(testBatiments.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
-        assertThat(testBatiments.getIntegBaie()).isEqualTo(UPDATED_INTEG_BAIE);
-        assertThat(testBatiments.getMateriauSb()).isEqualTo(UPDATED_MATERIAU_SB);
+        assertThat(testBatiments.getConcepteur()).isEqualTo(UPDATED_CONCEPTEUR);
+        assertThat(testBatiments.getRealisateur()).isEqualTo(UPDATED_REALISATEUR);
         assertThat(testBatiments.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testBatiments.getContactNom()).isEqualTo(UPDATED_CONTACT_NOM);
+        assertThat(testBatiments.getContactMail()).isEqualTo(UPDATED_CONTACT_MAIL);
+        assertThat(testBatiments.getContactPhone()).isEqualTo(UPDATED_CONTACT_PHONE);
+        assertThat(testBatiments.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
     }
 
     @Test

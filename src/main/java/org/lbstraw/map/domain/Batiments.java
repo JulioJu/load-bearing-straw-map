@@ -1,5 +1,6 @@
 package org.lbstraw.map.domain;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.*;
@@ -44,116 +45,244 @@ public class Batiments implements Serializable {
     @Column(name = "longitude", nullable = false)
     private Float longitude;
 
+    /**
+     * Nom du bâtiment
+     */
+    @ApiModelProperty(value = "Nom du bâtiment")
     @Size(max = 40)
     @Column(name = "nom", length = 40)
     private String nom;
 
-    @Column(name = "contact_nom")
-    private String contactNom;
+    /**
+     * Paille porteuse en technique secondaire
+     */
+    @ApiModelProperty(value = "Paille porteuse en technique secondaire")
+    @Column(name = "technique_secondaire")
+    private Boolean techniqueSecondaire;
 
-    @Column(name = "contact_mail")
-    private String contactMail;
-
-    @Column(name = "contact_phone")
-    private String contactPhone;
-
-    @Column(name = "construction_debut")
-    private LocalDate constructionDebut;
-
-    @Column(name = "construction_fin")
-    private LocalDate constructionFin;
-
-    @Column(name = "surface")
-    private Integer surface;
-
-    @Column(name = "cout")
-    private Integer cout;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "bottes_taille")
-    private TaillesBottes bottesTaille;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "autoconstruction")
-    private YesNoPartial autoconstruction;
-
-    @Size(max = 128)
-    @Column(name = "concepteur", length = 128)
-    private String concepteur;
-
-    @Size(max = 512)
-    @Column(name = "realisateur", length = 512)
-    private String realisateur;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "participatif")
-    private YesNoPartial participatif;
-
+    /**
+     * Usage
+     */
+    @ApiModelProperty(value = "Usage")
     @Enumerated(EnumType.STRING)
     @Column(name = "usage")
     private UsageBatiment usage;
 
-    @Column(name = "note_calcul")
-    private Boolean noteCalcul;
+    /**
+     * Coût [€]
+     */
+    @ApiModelProperty(value = "Coût [€]")
+    @Column(name = "cout")
+    private Integer cout;
 
-    @Column(name = "travaux_neuf")
-    private Boolean travauxNeuf;
+    /**
+     * Surface [m²]
+     */
+    @ApiModelProperty(value = "Surface [m²]")
+    @Column(name = "surface")
+    private Integer surface;
 
-    @Column(name = "travaux_extension")
-    private Boolean travauxExtension;
-
-    @Column(name = "travaux_renov")
-    private Boolean travauxRenov;
-
-    @Column(name = "travaux_ite")
-    private Boolean travauxIte;
-
-    @Column(name = "travaux_iti")
-    private Boolean travauxIti;
-
+    /**
+     * Niveaux
+     */
+    @ApiModelProperty(value = "Niveaux")
     @Column(name = "niveaux")
     private Integer niveaux;
 
+    /**
+     * Neuf
+     */
+    @ApiModelProperty(value = "Neuf")
+    @Column(name = "travaux_neuf")
+    private Boolean travauxNeuf;
+
+    /**
+     * Extension
+     */
+    @ApiModelProperty(value = "Extension")
+    @Column(name = "travaux_extension")
+    private Boolean travauxExtension;
+
+    /**
+     * Rénovation
+     */
+    @ApiModelProperty(value = "Rénovation")
+    @Column(name = "travaux_renov")
+    private Boolean travauxRenov;
+
+    /**
+     * ITE
+     */
+    @ApiModelProperty(value = "ITE")
+    @Column(name = "travaux_ite")
+    private Boolean travauxIte;
+
+    /**
+     * ITI
+     */
+    @ApiModelProperty(value = "ITI")
+    @Column(name = "travaux_iti")
+    private Boolean travauxIti;
+
+    /**
+     * Début de construction
+     */
+    @ApiModelProperty(value = "Début de construction")
+    @Column(name = "construction_debut")
+    private LocalDate constructionDebut;
+
+    /**
+     * Achèvement
+     */
+    @ApiModelProperty(value = "Achèvement")
+    @Column(name = "construction_fin")
+    private LocalDate constructionFin;
+
+    /**
+     * Taille
+     */
+    @ApiModelProperty(value = "Taille")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "bottes_taille")
+    private TaillesBottes bottesTaille;
+
+    /**
+     * Densité [kg/m³]
+     */
+    @ApiModelProperty(value = "Densité [kg/m³]")
     @Column(name = "bottes_densite")
     private Integer bottesDensite;
 
-    @Column(name = "distance_appro")
-    private Integer distanceAppro;
-
+    /**
+     * Céréale
+     */
+    @ApiModelProperty(value = "Céréale")
     @Enumerated(EnumType.STRING)
     @Column(name = "bottes_cereale")
     private Cereale bottesCereale;
 
-    @Column(name = "struct_suppl")
-    private Boolean structSuppl;
+    /**
+     * Distance d'appro [km]
+     */
+    @ApiModelProperty(value = "Distance d'appro [km]")
+    @Column(name = "distance_appro")
+    private Integer distanceAppro;
 
+    /**
+     * Autoconstruction
+     */
+    @ApiModelProperty(value = "Autoconstruction")
     @Enumerated(EnumType.STRING)
-    @Column(name = "revet_int")
-    private RevetInt revetInt;
+    @Column(name = "autoconstruction")
+    private YesNoPartial autoconstruction;
 
+    /**
+     * Participatif
+     */
+    @ApiModelProperty(value = "Participatif")
     @Enumerated(EnumType.STRING)
-    @Column(name = "revet_ext")
-    private RevetExt revetExt;
+    @Column(name = "participatif")
+    private YesNoPartial participatif;
 
-    @Column(name = "technique_secondaire")
-    private Boolean techniqueSecondaire;
-
-    @Size(max = 6)
-    @Column(name = "code_postal", length = 6)
-    private String codePostal;
-
+    /**
+     * Intégration des baies
+     */
+    @ApiModelProperty(value = "Intégration des baies")
     @Enumerated(EnumType.STRING)
     @Column(name = "integ_baie")
     private IntegBaie integBaie;
 
+    /**
+     * Structure supplémentaire
+     */
+    @ApiModelProperty(value = "Structure supplémentaire")
+    @Column(name = "struct_suppl")
+    private Boolean structSuppl;
+
+    /**
+     * Note de calcul
+     */
+    @ApiModelProperty(value = "Note de calcul")
+    @Column(name = "note_calcul")
+    private Boolean noteCalcul;
+
+    /**
+     * Matériau de soubassement
+     */
+    @ApiModelProperty(value = "Matériau de soubassement")
     @Enumerated(EnumType.STRING)
     @Column(name = "materiau_sb")
     private MateriauSb materiauSb;
 
+    /**
+     * Revêtement intérieur
+     */
+    @ApiModelProperty(value = "Revêtement intérieur")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "revet_int")
+    private RevetInt revetInt;
+
+    /**
+     * Revêtement extérieur
+     */
+    @ApiModelProperty(value = "Revêtement extérieur")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "revet_ext")
+    private RevetExt revetExt;
+
+    /**
+     * Concepteurs / conceptrices
+     */
+    @ApiModelProperty(value = "Concepteurs / conceptrices")
+    @Size(max = 512)
+    @Column(name = "concepteur", length = 512)
+    private String concepteur;
+
+    /**
+     * Réalisateurs / réalisatrices
+     */
+    @ApiModelProperty(value = "Réalisateurs / réalisatrices")
+    @Size(max = 512)
+    @Column(name = "realisateur", length = 512)
+    private String realisateur;
+
+    /**
+     * Description
+     */
+    @ApiModelProperty(value = "Description")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "description")
     private String description;
+
+    /**
+     * Nom
+     */
+    @ApiModelProperty(value = "Nom")
+    @Column(name = "contact_nom")
+    private String contactNom;
+
+    /**
+     * Mail
+     */
+    @ApiModelProperty(value = "Mail")
+    @Column(name = "contact_mail")
+    private String contactMail;
+
+    /**
+     * Téléphone
+     */
+    @ApiModelProperty(value = "Téléphone")
+    @Column(name = "contact_phone")
+    private String contactPhone;
+
+    /**
+     * Code postal
+     */
+    @ApiModelProperty(value = "Code postal")
+    @Size(max = 6)
+    @Column(name = "code_postal", length = 6)
+    private String codePostal;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -209,160 +338,17 @@ public class Batiments implements Serializable {
         this.nom = nom;
     }
 
-    public String getContactNom() {
-        return this.contactNom;
+    public Boolean getTechniqueSecondaire() {
+        return this.techniqueSecondaire;
     }
 
-    public Batiments contactNom(String contactNom) {
-        this.setContactNom(contactNom);
+    public Batiments techniqueSecondaire(Boolean techniqueSecondaire) {
+        this.setTechniqueSecondaire(techniqueSecondaire);
         return this;
     }
 
-    public void setContactNom(String contactNom) {
-        this.contactNom = contactNom;
-    }
-
-    public String getContactMail() {
-        return this.contactMail;
-    }
-
-    public Batiments contactMail(String contactMail) {
-        this.setContactMail(contactMail);
-        return this;
-    }
-
-    public void setContactMail(String contactMail) {
-        this.contactMail = contactMail;
-    }
-
-    public String getContactPhone() {
-        return this.contactPhone;
-    }
-
-    public Batiments contactPhone(String contactPhone) {
-        this.setContactPhone(contactPhone);
-        return this;
-    }
-
-    public void setContactPhone(String contactPhone) {
-        this.contactPhone = contactPhone;
-    }
-
-    public LocalDate getConstructionDebut() {
-        return this.constructionDebut;
-    }
-
-    public Batiments constructionDebut(LocalDate constructionDebut) {
-        this.setConstructionDebut(constructionDebut);
-        return this;
-    }
-
-    public void setConstructionDebut(LocalDate constructionDebut) {
-        this.constructionDebut = constructionDebut;
-    }
-
-    public LocalDate getConstructionFin() {
-        return this.constructionFin;
-    }
-
-    public Batiments constructionFin(LocalDate constructionFin) {
-        this.setConstructionFin(constructionFin);
-        return this;
-    }
-
-    public void setConstructionFin(LocalDate constructionFin) {
-        this.constructionFin = constructionFin;
-    }
-
-    public Integer getSurface() {
-        return this.surface;
-    }
-
-    public Batiments surface(Integer surface) {
-        this.setSurface(surface);
-        return this;
-    }
-
-    public void setSurface(Integer surface) {
-        this.surface = surface;
-    }
-
-    public Integer getCout() {
-        return this.cout;
-    }
-
-    public Batiments cout(Integer cout) {
-        this.setCout(cout);
-        return this;
-    }
-
-    public void setCout(Integer cout) {
-        this.cout = cout;
-    }
-
-    public TaillesBottes getBottesTaille() {
-        return this.bottesTaille;
-    }
-
-    public Batiments bottesTaille(TaillesBottes bottesTaille) {
-        this.setBottesTaille(bottesTaille);
-        return this;
-    }
-
-    public void setBottesTaille(TaillesBottes bottesTaille) {
-        this.bottesTaille = bottesTaille;
-    }
-
-    public YesNoPartial getAutoconstruction() {
-        return this.autoconstruction;
-    }
-
-    public Batiments autoconstruction(YesNoPartial autoconstruction) {
-        this.setAutoconstruction(autoconstruction);
-        return this;
-    }
-
-    public void setAutoconstruction(YesNoPartial autoconstruction) {
-        this.autoconstruction = autoconstruction;
-    }
-
-    public String getConcepteur() {
-        return this.concepteur;
-    }
-
-    public Batiments concepteur(String concepteur) {
-        this.setConcepteur(concepteur);
-        return this;
-    }
-
-    public void setConcepteur(String concepteur) {
-        this.concepteur = concepteur;
-    }
-
-    public String getRealisateur() {
-        return this.realisateur;
-    }
-
-    public Batiments realisateur(String realisateur) {
-        this.setRealisateur(realisateur);
-        return this;
-    }
-
-    public void setRealisateur(String realisateur) {
-        this.realisateur = realisateur;
-    }
-
-    public YesNoPartial getParticipatif() {
-        return this.participatif;
-    }
-
-    public Batiments participatif(YesNoPartial participatif) {
-        this.setParticipatif(participatif);
-        return this;
-    }
-
-    public void setParticipatif(YesNoPartial participatif) {
-        this.participatif = participatif;
+    public void setTechniqueSecondaire(Boolean techniqueSecondaire) {
+        this.techniqueSecondaire = techniqueSecondaire;
     }
 
     public UsageBatiment getUsage() {
@@ -378,17 +364,43 @@ public class Batiments implements Serializable {
         this.usage = usage;
     }
 
-    public Boolean getNoteCalcul() {
-        return this.noteCalcul;
+    public Integer getCout() {
+        return this.cout;
     }
 
-    public Batiments noteCalcul(Boolean noteCalcul) {
-        this.setNoteCalcul(noteCalcul);
+    public Batiments cout(Integer cout) {
+        this.setCout(cout);
         return this;
     }
 
-    public void setNoteCalcul(Boolean noteCalcul) {
-        this.noteCalcul = noteCalcul;
+    public void setCout(Integer cout) {
+        this.cout = cout;
+    }
+
+    public Integer getSurface() {
+        return this.surface;
+    }
+
+    public Batiments surface(Integer surface) {
+        this.setSurface(surface);
+        return this;
+    }
+
+    public void setSurface(Integer surface) {
+        this.surface = surface;
+    }
+
+    public Integer getNiveaux() {
+        return this.niveaux;
+    }
+
+    public Batiments niveaux(Integer niveaux) {
+        this.setNiveaux(niveaux);
+        return this;
+    }
+
+    public void setNiveaux(Integer niveaux) {
+        this.niveaux = niveaux;
     }
 
     public Boolean getTravauxNeuf() {
@@ -456,17 +468,43 @@ public class Batiments implements Serializable {
         this.travauxIti = travauxIti;
     }
 
-    public Integer getNiveaux() {
-        return this.niveaux;
+    public LocalDate getConstructionDebut() {
+        return this.constructionDebut;
     }
 
-    public Batiments niveaux(Integer niveaux) {
-        this.setNiveaux(niveaux);
+    public Batiments constructionDebut(LocalDate constructionDebut) {
+        this.setConstructionDebut(constructionDebut);
         return this;
     }
 
-    public void setNiveaux(Integer niveaux) {
-        this.niveaux = niveaux;
+    public void setConstructionDebut(LocalDate constructionDebut) {
+        this.constructionDebut = constructionDebut;
+    }
+
+    public LocalDate getConstructionFin() {
+        return this.constructionFin;
+    }
+
+    public Batiments constructionFin(LocalDate constructionFin) {
+        this.setConstructionFin(constructionFin);
+        return this;
+    }
+
+    public void setConstructionFin(LocalDate constructionFin) {
+        this.constructionFin = constructionFin;
+    }
+
+    public TaillesBottes getBottesTaille() {
+        return this.bottesTaille;
+    }
+
+    public Batiments bottesTaille(TaillesBottes bottesTaille) {
+        this.setBottesTaille(bottesTaille);
+        return this;
+    }
+
+    public void setBottesTaille(TaillesBottes bottesTaille) {
+        this.bottesTaille = bottesTaille;
     }
 
     public Integer getBottesDensite() {
@@ -482,19 +520,6 @@ public class Batiments implements Serializable {
         this.bottesDensite = bottesDensite;
     }
 
-    public Integer getDistanceAppro() {
-        return this.distanceAppro;
-    }
-
-    public Batiments distanceAppro(Integer distanceAppro) {
-        this.setDistanceAppro(distanceAppro);
-        return this;
-    }
-
-    public void setDistanceAppro(Integer distanceAppro) {
-        this.distanceAppro = distanceAppro;
-    }
-
     public Cereale getBottesCereale() {
         return this.bottesCereale;
     }
@@ -508,6 +533,58 @@ public class Batiments implements Serializable {
         this.bottesCereale = bottesCereale;
     }
 
+    public Integer getDistanceAppro() {
+        return this.distanceAppro;
+    }
+
+    public Batiments distanceAppro(Integer distanceAppro) {
+        this.setDistanceAppro(distanceAppro);
+        return this;
+    }
+
+    public void setDistanceAppro(Integer distanceAppro) {
+        this.distanceAppro = distanceAppro;
+    }
+
+    public YesNoPartial getAutoconstruction() {
+        return this.autoconstruction;
+    }
+
+    public Batiments autoconstruction(YesNoPartial autoconstruction) {
+        this.setAutoconstruction(autoconstruction);
+        return this;
+    }
+
+    public void setAutoconstruction(YesNoPartial autoconstruction) {
+        this.autoconstruction = autoconstruction;
+    }
+
+    public YesNoPartial getParticipatif() {
+        return this.participatif;
+    }
+
+    public Batiments participatif(YesNoPartial participatif) {
+        this.setParticipatif(participatif);
+        return this;
+    }
+
+    public void setParticipatif(YesNoPartial participatif) {
+        this.participatif = participatif;
+    }
+
+    public IntegBaie getIntegBaie() {
+        return this.integBaie;
+    }
+
+    public Batiments integBaie(IntegBaie integBaie) {
+        this.setIntegBaie(integBaie);
+        return this;
+    }
+
+    public void setIntegBaie(IntegBaie integBaie) {
+        this.integBaie = integBaie;
+    }
+
     public Boolean getStructSuppl() {
         return this.structSuppl;
     }
@@ -519,6 +596,32 @@ public class Batiments implements Serializable {
 
     public void setStructSuppl(Boolean structSuppl) {
         this.structSuppl = structSuppl;
+    }
+
+    public Boolean getNoteCalcul() {
+        return this.noteCalcul;
+    }
+
+    public Batiments noteCalcul(Boolean noteCalcul) {
+        this.setNoteCalcul(noteCalcul);
+        return this;
+    }
+
+    public void setNoteCalcul(Boolean noteCalcul) {
+        this.noteCalcul = noteCalcul;
+    }
+
+    public MateriauSb getMateriauSb() {
+        return this.materiauSb;
+    }
+
+    public Batiments materiauSb(MateriauSb materiauSb) {
+        this.setMateriauSb(materiauSb);
+        return this;
+    }
+
+    public void setMateriauSb(MateriauSb materiauSb) {
+        this.materiauSb = materiauSb;
     }
 
     public RevetInt getRevetInt() {
@@ -547,56 +650,30 @@ public class Batiments implements Serializable {
         this.revetExt = revetExt;
     }
 
-    public Boolean getTechniqueSecondaire() {
-        return this.techniqueSecondaire;
+    public String getConcepteur() {
+        return this.concepteur;
     }
 
-    public Batiments techniqueSecondaire(Boolean techniqueSecondaire) {
-        this.setTechniqueSecondaire(techniqueSecondaire);
+    public Batiments concepteur(String concepteur) {
+        this.setConcepteur(concepteur);
         return this;
     }
 
-    public void setTechniqueSecondaire(Boolean techniqueSecondaire) {
-        this.techniqueSecondaire = techniqueSecondaire;
+    public void setConcepteur(String concepteur) {
+        this.concepteur = concepteur;
     }
 
-    public String getCodePostal() {
-        return this.codePostal;
+    public String getRealisateur() {
+        return this.realisateur;
     }
 
-    public Batiments codePostal(String codePostal) {
-        this.setCodePostal(codePostal);
+    public Batiments realisateur(String realisateur) {
+        this.setRealisateur(realisateur);
         return this;
     }
 
-    public void setCodePostal(String codePostal) {
-        this.codePostal = codePostal;
-    }
-
-    public IntegBaie getIntegBaie() {
-        return this.integBaie;
-    }
-
-    public Batiments integBaie(IntegBaie integBaie) {
-        this.setIntegBaie(integBaie);
-        return this;
-    }
-
-    public void setIntegBaie(IntegBaie integBaie) {
-        this.integBaie = integBaie;
-    }
-
-    public MateriauSb getMateriauSb() {
-        return this.materiauSb;
-    }
-
-    public Batiments materiauSb(MateriauSb materiauSb) {
-        this.setMateriauSb(materiauSb);
-        return this;
-    }
-
-    public void setMateriauSb(MateriauSb materiauSb) {
-        this.materiauSb = materiauSb;
+    public void setRealisateur(String realisateur) {
+        this.realisateur = realisateur;
     }
 
     public String getDescription() {
@@ -610,6 +687,58 @@ public class Batiments implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getContactNom() {
+        return this.contactNom;
+    }
+
+    public Batiments contactNom(String contactNom) {
+        this.setContactNom(contactNom);
+        return this;
+    }
+
+    public void setContactNom(String contactNom) {
+        this.contactNom = contactNom;
+    }
+
+    public String getContactMail() {
+        return this.contactMail;
+    }
+
+    public Batiments contactMail(String contactMail) {
+        this.setContactMail(contactMail);
+        return this;
+    }
+
+    public void setContactMail(String contactMail) {
+        this.contactMail = contactMail;
+    }
+
+    public String getContactPhone() {
+        return this.contactPhone;
+    }
+
+    public Batiments contactPhone(String contactPhone) {
+        this.setContactPhone(contactPhone);
+        return this;
+    }
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+
+    public String getCodePostal() {
+        return this.codePostal;
+    }
+
+    public Batiments codePostal(String codePostal) {
+        this.setCodePostal(codePostal);
+        return this;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -639,37 +768,37 @@ public class Batiments implements Serializable {
             ", latitude=" + getLatitude() +
             ", longitude=" + getLongitude() +
             ", nom='" + getNom() + "'" +
-            ", contactNom='" + getContactNom() + "'" +
-            ", contactMail='" + getContactMail() + "'" +
-            ", contactPhone='" + getContactPhone() + "'" +
-            ", constructionDebut='" + getConstructionDebut() + "'" +
-            ", constructionFin='" + getConstructionFin() + "'" +
-            ", surface=" + getSurface() +
-            ", cout=" + getCout() +
-            ", bottesTaille='" + getBottesTaille() + "'" +
-            ", autoconstruction='" + getAutoconstruction() + "'" +
-            ", concepteur='" + getConcepteur() + "'" +
-            ", realisateur='" + getRealisateur() + "'" +
-            ", participatif='" + getParticipatif() + "'" +
+            ", techniqueSecondaire='" + getTechniqueSecondaire() + "'" +
             ", usage='" + getUsage() + "'" +
-            ", noteCalcul='" + getNoteCalcul() + "'" +
+            ", cout=" + getCout() +
+            ", surface=" + getSurface() +
+            ", niveaux=" + getNiveaux() +
             ", travauxNeuf='" + getTravauxNeuf() + "'" +
             ", travauxExtension='" + getTravauxExtension() + "'" +
             ", travauxRenov='" + getTravauxRenov() + "'" +
             ", travauxIte='" + getTravauxIte() + "'" +
             ", travauxIti='" + getTravauxIti() + "'" +
-            ", niveaux=" + getNiveaux() +
+            ", constructionDebut='" + getConstructionDebut() + "'" +
+            ", constructionFin='" + getConstructionFin() + "'" +
+            ", bottesTaille='" + getBottesTaille() + "'" +
             ", bottesDensite=" + getBottesDensite() +
-            ", distanceAppro=" + getDistanceAppro() +
             ", bottesCereale='" + getBottesCereale() + "'" +
+            ", distanceAppro=" + getDistanceAppro() +
+            ", autoconstruction='" + getAutoconstruction() + "'" +
+            ", participatif='" + getParticipatif() + "'" +
+            ", integBaie='" + getIntegBaie() + "'" +
             ", structSuppl='" + getStructSuppl() + "'" +
+            ", noteCalcul='" + getNoteCalcul() + "'" +
+            ", materiauSb='" + getMateriauSb() + "'" +
             ", revetInt='" + getRevetInt() + "'" +
             ", revetExt='" + getRevetExt() + "'" +
-            ", techniqueSecondaire='" + getTechniqueSecondaire() + "'" +
-            ", codePostal='" + getCodePostal() + "'" +
-            ", integBaie='" + getIntegBaie() + "'" +
-            ", materiauSb='" + getMateriauSb() + "'" +
+            ", concepteur='" + getConcepteur() + "'" +
+            ", realisateur='" + getRealisateur() + "'" +
             ", description='" + getDescription() + "'" +
+            ", contactNom='" + getContactNom() + "'" +
+            ", contactMail='" + getContactMail() + "'" +
+            ", contactPhone='" + getContactPhone() + "'" +
+            ", codePostal='" + getCodePostal() + "'" +
             "}";
     }
 }
