@@ -286,7 +286,7 @@
   ],
   "entityTableName": "batiments",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceClass",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

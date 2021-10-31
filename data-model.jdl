@@ -260,6 +260,7 @@ enum YesNoPartial {
 }
 
 @service(serviceClass)
+@paginate(pagination)
 entity Batiments {
     latitude Float required min(-90) max(90),
     longitude Float required min(-90) max(90),

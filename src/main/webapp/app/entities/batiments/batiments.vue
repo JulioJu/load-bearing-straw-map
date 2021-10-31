@@ -28,42 +28,150 @@
       <table class="table table-striped" aria-describedby="batiments">
         <thead>
           <tr>
-            <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.latitude')">Latitude</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.longitude')">Longitude</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.nom')">Nom</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.techniqueSecondaire')">Technique Secondaire</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.usage')">Usage</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.cout')">Cout</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.surface')">Surface</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.niveaux')">Niveaux</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.travauxNeuf')">Travaux Neuf</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.travauxExtension')">Travaux Extension</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.travauxRenov')">Travaux Renov</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.travauxIte')">Travaux Ite</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.travauxIti')">Travaux Iti</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.constructionDebut')">Construction Debut</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.constructionFin')">Construction Fin</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.bottesTaille')">Bottes Taille</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.bottesDensite')">Bottes Densite</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.bottesCereale')">Bottes Cereale</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.distanceAppro')">Distance Appro</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.autoconstruction')">Autoconstruction</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.participatif')">Participatif</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.integBaie')">Integ Baie</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.structSuppl')">Struct Suppl</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.noteCalcul')">Note Calcul</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.materiauSb')">Materiau Sb</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.revetInt')">Revet Int</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.revetExt')">Revet Ext</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.concepteur')">Concepteur</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.realisateur')">Realisateur</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.description')">Description</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.contactNom')">Contact Nom</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.contactMail')">Contact Mail</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.contactPhone')">Contact Phone</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.codePostal')">Code Postal</span></th>
-            <th scope="row"><span v-text="$t('lbstrawmapApp.batiments.creator')">Creator</span></th>
+            <th scope="row" v-on:click="changeOrder('id')">
+              <span v-text="$t('global.field.id')">ID</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('latitude')">
+              <span v-text="$t('lbstrawmapApp.batiments.latitude')">Latitude</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'latitude'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('longitude')">
+              <span v-text="$t('lbstrawmapApp.batiments.longitude')">Longitude</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'longitude'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('nom')">
+              <span v-text="$t('lbstrawmapApp.batiments.nom')">Nom</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nom'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('techniqueSecondaire')">
+              <span v-text="$t('lbstrawmapApp.batiments.techniqueSecondaire')">Technique Secondaire</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'techniqueSecondaire'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('usage')">
+              <span v-text="$t('lbstrawmapApp.batiments.usage')">Usage</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'usage'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('cout')">
+              <span v-text="$t('lbstrawmapApp.batiments.cout')">Cout</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'cout'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('surface')">
+              <span v-text="$t('lbstrawmapApp.batiments.surface')">Surface</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'surface'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('niveaux')">
+              <span v-text="$t('lbstrawmapApp.batiments.niveaux')">Niveaux</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'niveaux'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('travauxNeuf')">
+              <span v-text="$t('lbstrawmapApp.batiments.travauxNeuf')">Travaux Neuf</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxNeuf'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('travauxExtension')">
+              <span v-text="$t('lbstrawmapApp.batiments.travauxExtension')">Travaux Extension</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxExtension'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('travauxRenov')">
+              <span v-text="$t('lbstrawmapApp.batiments.travauxRenov')">Travaux Renov</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxRenov'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('travauxIte')">
+              <span v-text="$t('lbstrawmapApp.batiments.travauxIte')">Travaux Ite</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxIte'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('travauxIti')">
+              <span v-text="$t('lbstrawmapApp.batiments.travauxIti')">Travaux Iti</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxIti'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('constructionDebut')">
+              <span v-text="$t('lbstrawmapApp.batiments.constructionDebut')">Construction Debut</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'constructionDebut'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('constructionFin')">
+              <span v-text="$t('lbstrawmapApp.batiments.constructionFin')">Construction Fin</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'constructionFin'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('bottesTaille')">
+              <span v-text="$t('lbstrawmapApp.batiments.bottesTaille')">Bottes Taille</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'bottesTaille'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('bottesDensite')">
+              <span v-text="$t('lbstrawmapApp.batiments.bottesDensite')">Bottes Densite</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'bottesDensite'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('bottesCereale')">
+              <span v-text="$t('lbstrawmapApp.batiments.bottesCereale')">Bottes Cereale</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'bottesCereale'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('distanceAppro')">
+              <span v-text="$t('lbstrawmapApp.batiments.distanceAppro')">Distance Appro</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'distanceAppro'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('autoconstruction')">
+              <span v-text="$t('lbstrawmapApp.batiments.autoconstruction')">Autoconstruction</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'autoconstruction'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('participatif')">
+              <span v-text="$t('lbstrawmapApp.batiments.participatif')">Participatif</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'participatif'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('integBaie')">
+              <span v-text="$t('lbstrawmapApp.batiments.integBaie')">Integ Baie</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'integBaie'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('structSuppl')">
+              <span v-text="$t('lbstrawmapApp.batiments.structSuppl')">Struct Suppl</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structSuppl'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('noteCalcul')">
+              <span v-text="$t('lbstrawmapApp.batiments.noteCalcul')">Note Calcul</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'noteCalcul'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('materiauSb')">
+              <span v-text="$t('lbstrawmapApp.batiments.materiauSb')">Materiau Sb</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'materiauSb'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('revetInt')">
+              <span v-text="$t('lbstrawmapApp.batiments.revetInt')">Revet Int</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'revetInt'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('revetExt')">
+              <span v-text="$t('lbstrawmapApp.batiments.revetExt')">Revet Ext</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'revetExt'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('concepteur')">
+              <span v-text="$t('lbstrawmapApp.batiments.concepteur')">Concepteur</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'concepteur'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('realisateur')">
+              <span v-text="$t('lbstrawmapApp.batiments.realisateur')">Realisateur</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'realisateur'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('description')">
+              <span v-text="$t('lbstrawmapApp.batiments.description')">Description</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'description'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('contactNom')">
+              <span v-text="$t('lbstrawmapApp.batiments.contactNom')">Contact Nom</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'contactNom'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('contactMail')">
+              <span v-text="$t('lbstrawmapApp.batiments.contactMail')">Contact Mail</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'contactMail'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('contactPhone')">
+              <span v-text="$t('lbstrawmapApp.batiments.contactPhone')">Contact Phone</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'contactPhone'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('codePostal')">
+              <span v-text="$t('lbstrawmapApp.batiments.codePostal')">Code Postal</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'codePostal'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('creator.email')">
+              <span v-text="$t('lbstrawmapApp.batiments.creator')">Creator</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'creator.email'"></jhi-sort-indicator>
+            </th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -164,6 +272,14 @@
         </button>
       </div>
     </b-modal>
+    <div v-show="batiments && batiments.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count :page="page" :total="queryCount" :itemsPerPage="itemsPerPage"></jhi-item-count>
+      </div>
+      <div class="row justify-content-center">
+        <b-pagination size="md" :total-rows="totalItems" v-model="page" :per-page="itemsPerPage" :change="loadPage(page)"></b-pagination>
+      </div>
+    </div>
   </div>
 </template>
 

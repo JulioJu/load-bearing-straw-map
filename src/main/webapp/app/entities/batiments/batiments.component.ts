@@ -17,6 +17,13 @@ export default class Batiments extends mixins(JhiDataUtils) {
   @Inject('alertService') private alertService: () => AlertService;
 
   private removeId: number = null;
+  public itemsPerPage = 20;
+  public queryCount: number = null;
+  public page = 1;
+  public previousPage = 1;
+  public propOrder = 'id';
+  public reverse = false;
+  public totalItems = 0;
 
   public batiments: IBatiments[] = [];
 
@@ -27,16 +34,24 @@ export default class Batiments extends mixins(JhiDataUtils) {
   }
 
   public clear(): void {
+    this.page = 1;
     this.retrieveAllBatimentss();
   }
 
   public retrieveAllBatimentss(): void {
     this.isFetching = true;
+    const paginationQuery = {
+      page: this.page - 1,
+      size: this.itemsPerPage,
+      sort: this.sort(),
+    };
     this.batimentsService()
-      .retrieve()
+      .retrieve(paginationQuery)
       .then(
         res => {
           this.batiments = res.data;
+          this.totalItems = Number(res.headers['x-total-count']);
+          this.queryCount = this.totalItems;
           this.isFetching = false;
         },
         err => {
@@ -76,6 +91,31 @@ export default class Batiments extends mixins(JhiDataUtils) {
       .catch(error => {
         this.alertService().showHttpError(this, error.response);
       });
+  }
+
+  public sort(): Array<any> {
+    const result = [this.propOrder + ',' + (this.reverse ? 'desc' : 'asc')];
+    if (this.propOrder !== 'id') {
+      result.push('id');
+    }
+    return result;
+  }
+
+  public loadPage(page: number): void {
+    if (page !== this.previousPage) {
+      this.previousPage = page;
+      this.transition();
+    }
+  }
+
+  public transition(): void {
+    this.retrieveAllBatimentss();
+  }
+
+  public changeOrder(propOrder): void {
+    this.propOrder = propOrder;
+    this.reverse = !this.reverse;
+    this.transition();
   }
 
   public closeDialog(): void {
