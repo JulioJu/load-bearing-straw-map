@@ -53,6 +53,8 @@ export default class MapContainer extends Vue {
         name: aBatiments.nom,
         lat: aBatiments.latitude,
         long: aBatiments.longitude,
+        usageBatiment: aBatiments.usage ? this.$t(`lbstrawmapApp.UsageBatiment.${aBatiments.usage}`) : undefined,
+        surface: aBatiments.surface ? `${aBatiments.surface} m²` : undefined,
       });
       this.map.addLayer(icon);
     });

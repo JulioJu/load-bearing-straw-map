@@ -12,7 +12,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BatimentsRepository extends JpaRepository<Batiments, Long> {
     // START added by JulioJu
-    @Query("select ba.id as id, ba.nom as nom, ba.latitude as latitude, ba.longitude as longitude from Batiments ba")
+    @Query(
+        "select ba.id as id, ba.nom as nom, ba.latitude as latitude, ba.longitude as longitude, ba.usage as usage, ba.surface as surface from Batiments ba"
+    )
     List<org.lbstraw.map.domain.BatimentsLazyView> findAllLazy();
 
     @Query(nativeQuery = true, value = "select ba.creator_id as creatorId from Batiments ba where ba.id = :batId")

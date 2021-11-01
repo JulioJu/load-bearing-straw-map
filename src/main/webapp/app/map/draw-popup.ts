@@ -2,9 +2,19 @@ import 'ol/ol.css';
 import { Map, Overlay } from 'ol';
 import VueRouter from 'vue-router';
 
-const appendList = (list: HTMLUListElement, content: string) => {
+const appendList = (list: HTMLUListElement, content: string, strong = false) => {
+  if (content === undefined) {
+    return;
+  }
   const li = document.createElement('li');
-  li.innerHTML = content;
+  if (!strong) {
+    li.innerHTML = content;
+  } else {
+    const strong = document.createElement('strong');
+    strong.innerHTML = content;
+    strong.style.fontSize = '1.2em';
+    li.appendChild(strong);
+  }
   list.appendChild(li);
 };
 
@@ -25,13 +35,14 @@ const registerMapEvents = (map: Map, popupContent: HTMLDivElement, overlay: Over
       const list = document.createElement('ul');
       const name = feature.get('name');
       if (name) {
-        appendList(list, `nom: ${name}`);
+        appendList(list, `${name}`, true);
       }
-      appendList(list, `latitude: ${feature.get('latitude')}`);
-      appendList(list, `longitude: ${feature.get('longitude')}`);
+      appendList(list, feature.get('usageBatiment'));
+      appendList(list, feature.get('surface'));
       const li = document.createElement('li');
       const anchor = document.createElement('a');
       anchor.innerText = 'Voir +';
+      anchor.classList.add('link-primary');
       anchor.addEventListener('click', (ev: MouseEvent) => {
         ev.preventDefault();
         router.push({ name: 'BatimentsView', params: { batimentsId: feature.get('id') } });

@@ -5,9 +5,24 @@ import 'ol/ol.css';
 import { transform } from 'ol/proj';
 import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style';
+import { LocaleMessage } from 'vue-i18n';
 
 /** Inspired from https://openlayers.org/en/latest/examples/icon.html */
-export default ({ id, name, lat, long }: { id: number; name: string; lat: number; long: number }) => {
+export default ({
+  id,
+  name,
+  lat,
+  long,
+  usageBatiment,
+  surface,
+}: {
+  id: number;
+  name: string;
+  lat: number;
+  long: number;
+  usageBatiment: LocaleMessage | undefined;
+  surface: string | undefined;
+}) => {
   const icon = new Image(32, 48);
   /** Download from https://openlayers.org/en/latest/examples/data/icon.png */
   icon.src =
@@ -17,8 +32,8 @@ export default ({ id, name, lat, long }: { id: number; name: string; lat: number
     geometry: new Point(transform([long, lat], 'EPSG:4326', 'EPSG:3857'), 1000),
     id,
     name,
-    latitude: lat,
-    longitude: long,
+    usageBatiment,
+    surface,
   });
 
   const iconStyle = new Style({
