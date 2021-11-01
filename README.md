@@ -2,6 +2,10 @@
 
 This application was generated using JHipster 7.3.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.3.1](https://www.jhipster.tech/documentation-archive/v7.3.1).
 
+<!-- START added by JulioJu -->
+See also [./README_BY_JULIOJU.md](./README_BY_JULIOJU.md)
+<!-- END added by JulioJu -->
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
