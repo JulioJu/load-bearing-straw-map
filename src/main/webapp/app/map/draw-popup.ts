@@ -1,6 +1,7 @@
 import 'ol/ol.css';
 import { Map, Overlay } from 'ol';
 import VueRouter from 'vue-router';
+import BatimentsService from '@/entities/batiments/batiments.service';
 
 const appendList = (list: HTMLUListElement, content: string, strong = false) => {
   if (content === undefined) {
@@ -23,9 +24,23 @@ const disposePopup = (overlay: Overlay, popupCloser: HTMLDivElement) => {
   popupCloser.blur();
 };
 
-const registerMapEvents = (map: Map, popupContent: HTMLDivElement, overlay: Overlay, popupCloser: HTMLDivElement, router: VueRouter) => {
+const registerMapEvents = ({
+  batimentsService,
+  map,
+  popupContent,
+  overlay,
+  popupCloser,
+  router,
+}: {
+  batimentsService: () => BatimentsService;
+  map: Map;
+  popupContent: HTMLDivElement;
+  overlay: Overlay;
+  popupCloser: HTMLDivElement;
+  router: VueRouter;
+}) => {
   // display popup on click
-  map.on('click', evt => {
+  map.on('click', async evt => {
     const feature = map.forEachFeatureAtPixel(evt.pixel, feature => {
       return feature;
     });
@@ -50,6 +65,16 @@ const registerMapEvents = (map: Map, popupContent: HTMLDivElement, overlay: Over
       li.appendChild(anchor);
       list.appendChild(li);
       popupContent.appendChild(list);
+      // TODO not optimized, we retrieve all Batiments to get only a photo
+      const aBatiment = await batimentsService().find(feature.get('id'));
+      if (aBatiment.photoPrincipale) {
+        const photo = new Image();
+        photo.style.maxHeight = '5rem';
+        photo.classList.add('mt-2');
+        photo.alt = 'Image du bâtiment';
+        photo.src = `data:${aBatiment.photoPrincipaleContentType};base64,${aBatiment.photoPrincipale}`;
+        list.appendChild(photo);
+      }
     } else {
       disposePopup(overlay, popupCloser);
     }
@@ -73,12 +98,14 @@ const registerMapEvents = (map: Map, popupContent: HTMLDivElement, overlay: Over
  * https://openlayers.org/en/latest/examples/popup.html
  */
 export default ({
+  batimentsService,
   map,
   popup,
   popupCloser,
   popupContent,
   router,
 }: {
+  batimentsService: () => BatimentsService;
   map: Map;
   popup: HTMLDivElement;
   popupCloser: HTMLDivElement;
@@ -99,5 +126,5 @@ export default ({
     return false;
   };
 
-  registerMapEvents(map, popupContent, overlay, popupCloser, router);
+  registerMapEvents({ batimentsService, map, popupContent, overlay, popupCloser, router });
 };

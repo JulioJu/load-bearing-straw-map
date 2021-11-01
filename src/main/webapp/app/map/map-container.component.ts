@@ -59,6 +59,7 @@ export default class MapContainer extends Vue {
       this.map.addLayer(icon);
     });
     drawPopup({
+      batimentsService: this.batimentsService,
       map: this.map,
       popup: this.$refs['popup'] as HTMLDivElement,
       popupCloser: this.$refs['popup-closer'] as HTMLDivElement,
