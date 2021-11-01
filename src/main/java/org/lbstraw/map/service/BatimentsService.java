@@ -54,6 +54,12 @@ public class BatimentsService {
                 if (batiments.getLongitude() != null) {
                     existingBatiments.setLongitude(batiments.getLongitude());
                 }
+                if (batiments.getPhotoPrincipale() != null) {
+                    existingBatiments.setPhotoPrincipale(batiments.getPhotoPrincipale());
+                }
+                if (batiments.getPhotoPrincipaleContentType() != null) {
+                    existingBatiments.setPhotoPrincipaleContentType(batiments.getPhotoPrincipaleContentType());
+                }
                 if (batiments.getNom() != null) {
                     existingBatiments.setNom(batiments.getNom());
                 }

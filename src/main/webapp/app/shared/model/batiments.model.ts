@@ -12,6 +12,8 @@ export interface IBatiments {
   id?: number;
   latitude?: number;
   longitude?: number;
+  photoPrincipaleContentType?: string | null;
+  photoPrincipale?: string | null;
   nom?: string | null;
   techniqueSecondaire?: boolean | null;
   usage?: UsageBatiment | null;
@@ -52,6 +54,8 @@ export class Batiments implements IBatiments {
     public id?: number,
     public latitude?: number,
     public longitude?: number,
+    public photoPrincipaleContentType?: string | null,
+    public photoPrincipale?: string | null,
     public nom?: string | null,
     public techniqueSecondaire?: boolean | null,
     public usage?: UsageBatiment | null,

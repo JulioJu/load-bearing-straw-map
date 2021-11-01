@@ -69,6 +69,54 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.photoPrincipale')" for="batiments-photoPrincipale"
+              >Photo Principale</label
+            >
+            <div>
+              <img
+                v-bind:src="'data:' + batiments.photoPrincipaleContentType + ';base64,' + batiments.photoPrincipale"
+                style="max-height: 100px"
+                v-if="batiments.photoPrincipale"
+                alt="batiments image"
+              />
+              <div v-if="batiments.photoPrincipale" class="form-text text-danger clearfix">
+                <span class="pull-left">{{ batiments.photoPrincipaleContentType }}, {{ byteSize(batiments.photoPrincipale) }}</span>
+                <button
+                  type="button"
+                  v-on:click="clearInputImage('photoPrincipale', 'photoPrincipaleContentType', 'file_photoPrincipale')"
+                  class="btn btn-secondary btn-xs pull-right"
+                >
+                  <font-awesome-icon icon="times"></font-awesome-icon>
+                </button>
+              </div>
+              <input
+                type="file"
+                ref="file_photoPrincipale"
+                id="file_photoPrincipale"
+                data-cy="photoPrincipale"
+                v-on:change="setFileData($event, batiments, 'photoPrincipale', true)"
+                accept="image/*"
+                v-text="$t('entity.action.addimage')"
+              />
+            </div>
+            <input
+              type="hidden"
+              class="form-control"
+              name="photoPrincipale"
+              id="batiments-photoPrincipale"
+              data-cy="photoPrincipale"
+              :class="{ valid: !$v.batiments.photoPrincipale.$invalid, invalid: $v.batiments.photoPrincipale.$invalid }"
+              v-model="$v.batiments.photoPrincipale.$model"
+            />
+            <input
+              type="hidden"
+              class="form-control"
+              name="photoPrincipaleContentType"
+              id="batiments-photoPrincipaleContentType"
+              v-model="batiments.photoPrincipaleContentType"
+            />
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="$t('lbstrawmapApp.batiments.nom')" for="batiments-nom">Nom</label>
             <input
               type="text"

@@ -20,6 +20,7 @@
       "id": "ID",
       "latitude": "Latitude",
       "longitude": "Longitude",
+      "photoPrincipale": "Photo Principale",
       "nom": "Nom",
       "techniqueSecondaire": "Technique Secondaire",
       "usage": "Usage",

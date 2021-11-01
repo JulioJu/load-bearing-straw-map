@@ -34,6 +34,7 @@ const validations: any = {
       min: minValue(-90),
       max: maxValue(90),
     },
+    photoPrincipale: {},
     nom: {
       maxLength: maxLength(40),
     },
@@ -191,6 +192,20 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
 
   public previousState(): void {
     this.$router.go(-1);
+  }
+
+  public clearInputImage(field, fieldContentType, idInput): void {
+    if (this.batiments && field && fieldContentType) {
+      if (Object.prototype.hasOwnProperty.call(this.batiments, field)) {
+        this.batiments[field] = null;
+      }
+      if (Object.prototype.hasOwnProperty.call(this.batiments, fieldContentType)) {
+        this.batiments[fieldContentType] = null;
+      }
+      if (idInput) {
+        (<any>this).$refs[idInput] = null;
+      }
+    }
   }
 
   public initRelationships(): void {

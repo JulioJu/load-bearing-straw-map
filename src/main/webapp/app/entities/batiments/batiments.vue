@@ -40,6 +40,10 @@
               <span v-text="$t('lbstrawmapApp.batiments.longitude')">Longitude</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'longitude'"></jhi-sort-indicator>
             </th>
+            <th scope="row" v-on:click="changeOrder('photoPrincipale')">
+              <span v-text="$t('lbstrawmapApp.batiments.photoPrincipale')">Photo Principale</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photoPrincipale'"></jhi-sort-indicator>
+            </th>
             <th scope="row" v-on:click="changeOrder('nom')">
               <span v-text="$t('lbstrawmapApp.batiments.nom')">Nom</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nom'"></jhi-sort-indicator>
@@ -182,6 +186,18 @@
             </td>
             <td>{{ batiments.latitude }}</td>
             <td>{{ batiments.longitude }}</td>
+            <td>
+              <a v-if="batiments.photoPrincipale" v-on:click="openFile(batiments.photoPrincipaleContentType, batiments.photoPrincipale)">
+                <img
+                  v-bind:src="'data:' + batiments.photoPrincipaleContentType + ';base64,' + batiments.photoPrincipale"
+                  style="max-height: 30px"
+                  alt="batiments image"
+                />
+              </a>
+              <span v-if="batiments.photoPrincipale"
+                >{{ batiments.photoPrincipaleContentType }}, {{ byteSize(batiments.photoPrincipale) }}</span
+              >
+            </td>
             <td>{{ batiments.nom }}</td>
             <td>{{ batiments.techniqueSecondaire }}</td>
             <td v-text="$t('lbstrawmapApp.UsageBatiment.' + batiments.usage)">{{ batiments.usage }}</td>

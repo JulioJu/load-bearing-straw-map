@@ -16,6 +16,11 @@
       "fieldValidateRulesMax": "90"
     },
     {
+      "fieldName": "photoPrincipale",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
       "fieldName": "nom",
       "fieldType": "String",
       "javadoc": "Nom du bâtiment",

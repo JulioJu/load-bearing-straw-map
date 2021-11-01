@@ -19,6 +19,21 @@
             <span>{{ batiments.longitude }}</span>
           </dd>
           <dt>
+            <span v-text="$t('lbstrawmapApp.batiments.photoPrincipale')">Photo Principale</span>
+          </dt>
+          <dd>
+            <div v-if="batiments.photoPrincipale">
+              <a v-on:click="openFile(batiments.photoPrincipaleContentType, batiments.photoPrincipale)">
+                <img
+                  v-bind:src="'data:' + batiments.photoPrincipaleContentType + ';base64,' + batiments.photoPrincipale"
+                  style="max-width: 100%"
+                  alt="batiments image"
+                />
+              </a>
+              {{ batiments.photoPrincipaleContentType }}, {{ byteSize(batiments.photoPrincipale) }}
+            </div>
+          </dd>
+          <dt>
             <span v-text="$t('lbstrawmapApp.batiments.nom')">Nom</span>
           </dt>
           <dd>

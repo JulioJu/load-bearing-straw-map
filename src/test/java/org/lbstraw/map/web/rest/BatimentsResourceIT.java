@@ -47,6 +47,11 @@ class BatimentsResourceIT {
     private static final Float DEFAULT_LONGITUDE = -90F;
     private static final Float UPDATED_LONGITUDE = -89F;
 
+    private static final byte[] DEFAULT_PHOTO_PRINCIPALE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_PHOTO_PRINCIPALE = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_PHOTO_PRINCIPALE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_PHOTO_PRINCIPALE_CONTENT_TYPE = "image/png";
+
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
@@ -170,6 +175,8 @@ class BatimentsResourceIT {
         Batiments batiments = new Batiments()
             .latitude(DEFAULT_LATITUDE)
             .longitude(DEFAULT_LONGITUDE)
+            .photoPrincipale(DEFAULT_PHOTO_PRINCIPALE)
+            .photoPrincipaleContentType(DEFAULT_PHOTO_PRINCIPALE_CONTENT_TYPE)
             .nom(DEFAULT_NOM)
             .techniqueSecondaire(DEFAULT_TECHNIQUE_SECONDAIRE)
             .usage(DEFAULT_USAGE)
@@ -215,6 +222,8 @@ class BatimentsResourceIT {
         Batiments batiments = new Batiments()
             .latitude(UPDATED_LATITUDE)
             .longitude(UPDATED_LONGITUDE)
+            .photoPrincipale(UPDATED_PHOTO_PRINCIPALE)
+            .photoPrincipaleContentType(UPDATED_PHOTO_PRINCIPALE_CONTENT_TYPE)
             .nom(UPDATED_NOM)
             .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
             .usage(UPDATED_USAGE)
@@ -270,6 +279,8 @@ class BatimentsResourceIT {
         Batiments testBatiments = batimentsList.get(batimentsList.size() - 1);
         assertThat(testBatiments.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
         assertThat(testBatiments.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
+        assertThat(testBatiments.getPhotoPrincipale()).isEqualTo(DEFAULT_PHOTO_PRINCIPALE);
+        assertThat(testBatiments.getPhotoPrincipaleContentType()).isEqualTo(DEFAULT_PHOTO_PRINCIPALE_CONTENT_TYPE);
         assertThat(testBatiments.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(DEFAULT_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiments.getUsage()).isEqualTo(DEFAULT_USAGE);
@@ -370,6 +381,8 @@ class BatimentsResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(batiments.getId().intValue())))
             .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())))
             .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.doubleValue())))
+            .andExpect(jsonPath("$.[*].photoPrincipaleContentType").value(hasItem(DEFAULT_PHOTO_PRINCIPALE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].photoPrincipale").value(hasItem(Base64Utils.encodeToString(DEFAULT_PHOTO_PRINCIPALE))))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
             .andExpect(jsonPath("$.[*].techniqueSecondaire").value(hasItem(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue())))
             .andExpect(jsonPath("$.[*].usage").value(hasItem(DEFAULT_USAGE.toString())))
@@ -418,6 +431,8 @@ class BatimentsResourceIT {
             .andExpect(jsonPath("$.id").value(batiments.getId().intValue()))
             .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.doubleValue()))
             .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.doubleValue()))
+            .andExpect(jsonPath("$.photoPrincipaleContentType").value(DEFAULT_PHOTO_PRINCIPALE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.photoPrincipale").value(Base64Utils.encodeToString(DEFAULT_PHOTO_PRINCIPALE)))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
             .andExpect(jsonPath("$.techniqueSecondaire").value(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue()))
             .andExpect(jsonPath("$.usage").value(DEFAULT_USAGE.toString()))
@@ -474,6 +489,8 @@ class BatimentsResourceIT {
         updatedBatiments
             .latitude(UPDATED_LATITUDE)
             .longitude(UPDATED_LONGITUDE)
+            .photoPrincipale(UPDATED_PHOTO_PRINCIPALE)
+            .photoPrincipaleContentType(UPDATED_PHOTO_PRINCIPALE_CONTENT_TYPE)
             .nom(UPDATED_NOM)
             .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
             .usage(UPDATED_USAGE)
@@ -521,6 +538,8 @@ class BatimentsResourceIT {
         Batiments testBatiments = batimentsList.get(batimentsList.size() - 1);
         assertThat(testBatiments.getLatitude()).isEqualTo(UPDATED_LATITUDE);
         assertThat(testBatiments.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
+        assertThat(testBatiments.getPhotoPrincipale()).isEqualTo(UPDATED_PHOTO_PRINCIPALE);
+        assertThat(testBatiments.getPhotoPrincipaleContentType()).isEqualTo(UPDATED_PHOTO_PRINCIPALE_CONTENT_TYPE);
         assertThat(testBatiments.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(UPDATED_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiments.getUsage()).isEqualTo(UPDATED_USAGE);
@@ -625,6 +644,7 @@ class BatimentsResourceIT {
 
         partialUpdatedBatiments
             .latitude(UPDATED_LATITUDE)
+            .usage(UPDATED_USAGE)
             .cout(UPDATED_COUT)
             .surface(UPDATED_SURFACE)
             .niveaux(UPDATED_NIVEAUX)
@@ -632,20 +652,20 @@ class BatimentsResourceIT {
             .travauxExtension(UPDATED_TRAVAUX_EXTENSION)
             .travauxRenov(UPDATED_TRAVAUX_RENOV)
             .travauxIte(UPDATED_TRAVAUX_ITE)
-            .travauxIti(UPDATED_TRAVAUX_ITI)
+            .constructionDebut(UPDATED_CONSTRUCTION_DEBUT)
             .constructionFin(UPDATED_CONSTRUCTION_FIN)
             .bottesTaille(UPDATED_BOTTES_TAILLE)
             .bottesDensite(UPDATED_BOTTES_DENSITE)
             .bottesCereale(UPDATED_BOTTES_CEREALE)
-            .distanceAppro(UPDATED_DISTANCE_APPRO)
+            .autoconstruction(UPDATED_AUTOCONSTRUCTION)
             .participatif(UPDATED_PARTICIPATIF)
-            .integBaie(UPDATED_INTEG_BAIE)
-            .noteCalcul(UPDATED_NOTE_CALCUL)
+            .structSuppl(UPDATED_STRUCT_SUPPL)
+            .materiauSb(UPDATED_MATERIAU_SB)
             .revetInt(UPDATED_REVET_INT)
-            .revetExt(UPDATED_REVET_EXT)
-            .description(UPDATED_DESCRIPTION)
+            .realisateur(UPDATED_REALISATEUR)
+            .contactNom(UPDATED_CONTACT_NOM)
             .contactMail(UPDATED_CONTACT_MAIL)
-            .contactPhone(UPDATED_CONTACT_PHONE);
+            .codePostal(UPDATED_CODE_POSTAL);
 
         restBatimentsMockMvc
             .perform(
@@ -661,9 +681,11 @@ class BatimentsResourceIT {
         Batiments testBatiments = batimentsList.get(batimentsList.size() - 1);
         assertThat(testBatiments.getLatitude()).isEqualTo(UPDATED_LATITUDE);
         assertThat(testBatiments.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
+        assertThat(testBatiments.getPhotoPrincipale()).isEqualTo(DEFAULT_PHOTO_PRINCIPALE);
+        assertThat(testBatiments.getPhotoPrincipaleContentType()).isEqualTo(DEFAULT_PHOTO_PRINCIPALE_CONTENT_TYPE);
         assertThat(testBatiments.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(DEFAULT_TECHNIQUE_SECONDAIRE);
-        assertThat(testBatiments.getUsage()).isEqualTo(DEFAULT_USAGE);
+        assertThat(testBatiments.getUsage()).isEqualTo(UPDATED_USAGE);
         assertThat(testBatiments.getCout()).isEqualTo(UPDATED_COUT);
         assertThat(testBatiments.getSurface()).isEqualTo(UPDATED_SURFACE);
         assertThat(testBatiments.getNiveaux()).isEqualTo(UPDATED_NIVEAUX);
@@ -671,28 +693,28 @@ class BatimentsResourceIT {
         assertThat(testBatiments.getTravauxExtension()).isEqualTo(UPDATED_TRAVAUX_EXTENSION);
         assertThat(testBatiments.getTravauxRenov()).isEqualTo(UPDATED_TRAVAUX_RENOV);
         assertThat(testBatiments.getTravauxIte()).isEqualTo(UPDATED_TRAVAUX_ITE);
-        assertThat(testBatiments.getTravauxIti()).isEqualTo(UPDATED_TRAVAUX_ITI);
-        assertThat(testBatiments.getConstructionDebut()).isEqualTo(DEFAULT_CONSTRUCTION_DEBUT);
+        assertThat(testBatiments.getTravauxIti()).isEqualTo(DEFAULT_TRAVAUX_ITI);
+        assertThat(testBatiments.getConstructionDebut()).isEqualTo(UPDATED_CONSTRUCTION_DEBUT);
         assertThat(testBatiments.getConstructionFin()).isEqualTo(UPDATED_CONSTRUCTION_FIN);
         assertThat(testBatiments.getBottesTaille()).isEqualTo(UPDATED_BOTTES_TAILLE);
         assertThat(testBatiments.getBottesDensite()).isEqualTo(UPDATED_BOTTES_DENSITE);
         assertThat(testBatiments.getBottesCereale()).isEqualTo(UPDATED_BOTTES_CEREALE);
-        assertThat(testBatiments.getDistanceAppro()).isEqualTo(UPDATED_DISTANCE_APPRO);
-        assertThat(testBatiments.getAutoconstruction()).isEqualTo(DEFAULT_AUTOCONSTRUCTION);
+        assertThat(testBatiments.getDistanceAppro()).isEqualTo(DEFAULT_DISTANCE_APPRO);
+        assertThat(testBatiments.getAutoconstruction()).isEqualTo(UPDATED_AUTOCONSTRUCTION);
         assertThat(testBatiments.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
-        assertThat(testBatiments.getIntegBaie()).isEqualTo(UPDATED_INTEG_BAIE);
-        assertThat(testBatiments.getStructSuppl()).isEqualTo(DEFAULT_STRUCT_SUPPL);
-        assertThat(testBatiments.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
-        assertThat(testBatiments.getMateriauSb()).isEqualTo(DEFAULT_MATERIAU_SB);
+        assertThat(testBatiments.getIntegBaie()).isEqualTo(DEFAULT_INTEG_BAIE);
+        assertThat(testBatiments.getStructSuppl()).isEqualTo(UPDATED_STRUCT_SUPPL);
+        assertThat(testBatiments.getNoteCalcul()).isEqualTo(DEFAULT_NOTE_CALCUL);
+        assertThat(testBatiments.getMateriauSb()).isEqualTo(UPDATED_MATERIAU_SB);
         assertThat(testBatiments.getRevetInt()).isEqualTo(UPDATED_REVET_INT);
-        assertThat(testBatiments.getRevetExt()).isEqualTo(UPDATED_REVET_EXT);
+        assertThat(testBatiments.getRevetExt()).isEqualTo(DEFAULT_REVET_EXT);
         assertThat(testBatiments.getConcepteur()).isEqualTo(DEFAULT_CONCEPTEUR);
-        assertThat(testBatiments.getRealisateur()).isEqualTo(DEFAULT_REALISATEUR);
-        assertThat(testBatiments.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testBatiments.getContactNom()).isEqualTo(DEFAULT_CONTACT_NOM);
+        assertThat(testBatiments.getRealisateur()).isEqualTo(UPDATED_REALISATEUR);
+        assertThat(testBatiments.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testBatiments.getContactNom()).isEqualTo(UPDATED_CONTACT_NOM);
         assertThat(testBatiments.getContactMail()).isEqualTo(UPDATED_CONTACT_MAIL);
-        assertThat(testBatiments.getContactPhone()).isEqualTo(UPDATED_CONTACT_PHONE);
-        assertThat(testBatiments.getCodePostal()).isEqualTo(DEFAULT_CODE_POSTAL);
+        assertThat(testBatiments.getContactPhone()).isEqualTo(DEFAULT_CONTACT_PHONE);
+        assertThat(testBatiments.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
     }
 
     @Test
@@ -710,6 +732,8 @@ class BatimentsResourceIT {
         partialUpdatedBatiments
             .latitude(UPDATED_LATITUDE)
             .longitude(UPDATED_LONGITUDE)
+            .photoPrincipale(UPDATED_PHOTO_PRINCIPALE)
+            .photoPrincipaleContentType(UPDATED_PHOTO_PRINCIPALE_CONTENT_TYPE)
             .nom(UPDATED_NOM)
             .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
             .usage(UPDATED_USAGE)
@@ -757,6 +781,8 @@ class BatimentsResourceIT {
         Batiments testBatiments = batimentsList.get(batimentsList.size() - 1);
         assertThat(testBatiments.getLatitude()).isEqualTo(UPDATED_LATITUDE);
         assertThat(testBatiments.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
+        assertThat(testBatiments.getPhotoPrincipale()).isEqualTo(UPDATED_PHOTO_PRINCIPALE);
+        assertThat(testBatiments.getPhotoPrincipaleContentType()).isEqualTo(UPDATED_PHOTO_PRINCIPALE_CONTENT_TYPE);
         assertThat(testBatiments.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testBatiments.getTechniqueSecondaire()).isEqualTo(UPDATED_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiments.getUsage()).isEqualTo(UPDATED_USAGE);

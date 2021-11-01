@@ -45,6 +45,13 @@ public class Batiments implements Serializable {
     @Column(name = "longitude", nullable = false)
     private Float longitude;
 
+    @Lob
+    @Column(name = "photo_principale")
+    private byte[] photoPrincipale;
+
+    @Column(name = "photo_principale_content_type")
+    private String photoPrincipaleContentType;
+
     /**
      * Nom du bâtiment
      */
@@ -330,6 +337,32 @@ public class Batiments implements Serializable {
 
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
+    }
+
+    public byte[] getPhotoPrincipale() {
+        return this.photoPrincipale;
+    }
+
+    public Batiments photoPrincipale(byte[] photoPrincipale) {
+        this.setPhotoPrincipale(photoPrincipale);
+        return this;
+    }
+
+    public void setPhotoPrincipale(byte[] photoPrincipale) {
+        this.photoPrincipale = photoPrincipale;
+    }
+
+    public String getPhotoPrincipaleContentType() {
+        return this.photoPrincipaleContentType;
+    }
+
+    public Batiments photoPrincipaleContentType(String photoPrincipaleContentType) {
+        this.photoPrincipaleContentType = photoPrincipaleContentType;
+        return this;
+    }
+
+    public void setPhotoPrincipaleContentType(String photoPrincipaleContentType) {
+        this.photoPrincipaleContentType = photoPrincipaleContentType;
     }
 
     public String getNom() {
@@ -787,6 +820,8 @@ public class Batiments implements Serializable {
             "id=" + getId() +
             ", latitude=" + getLatitude() +
             ", longitude=" + getLongitude() +
+            ", photoPrincipale='" + getPhotoPrincipale() + "'" +
+            ", photoPrincipaleContentType='" + getPhotoPrincipaleContentType() + "'" +
             ", nom='" + getNom() + "'" +
             ", techniqueSecondaire='" + getTechniqueSecondaire() + "'" +
             ", usage='" + getUsage() + "'" +

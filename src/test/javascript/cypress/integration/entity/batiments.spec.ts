@@ -157,6 +157,8 @@ describe('Batiments e2e test', () => {
 
       cy.get(`[data-cy="longitude"]`).type('56').should('have.value', '56');
 
+      cy.setFieldImageAsBytesOfEntity('photoPrincipale', 'integration-test.png', 'image/png');
+
       cy.get(`[data-cy="nom"]`).type('Assistant drive a').should('have.value', 'Assistant drive a');
 
       cy.get(`[data-cy="techniqueSecondaire"]`).should('not.be.checked');
@@ -232,6 +234,8 @@ describe('Batiments e2e test', () => {
 
       cy.get(`[data-cy="codePostal"]`).type('Bacon').should('have.value', 'Bacon');
 
+      // since cypress clicks submit too fast before the blob fields are validated
+      cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting
       cy.get(entityCreateSaveButtonSelector).click();
 
       cy.wait('@postEntityRequest').then(({ response }) => {

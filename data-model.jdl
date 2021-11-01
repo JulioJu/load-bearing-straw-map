@@ -265,6 +265,8 @@ entity Batiments {
     latitude Float required min(-90) max(90),
     longitude Float required min(-90) max(90),
 
+    photoPrincipale ImageBlob,
+
 // =========================================================================
 // Corresponding to tab "Batiments" into the old QGIS form
 // =========================================================================
