@@ -514,7 +514,8 @@ public class Batiment implements Serializable {
      * Only creator (set in back at creation) of a Batiment could update or delete it
      */
     @ApiModelProperty(value = "Only creator (set in back at creation) of a Batiment could update or delete it")
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     private User creator;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

@@ -19,6 +19,7 @@ describe('Batiment e2e test', () => {
   const batimentSample = { latitude: -21, longitude: -80, dateCreationFiche: '2021-11-06', dateModificationFiche: '2021-11-06' };
 
   let batiment: any;
+  //let user: any;
 
   beforeEach(() => {
     cy.getOauth2Data();
@@ -34,11 +35,35 @@ describe('Batiment e2e test', () => {
     Cypress.Cookies.preserveOnce('XSRF-TOKEN', 'JSESSIONID');
   });
 
+  /* Disabled due to incompatibility
+  beforeEach(() => {
+    // create an instance at the required relationship entity:
+    cy.authenticatedRequest({
+      method: 'POST',
+      url: '/api/users',
+      body: {"id":"7eff38e2-50f7-47b5-9090-d27f07fdf8f7","login":"Concrete Handcrafted approach","firstName":"Edmond","lastName":"Robin"},
+    }).then(({ body }) => {
+      user = body;
+    });
+  });
+   */
+
   beforeEach(() => {
     cy.intercept('GET', '/api/batiments+(?*|)').as('entitiesRequest');
     cy.intercept('POST', '/api/batiments').as('postEntityRequest');
     cy.intercept('DELETE', '/api/batiments/*').as('deleteEntityRequest');
   });
+
+  /* Disabled due to incompatibility
+  beforeEach(() => {
+    // Simulate relationships api for better performance and reproducibility.
+    cy.intercept('GET', '/api/users', {
+      statusCode: 200,
+      body: [user],
+    });
+
+  });
+   */
 
   afterEach(() => {
     if (batiment) {
@@ -50,6 +75,19 @@ describe('Batiment e2e test', () => {
       });
     }
   });
+
+  /* Disabled due to incompatibility
+  afterEach(() => {
+    if (user) {
+      cy.authenticatedRequest({
+        method: 'DELETE',
+        url: `/api/users/${user.id}`,
+      }).then(() => {
+        user = undefined;
+      });
+    }
+  });
+   */
 
   afterEach(() => {
     cy.oauthLogout();
@@ -91,11 +129,16 @@ describe('Batiment e2e test', () => {
     });
 
     describe('with existing value', () => {
+      /* Disabled due to incompatibility
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
           url: '/api/batiments',
-          body: batimentSample,
+  
+          body: {
+            ...batimentSample,
+            creator: user,
+          },
         }).then(({ body }) => {
           batiment = body;
 
@@ -115,6 +158,17 @@ describe('Batiment e2e test', () => {
         cy.visit(batimentPageUrl);
 
         cy.wait('@entitiesRequestInternal');
+      });
+       */
+
+      beforeEach(function () {
+        cy.visit(batimentPageUrl);
+
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          if (response!.body.length === 0) {
+            this.skip();
+          }
+        });
       });
 
       it('detail button click should load details Batiment page', () => {
@@ -138,7 +192,7 @@ describe('Batiment e2e test', () => {
         cy.url().should('match', batimentPageUrlPattern);
       });
 
-      it('last delete button click should delete instance of Batiment', () => {
+      it.skip('last delete button click should delete instance of Batiment', () => {
         cy.get(entityDeleteButtonSelector).last().click();
         cy.getEntityDeleteDialogHeading('batiment').should('exist');
         cy.get(entityConfirmDeleteButtonSelector).click({ force: true });
@@ -162,7 +216,7 @@ describe('Batiment e2e test', () => {
       cy.getEntityCreateUpdateHeading('Batiment');
     });
 
-    it('should create an instance of Batiment', () => {
+    it.skip('should create an instance of Batiment', () => {
       cy.get(`[data-cy="latitude"]`).type('31').should('have.value', '31');
 
       cy.get(`[data-cy="longitude"]`).type('3').should('have.value', '3');
@@ -327,6 +381,8 @@ describe('Batiment e2e test', () => {
       cy.get(`[data-cy="dateCreationFiche"]`).type('2021-11-06').should('have.value', '2021-11-06');
 
       cy.get(`[data-cy="dateModificationFiche"]`).type('2021-11-05').should('have.value', '2021-11-05');
+
+      cy.get(`[data-cy="creator"]`).select(1);
 
       // since cypress clicks submit too fast before the blob fields are validated
       cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting

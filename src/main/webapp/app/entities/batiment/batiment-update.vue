@@ -1508,16 +1508,21 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.creator')" for="batiment-creator">Creator</label>
-            <select class="form-control" id="batiment-creator" data-cy="creator" name="creator" v-model="batiment.creator">
-              <option v-bind:value="null"></option>
+            <select class="form-control" id="batiment-creator" data-cy="creator" name="creator" v-model="batiment.creator" required>
+              <option v-if="!batiment.creator" v-bind:value="null" selected></option>
               <option
                 v-bind:value="batiment.creator && userOption.id === batiment.creator.id ? batiment.creator : userOption"
                 v-for="userOption in users"
                 :key="userOption.id"
               >
-                {{ userOption.email }}
+                {{ userOption.login }}
               </option>
             </select>
+          </div>
+          <div v-if="$v.batiment.creator.$anyDirty && $v.batiment.creator.$invalid">
+            <small class="form-text text-danger" v-if="!$v.batiment.creator.required" v-text="$t('entity.validation.required')">
+              This field is required.
+            </small>
           </div>
         </div>
         <div>

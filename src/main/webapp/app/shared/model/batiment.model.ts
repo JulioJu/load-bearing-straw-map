@@ -87,7 +87,7 @@ export interface IBatiment {
   nonBatimentEtPhotosPublics?: boolean | null;
   dateCreationFiche?: Date;
   dateModificationFiche?: Date;
-  creator?: IUser | null;
+  creator?: IUser;
 }
 
 export class Batiment implements IBatiment {
@@ -169,7 +169,7 @@ export class Batiment implements IBatiment {
     public nonBatimentEtPhotosPublics?: boolean | null,
     public dateCreationFiche?: Date,
     public dateModificationFiche?: Date,
-    public creator?: IUser | null
+    public creator?: IUser
   ) {
     this.techniqueSecondaire = this.techniqueSecondaire ?? false;
     this.travauxNeuf = this.travauxNeuf ?? false;

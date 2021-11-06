@@ -484,7 +484,7 @@
             <span v-text="$t('lbstrawmapApp.batiment.creator')">Creator</span>
           </dt>
           <dd>
-            {{ batiment.creator ? batiment.creator.email : '' }}
+            {{ batiment.creator ? batiment.creator.login : '' }}
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

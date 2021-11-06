@@ -404,9 +404,10 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "user",
       "otherEntityRelationshipName": "batiment",
+      "relationshipValidateRules": "required",
       "javadoc": "Only creator (set in back at creation) of a Batiment could update or delete it",
       "relationshipName": "creator",
-      "otherEntityField": "email"
+      "otherEntityField": "login"
     }
   ],
   "entityTableName": "batiment",

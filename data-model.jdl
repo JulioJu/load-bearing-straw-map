@@ -394,5 +394,5 @@ relationship ManyToOne {
     /**
      * Only creator (set in back at creation) of a Batiment could update or delete it
      */
-    Batiment{creator(email)} to User
+    Batiment{creator(login) required}  to User
 }

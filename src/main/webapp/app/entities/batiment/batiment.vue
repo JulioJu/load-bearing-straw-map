@@ -324,9 +324,9 @@
               <span v-text="$t('lbstrawmapApp.batiment.dateModificationFiche')">Date Modification Fiche</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dateModificationFiche'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('creator.email')">
+            <th scope="row" v-on:click="changeOrder('creator.login')">
               <span v-text="$t('lbstrawmapApp.batiment.creator')">Creator</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'creator.email'"></jhi-sort-indicator>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'creator.login'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
           </tr>
@@ -463,7 +463,7 @@
             <td>{{ batiment.dateCreationFiche }}</td>
             <td>{{ batiment.dateModificationFiche }}</td>
             <td>
-              {{ batiment.creator ? batiment.creator.email : '' }}
+              {{ batiment.creator ? batiment.creator.login : '' }}
             </td>
             <td class="text-right">
               <div class="btn-group">

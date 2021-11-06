@@ -139,6 +139,9 @@ const validations: any = {
     dateModificationFiche: {
       required,
     },
+    creator: {
+      required,
+    },
   },
 };
 

@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.julioju.lbstrawmap.IntegrationTest;
 import org.julioju.lbstrawmap.domain.Batiment;
+import org.julioju.lbstrawmap.domain.User;
 import org.julioju.lbstrawmap.domain.enumeration.Cereale;
 import org.julioju.lbstrawmap.domain.enumeration.IntegBaie;
 import org.julioju.lbstrawmap.domain.enumeration.RevetExt;
@@ -366,6 +367,11 @@ class BatimentResourceIT {
             .nonBatimentEtPhotosPublics(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS)
             .dateCreationFiche(DEFAULT_DATE_CREATION_FICHE)
             .dateModificationFiche(DEFAULT_DATE_MODIFICATION_FICHE);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        batiment.setCreator(user);
         return batiment;
     }
 
@@ -453,6 +459,11 @@ class BatimentResourceIT {
             .nonBatimentEtPhotosPublics(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS)
             .dateCreationFiche(UPDATED_DATE_CREATION_FICHE)
             .dateModificationFiche(UPDATED_DATE_MODIFICATION_FICHE);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        batiment.setCreator(user);
         return batiment;
     }
 
