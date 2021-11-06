@@ -1,7 +1,7 @@
 import 'ol/ol.css';
 
-import BatimentsService from '@/entities/batiments/batiments.service';
-import { IBatiments } from '@/shared/model/batiments.model';
+import BatimentService from '@/entities/batiment/batiment.service';
+import { IBatiment } from '@/shared/model/batiment.model';
 import TileLayer from 'ol/layer/Tile';
 import Map from 'ol/Map';
 import { fromLonLat } from 'ol/proj';
@@ -21,13 +21,13 @@ const franceLonLat = [2.2137, 46.2276];
 
 @Component
 export default class MapContainer extends Vue {
-  @Inject('batimentsService')
-  private batimentsService: () => BatimentsService;
+  @Inject('batimentService')
+  private batimentService: () => BatimentService;
   private map: Map;
   public isEditMode = false;
 
-  public async retrieveAllBatimentss(): Promise<IBatiments[]> {
-    const result: AxiosResponse<IBatiments[]> = await this.batimentsService().retrieveLazy();
+  public async retrieveAllBatiments(): Promise<IBatiment[]> {
+    const result: AxiosResponse<IBatiment[]> = await this.batimentService().retrieveLazy();
     return result.data;
   }
 
@@ -46,7 +46,7 @@ export default class MapContainer extends Vue {
       }),
     });
 
-    const batiments = await this.retrieveAllBatimentss();
+    const batiments = await this.retrieveAllBatiments();
     batiments.forEach(aBatiment => {
       const icon = drawIcon({
         id: aBatiment.id,
@@ -59,7 +59,7 @@ export default class MapContainer extends Vue {
       this.map.addLayer(icon);
     });
     drawPopup({
-      batimentsService: this.batimentsService,
+      batimentService: this.batimentService,
       map: this.map,
       popup: this.$refs['popup'] as HTMLDivElement,
       popupCloser: this.$refs['popup-closer'] as HTMLDivElement,

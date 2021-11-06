@@ -1,7 +1,7 @@
 {
   "generator-jhipster:7.3.1": {
     "promptValues": {
-      "packageName": "org.lbstraw.map",
+      "packageName": "org.julioju.lbstrawmap",
       "nativeLanguage": "fr"
     }
   }

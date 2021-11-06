@@ -109,7 +109,7 @@ enum YesNoPartial {
 
 @service(serviceClass)
 @paginate(pagination)
-entity Batiments {
+entity Batiment {
     latitude Float required min(-90) max(90),
     longitude Float required min(-90) max(90),
 
@@ -394,5 +394,5 @@ relationship ManyToOne {
     /**
      * Only creator (set in back at creation) of a Batiment could update or delete it
      */
-    Batiments{creator(email)} to User
+    Batiment{creator(email)} to User
 }

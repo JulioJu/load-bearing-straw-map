@@ -1,7 +1,7 @@
 import 'ol/ol.css';
 import { Map, Overlay } from 'ol';
 import VueRouter from 'vue-router';
-import BatimentsService from '@/entities/batiments/batiments.service';
+import BatimentService from '@/entities/batiment/batiment.service';
 
 const appendList = (list: HTMLUListElement, content: string, strong = false) => {
   if (content === undefined) {
@@ -25,14 +25,14 @@ const disposePopup = (overlay: Overlay, popupCloser: HTMLDivElement) => {
 };
 
 const registerMapEvents = ({
-  batimentsService,
+  batimentService,
   map,
   popupContent,
   overlay,
   popupCloser,
   router,
 }: {
-  batimentsService: () => BatimentsService;
+  batimentService: () => BatimentService;
   map: Map;
   popupContent: HTMLDivElement;
   overlay: Overlay;
@@ -60,13 +60,13 @@ const registerMapEvents = ({
       anchor.classList.add('link-primary');
       anchor.addEventListener('click', (ev: MouseEvent) => {
         ev.preventDefault();
-        router.push({ name: 'BatimentsView', params: { batimentsId: feature.get('id') } });
+        router.push({ name: 'BatimentView', params: { batimentId: feature.get('id') } });
       });
       li.appendChild(anchor);
       list.appendChild(li);
       popupContent.appendChild(list);
-      // TODO not optimized, we retrieve all Batiments to get only a photo
-      const aBatiment = await batimentsService().find(feature.get('id'));
+      // TODO not optimized, we retrieve all Batiment to get only a photo
+      const aBatiment = await batimentService().find(feature.get('id'));
       if (aBatiment.photoPrincipale) {
         const photo = new Image();
         photo.style.maxHeight = '5rem';
@@ -98,14 +98,14 @@ const registerMapEvents = ({
  * https://openlayers.org/en/latest/examples/popup.html
  */
 export default ({
-  batimentsService,
+  batimentService,
   map,
   popup,
   popupCloser,
   popupContent,
   router,
 }: {
-  batimentsService: () => BatimentsService;
+  batimentService: () => BatimentService;
   map: Map;
   popup: HTMLDivElement;
   popupCloser: HTMLDivElement;
@@ -126,5 +126,5 @@ export default ({
     return false;
   };
 
-  registerMapEvents({ batimentsService, map, popupContent, overlay, popupCloser, router });
+  registerMapEvents({ batimentService, map, popupContent, overlay, popupCloser, router });
 };

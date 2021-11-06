@@ -11,7 +11,7 @@ const registerFunc = (map: Map, router: VueRouter, evt: MapBrowserEvent<any>) =>
   if (!feature) {
     const coordinate = evt.coordinate;
     const coordLongLat = toLonLat(coordinate);
-    router.push({ path: '/batiments/new', query: { lat: coordLongLat[1].toString(), long: coordLongLat[0].toString() } });
+    router.push({ path: '/batiment/new', query: { lat: coordLongLat[1].toString(), long: coordLongLat[0].toString() } });
   }
 };
 

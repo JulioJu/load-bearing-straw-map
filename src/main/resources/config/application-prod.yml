@@ -17,7 +17,7 @@ logging:
   level:
     ROOT: INFO
     tech.jhipster: INFO
-    org.lbstraw.map: INFO
+    org.julioju.lbstrawmap: INFO
 
 management:
   metrics:
