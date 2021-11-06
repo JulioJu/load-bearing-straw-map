@@ -1,5 +1,6 @@
 package org.julioju.lbstrawmap.config;
 
+import java.time.Duration;
 import java.util.*;
 import org.julioju.lbstrawmap.security.*;
 import org.julioju.lbstrawmap.security.SecurityUtils;
@@ -145,7 +146,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     JwtDecoder jwtDecoder(ClientRegistrationRepository clientRegistrationRepository, RestTemplateBuilder restTemplateBuilder) {
-        NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder) JwtDecoders.fromOidcIssuerLocation(issuerUri);
+        // START added by JulioJu
+        // Fix on deploy error "com.nimbusds.jose.RemoteKeySourceException: Couldn't retrieve remote JWK set: connect timed out"
+        // https://stackoverflow.com/questions/68129558/how-to-configure-remote-jwk-timeout
+        org.springframework.web.client.RestOperations rest = restTemplateBuilder
+            .setConnectTimeout(Duration.ofMillis(60000))
+            .setReadTimeout(Duration.ofMillis(60000))
+            .build();
+
+        NimbusJwtDecoder jwtDecoder = NimbusJwtDecoder.withJwkSetUri(issuerUri).restOperations(rest).build();
+        // END added by JulioJu
 
         OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator(jHipsterProperties.getSecurity().getOauth2().getAudience());
         OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuerUri);
