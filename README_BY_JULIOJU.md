@@ -22,3 +22,5 @@ and check if added or removed code around this should be checkout or not.
 ## TODO
 
 - Check TODO into the code
+- Into map, into batiment's popup when we click to "voir +" it could be cool to have : https://medium.com/@rmmmsy/creating-and-animating-a-modal-component-as-a-child-route-using-vue-41a275a51d0c
+  Better, as it we not reload the page when we close it.

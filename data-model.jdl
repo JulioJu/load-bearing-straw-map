@@ -2,91 +2,44 @@
  * Céréale
  */
 enum Cereale {
-    /**
-      * Blé
-      */
     BLE ("Blé"),
-    /**
-      * Orge
-      */
     ORGE ("Orge"),
-    /**
-      * Avoine
-      */
     AVOINE ("Avoine"),
-    /**
-      * Seigle
-      */
     SEIGLE ("Seigle"),
-    /**
-      * Triticale
-      */
     TRITICALE ("Triticale"),
-    /**
-      * Riz
-      */
     RIZ ("Riz"),
-    /**
-      * Autre
-      */
     AUTRE ("Autre")
 }
 
+
+/**
+  * Nature support supplémentaire
+  */
+enum StructureSupplementaire {
+    BOIS ("Bois"),
+    BETON_ARME ("Béton armé"),
+    METAL ("Métal"),
+    MACONNERIE ("Maçonnerie (brique - parpaing - pierre - …)")
+}
+
+/**
+  * Nature du support d'ancrage
+  */
+enum SupportAncrage {
+    BOIS ("Bois"),
+    BETON_ARME ("Béton armé"),
+    METAL ("Métal"),
+    MACONNERIE ("Maçonnerie (brique - parpaing - pierre - …)"),
+    AUTRE ("Autre")
+}
 
 /**
   * Intégration des baies
   */
 enum IntegBaie {
-    /**
-      * Pré-cadre flottant
-      */
     PRE_CADRE_FLOTTANT ("Pré-cadre flottant"),
-    /**
-      * Coulissant
-      */
-    COULISSANT ("Coulissant"),
-    /**
-      * Bloqueurs
-      */
-    BLOQUEURS ("Bloqueurs"),
-    /**
-      * Autre
-      */
-    AUTRE ("Autre")
-}
-
-
-/**
-  * Matériau de soubassement
-  */
-enum MateriauSb {
-    /**
-      * Béton armé
-      */
-    BETON_ARME ("Béton armé"),
-    /**
-      * Parpaing de ciment
-      */
-    PARPAING_DE_CIMENT ("Parpaing de ciment"),
-    /**
-      * Brique de terre cuite
-      */
-    BRIQUE_DE_TERRE_CUITE ("Brique de terre cuite"),
-    /**
-      * Brique de pierre ponce
-      */
-    BRIQUE_DE_PIERRE_PONCE ("Brique de pierre ponce"),
-    /**
-      * Béton léger isolant
-      */
-    BETON_LEGER_ISOLANT ("Béton léger isolant"),
-    /**
-      * Pierre
-      */
-    PIERRE ("Pierre"),
-    /**
-      * Autre
-      */
+    COULISSANT ("Élément coulissant"),
+    FIXE ("Élément fixe (poteau - montant - …)"),
     AUTRE ("Autre")
 }
 
@@ -95,29 +48,12 @@ enum MateriauSb {
  * Revêtement extérieur
  */
 enum RevetExt {
-    /**
-      * Bardage ventilé
-      */
     BARDAGE_VENTILE ("Bardage ventilé"),
-    /**
-      * Enduit terre
-      */
     ENDUIT_TERRE ("Enduit terre"),
-    /**
-      * Enduit chaux
-      */
     ENDUIT_CHAUX ("Enduit chaux"),
-    /**
-      * Enduit terre et chaux
-      */
     ENDUIT_TERRE_ET_CHAUX ("Enduit terre et chaux"),
-    /**
-      * Enduit plâtre
-      */
     ENDUIT_PLATRE ("Enduit plâtre"),
-    /**
-      * Autre
-      */
+    ENDUIT_PANNEAU ("Panneau"),
     AUTRE ("Autre")
 }
 
@@ -126,33 +62,12 @@ enum RevetExt {
  * Revêtement intérieur
  */
 enum RevetInt {
-    /**
-      * Plaque de plâtre
-      */
     PLAQUE_DE_PLATRE ("Plaque de plâtre"),
-    /**
-      * Lambris
-      */
     LAMBRIS ("Lambris"),
-    /**
-      * Enduit terre
-      */
     ENDUIT_TERRE ("Enduit terre"),
-    /**
-      * Enduit chaux
-      */
     ENDUIT_CHAUX ("Enduit chaux"),
-    /**
-      * Enduit terre et chaux
-      */
     ENDUIT_TERRE_ET_CHAUX ("Enduit terre et chaux"),
-    /**
-      * Enduit plâtre
-      */
     ENDUIT_PLATRE ("Enduit plâtre"),
-    /**
-      * Autre
-      */
     AUTRE ("Autre")
 }
 
@@ -161,145 +76,103 @@ enum RevetInt {
  * Taille des bottes
  */
 enum TaillesBottes {
-    /**
-      * 80 x 120 cm
-      */
-    T_80_X_120_CM ("80 x 120 cm"),
-    /**
-      * 50 x 80 cm
-      */
-    T_50_X_80_CM ("50 x 80 cm"),
-    /**
-      * 37 x 47 cm
-      */
-    T_37_X_47_CM ("37 x 47 cm"),
-    /**
-      * 26 x 45 cm
-      */
-    T_26_X_45_CM ("26 x 45 cm"),
-    /**
-      * Autre
-      */
+    T_70_X_120_X_230_CM ("70 x 120 x 230"),
+    T_50_X_80_X_110_a_200_CM ("50 x 80 x 110 à 200"),
+    T_36_X_46_X_70_a_120_CM ("36 x 46 x 70 à 120"),
     AUTRE ("Autre")
 }
 
 
 enum UsageBatiment {
-    /**
-      * Logement collectif
-      */
     LOGEMENT_COLLECTIF ("Logement collectif"),
-    /**
-      * Logement individuel
-      */
     LOGEMENT_INDIVIDUEL ("Logement individuel"),
-    /**
-      * Logement individuel groupé
-      */
     LOGEMENT_INDIVIDUEL_GROUPE ("Logement individuel groupé"),
-    /**
-      * Bâtiment administratif
-      */
     BATIMENT_ADMINISTRATIF ("Bâtiment administratif"),
-    /**
-      * Bâtiment commercial
-      */
     BATIMENT_COMMERCIAL ("Bâtiment commercial"),
-    /**
-      * Bâtiment industriel
-      */
     BATIMENT_INDUSTRIEL ("Bâtiment industriel"),
-    /**
-      * Bâtiment de loisirs
-      */
     BATIMENT_DE_LOISIRS ("Bâtiment de loisirs"),
-    /**
-      * Bâtiment de santé
-      */
     BATIMENT_DE_SANTE ("Bâtiment de santé"),
-    /**
-      * Bâtiment de retraite
-      */
     BATIMENT_DE_RETRAITE ("Bâtiment de retraite"),
-    /**
-      * Bâtiment éducatif
-      */
     BATIMENT_EDUCATIF ("Bâtiment éducatif"),
-    /**
-      * Bâtiment socio-culturel
-      */
     BATIMENT_SOCIO_CULTUREl ("Bâtiment socio-culturel"),
-    /**
-      * Bâtiment agricole
-      */
     BATIMENT_AGRICOLE ("Bâtiment agricole"),
-    /**
-      * Ouvrage exceptionnel
-      */
     OUVRAGE_EXCEPTIONNEL ("Ouvrage exceptionnel"),
-    /**
-      * Autre
-      */
     AUTRE ("Autre")
 }
 
 
 enum YesNoPartial {
-    /**
-      * Oui
-      */
     OUI ("Oui"),
-    /**
-      * Non
-      */
     NON ("Non"),
-    /**
-      * Partiel
-      */
     PARTIEL ("Partiel")
 }
 
 @service(serviceClass)
 @paginate(pagination)
-entity Batiments {
+entity Batiment {
     latitude Float required min(-90) max(90),
     longitude Float required min(-90) max(90),
-
-    photoPrincipale ImageBlob,
-
-// =========================================================================
-// Corresponding to tab "Batiments" into the old QGIS form
-// =========================================================================
 
     /**
       * Nom du bâtiment
       */
-    nom String maxlength(40),
+    nomBatiment String maxlength(40),
+
+    // Section "Photo"
+    // =========================================================================
+
+    // TODO save outside database
+    // (bad idea to have fat HTML page and bad idea to save binary into database)
+
+    photoPrincipale ImageBlob,
+    photoPrincipaleLegende String maxlength(50),
+    photoPrincipaleDescription String,
+
+    photo1 ImageBlob,
+    photo1Legende String maxlength(50),
+    photo1Description String,
+
+    photo2 ImageBlob,
+    photo2Legende String maxlength(50),
+    photo2Description String,
+
+    photo3 ImageBlob,
+    photo3Legende String maxlength(50),
+    photo3Description String,
+
+    photo4 ImageBlob,
+    photo4Legende String maxlength(50),
+    photo4Description String,
+
+    photo5 ImageBlob,
+    photo5Legende String maxlength(50),
+    photo5Description String,
+
+    // Section "Informations générales"
+    // =========================================================================
+
     /**
       * Paille porteuse en technique secondaire
       */
     techniqueSecondaire Boolean,
-
-    // Corresponding to section "Informations générales" into the old QGIS form
-    // =========================================================================
     /**
       * Usage
       */
-    usage UsageBatiment,
+    usageBatiment UsageBatiment,
     /**
       * Coût [€]
       */
     cout Integer,
     /**
-      * Surface [m²]
+      * Surface de plancher [m²]
       */
-    surface Integer,
+    surfacePlancher Integer,
     /**
-      * Niveaux
+      * Nombre de niveaux du bâtiment
       */
     niveaux Integer,
 
-    // Corresponding to section "Nature des travaux" into the old QGIS form
+    // Section "Nature des travaux"
     // =========================================================================
     /**
       * Neuf
@@ -314,15 +187,15 @@ entity Batiments {
       */
     travauxRenov Boolean,
     /**
-      * ITE
+      * Isolation thermique par l'extérieure
       */
     travauxIte Boolean,
     /**
-      * ITI
+      * Isolation thermique par l'intérieur
       */
     travauxIti Boolean,
 
-    // Corresponding to section "Chronologie" into the old QGIS form
+    // Section "Chronologie"
     // =========================================================================
     /**
       * Début de construction
@@ -333,14 +206,18 @@ entity Batiments {
       */
     constructionFin LocalDate,
 
-    // Corresponding to section "Botte de paille" into the old QGIS form
+    // Section "Botte de paille"
     // =========================================================================
     /**
-      * Taille
+      * Taille des bottes
       */
     bottesTaille TaillesBottes,
     /**
-      * Densité [kg/m³]
+      * Si taille des bottes non standard
+      */
+    botteTailleAutre String,
+    /**
+      * Densité sur base sèche [kg/m³]
       */
     bottesDensite Integer,
     /**
@@ -348,11 +225,11 @@ entity Batiments {
       */
     bottesCereale Cereale,
     /**
-      * Distance d'appro [km]
+      * Distance d'approvisionnement [km]
       */
     distanceAppro Integer,
 
-    // Corresponding to section "Chantier" into the old QGIS form
+    // Section "Chantier"
     // =========================================================================
     /**
       * Autoconstruction
@@ -363,26 +240,42 @@ entity Batiments {
       */
     participatif YesNoPartial,
 
-    // Corresponding to section "Construction" into the old QGIS form
+    // Section "Construction"
     // =========================================================================
-    /**
-      * Intégration des baies
-      */
-    integBaie IntegBaie,
     /**
       * Structure supplémentaire
       */
     structSuppl Boolean,
     /**
+      * Nature Structure supplémentaire
+      */
+    structSupplNature StructureSupplementaire,
+    /**
       * Note de calcul
       */
     noteCalcul Boolean,
     /**
-      * Matériau de soubassement
+      * Nombre de rangs de bottes
       */
-    materiauSb MateriauSb,
+    nbrRangDeBottes Integer,
+    /**
+      * Longueur maximum sans mur de refend (mètre)
+      */
+    longMaxSansMurRefend Float,
+    /**
+      * Intégration des baies
+      */
+    integBaie IntegBaie,
+    /**
+      * Nature du support d'ancrage
+      */
+    supportAncrage SupportAncrage,
+    /**
+      * Nature du support d'ancrage précisions
+      */
+    supportAncragePrecisions String,
 
-        // Corresponding to sub-section "Revêtement" into the old QGIS form
+        // Sub-section "Revêtement"
         // ==============
         /**
          * Revêtement intérieur
@@ -392,55 +285,114 @@ entity Batiments {
          * Revêtement extérieur
          */
         revetExt RevetExt,
+        /**
+         * Revêtement extérieur autre
+         */
+        revetExtAutre String,
 
-    // Corresponding to section "Acteurs" into the old QGIS form
+    // Section "Actrices / acteurs"
     // =========================================================================
     /**
-     * Concepteurs / conceptrices
+     * Maître d'ouvrage
      */
-    concepteur String maxlength(512),
+    maitreDOuvrage String maxlength(512),
     /**
-     * Réalisateurs / réalisatrices
+     * Maître d'œuvre
      */
-    realisateur String maxlength(512),
+    maitreDOeuvre String maxlength(512),
+    /**
+     * Architecte
+     */
+    architecte String maxlength(512),
+    /**
+     * Bureau d'étude Structure
+     */
+    bureauDEtudeStructure String maxlength(512),
+    /**
+     * Bureau contrôle
+     */
+    bureauControl String maxlength(512),
+    /**
+     * Entreprise de mise en oeuvre des bottes, si autoconstruction le préciser
+     */
+    entrepriseBottes String maxlength(512),
+    /**
+     * Entreprise de mise en oeuvre de la charpente, si autoconstruction le préciser
+     */
+    entrepriseCharpente String maxlength(512),
+    /**
+     * Entreprise de mise en oeuvre des enduits, si autoconstruction le préciser
+     */
+    entrepriseEnduits String maxlength(512),
 
+    // =========================================================================
+    // Section "Commentaire"
+    // =========================================================================
+        /**
+        * Description du projet
+        */
+        descriptionProjet TextBlob,
+        /**
+        * Difficultés rencontrés
+        */
+        difficultees TextBlob,
+        /**
+        * Trucs et astuces
+        */
+        astuces TextBlob,
+        /**
+        * Autre commentaires
+        */
+        divers TextBlob,
+    // =========================================================================
+    // Section "Contact"
+    // =========================================================================
+        /**
+        * Nom
+        */
+        contactNom String,
+        /**
+        * Mail
+        */
+        contactMail String,
+        /**
+        * Téléphone
+        */
+        contactPhone String,
+        /**
+        * Code postal
+        */
+        codePostal String maxlength(6),
 
-    // Corresponding to "Construction" into the old QGIS form
+    // =========================================================================
+    // Section Autorisation
     // =========================================================================
 
-// =========================================================================
-// Corresponding to tab "Description" into the old QGIS form
-// =========================================================================
-    /**
-     * Description
-     */
-    description TextBlob
+        /**
+        * If true, anonymous users (not authenticated) could see photos. Search
+        * engine could  index it.
+        */
+        nonBatimentEtPhotosPublics Boolean,
 
-// =========================================================================
-// Corresponding to tab "Contact" into the old QGIS form
-// =========================================================================
-    /**
-     * Nom
-     */
-    contactNom String,
-    /**
-     * Mail
-     */
-    contactMail String,
-    /**
-     * Téléphone
-     */
-    contactPhone String,
-    /**
-     * Code postal
-     */
-    codePostal String maxlength(6),
+    // =========================================================================
+    // Autogénéré
+    // =========================================================================
+        /**
+        * Date de création de l'enregistrement dans la Base de donnée
+        * (autogénéré en back)
+        */
+        dateCreationFiche LocalDate required,
+        /**
+        * Date de modification de l'enregistrement dans la Base de donnée
+        * (autogénéré en back)
+        */
+        dateModificationFiche LocalDate required
 }
 
 relationship ManyToOne {
 
     /**
-     * Only creator (set in back at creation) of a Batiments could update or delete it
+     * Only creator (set in back at creation) of a Batiment could update or delete it
      */
-    Batiments{creator(email)} to User
+    Batiment{creator(email)} to User
 }

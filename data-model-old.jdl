@@ -1,0 +1,447 @@
+/**
+ * Céréale
+ */
+enum Cereale {
+    /**
+      * Blé
+      */
+    BLE ("Blé"),
+    /**
+      * Orge
+      */
+    ORGE ("Orge"),
+    /**
+      * Avoine
+      */
+    AVOINE ("Avoine"),
+    /**
+      * Seigle
+      */
+    SEIGLE ("Seigle"),
+    /**
+      * Triticale
+      */
+    TRITICALE ("Triticale"),
+    /**
+      * Riz
+      */
+    RIZ ("Riz"),
+    /**
+      * Autre
+      */
+    AUTRE ("Autre")
+}
+
+
+/**
+  * Intégration des baies
+  */
+enum IntegBaie {
+    /**
+      * Pré-cadre flottant
+      */
+    PRE_CADRE_FLOTTANT ("Pré-cadre flottant"),
+    /**
+      * Coulissant
+      */
+    COULISSANT ("Coulissant"),
+    /**
+      * Bloqueurs
+      */
+    BLOQUEURS ("Bloqueurs"),
+    /**
+      * Autre
+      */
+    AUTRE ("Autre")
+}
+
+
+/**
+  * Matériau de soubassement
+  */
+enum MateriauSb {
+    /**
+      * Béton armé
+      */
+    BETON_ARME ("Béton armé"),
+    /**
+      * Parpaing de ciment
+      */
+    PARPAING_DE_CIMENT ("Parpaing de ciment"),
+    /**
+      * Brique de terre cuite
+      */
+    BRIQUE_DE_TERRE_CUITE ("Brique de terre cuite"),
+    /**
+      * Brique de pierre ponce
+      */
+    BRIQUE_DE_PIERRE_PONCE ("Brique de pierre ponce"),
+    /**
+      * Béton léger isolant
+      */
+    BETON_LEGER_ISOLANT ("Béton léger isolant"),
+    /**
+      * Pierre
+      */
+    PIERRE ("Pierre"),
+    /**
+      * Autre
+      */
+    AUTRE ("Autre")
+}
+
+
+/**
+ * Revêtement extérieur
+ */
+enum RevetExt {
+    /**
+      * Bardage ventilé
+      */
+    BARDAGE_VENTILE ("Bardage ventilé"),
+    /**
+      * Enduit terre
+      */
+    ENDUIT_TERRE ("Enduit terre"),
+    /**
+      * Enduit chaux
+      */
+    ENDUIT_CHAUX ("Enduit chaux"),
+    /**
+      * Enduit terre et chaux
+      */
+    ENDUIT_TERRE_ET_CHAUX ("Enduit terre et chaux"),
+    /**
+      * Enduit plâtre
+      */
+    ENDUIT_PLATRE ("Enduit plâtre"),
+    /**
+      * Autre
+      */
+    AUTRE ("Autre")
+}
+
+
+/**
+ * Revêtement intérieur
+ */
+enum RevetInt {
+    /**
+      * Plaque de plâtre
+      */
+    PLAQUE_DE_PLATRE ("Plaque de plâtre"),
+    /**
+      * Lambris
+      */
+    LAMBRIS ("Lambris"),
+    /**
+      * Enduit terre
+      */
+    ENDUIT_TERRE ("Enduit terre"),
+    /**
+      * Enduit chaux
+      */
+    ENDUIT_CHAUX ("Enduit chaux"),
+    /**
+      * Enduit terre et chaux
+      */
+    ENDUIT_TERRE_ET_CHAUX ("Enduit terre et chaux"),
+    /**
+      * Enduit plâtre
+      */
+    ENDUIT_PLATRE ("Enduit plâtre"),
+    /**
+      * Autre
+      */
+    AUTRE ("Autre")
+}
+
+
+/**
+ * Taille des bottes
+ */
+enum TaillesBottes {
+    /**
+      * 80 x 120 cm
+      */
+    T_80_X_120_CM ("80 x 120 cm"),
+    /**
+      * 50 x 80 cm
+      */
+    T_50_X_80_CM ("50 x 80 cm"),
+    /**
+      * 37 x 47 cm
+      */
+    T_37_X_47_CM ("37 x 47 cm"),
+    /**
+      * 26 x 45 cm
+      */
+    T_26_X_45_CM ("26 x 45 cm"),
+    /**
+      * Autre
+      */
+    AUTRE ("Autre")
+}
+
+
+enum UsageBatiment {
+    /**
+      * Logement collectif
+      */
+    LOGEMENT_COLLECTIF ("Logement collectif"),
+    /**
+      * Logement individuel
+      */
+    LOGEMENT_INDIVIDUEL ("Logement individuel"),
+    /**
+      * Logement individuel groupé
+      */
+    LOGEMENT_INDIVIDUEL_GROUPE ("Logement individuel groupé"),
+    /**
+      * Bâtiment administratif
+      */
+    BATIMENT_ADMINISTRATIF ("Bâtiment administratif"),
+    /**
+      * Bâtiment commercial
+      */
+    BATIMENT_COMMERCIAL ("Bâtiment commercial"),
+    /**
+      * Bâtiment industriel
+      */
+    BATIMENT_INDUSTRIEL ("Bâtiment industriel"),
+    /**
+      * Bâtiment de loisirs
+      */
+    BATIMENT_DE_LOISIRS ("Bâtiment de loisirs"),
+    /**
+      * Bâtiment de santé
+      */
+    BATIMENT_DE_SANTE ("Bâtiment de santé"),
+    /**
+      * Bâtiment de retraite
+      */
+    BATIMENT_DE_RETRAITE ("Bâtiment de retraite"),
+    /**
+      * Bâtiment éducatif
+      */
+    BATIMENT_EDUCATIF ("Bâtiment éducatif"),
+    /**
+      * Bâtiment socio-culturel
+      */
+    BATIMENT_SOCIO_CULTUREl ("Bâtiment socio-culturel"),
+    /**
+      * Bâtiment agricole
+      */
+    BATIMENT_AGRICOLE ("Bâtiment agricole"),
+    /**
+      * Ouvrage exceptionnel
+      */
+    OUVRAGE_EXCEPTIONNEL ("Ouvrage exceptionnel"),
+    /**
+      * Autre
+      */
+    AUTRE ("Autre")
+}
+
+
+enum YesNoPartial {
+    /**
+      * Oui
+      */
+    OUI ("Oui"),
+    /**
+      * Non
+      */
+    NON ("Non"),
+    /**
+      * Partiel
+      */
+    PARTIEL ("Partiel")
+}
+
+@service(serviceClass)
+@paginate(pagination)
+entity Batiments {
+    latitude Float required min(-90) max(90),
+    longitude Float required min(-90) max(90),
+
+    photoPrincipale ImageBlob,
+
+// =========================================================================
+// Corresponding to tab "Batiments" into the old QGIS form
+// =========================================================================
+
+    /**
+      * Nom du bâtiment
+      */
+    nom String maxlength(40),
+    /**
+      * Paille porteuse en technique secondaire
+      */
+    techniqueSecondaire Boolean,
+
+    // Corresponding to section "Informations générales" into the old QGIS form
+    // =========================================================================
+    /**
+      * Usage
+      */
+    usage UsageBatiment,
+    /**
+      * Coût [€]
+      */
+    cout Integer,
+    /**
+      * Surface [m²]
+      */
+    surface Integer,
+    /**
+      * Niveaux
+      */
+    niveaux Integer,
+
+    // Corresponding to section "Nature des travaux" into the old QGIS form
+    // =========================================================================
+    /**
+      * Neuf
+      */
+    travauxNeuf Boolean,
+    /**
+      * Extension
+      */
+    travauxExtension Boolean,
+    /**
+      * Rénovation
+      */
+    travauxRenov Boolean,
+    /**
+      * ITE
+      */
+    travauxIte Boolean,
+    /**
+      * ITI
+      */
+    travauxIti Boolean,
+
+    // Corresponding to section "Chronologie" into the old QGIS form
+    // =========================================================================
+    /**
+      * Début de construction
+      */
+    constructionDebut LocalDate,
+    /**
+      * Achèvement
+      */
+    constructionFin LocalDate,
+
+    // Corresponding to section "Botte de paille" into the old QGIS form
+    // =========================================================================
+    /**
+      * Taille
+      */
+    bottesTaille TaillesBottes,
+    /**
+      * Densité [kg/m³]
+      */
+    bottesDensite Integer,
+    /**
+      * Céréale
+      */
+    bottesCereale Cereale,
+    /**
+      * Distance d'appro [km]
+      */
+    distanceAppro Integer,
+
+    // Corresponding to section "Chantier" into the old QGIS form
+    // =========================================================================
+    /**
+      * Autoconstruction
+      */
+    autoconstruction YesNoPartial,
+    /**
+      * Participatif
+      */
+    participatif YesNoPartial,
+
+    // Corresponding to section "Construction" into the old QGIS form
+    // =========================================================================
+    /**
+      * Intégration des baies
+      */
+    integBaie IntegBaie,
+    /**
+      * Structure supplémentaire
+      */
+    structSuppl Boolean,
+    /**
+      * Note de calcul
+      */
+    noteCalcul Boolean,
+    /**
+      * Matériau de soubassement
+      */
+    materiauSb MateriauSb,
+
+        // Corresponding to sub-section "Revêtement" into the old QGIS form
+        // ==============
+        /**
+         * Revêtement intérieur
+         */
+        revetInt RevetInt,
+        /**
+         * Revêtement extérieur
+         */
+        revetExt RevetExt,
+
+    // Corresponding to section "Acteurs" into the old QGIS form
+    // =========================================================================
+    /**
+     * Concepteurs / conceptrices
+     */
+    concepteur String maxlength(512),
+    /**
+     * Réalisateurs / réalisatrices
+     */
+    realisateur String maxlength(512),
+
+
+    // Corresponding to "Construction" into the old QGIS form
+    // =========================================================================
+
+// =========================================================================
+// Corresponding to tab "Description" into the old QGIS form
+// =========================================================================
+    /**
+     * Description
+     */
+    description TextBlob
+
+// =========================================================================
+// Corresponding to tab "Contact" into the old QGIS form
+// =========================================================================
+    /**
+     * Nom
+     */
+    contactNom String,
+    /**
+     * Mail
+     */
+    contactMail String,
+    /**
+     * Téléphone
+     */
+    contactPhone String,
+    /**
+     * Code postal
+     */
+    codePostal String maxlength(6),
+}
+
+relationship ManyToOne {
+
+    /**
+     * Only creator (set in back at creation) of a Batiments could update or delete it
+     */
+    Batiments{creator(email)} to User
+}
+
