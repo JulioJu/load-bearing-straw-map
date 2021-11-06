@@ -5,13 +5,13 @@ import org.lbstraw.map.domain.enumeration.UsageBatiment;
 public interface BatimentsLazyView {
     Long getId();
 
-    String getNom();
+    String getNomBatiment();
 
     Float getLatitude();
 
     Float getLongitude();
 
-    UsageBatiment getUsage();
+    UsageBatiment getUsageBatiment();
 
-    Integer getSurface();
+    Integer getSurfacePlancher();
 }

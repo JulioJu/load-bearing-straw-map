@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import TranslationService from '@/locale/translation.service';
 
 export default class AccountService {
-  constructor(private store: Store<any>, private translationService: TranslationService, private router: VueRouter) {
+  constructor(private store: Store<any>, private translationService: TranslationService, private cookie: any, private router: VueRouter) {
     this.init();
   }
 
@@ -64,7 +64,7 @@ export default class AccountService {
     }
 
     if (!this.authenticated || !this.userAuthorities) {
-      const token = localStorage.getItem('jhi-authenticationToken') || sessionStorage.getItem('jhi-authenticationToken');
+      const token = this.cookie.get('JSESSIONID') || this.cookie.get('XSRF-TOKEN');
       if (!this.store.getters.account && !this.store.getters.logon && token) {
         return this.retrieveAccount();
       } else {

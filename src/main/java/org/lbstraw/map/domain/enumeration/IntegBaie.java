@@ -4,29 +4,9 @@ package org.lbstraw.map.domain.enumeration;
  * Intégration des baies
  */
 public enum IntegBaie {
-    /**
-     *
-     *       * Pré-cadre flottant
-     *
-     */
     PRE_CADRE_FLOTTANT("Pré-cadre flottant"),
-    /**
-     *
-     *       * Coulissant
-     *
-     */
-    COULISSANT("Coulissant"),
-    /**
-     *
-     *       * Bloqueurs
-     *
-     */
-    BLOQUEURS("Bloqueurs"),
-    /**
-     *
-     *       * Autre
-     *
-     */
+    COULISSANT("Élément coulissant"),
+    FIXE("Élément fixe [poteau - montant - …]"),
     AUTRE("Autre");
 
     private final String value;

@@ -7,11 +7,8 @@
   "fixturesFolder": "src/test/javascript/cypress/fixtures",
   "pluginsFile": "src/test/javascript/cypress/plugins/index.ts",
   "screenshotsFolder": "target/cypress/screenshots",
-  "chromeWebSecurity": true,
+  "chromeWebSecurity": false,
   "viewportWidth": 1200,
   "viewportHeight": 720,
-  "retries": 2,
-  "env": {
-    "jwtStorageName": "jhi-authenticationToken"
-  }
+  "retries": 2
 }

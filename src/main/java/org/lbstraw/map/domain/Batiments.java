@@ -10,9 +10,10 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
 import org.lbstraw.map.domain.enumeration.Cereale;
 import org.lbstraw.map.domain.enumeration.IntegBaie;
-import org.lbstraw.map.domain.enumeration.MateriauSb;
 import org.lbstraw.map.domain.enumeration.RevetExt;
 import org.lbstraw.map.domain.enumeration.RevetInt;
+import org.lbstraw.map.domain.enumeration.StructureSupplementaire;
+import org.lbstraw.map.domain.enumeration.SupportAncrage;
 import org.lbstraw.map.domain.enumeration.TaillesBottes;
 import org.lbstraw.map.domain.enumeration.UsageBatiment;
 import org.lbstraw.map.domain.enumeration.YesNoPartial;
@@ -45,6 +46,14 @@ public class Batiments implements Serializable {
     @Column(name = "longitude", nullable = false)
     private Float longitude;
 
+    /**
+     * Nom du bâtiment
+     */
+    @ApiModelProperty(value = "Nom du bâtiment")
+    @Size(max = 40)
+    @Column(name = "nom_batiment", length = 40)
+    private String nomBatiment;
+
     @Lob
     @Column(name = "photo_principale")
     private byte[] photoPrincipale;
@@ -52,13 +61,82 @@ public class Batiments implements Serializable {
     @Column(name = "photo_principale_content_type")
     private String photoPrincipaleContentType;
 
-    /**
-     * Nom du bâtiment
-     */
-    @ApiModelProperty(value = "Nom du bâtiment")
-    @Size(max = 40)
-    @Column(name = "nom", length = 40)
-    private String nom;
+    @Size(max = 50)
+    @Column(name = "photo_principale_legende", length = 50)
+    private String photoPrincipaleLegende;
+
+    @Column(name = "photo_principale_description")
+    private String photoPrincipaleDescription;
+
+    @Lob
+    @Column(name = "photo_1")
+    private byte[] photo1;
+
+    @Column(name = "photo_1_content_type")
+    private String photo1ContentType;
+
+    @Size(max = 50)
+    @Column(name = "photo_1_legende", length = 50)
+    private String photo1Legende;
+
+    @Column(name = "photo_1_description")
+    private String photo1Description;
+
+    @Lob
+    @Column(name = "photo_2")
+    private byte[] photo2;
+
+    @Column(name = "photo_2_content_type")
+    private String photo2ContentType;
+
+    @Size(max = 50)
+    @Column(name = "photo_2_legende", length = 50)
+    private String photo2Legende;
+
+    @Column(name = "photo_2_description")
+    private String photo2Description;
+
+    @Lob
+    @Column(name = "photo_3")
+    private byte[] photo3;
+
+    @Column(name = "photo_3_content_type")
+    private String photo3ContentType;
+
+    @Size(max = 50)
+    @Column(name = "photo_3_legende", length = 50)
+    private String photo3Legende;
+
+    @Column(name = "photo_3_description")
+    private String photo3Description;
+
+    @Lob
+    @Column(name = "photo_4")
+    private byte[] photo4;
+
+    @Column(name = "photo_4_content_type")
+    private String photo4ContentType;
+
+    @Size(max = 50)
+    @Column(name = "photo_4_legende", length = 50)
+    private String photo4Legende;
+
+    @Column(name = "photo_4_description")
+    private String photo4Description;
+
+    @Lob
+    @Column(name = "photo_5")
+    private byte[] photo5;
+
+    @Column(name = "photo_5_content_type")
+    private String photo5ContentType;
+
+    @Size(max = 50)
+    @Column(name = "photo_5_legende", length = 50)
+    private String photo5Legende;
+
+    @Column(name = "photo_5_description")
+    private String photo5Description;
 
     /**
      * Paille porteuse en technique secondaire
@@ -72,8 +150,8 @@ public class Batiments implements Serializable {
      */
     @ApiModelProperty(value = "Usage")
     @Enumerated(EnumType.STRING)
-    @Column(name = "usage")
-    private UsageBatiment usage;
+    @Column(name = "usage_batiment")
+    private UsageBatiment usageBatiment;
 
     /**
      * Coût [€]
@@ -83,16 +161,16 @@ public class Batiments implements Serializable {
     private Integer cout;
 
     /**
-     * Surface [m²]
+     * Surface de plancher [m²]
      */
-    @ApiModelProperty(value = "Surface [m²]")
-    @Column(name = "surface")
-    private Integer surface;
+    @ApiModelProperty(value = "Surface de plancher [m²]")
+    @Column(name = "surface_plancher")
+    private Integer surfacePlancher;
 
     /**
-     * Niveaux
+     * Nombre de niveaux du bâtiment
      */
-    @ApiModelProperty(value = "Niveaux")
+    @ApiModelProperty(value = "Nombre de niveaux du bâtiment")
     @Column(name = "niveaux")
     private Integer niveaux;
 
@@ -118,16 +196,16 @@ public class Batiments implements Serializable {
     private Boolean travauxRenov;
 
     /**
-     * ITE
+     * Isolation thermique par l'extérieure
      */
-    @ApiModelProperty(value = "ITE")
+    @ApiModelProperty(value = "Isolation thermique par l'extérieure")
     @Column(name = "travaux_ite")
     private Boolean travauxIte;
 
     /**
-     * ITI
+     * Isolation thermique par l'intérieur
      */
-    @ApiModelProperty(value = "ITI")
+    @ApiModelProperty(value = "Isolation thermique par l'intérieur")
     @Column(name = "travaux_iti")
     private Boolean travauxIti;
 
@@ -146,17 +224,24 @@ public class Batiments implements Serializable {
     private LocalDate constructionFin;
 
     /**
-     * Taille
+     * Taille des bottes
      */
-    @ApiModelProperty(value = "Taille")
+    @ApiModelProperty(value = "Taille des bottes")
     @Enumerated(EnumType.STRING)
     @Column(name = "bottes_taille")
     private TaillesBottes bottesTaille;
 
     /**
-     * Densité [kg/m³]
+     * Si taille des bottes non standard
      */
-    @ApiModelProperty(value = "Densité [kg/m³]")
+    @ApiModelProperty(value = "Si taille des bottes non standard")
+    @Column(name = "botte_taille_autre")
+    private String botteTailleAutre;
+
+    /**
+     * Densité sur base sèche [kg/m³]
+     */
+    @ApiModelProperty(value = "Densité sur base sèche [kg/m³]")
     @Column(name = "bottes_densite")
     private Integer bottesDensite;
 
@@ -169,9 +254,9 @@ public class Batiments implements Serializable {
     private Cereale bottesCereale;
 
     /**
-     * Distance d'appro [km]
+     * Distance d'approvisionnement [km]
      */
-    @ApiModelProperty(value = "Distance d'appro [km]")
+    @ApiModelProperty(value = "Distance d'approvisionnement [km]")
     @Column(name = "distance_appro")
     private Integer distanceAppro;
 
@@ -192,19 +277,19 @@ public class Batiments implements Serializable {
     private YesNoPartial participatif;
 
     /**
-     * Intégration des baies
-     */
-    @ApiModelProperty(value = "Intégration des baies")
-    @Enumerated(EnumType.STRING)
-    @Column(name = "integ_baie")
-    private IntegBaie integBaie;
-
-    /**
      * Structure supplémentaire
      */
     @ApiModelProperty(value = "Structure supplémentaire")
     @Column(name = "struct_suppl")
     private Boolean structSuppl;
+
+    /**
+     * Nature Structure supplémentaire
+     */
+    @ApiModelProperty(value = "Nature Structure supplémentaire")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "struct_suppl_nature")
+    private StructureSupplementaire structSupplNature;
 
     /**
      * Note de calcul
@@ -214,12 +299,41 @@ public class Batiments implements Serializable {
     private Boolean noteCalcul;
 
     /**
-     * Matériau de soubassement
+     * Nombre de rangs de bottes
      */
-    @ApiModelProperty(value = "Matériau de soubassement")
+    @ApiModelProperty(value = "Nombre de rangs de bottes")
+    @Column(name = "nbr_rang_de_bottes")
+    private Integer nbrRangDeBottes;
+
+    /**
+     * Longueur maximum sans mur de refend (mètre)
+     */
+    @ApiModelProperty(value = "Longueur maximum sans mur de refend (mètre)")
+    @Column(name = "long_max_sans_mur_refend")
+    private Float longMaxSansMurRefend;
+
+    /**
+     * Intégration des baies
+     */
+    @ApiModelProperty(value = "Intégration des baies")
     @Enumerated(EnumType.STRING)
-    @Column(name = "materiau_sb")
-    private MateriauSb materiauSb;
+    @Column(name = "integ_baie")
+    private IntegBaie integBaie;
+
+    /**
+     * Nature du support d'ancrage
+     */
+    @ApiModelProperty(value = "Nature du support d'ancrage")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "support_ancrage")
+    private SupportAncrage supportAncrage;
+
+    /**
+     * Nature du support d'ancrage précisions
+     */
+    @ApiModelProperty(value = "Nature du support d'ancrage précisions")
+    @Column(name = "support_ancrage_precisions")
+    private String supportAncragePrecisions;
 
     /**
      * Revêtement intérieur
@@ -238,29 +352,111 @@ public class Batiments implements Serializable {
     private RevetExt revetExt;
 
     /**
-     * Concepteurs / conceptrices
+     * Revêtement extérieur autre
      */
-    @ApiModelProperty(value = "Concepteurs / conceptrices")
-    @Size(max = 512)
-    @Column(name = "concepteur", length = 512)
-    private String concepteur;
+    @ApiModelProperty(value = "Revêtement extérieur autre")
+    @Column(name = "revet_ext_autre")
+    private String revetExtAutre;
 
     /**
-     * Réalisateurs / réalisatrices
+     * Maître d'ouvrage
      */
-    @ApiModelProperty(value = "Réalisateurs / réalisatrices")
+    @ApiModelProperty(value = "Maître d'ouvrage")
     @Size(max = 512)
-    @Column(name = "realisateur", length = 512)
-    private String realisateur;
+    @Column(name = "maitre_d_ouvrage", length = 512)
+    private String maitreDOuvrage;
 
     /**
-     * Description
+     * Maître d'œuvre
      */
-    @ApiModelProperty(value = "Description")
+    @ApiModelProperty(value = "Maître d'œuvre")
+    @Size(max = 512)
+    @Column(name = "maitre_d_oeuvre", length = 512)
+    private String maitreDOeuvre;
+
+    /**
+     * Architecte
+     */
+    @ApiModelProperty(value = "Architecte")
+    @Size(max = 512)
+    @Column(name = "architecte", length = 512)
+    private String architecte;
+
+    /**
+     * Bureau d'étude Structure
+     */
+    @ApiModelProperty(value = "Bureau d'étude Structure")
+    @Size(max = 512)
+    @Column(name = "bureau_d_etude_structure", length = 512)
+    private String bureauDEtudeStructure;
+
+    /**
+     * Bureau contrôle
+     */
+    @ApiModelProperty(value = "Bureau contrôle")
+    @Size(max = 512)
+    @Column(name = "bureau_control", length = 512)
+    private String bureauControl;
+
+    /**
+     * Entreprise de mise en oeuvre des bottes, si autoconstruction le préciser
+     */
+    @ApiModelProperty(value = "Entreprise de mise en oeuvre des bottes, si autoconstruction le préciser")
+    @Size(max = 512)
+    @Column(name = "entreprise_bottes", length = 512)
+    private String entrepriseBottes;
+
+    /**
+     * Entreprise de mise en oeuvre de la charpente, si autoconstruction le préciser
+     */
+    @ApiModelProperty(value = "Entreprise de mise en oeuvre de la charpente, si autoconstruction le préciser")
+    @Size(max = 512)
+    @Column(name = "entreprise_charpente", length = 512)
+    private String entrepriseCharpente;
+
+    /**
+     * Entreprise de mise en oeuvre des enduits, si autoconstruction le préciser
+     */
+    @ApiModelProperty(value = "Entreprise de mise en oeuvre des enduits, si autoconstruction le préciser")
+    @Size(max = 512)
+    @Column(name = "entreprise_enduits", length = 512)
+    private String entrepriseEnduits;
+
+    /**
+     * Description du projet
+     */
+    @ApiModelProperty(value = "Description du projet")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "description")
-    private String description;
+    @Column(name = "description_projet")
+    private String descriptionProjet;
+
+    /**
+     * Difficultés rencontrés
+     */
+    @ApiModelProperty(value = "Difficultés rencontrés")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "difficultees")
+    private String difficultees;
+
+    /**
+     * Trucs et astuces
+     */
+    @ApiModelProperty(value = "Trucs et astuces")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "astuces")
+    private String astuces;
+
+    /**
+     * Autre commentaires
+     */
+    @ApiModelProperty(value = "Autre commentaires")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "divers")
+    private String divers;
 
     /**
      * Nom
@@ -292,9 +488,32 @@ public class Batiments implements Serializable {
     private String codePostal;
 
     /**
-     * Only creator (set in back at creation) of a Batiments could update or delete it
+     * If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.
      */
-    @ApiModelProperty(value = "Only creator (set in back at creation) of a Batiments could update or delete it")
+    @ApiModelProperty(value = "If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.")
+    @Column(name = "non_batiment_et_photos_publics")
+    private Boolean nonBatimentEtPhotosPublics;
+
+    /**
+     * Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)
+     */
+    @ApiModelProperty(value = "Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)", required = true)
+    @NotNull
+    @Column(name = "date_creation_fiche", nullable = false)
+    private LocalDate dateCreationFiche;
+
+    /**
+     * Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)
+     */
+    @ApiModelProperty(value = "Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)", required = true)
+    @NotNull
+    @Column(name = "date_modification_fiche", nullable = false)
+    private LocalDate dateModificationFiche;
+
+    /**
+     * Only creator (set in back at creation) of a Batiment could update or delete it
+     */
+    @ApiModelProperty(value = "Only creator (set in back at creation) of a Batiment could update or delete it")
     @ManyToOne
     private User creator;
 
@@ -339,6 +558,19 @@ public class Batiments implements Serializable {
         this.longitude = longitude;
     }
 
+    public String getNomBatiment() {
+        return this.nomBatiment;
+    }
+
+    public Batiments nomBatiment(String nomBatiment) {
+        this.setNomBatiment(nomBatiment);
+        return this;
+    }
+
+    public void setNomBatiment(String nomBatiment) {
+        this.nomBatiment = nomBatiment;
+    }
+
     public byte[] getPhotoPrincipale() {
         return this.photoPrincipale;
     }
@@ -365,17 +597,290 @@ public class Batiments implements Serializable {
         this.photoPrincipaleContentType = photoPrincipaleContentType;
     }
 
-    public String getNom() {
-        return this.nom;
+    public String getPhotoPrincipaleLegende() {
+        return this.photoPrincipaleLegende;
     }
 
-    public Batiments nom(String nom) {
-        this.setNom(nom);
+    public Batiments photoPrincipaleLegende(String photoPrincipaleLegende) {
+        this.setPhotoPrincipaleLegende(photoPrincipaleLegende);
         return this;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setPhotoPrincipaleLegende(String photoPrincipaleLegende) {
+        this.photoPrincipaleLegende = photoPrincipaleLegende;
+    }
+
+    public String getPhotoPrincipaleDescription() {
+        return this.photoPrincipaleDescription;
+    }
+
+    public Batiments photoPrincipaleDescription(String photoPrincipaleDescription) {
+        this.setPhotoPrincipaleDescription(photoPrincipaleDescription);
+        return this;
+    }
+
+    public void setPhotoPrincipaleDescription(String photoPrincipaleDescription) {
+        this.photoPrincipaleDescription = photoPrincipaleDescription;
+    }
+
+    public byte[] getPhoto1() {
+        return this.photo1;
+    }
+
+    public Batiments photo1(byte[] photo1) {
+        this.setPhoto1(photo1);
+        return this;
+    }
+
+    public void setPhoto1(byte[] photo1) {
+        this.photo1 = photo1;
+    }
+
+    public String getPhoto1ContentType() {
+        return this.photo1ContentType;
+    }
+
+    public Batiments photo1ContentType(String photo1ContentType) {
+        this.photo1ContentType = photo1ContentType;
+        return this;
+    }
+
+    public void setPhoto1ContentType(String photo1ContentType) {
+        this.photo1ContentType = photo1ContentType;
+    }
+
+    public String getPhoto1Legende() {
+        return this.photo1Legende;
+    }
+
+    public Batiments photo1Legende(String photo1Legende) {
+        this.setPhoto1Legende(photo1Legende);
+        return this;
+    }
+
+    public void setPhoto1Legende(String photo1Legende) {
+        this.photo1Legende = photo1Legende;
+    }
+
+    public String getPhoto1Description() {
+        return this.photo1Description;
+    }
+
+    public Batiments photo1Description(String photo1Description) {
+        this.setPhoto1Description(photo1Description);
+        return this;
+    }
+
+    public void setPhoto1Description(String photo1Description) {
+        this.photo1Description = photo1Description;
+    }
+
+    public byte[] getPhoto2() {
+        return this.photo2;
+    }
+
+    public Batiments photo2(byte[] photo2) {
+        this.setPhoto2(photo2);
+        return this;
+    }
+
+    public void setPhoto2(byte[] photo2) {
+        this.photo2 = photo2;
+    }
+
+    public String getPhoto2ContentType() {
+        return this.photo2ContentType;
+    }
+
+    public Batiments photo2ContentType(String photo2ContentType) {
+        this.photo2ContentType = photo2ContentType;
+        return this;
+    }
+
+    public void setPhoto2ContentType(String photo2ContentType) {
+        this.photo2ContentType = photo2ContentType;
+    }
+
+    public String getPhoto2Legende() {
+        return this.photo2Legende;
+    }
+
+    public Batiments photo2Legende(String photo2Legende) {
+        this.setPhoto2Legende(photo2Legende);
+        return this;
+    }
+
+    public void setPhoto2Legende(String photo2Legende) {
+        this.photo2Legende = photo2Legende;
+    }
+
+    public String getPhoto2Description() {
+        return this.photo2Description;
+    }
+
+    public Batiments photo2Description(String photo2Description) {
+        this.setPhoto2Description(photo2Description);
+        return this;
+    }
+
+    public void setPhoto2Description(String photo2Description) {
+        this.photo2Description = photo2Description;
+    }
+
+    public byte[] getPhoto3() {
+        return this.photo3;
+    }
+
+    public Batiments photo3(byte[] photo3) {
+        this.setPhoto3(photo3);
+        return this;
+    }
+
+    public void setPhoto3(byte[] photo3) {
+        this.photo3 = photo3;
+    }
+
+    public String getPhoto3ContentType() {
+        return this.photo3ContentType;
+    }
+
+    public Batiments photo3ContentType(String photo3ContentType) {
+        this.photo3ContentType = photo3ContentType;
+        return this;
+    }
+
+    public void setPhoto3ContentType(String photo3ContentType) {
+        this.photo3ContentType = photo3ContentType;
+    }
+
+    public String getPhoto3Legende() {
+        return this.photo3Legende;
+    }
+
+    public Batiments photo3Legende(String photo3Legende) {
+        this.setPhoto3Legende(photo3Legende);
+        return this;
+    }
+
+    public void setPhoto3Legende(String photo3Legende) {
+        this.photo3Legende = photo3Legende;
+    }
+
+    public String getPhoto3Description() {
+        return this.photo3Description;
+    }
+
+    public Batiments photo3Description(String photo3Description) {
+        this.setPhoto3Description(photo3Description);
+        return this;
+    }
+
+    public void setPhoto3Description(String photo3Description) {
+        this.photo3Description = photo3Description;
+    }
+
+    public byte[] getPhoto4() {
+        return this.photo4;
+    }
+
+    public Batiments photo4(byte[] photo4) {
+        this.setPhoto4(photo4);
+        return this;
+    }
+
+    public void setPhoto4(byte[] photo4) {
+        this.photo4 = photo4;
+    }
+
+    public String getPhoto4ContentType() {
+        return this.photo4ContentType;
+    }
+
+    public Batiments photo4ContentType(String photo4ContentType) {
+        this.photo4ContentType = photo4ContentType;
+        return this;
+    }
+
+    public void setPhoto4ContentType(String photo4ContentType) {
+        this.photo4ContentType = photo4ContentType;
+    }
+
+    public String getPhoto4Legende() {
+        return this.photo4Legende;
+    }
+
+    public Batiments photo4Legende(String photo4Legende) {
+        this.setPhoto4Legende(photo4Legende);
+        return this;
+    }
+
+    public void setPhoto4Legende(String photo4Legende) {
+        this.photo4Legende = photo4Legende;
+    }
+
+    public String getPhoto4Description() {
+        return this.photo4Description;
+    }
+
+    public Batiments photo4Description(String photo4Description) {
+        this.setPhoto4Description(photo4Description);
+        return this;
+    }
+
+    public void setPhoto4Description(String photo4Description) {
+        this.photo4Description = photo4Description;
+    }
+
+    public byte[] getPhoto5() {
+        return this.photo5;
+    }
+
+    public Batiments photo5(byte[] photo5) {
+        this.setPhoto5(photo5);
+        return this;
+    }
+
+    public void setPhoto5(byte[] photo5) {
+        this.photo5 = photo5;
+    }
+
+    public String getPhoto5ContentType() {
+        return this.photo5ContentType;
+    }
+
+    public Batiments photo5ContentType(String photo5ContentType) {
+        this.photo5ContentType = photo5ContentType;
+        return this;
+    }
+
+    public void setPhoto5ContentType(String photo5ContentType) {
+        this.photo5ContentType = photo5ContentType;
+    }
+
+    public String getPhoto5Legende() {
+        return this.photo5Legende;
+    }
+
+    public Batiments photo5Legende(String photo5Legende) {
+        this.setPhoto5Legende(photo5Legende);
+        return this;
+    }
+
+    public void setPhoto5Legende(String photo5Legende) {
+        this.photo5Legende = photo5Legende;
+    }
+
+    public String getPhoto5Description() {
+        return this.photo5Description;
+    }
+
+    public Batiments photo5Description(String photo5Description) {
+        this.setPhoto5Description(photo5Description);
+        return this;
+    }
+
+    public void setPhoto5Description(String photo5Description) {
+        this.photo5Description = photo5Description;
     }
 
     public Boolean getTechniqueSecondaire() {
@@ -391,17 +896,17 @@ public class Batiments implements Serializable {
         this.techniqueSecondaire = techniqueSecondaire;
     }
 
-    public UsageBatiment getUsage() {
-        return this.usage;
+    public UsageBatiment getUsageBatiment() {
+        return this.usageBatiment;
     }
 
-    public Batiments usage(UsageBatiment usage) {
-        this.setUsage(usage);
+    public Batiments usageBatiment(UsageBatiment usageBatiment) {
+        this.setUsageBatiment(usageBatiment);
         return this;
     }
 
-    public void setUsage(UsageBatiment usage) {
-        this.usage = usage;
+    public void setUsageBatiment(UsageBatiment usageBatiment) {
+        this.usageBatiment = usageBatiment;
     }
 
     public Integer getCout() {
@@ -417,17 +922,17 @@ public class Batiments implements Serializable {
         this.cout = cout;
     }
 
-    public Integer getSurface() {
-        return this.surface;
+    public Integer getSurfacePlancher() {
+        return this.surfacePlancher;
     }
 
-    public Batiments surface(Integer surface) {
-        this.setSurface(surface);
+    public Batiments surfacePlancher(Integer surfacePlancher) {
+        this.setSurfacePlancher(surfacePlancher);
         return this;
     }
 
-    public void setSurface(Integer surface) {
-        this.surface = surface;
+    public void setSurfacePlancher(Integer surfacePlancher) {
+        this.surfacePlancher = surfacePlancher;
     }
 
     public Integer getNiveaux() {
@@ -547,6 +1052,19 @@ public class Batiments implements Serializable {
         this.bottesTaille = bottesTaille;
     }
 
+    public String getBotteTailleAutre() {
+        return this.botteTailleAutre;
+    }
+
+    public Batiments botteTailleAutre(String botteTailleAutre) {
+        this.setBotteTailleAutre(botteTailleAutre);
+        return this;
+    }
+
+    public void setBotteTailleAutre(String botteTailleAutre) {
+        this.botteTailleAutre = botteTailleAutre;
+    }
+
     public Integer getBottesDensite() {
         return this.bottesDensite;
     }
@@ -612,19 +1130,6 @@ public class Batiments implements Serializable {
         this.participatif = participatif;
     }
 
-    public IntegBaie getIntegBaie() {
-        return this.integBaie;
-    }
-
-    public Batiments integBaie(IntegBaie integBaie) {
-        this.setIntegBaie(integBaie);
-        return this;
-    }
-
-    public void setIntegBaie(IntegBaie integBaie) {
-        this.integBaie = integBaie;
-    }
-
     public Boolean getStructSuppl() {
         return this.structSuppl;
     }
@@ -636,6 +1141,19 @@ public class Batiments implements Serializable {
 
     public void setStructSuppl(Boolean structSuppl) {
         this.structSuppl = structSuppl;
+    }
+
+    public StructureSupplementaire getStructSupplNature() {
+        return this.structSupplNature;
+    }
+
+    public Batiments structSupplNature(StructureSupplementaire structSupplNature) {
+        this.setStructSupplNature(structSupplNature);
+        return this;
+    }
+
+    public void setStructSupplNature(StructureSupplementaire structSupplNature) {
+        this.structSupplNature = structSupplNature;
     }
 
     public Boolean getNoteCalcul() {
@@ -651,17 +1169,69 @@ public class Batiments implements Serializable {
         this.noteCalcul = noteCalcul;
     }
 
-    public MateriauSb getMateriauSb() {
-        return this.materiauSb;
+    public Integer getNbrRangDeBottes() {
+        return this.nbrRangDeBottes;
     }
 
-    public Batiments materiauSb(MateriauSb materiauSb) {
-        this.setMateriauSb(materiauSb);
+    public Batiments nbrRangDeBottes(Integer nbrRangDeBottes) {
+        this.setNbrRangDeBottes(nbrRangDeBottes);
         return this;
     }
 
-    public void setMateriauSb(MateriauSb materiauSb) {
-        this.materiauSb = materiauSb;
+    public void setNbrRangDeBottes(Integer nbrRangDeBottes) {
+        this.nbrRangDeBottes = nbrRangDeBottes;
+    }
+
+    public Float getLongMaxSansMurRefend() {
+        return this.longMaxSansMurRefend;
+    }
+
+    public Batiments longMaxSansMurRefend(Float longMaxSansMurRefend) {
+        this.setLongMaxSansMurRefend(longMaxSansMurRefend);
+        return this;
+    }
+
+    public void setLongMaxSansMurRefend(Float longMaxSansMurRefend) {
+        this.longMaxSansMurRefend = longMaxSansMurRefend;
+    }
+
+    public IntegBaie getIntegBaie() {
+        return this.integBaie;
+    }
+
+    public Batiments integBaie(IntegBaie integBaie) {
+        this.setIntegBaie(integBaie);
+        return this;
+    }
+
+    public void setIntegBaie(IntegBaie integBaie) {
+        this.integBaie = integBaie;
+    }
+
+    public SupportAncrage getSupportAncrage() {
+        return this.supportAncrage;
+    }
+
+    public Batiments supportAncrage(SupportAncrage supportAncrage) {
+        this.setSupportAncrage(supportAncrage);
+        return this;
+    }
+
+    public void setSupportAncrage(SupportAncrage supportAncrage) {
+        this.supportAncrage = supportAncrage;
+    }
+
+    public String getSupportAncragePrecisions() {
+        return this.supportAncragePrecisions;
+    }
+
+    public Batiments supportAncragePrecisions(String supportAncragePrecisions) {
+        this.setSupportAncragePrecisions(supportAncragePrecisions);
+        return this;
+    }
+
+    public void setSupportAncragePrecisions(String supportAncragePrecisions) {
+        this.supportAncragePrecisions = supportAncragePrecisions;
     }
 
     public RevetInt getRevetInt() {
@@ -690,43 +1260,173 @@ public class Batiments implements Serializable {
         this.revetExt = revetExt;
     }
 
-    public String getConcepteur() {
-        return this.concepteur;
+    public String getRevetExtAutre() {
+        return this.revetExtAutre;
     }
 
-    public Batiments concepteur(String concepteur) {
-        this.setConcepteur(concepteur);
+    public Batiments revetExtAutre(String revetExtAutre) {
+        this.setRevetExtAutre(revetExtAutre);
         return this;
     }
 
-    public void setConcepteur(String concepteur) {
-        this.concepteur = concepteur;
+    public void setRevetExtAutre(String revetExtAutre) {
+        this.revetExtAutre = revetExtAutre;
     }
 
-    public String getRealisateur() {
-        return this.realisateur;
+    public String getMaitreDOuvrage() {
+        return this.maitreDOuvrage;
     }
 
-    public Batiments realisateur(String realisateur) {
-        this.setRealisateur(realisateur);
+    public Batiments maitreDOuvrage(String maitreDOuvrage) {
+        this.setMaitreDOuvrage(maitreDOuvrage);
         return this;
     }
 
-    public void setRealisateur(String realisateur) {
-        this.realisateur = realisateur;
+    public void setMaitreDOuvrage(String maitreDOuvrage) {
+        this.maitreDOuvrage = maitreDOuvrage;
     }
 
-    public String getDescription() {
-        return this.description;
+    public String getMaitreDOeuvre() {
+        return this.maitreDOeuvre;
     }
 
-    public Batiments description(String description) {
-        this.setDescription(description);
+    public Batiments maitreDOeuvre(String maitreDOeuvre) {
+        this.setMaitreDOeuvre(maitreDOeuvre);
         return this;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setMaitreDOeuvre(String maitreDOeuvre) {
+        this.maitreDOeuvre = maitreDOeuvre;
+    }
+
+    public String getArchitecte() {
+        return this.architecte;
+    }
+
+    public Batiments architecte(String architecte) {
+        this.setArchitecte(architecte);
+        return this;
+    }
+
+    public void setArchitecte(String architecte) {
+        this.architecte = architecte;
+    }
+
+    public String getBureauDEtudeStructure() {
+        return this.bureauDEtudeStructure;
+    }
+
+    public Batiments bureauDEtudeStructure(String bureauDEtudeStructure) {
+        this.setBureauDEtudeStructure(bureauDEtudeStructure);
+        return this;
+    }
+
+    public void setBureauDEtudeStructure(String bureauDEtudeStructure) {
+        this.bureauDEtudeStructure = bureauDEtudeStructure;
+    }
+
+    public String getBureauControl() {
+        return this.bureauControl;
+    }
+
+    public Batiments bureauControl(String bureauControl) {
+        this.setBureauControl(bureauControl);
+        return this;
+    }
+
+    public void setBureauControl(String bureauControl) {
+        this.bureauControl = bureauControl;
+    }
+
+    public String getEntrepriseBottes() {
+        return this.entrepriseBottes;
+    }
+
+    public Batiments entrepriseBottes(String entrepriseBottes) {
+        this.setEntrepriseBottes(entrepriseBottes);
+        return this;
+    }
+
+    public void setEntrepriseBottes(String entrepriseBottes) {
+        this.entrepriseBottes = entrepriseBottes;
+    }
+
+    public String getEntrepriseCharpente() {
+        return this.entrepriseCharpente;
+    }
+
+    public Batiments entrepriseCharpente(String entrepriseCharpente) {
+        this.setEntrepriseCharpente(entrepriseCharpente);
+        return this;
+    }
+
+    public void setEntrepriseCharpente(String entrepriseCharpente) {
+        this.entrepriseCharpente = entrepriseCharpente;
+    }
+
+    public String getEntrepriseEnduits() {
+        return this.entrepriseEnduits;
+    }
+
+    public Batiments entrepriseEnduits(String entrepriseEnduits) {
+        this.setEntrepriseEnduits(entrepriseEnduits);
+        return this;
+    }
+
+    public void setEntrepriseEnduits(String entrepriseEnduits) {
+        this.entrepriseEnduits = entrepriseEnduits;
+    }
+
+    public String getDescriptionProjet() {
+        return this.descriptionProjet;
+    }
+
+    public Batiments descriptionProjet(String descriptionProjet) {
+        this.setDescriptionProjet(descriptionProjet);
+        return this;
+    }
+
+    public void setDescriptionProjet(String descriptionProjet) {
+        this.descriptionProjet = descriptionProjet;
+    }
+
+    public String getDifficultees() {
+        return this.difficultees;
+    }
+
+    public Batiments difficultees(String difficultees) {
+        this.setDifficultees(difficultees);
+        return this;
+    }
+
+    public void setDifficultees(String difficultees) {
+        this.difficultees = difficultees;
+    }
+
+    public String getAstuces() {
+        return this.astuces;
+    }
+
+    public Batiments astuces(String astuces) {
+        this.setAstuces(astuces);
+        return this;
+    }
+
+    public void setAstuces(String astuces) {
+        this.astuces = astuces;
+    }
+
+    public String getDivers() {
+        return this.divers;
+    }
+
+    public Batiments divers(String divers) {
+        this.setDivers(divers);
+        return this;
+    }
+
+    public void setDivers(String divers) {
+        this.divers = divers;
     }
 
     public String getContactNom() {
@@ -781,6 +1481,45 @@ public class Batiments implements Serializable {
         this.codePostal = codePostal;
     }
 
+    public Boolean getNonBatimentEtPhotosPublics() {
+        return this.nonBatimentEtPhotosPublics;
+    }
+
+    public Batiments nonBatimentEtPhotosPublics(Boolean nonBatimentEtPhotosPublics) {
+        this.setNonBatimentEtPhotosPublics(nonBatimentEtPhotosPublics);
+        return this;
+    }
+
+    public void setNonBatimentEtPhotosPublics(Boolean nonBatimentEtPhotosPublics) {
+        this.nonBatimentEtPhotosPublics = nonBatimentEtPhotosPublics;
+    }
+
+    public LocalDate getDateCreationFiche() {
+        return this.dateCreationFiche;
+    }
+
+    public Batiments dateCreationFiche(LocalDate dateCreationFiche) {
+        this.setDateCreationFiche(dateCreationFiche);
+        return this;
+    }
+
+    public void setDateCreationFiche(LocalDate dateCreationFiche) {
+        this.dateCreationFiche = dateCreationFiche;
+    }
+
+    public LocalDate getDateModificationFiche() {
+        return this.dateModificationFiche;
+    }
+
+    public Batiments dateModificationFiche(LocalDate dateModificationFiche) {
+        this.setDateModificationFiche(dateModificationFiche);
+        return this;
+    }
+
+    public void setDateModificationFiche(LocalDate dateModificationFiche) {
+        this.dateModificationFiche = dateModificationFiche;
+    }
+
     public User getCreator() {
         return this.creator;
     }
@@ -820,13 +1559,35 @@ public class Batiments implements Serializable {
             "id=" + getId() +
             ", latitude=" + getLatitude() +
             ", longitude=" + getLongitude() +
+            ", nomBatiment='" + getNomBatiment() + "'" +
             ", photoPrincipale='" + getPhotoPrincipale() + "'" +
             ", photoPrincipaleContentType='" + getPhotoPrincipaleContentType() + "'" +
-            ", nom='" + getNom() + "'" +
+            ", photoPrincipaleLegende='" + getPhotoPrincipaleLegende() + "'" +
+            ", photoPrincipaleDescription='" + getPhotoPrincipaleDescription() + "'" +
+            ", photo1='" + getPhoto1() + "'" +
+            ", photo1ContentType='" + getPhoto1ContentType() + "'" +
+            ", photo1Legende='" + getPhoto1Legende() + "'" +
+            ", photo1Description='" + getPhoto1Description() + "'" +
+            ", photo2='" + getPhoto2() + "'" +
+            ", photo2ContentType='" + getPhoto2ContentType() + "'" +
+            ", photo2Legende='" + getPhoto2Legende() + "'" +
+            ", photo2Description='" + getPhoto2Description() + "'" +
+            ", photo3='" + getPhoto3() + "'" +
+            ", photo3ContentType='" + getPhoto3ContentType() + "'" +
+            ", photo3Legende='" + getPhoto3Legende() + "'" +
+            ", photo3Description='" + getPhoto3Description() + "'" +
+            ", photo4='" + getPhoto4() + "'" +
+            ", photo4ContentType='" + getPhoto4ContentType() + "'" +
+            ", photo4Legende='" + getPhoto4Legende() + "'" +
+            ", photo4Description='" + getPhoto4Description() + "'" +
+            ", photo5='" + getPhoto5() + "'" +
+            ", photo5ContentType='" + getPhoto5ContentType() + "'" +
+            ", photo5Legende='" + getPhoto5Legende() + "'" +
+            ", photo5Description='" + getPhoto5Description() + "'" +
             ", techniqueSecondaire='" + getTechniqueSecondaire() + "'" +
-            ", usage='" + getUsage() + "'" +
+            ", usageBatiment='" + getUsageBatiment() + "'" +
             ", cout=" + getCout() +
-            ", surface=" + getSurface() +
+            ", surfacePlancher=" + getSurfacePlancher() +
             ", niveaux=" + getNiveaux() +
             ", travauxNeuf='" + getTravauxNeuf() + "'" +
             ", travauxExtension='" + getTravauxExtension() + "'" +
@@ -836,24 +1597,42 @@ public class Batiments implements Serializable {
             ", constructionDebut='" + getConstructionDebut() + "'" +
             ", constructionFin='" + getConstructionFin() + "'" +
             ", bottesTaille='" + getBottesTaille() + "'" +
+            ", botteTailleAutre='" + getBotteTailleAutre() + "'" +
             ", bottesDensite=" + getBottesDensite() +
             ", bottesCereale='" + getBottesCereale() + "'" +
             ", distanceAppro=" + getDistanceAppro() +
             ", autoconstruction='" + getAutoconstruction() + "'" +
             ", participatif='" + getParticipatif() + "'" +
-            ", integBaie='" + getIntegBaie() + "'" +
             ", structSuppl='" + getStructSuppl() + "'" +
+            ", structSupplNature='" + getStructSupplNature() + "'" +
             ", noteCalcul='" + getNoteCalcul() + "'" +
-            ", materiauSb='" + getMateriauSb() + "'" +
+            ", nbrRangDeBottes=" + getNbrRangDeBottes() +
+            ", longMaxSansMurRefend=" + getLongMaxSansMurRefend() +
+            ", integBaie='" + getIntegBaie() + "'" +
+            ", supportAncrage='" + getSupportAncrage() + "'" +
+            ", supportAncragePrecisions='" + getSupportAncragePrecisions() + "'" +
             ", revetInt='" + getRevetInt() + "'" +
             ", revetExt='" + getRevetExt() + "'" +
-            ", concepteur='" + getConcepteur() + "'" +
-            ", realisateur='" + getRealisateur() + "'" +
-            ", description='" + getDescription() + "'" +
+            ", revetExtAutre='" + getRevetExtAutre() + "'" +
+            ", maitreDOuvrage='" + getMaitreDOuvrage() + "'" +
+            ", maitreDOeuvre='" + getMaitreDOeuvre() + "'" +
+            ", architecte='" + getArchitecte() + "'" +
+            ", bureauDEtudeStructure='" + getBureauDEtudeStructure() + "'" +
+            ", bureauControl='" + getBureauControl() + "'" +
+            ", entrepriseBottes='" + getEntrepriseBottes() + "'" +
+            ", entrepriseCharpente='" + getEntrepriseCharpente() + "'" +
+            ", entrepriseEnduits='" + getEntrepriseEnduits() + "'" +
+            ", descriptionProjet='" + getDescriptionProjet() + "'" +
+            ", difficultees='" + getDifficultees() + "'" +
+            ", astuces='" + getAstuces() + "'" +
+            ", divers='" + getDivers() + "'" +
             ", contactNom='" + getContactNom() + "'" +
             ", contactMail='" + getContactMail() + "'" +
             ", contactPhone='" + getContactPhone() + "'" +
             ", codePostal='" + getCodePostal() + "'" +
+            ", nonBatimentEtPhotosPublics='" + getNonBatimentEtPhotosPublics() + "'" +
+            ", dateCreationFiche='" + getDateCreationFiche() + "'" +
+            ", dateModificationFiche='" + getDateModificationFiche() + "'" +
             "}";
     }
 }

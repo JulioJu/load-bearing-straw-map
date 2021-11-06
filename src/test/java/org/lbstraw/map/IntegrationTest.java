@@ -5,6 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.lbstraw.map.LbstrawmapApp;
+import org.lbstraw.map.config.TestSecurityConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -12,6 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = LbstrawmapApp.class)
+@SpringBootTest(classes = { LbstrawmapApp.class, TestSecurityConfiguration.class })
 public @interface IntegrationTest {
 }

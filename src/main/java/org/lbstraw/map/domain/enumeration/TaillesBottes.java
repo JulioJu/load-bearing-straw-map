@@ -4,35 +4,9 @@ package org.lbstraw.map.domain.enumeration;
  * Taille des bottes
  */
 public enum TaillesBottes {
-    /**
-     *
-     *       * 80 x 120 cm
-     *
-     */
-    T_80_X_120_CM("80 x 120 cm"),
-    /**
-     *
-     *       * 50 x 80 cm
-     *
-     */
-    T_50_X_80_CM("50 x 80 cm"),
-    /**
-     *
-     *       * 37 x 47 cm
-     *
-     */
-    T_37_X_47_CM("37 x 47 cm"),
-    /**
-     *
-     *       * 26 x 45 cm
-     *
-     */
-    T_26_X_45_CM("26 x 45 cm"),
-    /**
-     *
-     *       * Autre
-     *
-     */
+    T_70_X_120_X_230_CM("70 x 120 x 230"),
+    T_50_X_80_X_110_a_200_CM("50 x 80 x 110 à 200"),
+    T_36_X_46_X_70_a_120_CM("36 x 46 x 70 à 120"),
     AUTRE("Autre");
 
     private final String value;

@@ -35,14 +35,17 @@ export default class JhiNavbar extends Vue {
   }
 
   public logout(): void {
-    localStorage.removeItem('jhi-authenticationToken');
-    sessionStorage.removeItem('jhi-authenticationToken');
-    this.$store.commit('logout');
-    this.$router.push('/');
+    this.loginService()
+      .logout()
+      .then(response => {
+        this.$store.commit('logout');
+        this.$router.push('/');
+        window.location.href = response.data.logoutUrl;
+      });
   }
 
   public openLogin(): void {
-    this.loginService().openLogin((<any>this).$root);
+    this.loginService().login();
   }
 
   public get authenticated(): boolean {

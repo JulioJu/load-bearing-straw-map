@@ -3,8 +3,8 @@
     "IntegBaie": {
       "null": "",
       "PRE_CADRE_FLOTTANT": "Pré-cadre flottant",
-      "COULISSANT": "Coulissant",
-      "BLOQUEURS": "Bloqueurs",
+      "COULISSANT": "Élément coulissant",
+      "FIXE": "Élément fixe [poteau - montant - …]",
       "AUTRE": "Autre"
     }
   }

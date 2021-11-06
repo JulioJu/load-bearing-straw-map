@@ -47,14 +47,14 @@ export default class MapContainer extends Vue {
     });
 
     const batiments = await this.retrieveAllBatimentss();
-    batiments.forEach(aBatiments => {
+    batiments.forEach(aBatiment => {
       const icon = drawIcon({
-        id: aBatiments.id,
-        name: aBatiments.nom,
-        lat: aBatiments.latitude,
-        long: aBatiments.longitude,
-        usageBatiment: aBatiments.usage ? this.$t(`lbstrawmapApp.UsageBatiment.${aBatiments.usage}`) : undefined,
-        surface: aBatiments.surface ? `${aBatiments.surface} m²` : undefined,
+        id: aBatiment.id,
+        name: aBatiment.nomBatiment,
+        lat: aBatiment.latitude,
+        long: aBatiment.longitude,
+        usageBatiment: aBatiment.usageBatiment ? this.$t(`lbstrawmapApp.UsageBatiment.${aBatiment.usageBatiment}`) : undefined,
+        surface: aBatiment.surfacePlancher ? `${aBatiment.surfacePlancher} m²` : undefined,
       });
       this.map.addLayer(icon);
     });

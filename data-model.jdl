@@ -19,7 +19,7 @@ enum StructureSupplementaire {
     BOIS ("Bois"),
     BETON_ARME ("Béton armé"),
     METAL ("Métal"),
-    MACONNERIE ("Maçonnerie (brique - parpaing - pierre - …)")
+    MACONNERIE ("Maçonnerie [brique - parpaing - pierre - …]")
 }
 
 /**
@@ -29,7 +29,7 @@ enum SupportAncrage {
     BOIS ("Bois"),
     BETON_ARME ("Béton armé"),
     METAL ("Métal"),
-    MACONNERIE ("Maçonnerie (brique - parpaing - pierre - …)"),
+    MACONNERIE ("Maçonnerie [brique - parpaing - pierre - …]"),
     AUTRE ("Autre")
 }
 
@@ -39,7 +39,7 @@ enum SupportAncrage {
 enum IntegBaie {
     PRE_CADRE_FLOTTANT ("Pré-cadre flottant"),
     COULISSANT ("Élément coulissant"),
-    FIXE ("Élément fixe (poteau - montant - …)"),
+    FIXE ("Élément fixe [poteau - montant - …]"),
     AUTRE ("Autre")
 }
 
@@ -109,7 +109,7 @@ enum YesNoPartial {
 
 @service(serviceClass)
 @paginate(pagination)
-entity Batiment {
+entity Batiments {
     latitude Float required min(-90) max(90),
     longitude Float required min(-90) max(90),
 
@@ -394,5 +394,5 @@ relationship ManyToOne {
     /**
      * Only creator (set in back at creation) of a Batiment could update or delete it
      */
-    Batiment{creator(email)} to User
+    Batiments{creator(email)} to User
 }

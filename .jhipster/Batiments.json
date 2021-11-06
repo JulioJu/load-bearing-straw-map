@@ -16,16 +16,101 @@
       "fieldValidateRulesMax": "90"
     },
     {
+      "fieldName": "nomBatiment",
+      "fieldType": "String",
+      "javadoc": "Nom du bâtiment",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "40"
+    },
+    {
       "fieldName": "photoPrincipale",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "image"
     },
     {
-      "fieldName": "nom",
+      "fieldName": "photoPrincipaleLegende",
       "fieldType": "String",
-      "javadoc": "Nom du bâtiment",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "40"
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "photoPrincipaleDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo1",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photo1Legende",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "photo1Description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo2",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photo2Legende",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "photo2Description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo3",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photo3Legende",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "photo3Description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo4",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photo4Legende",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "photo4Description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo5",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photo5Legende",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "photo5Description",
+      "fieldType": "String"
     },
     {
       "fieldName": "techniqueSecondaire",
@@ -33,26 +118,10 @@
       "javadoc": "Paille porteuse en technique secondaire"
     },
     {
-      "fieldName": "usage",
+      "fieldName": "usageBatiment",
       "fieldType": "UsageBatiment",
       "javadoc": "Usage",
-      "fieldValues": "LOGEMENT_COLLECTIF (Logement collectif),LOGEMENT_INDIVIDUEL (Logement individuel),LOGEMENT_INDIVIDUEL_GROUPE (Logement individuel groupé),BATIMENT_ADMINISTRATIF (Bâtiment administratif),BATIMENT_COMMERCIAL (Bâtiment commercial),BATIMENT_INDUSTRIEL (Bâtiment industriel),BATIMENT_DE_LOISIRS (Bâtiment de loisirs),BATIMENT_DE_SANTE (Bâtiment de santé),BATIMENT_DE_RETRAITE (Bâtiment de retraite),BATIMENT_EDUCATIF (Bâtiment éducatif),BATIMENT_SOCIO_CULTUREl (Bâtiment socio-culturel),BATIMENT_AGRICOLE (Bâtiment agricole),OUVRAGE_EXCEPTIONNEL (Ouvrage exceptionnel),AUTRE (Autre)",
-      "fieldValuesJavadocs": {
-        "LOGEMENT_COLLECTIF": "\n      * Logement collectif\n",
-        "LOGEMENT_INDIVIDUEL": "\n      * Logement individuel\n",
-        "LOGEMENT_INDIVIDUEL_GROUPE": "\n      * Logement individuel groupé\n",
-        "BATIMENT_ADMINISTRATIF": "\n      * Bâtiment administratif\n",
-        "BATIMENT_COMMERCIAL": "\n      * Bâtiment commercial\n",
-        "BATIMENT_INDUSTRIEL": "\n      * Bâtiment industriel\n",
-        "BATIMENT_DE_LOISIRS": "\n      * Bâtiment de loisirs\n",
-        "BATIMENT_DE_SANTE": "\n      * Bâtiment de santé\n",
-        "BATIMENT_DE_RETRAITE": "\n      * Bâtiment de retraite\n",
-        "BATIMENT_EDUCATIF": "\n      * Bâtiment éducatif\n",
-        "BATIMENT_SOCIO_CULTUREl": "\n      * Bâtiment socio-culturel\n",
-        "BATIMENT_AGRICOLE": "\n      * Bâtiment agricole\n",
-        "OUVRAGE_EXCEPTIONNEL": "\n      * Ouvrage exceptionnel\n",
-        "AUTRE": "\n      * Autre\n"
-      }
+      "fieldValues": "LOGEMENT_COLLECTIF (Logement collectif),LOGEMENT_INDIVIDUEL (Logement individuel),LOGEMENT_INDIVIDUEL_GROUPE (Logement individuel groupé),BATIMENT_ADMINISTRATIF (Bâtiment administratif),BATIMENT_COMMERCIAL (Bâtiment commercial),BATIMENT_INDUSTRIEL (Bâtiment industriel),BATIMENT_DE_LOISIRS (Bâtiment de loisirs),BATIMENT_DE_SANTE (Bâtiment de santé),BATIMENT_DE_RETRAITE (Bâtiment de retraite),BATIMENT_EDUCATIF (Bâtiment éducatif),BATIMENT_SOCIO_CULTUREl (Bâtiment socio-culturel),BATIMENT_AGRICOLE (Bâtiment agricole),OUVRAGE_EXCEPTIONNEL (Ouvrage exceptionnel),AUTRE (Autre)"
     },
     {
       "fieldName": "cout",
@@ -60,14 +129,14 @@
       "javadoc": "Coût [€]"
     },
     {
-      "fieldName": "surface",
+      "fieldName": "surfacePlancher",
       "fieldType": "Integer",
-      "javadoc": "Surface [m²]"
+      "javadoc": "Surface de plancher [m²]"
     },
     {
       "fieldName": "niveaux",
       "fieldType": "Integer",
-      "javadoc": "Niveaux"
+      "javadoc": "Nombre de niveaux du bâtiment"
     },
     {
       "fieldName": "travauxNeuf",
@@ -87,12 +156,12 @@
     {
       "fieldName": "travauxIte",
       "fieldType": "Boolean",
-      "javadoc": "ITE"
+      "javadoc": "Isolation thermique par l'extérieure"
     },
     {
       "fieldName": "travauxIti",
       "fieldType": "Boolean",
-      "javadoc": "ITI"
+      "javadoc": "Isolation thermique par l'intérieur"
     },
     {
       "fieldName": "constructionDebut",
@@ -107,77 +176,43 @@
     {
       "fieldName": "bottesTaille",
       "fieldType": "TaillesBottes",
-      "javadoc": "Taille",
-      "fieldValues": "T_80_X_120_CM (80 x 120 cm),T_50_X_80_CM (50 x 80 cm),T_37_X_47_CM (37 x 47 cm),T_26_X_45_CM (26 x 45 cm),AUTRE (Autre)",
-      "fieldTypeJavadoc": "Taille des bottes",
-      "fieldValuesJavadocs": {
-        "T_80_X_120_CM": "\n      * 80 x 120 cm\n",
-        "T_50_X_80_CM": "\n      * 50 x 80 cm\n",
-        "T_37_X_47_CM": "\n      * 37 x 47 cm\n",
-        "T_26_X_45_CM": "\n      * 26 x 45 cm\n",
-        "AUTRE": "\n      * Autre\n"
-      }
+      "javadoc": "Taille des bottes",
+      "fieldValues": "T_70_X_120_X_230_CM (70 x 120 x 230),T_50_X_80_X_110_a_200_CM (50 x 80 x 110 à 200),T_36_X_46_X_70_a_120_CM (36 x 46 x 70 à 120),AUTRE (Autre)",
+      "fieldTypeJavadoc": "Taille des bottes"
+    },
+    {
+      "fieldName": "botteTailleAutre",
+      "fieldType": "String",
+      "javadoc": "Si taille des bottes non standard"
     },
     {
       "fieldName": "bottesDensite",
       "fieldType": "Integer",
-      "javadoc": "Densité [kg/m³]"
+      "javadoc": "Densité sur base sèche [kg/m³]"
     },
     {
       "fieldName": "bottesCereale",
       "fieldType": "Cereale",
       "javadoc": "Céréale",
       "fieldValues": "BLE (Blé),ORGE (Orge),AVOINE (Avoine),SEIGLE (Seigle),TRITICALE (Triticale),RIZ (Riz),AUTRE (Autre)",
-      "fieldTypeJavadoc": "Céréale",
-      "fieldValuesJavadocs": {
-        "BLE": "\n      * Blé\n",
-        "ORGE": "\n      * Orge\n",
-        "AVOINE": "\n      * Avoine\n",
-        "SEIGLE": "\n      * Seigle\n",
-        "TRITICALE": "\n      * Triticale\n",
-        "RIZ": "\n      * Riz\n",
-        "AUTRE": "\n      * Autre\n"
-      }
+      "fieldTypeJavadoc": "Céréale"
     },
     {
       "fieldName": "distanceAppro",
       "fieldType": "Integer",
-      "javadoc": "Distance d'appro [km]"
+      "javadoc": "Distance d'approvisionnement [km]"
     },
     {
       "fieldName": "autoconstruction",
       "fieldType": "YesNoPartial",
       "javadoc": "Autoconstruction",
-      "fieldValues": "OUI (Oui),NON (Non),PARTIEL (Partiel)",
-      "fieldValuesJavadocs": {
-        "OUI": "\n      * Oui\n",
-        "NON": "\n      * Non\n",
-        "PARTIEL": "\n      * Partiel\n"
-      }
+      "fieldValues": "OUI (Oui),NON (Non),PARTIEL (Partiel)"
     },
     {
       "fieldName": "participatif",
       "fieldType": "YesNoPartial",
       "javadoc": "Participatif",
-      "fieldValues": "OUI (Oui),NON (Non),PARTIEL (Partiel)",
-      "fieldValuesJavadocs": {
-        "OUI": "\n      * Oui\n",
-        "NON": "\n      * Non\n",
-        "PARTIEL": "\n      * Partiel\n"
-      }
-    },
-    {
-      "fieldName": "integBaie",
-      "fieldType": "IntegBaie",
-      "javadoc": "Intégration des baies",
-      "fieldValues": "PRE_CADRE_FLOTTANT (Pré-cadre flottant),COULISSANT (Coulissant),BLOQUEURS (Bloqueurs),AUTRE (Autre)",
-      "fieldTypeJavadoc": "Intégration des baies",
-      "fieldValuesJavadocs": {
-        "PRE_CADRE_FLOTTANT": "\n      * Pré-cadre flottant\n",
-        "COULISSANT": "\n      * Coulissant\n",
-        "BLOQUEURS": "\n      * Bloqueurs\n",
-        "AUTRE": "\n      * Autre\n"
-      }
+      "fieldValues": "OUI (Oui),NON (Non),PARTIEL (Partiel)"
     },
     {
       "fieldName": "structSuppl",
@@ -185,75 +220,143 @@
       "javadoc": "Structure supplémentaire"
     },
     {
+      "fieldName": "structSupplNature",
+      "fieldType": "StructureSupplementaire",
+      "javadoc": "Nature Structure supplémentaire",
+      "fieldValues": "BOIS (Bois),BETON_ARME (Béton armé),METAL (Métal),MACONNERIE (Maçonnerie [brique - parpaing - pierre - …])",
+      "fieldTypeJavadoc": "Nature support supplémentaire"
+    },
+    {
       "fieldName": "noteCalcul",
       "fieldType": "Boolean",
       "javadoc": "Note de calcul"
     },
     {
-      "fieldName": "materiauSb",
-      "fieldType": "MateriauSb",
-      "javadoc": "Matériau de soubassement",
-      "fieldValues": "BETON_ARME (Béton armé),PARPAING_DE_CIMENT (Parpaing de ciment),BRIQUE_DE_TERRE_CUITE (Brique de terre cuite),BRIQUE_DE_PIERRE_PONCE (Brique de pierre ponce),BETON_LEGER_ISOLANT (Béton léger isolant),PIERRE (Pierre),AUTRE (Autre)",
-      "fieldTypeJavadoc": "Matériau de soubassement",
-      "fieldValuesJavadocs": {
-        "BETON_ARME": "\n      * Béton armé\n",
-        "PARPAING_DE_CIMENT": "\n      * Parpaing de ciment\n",
-        "BRIQUE_DE_TERRE_CUITE": "\n      * Brique de terre cuite\n",
-        "BRIQUE_DE_PIERRE_PONCE": "\n      * Brique de pierre ponce\n",
-        "BETON_LEGER_ISOLANT": "\n      * Béton léger isolant\n",
-        "PIERRE": "\n      * Pierre\n",
-        "AUTRE": "\n      * Autre\n"
-      }
+      "fieldName": "nbrRangDeBottes",
+      "fieldType": "Integer",
+      "javadoc": "Nombre de rangs de bottes"
+    },
+    {
+      "fieldName": "longMaxSansMurRefend",
+      "fieldType": "Float",
+      "javadoc": "Longueur maximum sans mur de refend (mètre)"
+    },
+    {
+      "fieldName": "integBaie",
+      "fieldType": "IntegBaie",
+      "javadoc": "Intégration des baies",
+      "fieldValues": "PRE_CADRE_FLOTTANT (Pré-cadre flottant),COULISSANT (Élément coulissant),FIXE (Élément fixe [poteau - montant - …]),AUTRE (Autre)",
+      "fieldTypeJavadoc": "Intégration des baies"
+    },
+    {
+      "fieldName": "supportAncrage",
+      "fieldType": "SupportAncrage",
+      "javadoc": "Nature du support d'ancrage",
+      "fieldValues": "BOIS (Bois),BETON_ARME (Béton armé),METAL (Métal),MACONNERIE (Maçonnerie [brique - parpaing - pierre - …]),AUTRE (Autre)",
+      "fieldTypeJavadoc": "Nature du support d'ancrage"
+    },
+    {
+      "fieldName": "supportAncragePrecisions",
+      "fieldType": "String",
+      "javadoc": "Nature du support d'ancrage précisions"
     },
     {
       "fieldName": "revetInt",
       "fieldType": "RevetInt",
       "javadoc": "Revêtement intérieur",
       "fieldValues": "PLAQUE_DE_PLATRE (Plaque de plâtre),LAMBRIS (Lambris),ENDUIT_TERRE (Enduit terre),ENDUIT_CHAUX (Enduit chaux),ENDUIT_TERRE_ET_CHAUX (Enduit terre et chaux),ENDUIT_PLATRE (Enduit plâtre),AUTRE (Autre)",
-      "fieldTypeJavadoc": "Revêtement intérieur",
-      "fieldValuesJavadocs": {
-        "PLAQUE_DE_PLATRE": "\n      * Plaque de plâtre\n",
-        "LAMBRIS": "\n      * Lambris\n",
-        "ENDUIT_TERRE": "\n      * Enduit terre\n",
-        "ENDUIT_CHAUX": "\n      * Enduit chaux\n",
-        "ENDUIT_TERRE_ET_CHAUX": "\n      * Enduit terre et chaux\n",
-        "ENDUIT_PLATRE": "\n      * Enduit plâtre\n",
-        "AUTRE": "\n      * Autre\n"
-      }
+      "fieldTypeJavadoc": "Revêtement intérieur"
     },
     {
       "fieldName": "revetExt",
       "fieldType": "RevetExt",
       "javadoc": "Revêtement extérieur",
-      "fieldValues": "BARDAGE_VENTILE (Bardage ventilé),ENDUIT_TERRE (Enduit terre),ENDUIT_CHAUX (Enduit chaux),ENDUIT_TERRE_ET_CHAUX (Enduit terre et chaux),ENDUIT_PLATRE (Enduit plâtre),AUTRE (Autre)",
-      "fieldTypeJavadoc": "Revêtement extérieur",
-      "fieldValuesJavadocs": {
-        "BARDAGE_VENTILE": "\n      * Bardage ventilé\n",
-        "ENDUIT_TERRE": "\n      * Enduit terre\n",
-        "ENDUIT_CHAUX": "\n      * Enduit chaux\n",
-        "ENDUIT_TERRE_ET_CHAUX": "\n      * Enduit terre et chaux\n",
-        "ENDUIT_PLATRE": "\n      * Enduit plâtre\n",
-        "AUTRE": "\n      * Autre\n"
-      }
+      "fieldValues": "BARDAGE_VENTILE (Bardage ventilé),ENDUIT_TERRE (Enduit terre),ENDUIT_CHAUX (Enduit chaux),ENDUIT_TERRE_ET_CHAUX (Enduit terre et chaux),ENDUIT_PLATRE (Enduit plâtre),ENDUIT_PANNEAU (Panneau),AUTRE (Autre)",
+      "fieldTypeJavadoc": "Revêtement extérieur"
     },
     {
-      "fieldName": "concepteur",
+      "fieldName": "revetExtAutre",
       "fieldType": "String",
-      "javadoc": "Concepteurs / conceptrices",
+      "javadoc": "Revêtement extérieur autre"
+    },
+    {
+      "fieldName": "maitreDOuvrage",
+      "fieldType": "String",
+      "javadoc": "Maître d'ouvrage",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "512"
     },
     {
-      "fieldName": "realisateur",
+      "fieldName": "maitreDOeuvre",
       "fieldType": "String",
-      "javadoc": "Réalisateurs / réalisatrices",
+      "javadoc": "Maître d'œuvre",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "512"
     },
     {
-      "fieldName": "description",
+      "fieldName": "architecte",
+      "fieldType": "String",
+      "javadoc": "Architecte",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "bureauDEtudeStructure",
+      "fieldType": "String",
+      "javadoc": "Bureau d'étude Structure",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "bureauControl",
+      "fieldType": "String",
+      "javadoc": "Bureau contrôle",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "entrepriseBottes",
+      "fieldType": "String",
+      "javadoc": "Entreprise de mise en oeuvre des bottes, si autoconstruction le préciser",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "entrepriseCharpente",
+      "fieldType": "String",
+      "javadoc": "Entreprise de mise en oeuvre de la charpente, si autoconstruction le préciser",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "entrepriseEnduits",
+      "fieldType": "String",
+      "javadoc": "Entreprise de mise en oeuvre des enduits, si autoconstruction le préciser",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "descriptionProjet",
       "fieldType": "byte[]",
-      "javadoc": "Description",
+      "javadoc": "Description du projet",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "difficultees",
+      "fieldType": "byte[]",
+      "javadoc": "Difficultés rencontrés",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "astuces",
+      "fieldType": "byte[]",
+      "javadoc": "Trucs et astuces",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "divers",
+      "fieldType": "byte[]",
+      "javadoc": "Autre commentaires",
       "fieldTypeBlobContent": "text"
     },
     {
@@ -277,6 +380,23 @@
       "javadoc": "Code postal",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "6"
+    },
+    {
+      "fieldName": "nonBatimentEtPhotosPublics",
+      "fieldType": "Boolean",
+      "javadoc": "If true, anonymous users (not authenticated) could see photos. Search\\nengine could  index it."
+    },
+    {
+      "fieldName": "dateCreationFiche",
+      "fieldType": "LocalDate",
+      "javadoc": "Date de création de l'enregistrement dans la Base de donnée\\n(autogénéré en back)",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateModificationFiche",
+      "fieldType": "LocalDate",
+      "javadoc": "Date de modification de l'enregistrement dans la Base de donnée\\n(autogénéré en back)",
+      "fieldValidateRules": ["required"]
     }
   ],
   "relationships": [
@@ -284,7 +404,7 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "user",
       "otherEntityRelationshipName": "batiments",
-      "javadoc": "Only creator (set in back at creation) of a Batiments could update or delete it",
+      "javadoc": "Only creator (set in back at creation) of a Batiment could update or delete it",
       "relationshipName": "creator",
       "otherEntityField": "email"
     }
@@ -298,5 +418,5 @@
   "readOnly": false,
   "embedded": false,
   "applications": "*",
-  "changelogDate": "20211017141319"
+  "changelogDate": "20211106133223"
 }

@@ -7,7 +7,7 @@ import { decimal, required, minValue, maxValue, maxLength } from 'vuelidate/lib/
 
 import AlertService from '@/shared/alert/alert.service';
 
-import UserService from '@/admin/user-management/user-management.service';
+import UserOAuth2Service from '@/entities/user/user.oauth2.service';
 
 import { IBatiments, Batiments } from '@/shared/model/batiments.model';
 import BatimentsService from './batiments.service';
@@ -15,8 +15,9 @@ import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model'
 import { TaillesBottes } from '@/shared/model/enumerations/tailles-bottes.model';
 import { Cereale } from '@/shared/model/enumerations/cereale.model';
 import { YesNoPartial } from '@/shared/model/enumerations/yes-no-partial.model';
+import { StructureSupplementaire } from '@/shared/model/enumerations/structure-supplementaire.model';
 import { IntegBaie } from '@/shared/model/enumerations/integ-baie.model';
-import { MateriauSb } from '@/shared/model/enumerations/materiau-sb.model';
+import { SupportAncrage } from '@/shared/model/enumerations/support-ancrage.model';
 import { RevetInt } from '@/shared/model/enumerations/revet-int.model';
 import { RevetExt } from '@/shared/model/enumerations/revet-ext.model';
 
@@ -34,14 +35,43 @@ const validations: any = {
       min: minValue(-90),
       max: maxValue(90),
     },
-    photoPrincipale: {},
-    nom: {
+    nomBatiment: {
       maxLength: maxLength(40),
     },
+    photoPrincipale: {},
+    photoPrincipaleLegende: {
+      maxLength: maxLength(50),
+    },
+    photoPrincipaleDescription: {},
+    photo1: {},
+    photo1Legende: {
+      maxLength: maxLength(50),
+    },
+    photo1Description: {},
+    photo2: {},
+    photo2Legende: {
+      maxLength: maxLength(50),
+    },
+    photo2Description: {},
+    photo3: {},
+    photo3Legende: {
+      maxLength: maxLength(50),
+    },
+    photo3Description: {},
+    photo4: {},
+    photo4Legende: {
+      maxLength: maxLength(50),
+    },
+    photo4Description: {},
+    photo5: {},
+    photo5Legende: {
+      maxLength: maxLength(50),
+    },
+    photo5Description: {},
     techniqueSecondaire: {},
-    usage: {},
+    usageBatiment: {},
     cout: {},
-    surface: {},
+    surfacePlancher: {},
     niveaux: {},
     travauxNeuf: {},
     travauxExtension: {},
@@ -51,29 +81,63 @@ const validations: any = {
     constructionDebut: {},
     constructionFin: {},
     bottesTaille: {},
+    botteTailleAutre: {},
     bottesDensite: {},
     bottesCereale: {},
     distanceAppro: {},
     autoconstruction: {},
     participatif: {},
-    integBaie: {},
     structSuppl: {},
+    structSupplNature: {},
     noteCalcul: {},
-    materiauSb: {},
+    nbrRangDeBottes: {},
+    longMaxSansMurRefend: {},
+    integBaie: {},
+    supportAncrage: {},
+    supportAncragePrecisions: {},
     revetInt: {},
     revetExt: {},
-    concepteur: {
+    revetExtAutre: {},
+    maitreDOuvrage: {
       maxLength: maxLength(512),
     },
-    realisateur: {
+    maitreDOeuvre: {
       maxLength: maxLength(512),
     },
-    description: {},
+    architecte: {
+      maxLength: maxLength(512),
+    },
+    bureauDEtudeStructure: {
+      maxLength: maxLength(512),
+    },
+    bureauControl: {
+      maxLength: maxLength(512),
+    },
+    entrepriseBottes: {
+      maxLength: maxLength(512),
+    },
+    entrepriseCharpente: {
+      maxLength: maxLength(512),
+    },
+    entrepriseEnduits: {
+      maxLength: maxLength(512),
+    },
+    descriptionProjet: {},
+    difficultees: {},
+    astuces: {},
+    divers: {},
     contactNom: {},
     contactMail: {},
     contactPhone: {},
     codePostal: {
       maxLength: maxLength(6),
+    },
+    nonBatimentEtPhotosPublics: {},
+    dateCreationFiche: {
+      required,
+    },
+    dateModificationFiche: {
+      required,
     },
   },
 };
@@ -87,15 +151,16 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
 
   public batiments: IBatiments = new Batiments();
 
-  @Inject('userService') private userService: () => UserService;
+  @Inject('userOAuth2Service') private userOAuth2Service: () => UserOAuth2Service;
 
   public users: Array<any> = [];
   public usageBatimentValues: string[] = Object.keys(UsageBatiment);
   public taillesBottesValues: string[] = Object.keys(TaillesBottes);
   public cerealeValues: string[] = Object.keys(Cereale);
   public yesNoPartialValues: string[] = Object.keys(YesNoPartial);
+  public structureSupplementaireValues: string[] = Object.keys(StructureSupplementaire);
   public integBaieValues: string[] = Object.keys(IntegBaie);
-  public materiauSbValues: string[] = Object.keys(MateriauSb);
+  public supportAncrageValues: string[] = Object.keys(SupportAncrage);
   public revetIntValues: string[] = Object.keys(RevetInt);
   public revetExtValues: string[] = Object.keys(RevetExt);
   public isSaving = false;
@@ -209,7 +274,7 @@ export default class BatimentsUpdate extends mixins(JhiDataUtils) {
   }
 
   public initRelationships(): void {
-    this.userService()
+    this.userOAuth2Service()
       .retrieve()
       .then(res => {
         this.users = res.data;

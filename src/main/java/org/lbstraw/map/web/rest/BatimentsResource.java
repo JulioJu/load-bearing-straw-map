@@ -65,7 +65,7 @@ public class BatimentsResource {
     }
 
     private void updateOrDeleteCheckUser(Long batimentId) {
-        Long batimentCreatorId = batimentsRepository.findWithOnlyCreatorIds(batimentId).get(0).getCreatorId();
+        String batimentCreatorId = batimentsRepository.findWithOnlyCreatorIds(batimentId).get(0).getCreatorId();
         if (!this.currentUser().getId().equals(batimentCreatorId)) {
             throw new BadRequestAlertException(
                 "You are not the creator, you could not change this",

@@ -1,9 +1,9 @@
 import Component from 'vue-class-component';
 import { Inject, Vue } from 'vue-property-decorator';
 import LoginService from '@/account/login.service';
+// START added by JulioJu
 import MapContainer from '@/map/map-container.vue';
 
-// START added by JulioJu
 @Component({
   components: {
     'map-container': MapContainer,
@@ -15,7 +15,7 @@ export default class Home extends Vue {
   private loginService: () => LoginService;
 
   public openLogin(): void {
-    this.loginService().openLogin((<any>this).$root);
+    this.loginService().login();
   }
 
   public get authenticated(): boolean {

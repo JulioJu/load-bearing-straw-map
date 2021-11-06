@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface BatimentsRepository extends JpaRepository<Batiments, Long> {
     // START added by JulioJu
     @Query(
-        "select ba.id as id, ba.nom as nom, ba.latitude as latitude, ba.longitude as longitude, ba.usage as usage, ba.surface as surface from Batiments ba"
+        "select ba.id as id, ba.nomBatiment as nomBatiment, ba.latitude as latitude, ba.longitude as longitude, ba.usageBatiment as usageBatiment, ba.surfacePlancher as surfacePlancher from Batiments ba"
     )
     List<org.lbstraw.map.domain.BatimentsLazyView> findAllLazy();
 
@@ -24,6 +24,6 @@ public interface BatimentsRepository extends JpaRepository<Batiments, Long> {
 
     // END added by JulioJu
 
-    @Query("select batiments from Batiments batiments where batiments.creator.login = ?#{principal.username}")
+    @Query("select batiments from Batiments batiments where batiments.creator.login = ?#{principal.preferredUsername}")
     List<Batiments> findByCreatorIsCurrentUser();
 }

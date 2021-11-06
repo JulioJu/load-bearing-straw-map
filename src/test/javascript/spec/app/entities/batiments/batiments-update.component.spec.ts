@@ -8,7 +8,7 @@ import BatimentsUpdateComponent from '@/entities/batiments/batiments-update.vue'
 import BatimentsClass from '@/entities/batiments/batiments-update.component';
 import BatimentsService from '@/entities/batiments/batiments.service';
 
-import UserService from '@/admin/user-management/user-management.service';
+import UserOAuth2Service from '@/entities/user/user.oauth2.service';
 import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
@@ -42,7 +42,7 @@ describe('Component Tests', () => {
           batimentsService: () => batimentsServiceStub,
           alertService: () => new AlertService(),
 
-          userService: () => new UserService(),
+          userOAuth2Service: () => new UserOAuth2Service(),
         },
       });
       comp = wrapper.vm;

@@ -12,7 +12,7 @@ localVue.component('router-link', {});
 describe('Home', () => {
   let home: HomeClass;
   let wrapper: Wrapper<HomeClass>;
-  const loginService = { openLogin: jest.fn() };
+  const loginService = { login: jest.fn(), logout: jest.fn() };
 
   beforeEach(() => {
     wrapper = shallowMount<HomeClass>(Home, {
@@ -41,6 +41,6 @@ describe('Home', () => {
   it('should use login service', () => {
     home.openLogin();
 
-    expect(loginService.openLogin).toHaveBeenCalled();
+    expect(loginService.login).toHaveBeenCalled();
   });
 });

@@ -9,5 +9,7 @@ export enum RevetExt {
 
   ENDUIT_PLATRE = 'Enduit plâtre',
 
+  ENDUIT_PANNEAU = 'Panneau',
+
   AUTRE = 'Autre',
 }
