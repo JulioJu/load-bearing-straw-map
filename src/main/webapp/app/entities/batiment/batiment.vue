@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="BatimentHeading">
-      <span v-text="$t('lbstrawmapApp.batiment.home.title')" id="batiment-heading">Batiments</span>
+      <span v-text="$t('cartePaillePorteuseApp.batiment.home.title')" id="batiment-heading">Batiments</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="$t('lbstrawmapApp.batiment.home.refreshListLabel')">Refresh List</span>
+          <span v-text="$t('cartePaillePorteuseApp.batiment.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'BatimentCreate' }" custom v-slot="{ navigate }">
           <button
@@ -15,14 +15,14 @@
             class="btn btn-primary jh-create-entity create-batiment"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('lbstrawmapApp.batiment.home.createLabel')"> Create a new Batiment </span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.home.createLabel')"> Create a new Batiment </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && batiments && batiments.length === 0">
-      <span v-text="$t('lbstrawmapApp.batiment.home.notFound')">No batiments found</span>
+      <span v-text="$t('cartePaillePorteuseApp.batiment.home.notFound')">No batiments found</span>
     </div>
     <div class="table-responsive" v-if="batiments && batiments.length > 0">
       <table class="table table-striped" aria-describedby="batiments">
@@ -33,27 +33,27 @@
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('latitude')">
-              <span v-text="$t('lbstrawmapApp.batiment.latitude')">Latitude</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.latitude')">Latitude</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'latitude'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('longitude')">
-              <span v-text="$t('lbstrawmapApp.batiment.longitude')">Longitude</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.longitude')">Longitude</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'longitude'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('nomBatiment')">
-              <span v-text="$t('lbstrawmapApp.batiment.nomBatiment')">Nom Batiment</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.nomBatiment')">Nom Batiment</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nomBatiment'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photoPrincipale')">
-              <span v-text="$t('lbstrawmapApp.batiment.photoPrincipale')">Photo Principale</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipale')">Photo Principale</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photoPrincipale'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photoPrincipaleLegende')">
-              <span v-text="$t('lbstrawmapApp.batiment.photoPrincipaleLegende')">Photo Principale Legende</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipaleLegende')">Photo Principale Legende</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photoPrincipaleLegende'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photoPrincipaleDescription')">
-              <span v-text="$t('lbstrawmapApp.batiment.photoPrincipaleDescription')">Photo Principale Description</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipaleDescription')">Photo Principale Description</span>
               <jhi-sort-indicator
                 :current-order="propOrder"
                 :reverse="reverse"
@@ -61,171 +61,171 @@
               ></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo1')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo1')">Photo 1</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo1')">Photo 1</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo1'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo1Legende')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo1Legende')">Photo 1 Legende</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo1Legende')">Photo 1 Legende</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo1Legende'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo1Description')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo1Description')">Photo 1 Description</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo1Description')">Photo 1 Description</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo1Description'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo2')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo2')">Photo 2</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo2')">Photo 2</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo2'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo2Legende')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo2Legende')">Photo 2 Legende</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo2Legende')">Photo 2 Legende</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo2Legende'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo2Description')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo2Description')">Photo 2 Description</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo2Description')">Photo 2 Description</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo2Description'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo3')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo3')">Photo 3</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo3')">Photo 3</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo3'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo3Legende')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo3Legende')">Photo 3 Legende</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo3Legende')">Photo 3 Legende</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo3Legende'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo3Description')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo3Description')">Photo 3 Description</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo3Description')">Photo 3 Description</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo3Description'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo4')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo4')">Photo 4</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo4')">Photo 4</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo4'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo4Legende')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo4Legende')">Photo 4 Legende</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo4Legende')">Photo 4 Legende</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo4Legende'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo4Description')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo4Description')">Photo 4 Description</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo4Description')">Photo 4 Description</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo4Description'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo5')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo5')">Photo 5</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo5')">Photo 5</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo5'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo5Legende')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo5Legende')">Photo 5 Legende</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo5Legende')">Photo 5 Legende</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo5Legende'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('photo5Description')">
-              <span v-text="$t('lbstrawmapApp.batiment.photo5Description')">Photo 5 Description</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.photo5Description')">Photo 5 Description</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo5Description'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('techniqueSecondaire')">
-              <span v-text="$t('lbstrawmapApp.batiment.techniqueSecondaire')">Technique Secondaire</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.techniqueSecondaire')">Technique Secondaire</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'techniqueSecondaire'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('usageBatiment')">
-              <span v-text="$t('lbstrawmapApp.batiment.usageBatiment')">Usage Batiment</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')">Usage Batiment</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'usageBatiment'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('cout')">
-              <span v-text="$t('lbstrawmapApp.batiment.cout')">Cout</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.cout')">Cout</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'cout'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('surfacePlancher')">
-              <span v-text="$t('lbstrawmapApp.batiment.surfacePlancher')">Surface Plancher</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.surfacePlancher')">Surface Plancher</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'surfacePlancher'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('niveaux')">
-              <span v-text="$t('lbstrawmapApp.batiment.niveaux')">Niveaux</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.niveaux')">Niveaux</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'niveaux'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('travauxNeuf')">
-              <span v-text="$t('lbstrawmapApp.batiment.travauxNeuf')">Travaux Neuf</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.travauxNeuf')">Travaux Neuf</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxNeuf'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('travauxExtension')">
-              <span v-text="$t('lbstrawmapApp.batiment.travauxExtension')">Travaux Extension</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.travauxExtension')">Travaux Extension</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxExtension'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('travauxRenov')">
-              <span v-text="$t('lbstrawmapApp.batiment.travauxRenov')">Travaux Renov</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.travauxRenov')">Travaux Renov</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxRenov'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('travauxIte')">
-              <span v-text="$t('lbstrawmapApp.batiment.travauxIte')">Travaux Ite</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.travauxIte')">Travaux Ite</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxIte'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('travauxIti')">
-              <span v-text="$t('lbstrawmapApp.batiment.travauxIti')">Travaux Iti</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.travauxIti')">Travaux Iti</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'travauxIti'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('constructionDebut')">
-              <span v-text="$t('lbstrawmapApp.batiment.constructionDebut')">Construction Debut</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.constructionDebut')">Construction Debut</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'constructionDebut'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('constructionFin')">
-              <span v-text="$t('lbstrawmapApp.batiment.constructionFin')">Construction Fin</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.constructionFin')">Construction Fin</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'constructionFin'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('bottesTaille')">
-              <span v-text="$t('lbstrawmapApp.batiment.bottesTaille')">Bottes Taille</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.bottesTaille')">Bottes Taille</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'bottesTaille'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('botteTailleAutre')">
-              <span v-text="$t('lbstrawmapApp.batiment.botteTailleAutre')">Botte Taille Autre</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.botteTailleAutre')">Botte Taille Autre</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'botteTailleAutre'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('bottesDensite')">
-              <span v-text="$t('lbstrawmapApp.batiment.bottesDensite')">Bottes Densite</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.bottesDensite')">Bottes Densite</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'bottesDensite'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('bottesCereale')">
-              <span v-text="$t('lbstrawmapApp.batiment.bottesCereale')">Bottes Cereale</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.bottesCereale')">Bottes Cereale</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'bottesCereale'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('distanceAppro')">
-              <span v-text="$t('lbstrawmapApp.batiment.distanceAppro')">Distance Appro</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.distanceAppro')">Distance Appro</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'distanceAppro'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('autoconstruction')">
-              <span v-text="$t('lbstrawmapApp.batiment.autoconstruction')">Autoconstruction</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.autoconstruction')">Autoconstruction</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'autoconstruction'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('participatif')">
-              <span v-text="$t('lbstrawmapApp.batiment.participatif')">Participatif</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.participatif')">Participatif</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'participatif'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('structSuppl')">
-              <span v-text="$t('lbstrawmapApp.batiment.structSuppl')">Struct Suppl</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.structSuppl')">Struct Suppl</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structSuppl'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('structSupplNature')">
-              <span v-text="$t('lbstrawmapApp.batiment.structSupplNature')">Struct Suppl Nature</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.structSupplNature')">Struct Suppl Nature</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structSupplNature'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('noteCalcul')">
-              <span v-text="$t('lbstrawmapApp.batiment.noteCalcul')">Note Calcul</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.noteCalcul')">Note Calcul</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'noteCalcul'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('nbrRangDeBottes')">
-              <span v-text="$t('lbstrawmapApp.batiment.nbrRangDeBottes')">Nbr Rang De Bottes</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.nbrRangDeBottes')">Nbr Rang De Bottes</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nbrRangDeBottes'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('longMaxSansMurRefend')">
-              <span v-text="$t('lbstrawmapApp.batiment.longMaxSansMurRefend')">Long Max Sans Mur Refend</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')">Long Max Sans Mur Refend</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'longMaxSansMurRefend'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('integBaie')">
-              <span v-text="$t('lbstrawmapApp.batiment.integBaie')">Integ Baie</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.integBaie')">Integ Baie</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'integBaie'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('supportAncrage')">
-              <span v-text="$t('lbstrawmapApp.batiment.supportAncrage')">Support Ancrage</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncrage')">Support Ancrage</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'supportAncrage'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('supportAncragePrecisions')">
-              <span v-text="$t('lbstrawmapApp.batiment.supportAncragePrecisions')">Support Ancrage Precisions</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncragePrecisions')">Support Ancrage Precisions</span>
               <jhi-sort-indicator
                 :current-order="propOrder"
                 :reverse="reverse"
@@ -233,83 +233,83 @@
               ></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('revetInt')">
-              <span v-text="$t('lbstrawmapApp.batiment.revetInt')">Revet Int</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.revetInt')">Revet Int</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'revetInt'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('revetExt')">
-              <span v-text="$t('lbstrawmapApp.batiment.revetExt')">Revet Ext</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.revetExt')">Revet Ext</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'revetExt'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('revetExtAutre')">
-              <span v-text="$t('lbstrawmapApp.batiment.revetExtAutre')">Revet Ext Autre</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.revetExtAutre')">Revet Ext Autre</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'revetExtAutre'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('maitreDOuvrage')">
-              <span v-text="$t('lbstrawmapApp.batiment.maitreDOuvrage')">Maitre D Ouvrage</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.maitreDOuvrage')">Maitre D Ouvrage</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'maitreDOuvrage'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('maitreDOeuvre')">
-              <span v-text="$t('lbstrawmapApp.batiment.maitreDOeuvre')">Maitre D Oeuvre</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.maitreDOeuvre')">Maitre D Oeuvre</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'maitreDOeuvre'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('architecte')">
-              <span v-text="$t('lbstrawmapApp.batiment.architecte')">Architecte</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.architecte')">Architecte</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'architecte'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('bureauDEtudeStructure')">
-              <span v-text="$t('lbstrawmapApp.batiment.bureauDEtudeStructure')">Bureau D Etude Structure</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.bureauDEtudeStructure')">Bureau D Etude Structure</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'bureauDEtudeStructure'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('bureauControl')">
-              <span v-text="$t('lbstrawmapApp.batiment.bureauControl')">Bureau Control</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.bureauControl')">Bureau Control</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'bureauControl'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('entrepriseBottes')">
-              <span v-text="$t('lbstrawmapApp.batiment.entrepriseBottes')">Entreprise Bottes</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.entrepriseBottes')">Entreprise Bottes</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'entrepriseBottes'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('entrepriseCharpente')">
-              <span v-text="$t('lbstrawmapApp.batiment.entrepriseCharpente')">Entreprise Charpente</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.entrepriseCharpente')">Entreprise Charpente</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'entrepriseCharpente'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('entrepriseEnduits')">
-              <span v-text="$t('lbstrawmapApp.batiment.entrepriseEnduits')">Entreprise Enduits</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.entrepriseEnduits')">Entreprise Enduits</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'entrepriseEnduits'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('descriptionProjet')">
-              <span v-text="$t('lbstrawmapApp.batiment.descriptionProjet')">Description Projet</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.descriptionProjet')">Description Projet</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'descriptionProjet'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('difficultees')">
-              <span v-text="$t('lbstrawmapApp.batiment.difficultees')">Difficultees</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.difficultees')">Difficultees</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'difficultees'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('astuces')">
-              <span v-text="$t('lbstrawmapApp.batiment.astuces')">Astuces</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.astuces')">Astuces</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'astuces'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('divers')">
-              <span v-text="$t('lbstrawmapApp.batiment.divers')">Divers</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.divers')">Divers</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'divers'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('contactNom')">
-              <span v-text="$t('lbstrawmapApp.batiment.contactNom')">Contact Nom</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.contactNom')">Contact Nom</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'contactNom'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('contactMail')">
-              <span v-text="$t('lbstrawmapApp.batiment.contactMail')">Contact Mail</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.contactMail')">Contact Mail</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'contactMail'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('contactPhone')">
-              <span v-text="$t('lbstrawmapApp.batiment.contactPhone')">Contact Phone</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.contactPhone')">Contact Phone</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'contactPhone'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('codePostal')">
-              <span v-text="$t('lbstrawmapApp.batiment.codePostal')">Code Postal</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.codePostal')">Code Postal</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'codePostal'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('nonBatimentEtPhotosPublics')">
-              <span v-text="$t('lbstrawmapApp.batiment.nonBatimentEtPhotosPublics')">Non Batiment Et Photos Publics</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')">Non Batiment Et Photos Publics</span>
               <jhi-sort-indicator
                 :current-order="propOrder"
                 :reverse="reverse"
@@ -317,15 +317,15 @@
               ></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('dateCreationFiche')">
-              <span v-text="$t('lbstrawmapApp.batiment.dateCreationFiche')">Date Creation Fiche</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.dateCreationFiche')">Date Creation Fiche</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dateCreationFiche'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('dateModificationFiche')">
-              <span v-text="$t('lbstrawmapApp.batiment.dateModificationFiche')">Date Modification Fiche</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.dateModificationFiche')">Date Modification Fiche</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dateModificationFiche'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('creator.login')">
-              <span v-text="$t('lbstrawmapApp.batiment.creator')">Creator</span>
+              <span v-text="$t('cartePaillePorteuseApp.batiment.creator')">Creator</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'creator.login'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
@@ -414,7 +414,7 @@
             <td>{{ batiment.photo5Legende }}</td>
             <td>{{ batiment.photo5Description }}</td>
             <td>{{ batiment.techniqueSecondaire }}</td>
-            <td v-text="$t('lbstrawmapApp.UsageBatiment.' + batiment.usageBatiment)">{{ batiment.usageBatiment }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.UsageBatiment.' + batiment.usageBatiment)">{{ batiment.usageBatiment }}</td>
             <td>{{ batiment.cout }}</td>
             <td>{{ batiment.surfacePlancher }}</td>
             <td>{{ batiment.niveaux }}</td>
@@ -425,23 +425,25 @@
             <td>{{ batiment.travauxIti }}</td>
             <td>{{ batiment.constructionDebut }}</td>
             <td>{{ batiment.constructionFin }}</td>
-            <td v-text="$t('lbstrawmapApp.TaillesBottes.' + batiment.bottesTaille)">{{ batiment.bottesTaille }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.TaillesBottes.' + batiment.bottesTaille)">{{ batiment.bottesTaille }}</td>
             <td>{{ batiment.botteTailleAutre }}</td>
             <td>{{ batiment.bottesDensite }}</td>
-            <td v-text="$t('lbstrawmapApp.Cereale.' + batiment.bottesCereale)">{{ batiment.bottesCereale }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.Cereale.' + batiment.bottesCereale)">{{ batiment.bottesCereale }}</td>
             <td>{{ batiment.distanceAppro }}</td>
-            <td v-text="$t('lbstrawmapApp.YesNoPartial.' + batiment.autoconstruction)">{{ batiment.autoconstruction }}</td>
-            <td v-text="$t('lbstrawmapApp.YesNoPartial.' + batiment.participatif)">{{ batiment.participatif }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.YesNoPartial.' + batiment.autoconstruction)">{{ batiment.autoconstruction }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.YesNoPartial.' + batiment.participatif)">{{ batiment.participatif }}</td>
             <td>{{ batiment.structSuppl }}</td>
-            <td v-text="$t('lbstrawmapApp.StructureSupplementaire.' + batiment.structSupplNature)">{{ batiment.structSupplNature }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.StructureSupplementaire.' + batiment.structSupplNature)">
+              {{ batiment.structSupplNature }}
+            </td>
             <td>{{ batiment.noteCalcul }}</td>
             <td>{{ batiment.nbrRangDeBottes }}</td>
             <td>{{ batiment.longMaxSansMurRefend }}</td>
-            <td v-text="$t('lbstrawmapApp.IntegBaie.' + batiment.integBaie)">{{ batiment.integBaie }}</td>
-            <td v-text="$t('lbstrawmapApp.SupportAncrage.' + batiment.supportAncrage)">{{ batiment.supportAncrage }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.IntegBaie.' + batiment.integBaie)">{{ batiment.integBaie }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.SupportAncrage.' + batiment.supportAncrage)">{{ batiment.supportAncrage }}</td>
             <td>{{ batiment.supportAncragePrecisions }}</td>
-            <td v-text="$t('lbstrawmapApp.RevetInt.' + batiment.revetInt)">{{ batiment.revetInt }}</td>
-            <td v-text="$t('lbstrawmapApp.RevetExt.' + batiment.revetExt)">{{ batiment.revetExt }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.RevetInt.' + batiment.revetInt)">{{ batiment.revetInt }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.RevetExt.' + batiment.revetExt)">{{ batiment.revetExt }}</td>
             <td>{{ batiment.revetExtAutre }}</td>
             <td>{{ batiment.maitreDOuvrage }}</td>
             <td>{{ batiment.maitreDOeuvre }}</td>
@@ -497,12 +499,12 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="lbstrawmapApp.batiment.delete.question" data-cy="batimentDeleteDialogHeading" v-text="$t('entity.delete.title')"
+        ><span id="cartePaillePorteuseApp.batiment.delete.question" data-cy="batimentDeleteDialogHeading" v-text="$t('entity.delete.title')"
           >Confirm delete operation</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-batiment-heading" v-text="$t('lbstrawmapApp.batiment.delete.question', { id: removeId })">
+        <p id="jhi-delete-batiment-heading" v-text="$t('cartePaillePorteuseApp.batiment.delete.question', { id: removeId })">
           Are you sure you want to delete this Batiment?
         </p>
       </div>

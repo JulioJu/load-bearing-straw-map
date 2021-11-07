@@ -32,8 +32,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/lbstrawmap
-    username: lbstrawmap
+    url: jdbc:postgresql://localhost:5432/carte_paille_porteuse
+    username: carte_paille_porteuse
     password:
     hikari:
       poolName: Hikari
@@ -89,7 +89,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: ZDdhNTMxNTk1NWJjYTVlYjRhYWFkNWFiY2RmZTc3OTM5NDhmZDllZjVkNDYwYzMxNmJiMWRiY2U2MTUzZTc0Yjc1YTIxYzRlNjZhM2U4YTBmZDViNGNmNjEzMDgzZjIxYzBjOTNmZTZlNTVkMWYwYWNjNzYwODQ2OTQ1MzBlMDU=
+        base64-secret: OWNkZmJmMmFiYzE3ZTBiNTJjM2RkOWViMThhYWZmOTc0YWY2NjZjOTJiZWU4YmRkOGIxMDMwMjg3OGMyNWU5ODgyMmI1ZWNjNDU2NGY3M2UzNWE3M2U4YzkyMjBkYjA4MjhlZGEyMmU3MTBiY2ZhYzg5NmI1NzViMzQ3M2Y1NjA=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

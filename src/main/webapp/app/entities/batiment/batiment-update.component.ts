@@ -213,7 +213,7 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('lbstrawmapApp.batiment.updated', { param: param.id });
+          const message = this.$t('cartePaillePorteuseApp.batiment.updated', { param: param.id });
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -232,7 +232,7 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('lbstrawmapApp.batiment.created', { param: param.id });
+          const message = this.$t('cartePaillePorteuseApp.batiment.created', { param: param.id });
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

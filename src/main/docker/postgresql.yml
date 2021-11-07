@@ -1,12 +1,12 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
 version: '3.8'
 services:
-  lbstrawmap-postgresql:
+  carte_paille_porteuse-postgresql:
     image: postgres:13.4
     # volumes:
-    #   - ~/volumes/jhipster/lbstrawmap/postgresql/:/var/lib/postgresql/data/
+    #   - ~/volumes/jhipster/carte_paille_porteuse/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=lbstrawmap
+      - POSTGRES_USER=carte_paille_porteuse
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
     # If you want to expose these ports outside your dev PC,

@@ -3,9 +3,9 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          id="lbstrawmapApp.batiment.home.createOrEditLabel"
+          id="cartePaillePorteuseApp.batiment.home.createOrEditLabel"
           data-cy="BatimentCreateUpdateHeading"
-          v-text="$t('lbstrawmapApp.batiment.home.createOrEditLabel')"
+          v-text="$t('cartePaillePorteuseApp.batiment.home.createOrEditLabel')"
         >
           Create or edit a Batiment
         </h2>
@@ -15,7 +15,9 @@
             <input type="text" class="form-control" id="id" name="id" v-model="batiment.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.latitude')" for="batiment-latitude">Latitude</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.latitude')" for="batiment-latitude"
+              >Latitude</label
+            >
             <input
               type="number"
               class="form-control"
@@ -42,7 +44,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.longitude')" for="batiment-longitude">Longitude</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.longitude')" for="batiment-longitude"
+              >Longitude</label
+            >
             <input
               type="number"
               class="form-control"
@@ -69,7 +73,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.nomBatiment')" for="batiment-nomBatiment"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.nomBatiment')" for="batiment-nomBatiment"
               >Nom Batiment</label
             >
             <input
@@ -92,7 +96,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photoPrincipale')" for="batiment-photoPrincipale"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipale')" for="batiment-photoPrincipale"
               >Photo Principale</label
             >
             <div>
@@ -142,7 +146,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('lbstrawmapApp.batiment.photoPrincipaleLegende')"
+              v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipaleLegende')"
               for="batiment-photoPrincipaleLegende"
               >Photo Principale Legende</label
             >
@@ -168,7 +172,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('lbstrawmapApp.batiment.photoPrincipaleDescription')"
+              v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipaleDescription')"
               for="batiment-photoPrincipaleDescription"
               >Photo Principale Description</label
             >
@@ -183,7 +187,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo1')" for="batiment-photo1">Photo 1</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo1')" for="batiment-photo1">Photo 1</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo1ContentType + ';base64,' + batiment.photo1"
@@ -229,7 +233,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo1Legende')" for="batiment-photo1Legende"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo1Legende')" for="batiment-photo1Legende"
               >Photo 1 Legende</label
             >
             <input
@@ -252,7 +256,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo1Description')" for="batiment-photo1Description"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.photo1Description')"
+              for="batiment-photo1Description"
               >Photo 1 Description</label
             >
             <input
@@ -266,7 +273,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo2')" for="batiment-photo2">Photo 2</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo2')" for="batiment-photo2">Photo 2</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo2ContentType + ';base64,' + batiment.photo2"
@@ -312,7 +319,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo2Legende')" for="batiment-photo2Legende"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo2Legende')" for="batiment-photo2Legende"
               >Photo 2 Legende</label
             >
             <input
@@ -335,7 +342,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo2Description')" for="batiment-photo2Description"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.photo2Description')"
+              for="batiment-photo2Description"
               >Photo 2 Description</label
             >
             <input
@@ -349,7 +359,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo3')" for="batiment-photo3">Photo 3</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo3')" for="batiment-photo3">Photo 3</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo3ContentType + ';base64,' + batiment.photo3"
@@ -395,7 +405,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo3Legende')" for="batiment-photo3Legende"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo3Legende')" for="batiment-photo3Legende"
               >Photo 3 Legende</label
             >
             <input
@@ -418,7 +428,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo3Description')" for="batiment-photo3Description"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.photo3Description')"
+              for="batiment-photo3Description"
               >Photo 3 Description</label
             >
             <input
@@ -432,7 +445,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo4')" for="batiment-photo4">Photo 4</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo4')" for="batiment-photo4">Photo 4</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo4ContentType + ';base64,' + batiment.photo4"
@@ -478,7 +491,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo4Legende')" for="batiment-photo4Legende"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo4Legende')" for="batiment-photo4Legende"
               >Photo 4 Legende</label
             >
             <input
@@ -501,7 +514,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo4Description')" for="batiment-photo4Description"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.photo4Description')"
+              for="batiment-photo4Description"
               >Photo 4 Description</label
             >
             <input
@@ -515,7 +531,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo5')" for="batiment-photo5">Photo 5</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo5')" for="batiment-photo5">Photo 5</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo5ContentType + ';base64,' + batiment.photo5"
@@ -561,7 +577,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo5Legende')" for="batiment-photo5Legende"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo5Legende')" for="batiment-photo5Legende"
               >Photo 5 Legende</label
             >
             <input
@@ -584,7 +600,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.photo5Description')" for="batiment-photo5Description"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.photo5Description')"
+              for="batiment-photo5Description"
               >Photo 5 Description</label
             >
             <input
@@ -598,7 +617,10 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.techniqueSecondaire')" for="batiment-techniqueSecondaire"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.techniqueSecondaire')"
+              for="batiment-techniqueSecondaire"
               >Technique Secondaire</label
             >
             <input
@@ -612,7 +634,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.usageBatiment')" for="batiment-usageBatiment"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')" for="batiment-usageBatiment"
               >Usage Batiment</label
             >
             <select
@@ -627,14 +649,14 @@
                 v-for="usageBatiment in usageBatimentValues"
                 :key="usageBatiment"
                 v-bind:value="usageBatiment"
-                v-bind:label="$t('lbstrawmapApp.UsageBatiment.' + usageBatiment)"
+                v-bind:label="$t('cartePaillePorteuseApp.UsageBatiment.' + usageBatiment)"
               >
                 {{ usageBatiment }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.cout')" for="batiment-cout">Cout</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.cout')" for="batiment-cout">Cout</label>
             <input
               type="number"
               class="form-control"
@@ -646,7 +668,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.surfacePlancher')" for="batiment-surfacePlancher"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.surfacePlancher')" for="batiment-surfacePlancher"
               >Surface Plancher</label
             >
             <input
@@ -660,7 +682,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.niveaux')" for="batiment-niveaux">Niveaux</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.niveaux')" for="batiment-niveaux">Niveaux</label>
             <input
               type="number"
               class="form-control"
@@ -672,7 +694,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.travauxNeuf')" for="batiment-travauxNeuf"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.travauxNeuf')" for="batiment-travauxNeuf"
               >Travaux Neuf</label
             >
             <input
@@ -686,7 +708,10 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.travauxExtension')" for="batiment-travauxExtension"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.travauxExtension')"
+              for="batiment-travauxExtension"
               >Travaux Extension</label
             >
             <input
@@ -700,7 +725,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.travauxRenov')" for="batiment-travauxRenov"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.travauxRenov')" for="batiment-travauxRenov"
               >Travaux Renov</label
             >
             <input
@@ -714,7 +739,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.travauxIte')" for="batiment-travauxIte">Travaux Ite</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.travauxIte')" for="batiment-travauxIte"
+              >Travaux Ite</label
+            >
             <input
               type="checkbox"
               class="form-check"
@@ -726,7 +753,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.travauxIti')" for="batiment-travauxIti">Travaux Iti</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.travauxIti')" for="batiment-travauxIti"
+              >Travaux Iti</label
+            >
             <input
               type="checkbox"
               class="form-check"
@@ -738,7 +767,10 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.constructionDebut')" for="batiment-constructionDebut"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.constructionDebut')"
+              for="batiment-constructionDebut"
               >Construction Debut</label
             >
             <b-input-group class="mb-3">
@@ -768,7 +800,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.constructionFin')" for="batiment-constructionFin"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.constructionFin')" for="batiment-constructionFin"
               >Construction Fin</label
             >
             <b-input-group class="mb-3">
@@ -798,7 +830,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.bottesTaille')" for="batiment-bottesTaille"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.bottesTaille')" for="batiment-bottesTaille"
               >Bottes Taille</label
             >
             <select
@@ -813,14 +845,17 @@
                 v-for="taillesBottes in taillesBottesValues"
                 :key="taillesBottes"
                 v-bind:value="taillesBottes"
-                v-bind:label="$t('lbstrawmapApp.TaillesBottes.' + taillesBottes)"
+                v-bind:label="$t('cartePaillePorteuseApp.TaillesBottes.' + taillesBottes)"
               >
                 {{ taillesBottes }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.botteTailleAutre')" for="batiment-botteTailleAutre"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.botteTailleAutre')"
+              for="batiment-botteTailleAutre"
               >Botte Taille Autre</label
             >
             <input
@@ -834,7 +869,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.bottesDensite')" for="batiment-bottesDensite"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.bottesDensite')" for="batiment-bottesDensite"
               >Bottes Densite</label
             >
             <input
@@ -848,7 +883,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.bottesCereale')" for="batiment-bottesCereale"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.bottesCereale')" for="batiment-bottesCereale"
               >Bottes Cereale</label
             >
             <select
@@ -863,14 +898,14 @@
                 v-for="cereale in cerealeValues"
                 :key="cereale"
                 v-bind:value="cereale"
-                v-bind:label="$t('lbstrawmapApp.Cereale.' + cereale)"
+                v-bind:label="$t('cartePaillePorteuseApp.Cereale.' + cereale)"
               >
                 {{ cereale }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.distanceAppro')" for="batiment-distanceAppro"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.distanceAppro')" for="batiment-distanceAppro"
               >Distance Appro</label
             >
             <input
@@ -884,7 +919,10 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.autoconstruction')" for="batiment-autoconstruction"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.autoconstruction')"
+              for="batiment-autoconstruction"
               >Autoconstruction</label
             >
             <select
@@ -899,14 +937,14 @@
                 v-for="yesNoPartial in yesNoPartialValues"
                 :key="yesNoPartial"
                 v-bind:value="yesNoPartial"
-                v-bind:label="$t('lbstrawmapApp.YesNoPartial.' + yesNoPartial)"
+                v-bind:label="$t('cartePaillePorteuseApp.YesNoPartial.' + yesNoPartial)"
               >
                 {{ yesNoPartial }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.participatif')" for="batiment-participatif"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.participatif')" for="batiment-participatif"
               >Participatif</label
             >
             <select
@@ -921,14 +959,14 @@
                 v-for="yesNoPartial in yesNoPartialValues"
                 :key="yesNoPartial"
                 v-bind:value="yesNoPartial"
-                v-bind:label="$t('lbstrawmapApp.YesNoPartial.' + yesNoPartial)"
+                v-bind:label="$t('cartePaillePorteuseApp.YesNoPartial.' + yesNoPartial)"
               >
                 {{ yesNoPartial }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.structSuppl')" for="batiment-structSuppl"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.structSuppl')" for="batiment-structSuppl"
               >Struct Suppl</label
             >
             <input
@@ -942,7 +980,10 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.structSupplNature')" for="batiment-structSupplNature"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.structSupplNature')"
+              for="batiment-structSupplNature"
               >Struct Suppl Nature</label
             >
             <select
@@ -957,14 +998,16 @@
                 v-for="structureSupplementaire in structureSupplementaireValues"
                 :key="structureSupplementaire"
                 v-bind:value="structureSupplementaire"
-                v-bind:label="$t('lbstrawmapApp.StructureSupplementaire.' + structureSupplementaire)"
+                v-bind:label="$t('cartePaillePorteuseApp.StructureSupplementaire.' + structureSupplementaire)"
               >
                 {{ structureSupplementaire }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.noteCalcul')" for="batiment-noteCalcul">Note Calcul</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.noteCalcul')" for="batiment-noteCalcul"
+              >Note Calcul</label
+            >
             <input
               type="checkbox"
               class="form-check"
@@ -976,7 +1019,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.nbrRangDeBottes')" for="batiment-nbrRangDeBottes"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.nbrRangDeBottes')" for="batiment-nbrRangDeBottes"
               >Nbr Rang De Bottes</label
             >
             <input
@@ -990,7 +1033,10 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.longMaxSansMurRefend')" for="batiment-longMaxSansMurRefend"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')"
+              for="batiment-longMaxSansMurRefend"
               >Long Max Sans Mur Refend</label
             >
             <input
@@ -1004,7 +1050,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.integBaie')" for="batiment-integBaie">Integ Baie</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.integBaie')" for="batiment-integBaie"
+              >Integ Baie</label
+            >
             <select
               class="form-control"
               name="integBaie"
@@ -1017,14 +1065,14 @@
                 v-for="integBaie in integBaieValues"
                 :key="integBaie"
                 v-bind:value="integBaie"
-                v-bind:label="$t('lbstrawmapApp.IntegBaie.' + integBaie)"
+                v-bind:label="$t('cartePaillePorteuseApp.IntegBaie.' + integBaie)"
               >
                 {{ integBaie }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.supportAncrage')" for="batiment-supportAncrage"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.supportAncrage')" for="batiment-supportAncrage"
               >Support Ancrage</label
             >
             <select
@@ -1039,7 +1087,7 @@
                 v-for="supportAncrage in supportAncrageValues"
                 :key="supportAncrage"
                 v-bind:value="supportAncrage"
-                v-bind:label="$t('lbstrawmapApp.SupportAncrage.' + supportAncrage)"
+                v-bind:label="$t('cartePaillePorteuseApp.SupportAncrage.' + supportAncrage)"
               >
                 {{ supportAncrage }}
               </option>
@@ -1048,7 +1096,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('lbstrawmapApp.batiment.supportAncragePrecisions')"
+              v-text="$t('cartePaillePorteuseApp.batiment.supportAncragePrecisions')"
               for="batiment-supportAncragePrecisions"
               >Support Ancrage Precisions</label
             >
@@ -1063,7 +1111,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.revetInt')" for="batiment-revetInt">Revet Int</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.revetInt')" for="batiment-revetInt"
+              >Revet Int</label
+            >
             <select
               class="form-control"
               name="revetInt"
@@ -1076,14 +1126,16 @@
                 v-for="revetInt in revetIntValues"
                 :key="revetInt"
                 v-bind:value="revetInt"
-                v-bind:label="$t('lbstrawmapApp.RevetInt.' + revetInt)"
+                v-bind:label="$t('cartePaillePorteuseApp.RevetInt.' + revetInt)"
               >
                 {{ revetInt }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.revetExt')" for="batiment-revetExt">Revet Ext</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.revetExt')" for="batiment-revetExt"
+              >Revet Ext</label
+            >
             <select
               class="form-control"
               name="revetExt"
@@ -1096,14 +1148,14 @@
                 v-for="revetExt in revetExtValues"
                 :key="revetExt"
                 v-bind:value="revetExt"
-                v-bind:label="$t('lbstrawmapApp.RevetExt.' + revetExt)"
+                v-bind:label="$t('cartePaillePorteuseApp.RevetExt.' + revetExt)"
               >
                 {{ revetExt }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.revetExtAutre')" for="batiment-revetExtAutre"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.revetExtAutre')" for="batiment-revetExtAutre"
               >Revet Ext Autre</label
             >
             <input
@@ -1117,7 +1169,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.maitreDOuvrage')" for="batiment-maitreDOuvrage"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.maitreDOuvrage')" for="batiment-maitreDOuvrage"
               >Maitre D Ouvrage</label
             >
             <input
@@ -1140,7 +1192,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.maitreDOeuvre')" for="batiment-maitreDOeuvre"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.maitreDOeuvre')" for="batiment-maitreDOeuvre"
               >Maitre D Oeuvre</label
             >
             <input
@@ -1163,7 +1215,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.architecte')" for="batiment-architecte">Architecte</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.architecte')" for="batiment-architecte"
+              >Architecte</label
+            >
             <input
               type="text"
               class="form-control"
@@ -1186,7 +1240,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('lbstrawmapApp.batiment.bureauDEtudeStructure')"
+              v-text="$t('cartePaillePorteuseApp.batiment.bureauDEtudeStructure')"
               for="batiment-bureauDEtudeStructure"
               >Bureau D Etude Structure</label
             >
@@ -1210,7 +1264,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.bureauControl')" for="batiment-bureauControl"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.bureauControl')" for="batiment-bureauControl"
               >Bureau Control</label
             >
             <input
@@ -1233,7 +1287,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.entrepriseBottes')" for="batiment-entrepriseBottes"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.entrepriseBottes')"
+              for="batiment-entrepriseBottes"
               >Entreprise Bottes</label
             >
             <input
@@ -1256,7 +1313,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.entrepriseCharpente')" for="batiment-entrepriseCharpente"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.entrepriseCharpente')"
+              for="batiment-entrepriseCharpente"
               >Entreprise Charpente</label
             >
             <input
@@ -1279,7 +1339,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.entrepriseEnduits')" for="batiment-entrepriseEnduits"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.entrepriseEnduits')"
+              for="batiment-entrepriseEnduits"
               >Entreprise Enduits</label
             >
             <input
@@ -1302,7 +1365,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.descriptionProjet')" for="batiment-descriptionProjet"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.descriptionProjet')"
+              for="batiment-descriptionProjet"
               >Description Projet</label
             >
             <textarea
@@ -1315,7 +1381,7 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.difficultees')" for="batiment-difficultees"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.difficultees')" for="batiment-difficultees"
               >Difficultees</label
             >
             <textarea
@@ -1328,7 +1394,7 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.astuces')" for="batiment-astuces">Astuces</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.astuces')" for="batiment-astuces">Astuces</label>
             <textarea
               class="form-control"
               name="astuces"
@@ -1339,7 +1405,7 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.divers')" for="batiment-divers">Divers</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.divers')" for="batiment-divers">Divers</label>
             <textarea
               class="form-control"
               name="divers"
@@ -1350,7 +1416,9 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.contactNom')" for="batiment-contactNom">Contact Nom</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.contactNom')" for="batiment-contactNom"
+              >Contact Nom</label
+            >
             <input
               type="text"
               class="form-control"
@@ -1362,7 +1430,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.contactMail')" for="batiment-contactMail"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.contactMail')" for="batiment-contactMail"
               >Contact Mail</label
             >
             <input
@@ -1376,7 +1444,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.contactPhone')" for="batiment-contactPhone"
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.contactPhone')" for="batiment-contactPhone"
               >Contact Phone</label
             >
             <input
@@ -1390,7 +1458,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.codePostal')" for="batiment-codePostal">Code Postal</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.codePostal')" for="batiment-codePostal"
+              >Code Postal</label
+            >
             <input
               type="text"
               class="form-control"
@@ -1413,7 +1483,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('lbstrawmapApp.batiment.nonBatimentEtPhotosPublics')"
+              v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')"
               for="batiment-nonBatimentEtPhotosPublics"
               >Non Batiment Et Photos Publics</label
             >
@@ -1428,7 +1498,10 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.dateCreationFiche')" for="batiment-dateCreationFiche"
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.dateCreationFiche')"
+              for="batiment-dateCreationFiche"
               >Date Creation Fiche</label
             >
             <b-input-group class="mb-3">
@@ -1466,7 +1539,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('lbstrawmapApp.batiment.dateModificationFiche')"
+              v-text="$t('cartePaillePorteuseApp.batiment.dateModificationFiche')"
               for="batiment-dateModificationFiche"
               >Date Modification Fiche</label
             >
@@ -1507,7 +1580,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('lbstrawmapApp.batiment.creator')" for="batiment-creator">Creator</label>
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.creator')" for="batiment-creator">Creator</label>
             <select class="form-control" id="batiment-creator" data-cy="creator" name="creator" v-model="batiment.creator" required>
               <option v-if="!batiment.creator" v-bind:value="null" selected></option>
               <option

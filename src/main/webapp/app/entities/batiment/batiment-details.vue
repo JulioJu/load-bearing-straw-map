@@ -3,29 +3,29 @@
     <div class="col-8">
       <div v-if="batiment">
         <h2 class="jh-entity-heading" data-cy="batimentDetailsHeading">
-          <span v-text="$t('lbstrawmapApp.batiment.detail.title')">Batiment</span> {{ batiment.id }}
+          <span v-text="$t('cartePaillePorteuseApp.batiment.detail.title')">Batiment</span> {{ batiment.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.latitude')">Latitude</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.latitude')">Latitude</span>
           </dt>
           <dd>
             <span>{{ batiment.latitude }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.longitude')">Longitude</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.longitude')">Longitude</span>
           </dt>
           <dd>
             <span>{{ batiment.longitude }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.nomBatiment')">Nom Batiment</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.nomBatiment')">Nom Batiment</span>
           </dt>
           <dd>
             <span>{{ batiment.nomBatiment }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photoPrincipale')">Photo Principale</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipale')">Photo Principale</span>
           </dt>
           <dd>
             <div v-if="batiment.photoPrincipale">
@@ -40,19 +40,19 @@
             </div>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photoPrincipaleLegende')">Photo Principale Legende</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipaleLegende')">Photo Principale Legende</span>
           </dt>
           <dd>
             <span>{{ batiment.photoPrincipaleLegende }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photoPrincipaleDescription')">Photo Principale Description</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipaleDescription')">Photo Principale Description</span>
           </dt>
           <dd>
             <span>{{ batiment.photoPrincipaleDescription }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo1')">Photo 1</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo1')">Photo 1</span>
           </dt>
           <dd>
             <div v-if="batiment.photo1">
@@ -67,19 +67,19 @@
             </div>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo1Legende')">Photo 1 Legende</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo1Legende')">Photo 1 Legende</span>
           </dt>
           <dd>
             <span>{{ batiment.photo1Legende }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo1Description')">Photo 1 Description</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo1Description')">Photo 1 Description</span>
           </dt>
           <dd>
             <span>{{ batiment.photo1Description }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo2')">Photo 2</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo2')">Photo 2</span>
           </dt>
           <dd>
             <div v-if="batiment.photo2">
@@ -94,19 +94,19 @@
             </div>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo2Legende')">Photo 2 Legende</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo2Legende')">Photo 2 Legende</span>
           </dt>
           <dd>
             <span>{{ batiment.photo2Legende }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo2Description')">Photo 2 Description</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo2Description')">Photo 2 Description</span>
           </dt>
           <dd>
             <span>{{ batiment.photo2Description }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo3')">Photo 3</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo3')">Photo 3</span>
           </dt>
           <dd>
             <div v-if="batiment.photo3">
@@ -121,19 +121,19 @@
             </div>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo3Legende')">Photo 3 Legende</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo3Legende')">Photo 3 Legende</span>
           </dt>
           <dd>
             <span>{{ batiment.photo3Legende }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo3Description')">Photo 3 Description</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo3Description')">Photo 3 Description</span>
           </dt>
           <dd>
             <span>{{ batiment.photo3Description }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo4')">Photo 4</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo4')">Photo 4</span>
           </dt>
           <dd>
             <div v-if="batiment.photo4">
@@ -148,19 +148,19 @@
             </div>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo4Legende')">Photo 4 Legende</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo4Legende')">Photo 4 Legende</span>
           </dt>
           <dd>
             <span>{{ batiment.photo4Legende }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo4Description')">Photo 4 Description</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo4Description')">Photo 4 Description</span>
           </dt>
           <dd>
             <span>{{ batiment.photo4Description }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo5')">Photo 5</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo5')">Photo 5</span>
           </dt>
           <dd>
             <div v-if="batiment.photo5">
@@ -175,313 +175,315 @@
             </div>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo5Legende')">Photo 5 Legende</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo5Legende')">Photo 5 Legende</span>
           </dt>
           <dd>
             <span>{{ batiment.photo5Legende }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.photo5Description')">Photo 5 Description</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.photo5Description')">Photo 5 Description</span>
           </dt>
           <dd>
             <span>{{ batiment.photo5Description }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.techniqueSecondaire')">Technique Secondaire</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.techniqueSecondaire')">Technique Secondaire</span>
           </dt>
           <dd>
             <span>{{ batiment.techniqueSecondaire }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.usageBatiment')">Usage Batiment</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')">Usage Batiment</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.UsageBatiment.' + batiment.usageBatiment)">{{ batiment.usageBatiment }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.UsageBatiment.' + batiment.usageBatiment)">{{ batiment.usageBatiment }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.cout')">Cout</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.cout')">Cout</span>
           </dt>
           <dd>
             <span>{{ batiment.cout }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.surfacePlancher')">Surface Plancher</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.surfacePlancher')">Surface Plancher</span>
           </dt>
           <dd>
             <span>{{ batiment.surfacePlancher }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.niveaux')">Niveaux</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.niveaux')">Niveaux</span>
           </dt>
           <dd>
             <span>{{ batiment.niveaux }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.travauxNeuf')">Travaux Neuf</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.travauxNeuf')">Travaux Neuf</span>
           </dt>
           <dd>
             <span>{{ batiment.travauxNeuf }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.travauxExtension')">Travaux Extension</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.travauxExtension')">Travaux Extension</span>
           </dt>
           <dd>
             <span>{{ batiment.travauxExtension }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.travauxRenov')">Travaux Renov</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.travauxRenov')">Travaux Renov</span>
           </dt>
           <dd>
             <span>{{ batiment.travauxRenov }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.travauxIte')">Travaux Ite</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.travauxIte')">Travaux Ite</span>
           </dt>
           <dd>
             <span>{{ batiment.travauxIte }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.travauxIti')">Travaux Iti</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.travauxIti')">Travaux Iti</span>
           </dt>
           <dd>
             <span>{{ batiment.travauxIti }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.constructionDebut')">Construction Debut</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.constructionDebut')">Construction Debut</span>
           </dt>
           <dd>
             <span>{{ batiment.constructionDebut }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.constructionFin')">Construction Fin</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.constructionFin')">Construction Fin</span>
           </dt>
           <dd>
             <span>{{ batiment.constructionFin }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.bottesTaille')">Bottes Taille</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.bottesTaille')">Bottes Taille</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.TaillesBottes.' + batiment.bottesTaille)">{{ batiment.bottesTaille }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.TaillesBottes.' + batiment.bottesTaille)">{{ batiment.bottesTaille }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.botteTailleAutre')">Botte Taille Autre</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.botteTailleAutre')">Botte Taille Autre</span>
           </dt>
           <dd>
             <span>{{ batiment.botteTailleAutre }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.bottesDensite')">Bottes Densite</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.bottesDensite')">Bottes Densite</span>
           </dt>
           <dd>
             <span>{{ batiment.bottesDensite }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.bottesCereale')">Bottes Cereale</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.bottesCereale')">Bottes Cereale</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.Cereale.' + batiment.bottesCereale)">{{ batiment.bottesCereale }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.Cereale.' + batiment.bottesCereale)">{{ batiment.bottesCereale }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.distanceAppro')">Distance Appro</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.distanceAppro')">Distance Appro</span>
           </dt>
           <dd>
             <span>{{ batiment.distanceAppro }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.autoconstruction')">Autoconstruction</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.autoconstruction')">Autoconstruction</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.YesNoPartial.' + batiment.autoconstruction)">{{ batiment.autoconstruction }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.YesNoPartial.' + batiment.autoconstruction)">{{ batiment.autoconstruction }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.participatif')">Participatif</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.participatif')">Participatif</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.YesNoPartial.' + batiment.participatif)">{{ batiment.participatif }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.YesNoPartial.' + batiment.participatif)">{{ batiment.participatif }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.structSuppl')">Struct Suppl</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.structSuppl')">Struct Suppl</span>
           </dt>
           <dd>
             <span>{{ batiment.structSuppl }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.structSupplNature')">Struct Suppl Nature</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.structSupplNature')">Struct Suppl Nature</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.StructureSupplementaire.' + batiment.structSupplNature)">{{ batiment.structSupplNature }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.StructureSupplementaire.' + batiment.structSupplNature)">{{
+              batiment.structSupplNature
+            }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.noteCalcul')">Note Calcul</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.noteCalcul')">Note Calcul</span>
           </dt>
           <dd>
             <span>{{ batiment.noteCalcul }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.nbrRangDeBottes')">Nbr Rang De Bottes</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.nbrRangDeBottes')">Nbr Rang De Bottes</span>
           </dt>
           <dd>
             <span>{{ batiment.nbrRangDeBottes }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.longMaxSansMurRefend')">Long Max Sans Mur Refend</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')">Long Max Sans Mur Refend</span>
           </dt>
           <dd>
             <span>{{ batiment.longMaxSansMurRefend }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.integBaie')">Integ Baie</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.integBaie')">Integ Baie</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.IntegBaie.' + batiment.integBaie)">{{ batiment.integBaie }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.IntegBaie.' + batiment.integBaie)">{{ batiment.integBaie }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.supportAncrage')">Support Ancrage</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncrage')">Support Ancrage</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.SupportAncrage.' + batiment.supportAncrage)">{{ batiment.supportAncrage }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.SupportAncrage.' + batiment.supportAncrage)">{{ batiment.supportAncrage }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.supportAncragePrecisions')">Support Ancrage Precisions</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncragePrecisions')">Support Ancrage Precisions</span>
           </dt>
           <dd>
             <span>{{ batiment.supportAncragePrecisions }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.revetInt')">Revet Int</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.revetInt')">Revet Int</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.RevetInt.' + batiment.revetInt)">{{ batiment.revetInt }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.RevetInt.' + batiment.revetInt)">{{ batiment.revetInt }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.revetExt')">Revet Ext</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.revetExt')">Revet Ext</span>
           </dt>
           <dd>
-            <span v-text="$t('lbstrawmapApp.RevetExt.' + batiment.revetExt)">{{ batiment.revetExt }}</span>
+            <span v-text="$t('cartePaillePorteuseApp.RevetExt.' + batiment.revetExt)">{{ batiment.revetExt }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.revetExtAutre')">Revet Ext Autre</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.revetExtAutre')">Revet Ext Autre</span>
           </dt>
           <dd>
             <span>{{ batiment.revetExtAutre }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.maitreDOuvrage')">Maitre D Ouvrage</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.maitreDOuvrage')">Maitre D Ouvrage</span>
           </dt>
           <dd>
             <span>{{ batiment.maitreDOuvrage }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.maitreDOeuvre')">Maitre D Oeuvre</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.maitreDOeuvre')">Maitre D Oeuvre</span>
           </dt>
           <dd>
             <span>{{ batiment.maitreDOeuvre }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.architecte')">Architecte</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.architecte')">Architecte</span>
           </dt>
           <dd>
             <span>{{ batiment.architecte }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.bureauDEtudeStructure')">Bureau D Etude Structure</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.bureauDEtudeStructure')">Bureau D Etude Structure</span>
           </dt>
           <dd>
             <span>{{ batiment.bureauDEtudeStructure }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.bureauControl')">Bureau Control</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.bureauControl')">Bureau Control</span>
           </dt>
           <dd>
             <span>{{ batiment.bureauControl }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.entrepriseBottes')">Entreprise Bottes</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.entrepriseBottes')">Entreprise Bottes</span>
           </dt>
           <dd>
             <span>{{ batiment.entrepriseBottes }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.entrepriseCharpente')">Entreprise Charpente</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.entrepriseCharpente')">Entreprise Charpente</span>
           </dt>
           <dd>
             <span>{{ batiment.entrepriseCharpente }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.entrepriseEnduits')">Entreprise Enduits</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.entrepriseEnduits')">Entreprise Enduits</span>
           </dt>
           <dd>
             <span>{{ batiment.entrepriseEnduits }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.descriptionProjet')">Description Projet</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.descriptionProjet')">Description Projet</span>
           </dt>
           <dd>
             <span>{{ batiment.descriptionProjet }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.difficultees')">Difficultees</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.difficultees')">Difficultees</span>
           </dt>
           <dd>
             <span>{{ batiment.difficultees }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.astuces')">Astuces</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.astuces')">Astuces</span>
           </dt>
           <dd>
             <span>{{ batiment.astuces }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.divers')">Divers</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.divers')">Divers</span>
           </dt>
           <dd>
             <span>{{ batiment.divers }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.contactNom')">Contact Nom</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.contactNom')">Contact Nom</span>
           </dt>
           <dd>
             <span>{{ batiment.contactNom }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.contactMail')">Contact Mail</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.contactMail')">Contact Mail</span>
           </dt>
           <dd>
             <span>{{ batiment.contactMail }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.contactPhone')">Contact Phone</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.contactPhone')">Contact Phone</span>
           </dt>
           <dd>
             <span>{{ batiment.contactPhone }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.codePostal')">Code Postal</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.codePostal')">Code Postal</span>
           </dt>
           <dd>
             <span>{{ batiment.codePostal }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.nonBatimentEtPhotosPublics')">Non Batiment Et Photos Publics</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')">Non Batiment Et Photos Publics</span>
           </dt>
           <dd>
             <span>{{ batiment.nonBatimentEtPhotosPublics }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.dateCreationFiche')">Date Creation Fiche</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.dateCreationFiche')">Date Creation Fiche</span>
           </dt>
           <dd>
             <span>{{ batiment.dateCreationFiche }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.dateModificationFiche')">Date Modification Fiche</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.dateModificationFiche')">Date Modification Fiche</span>
           </dt>
           <dd>
             <span>{{ batiment.dateModificationFiche }}</span>
           </dd>
           <dt>
-            <span v-text="$t('lbstrawmapApp.batiment.creator')">Creator</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.creator')">Creator</span>
           </dt>
           <dd>
             {{ batiment.creator ? batiment.creator.login : '' }}

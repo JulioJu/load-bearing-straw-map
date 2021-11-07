@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "applicationType": "monolith",
-    "baseName": "lbstrawmap",
+    "baseName": "carte_paille_porteuse",
     "jhipsterVersion": "7.3.1",
     "skipClient": false,
     "skipServer": false,
@@ -15,7 +15,7 @@
     "blueprints": [],
     "otherModules": [],
     "pages": [],
-    "creationTimestamp": 1636275695501,
+    "creationTimestamp": 1636277514963,
     "serviceDiscoveryType": "no",
     "reactive": false,
     "authenticationType": "jwt",
@@ -37,13 +37,13 @@
     "clientTheme": "none",
     "enableTranslation": true,
     "nativeLanguage": "fr",
-    "jwtSecretKey": "ZDdhNTMxNTk1NWJjYTVlYjRhYWFkNWFiY2RmZTc3OTM5NDhmZDllZjVkNDYwYzMxNmJiMWRiY2U2MTUzZTc0Yjc1YTIxYzRlNjZhM2U4YTBmZDViNGNmNjEzMDgzZjIxYzBjOTNmZTZlNTVkMWYwYWNjNzYwODQ2OTQ1MzBlMDU=",
+    "jwtSecretKey": "OWNkZmJmMmFiYzE3ZTBiNTJjM2RkOWViMThhYWZmOTc0YWY2NjZjOTJiZWU4YmRkOGIxMDMwMjg3OGMyNWU5ODgyMmI1ZWNjNDU2NGY3M2UzNWE3M2U4YzkyMjBkYjA4MjhlZGEyMmU3MTBiY2ZhYzg5NmI1NzViMzQ3M2Y1NjA=",
     "devServerPort": 9060,
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "languages": ["fr"],
     "enableGradleEnterprise": false,
     "entities": ["Batiment"],
-    "lastLiquibaseTimestamp": 1636276424000
+    "lastLiquibaseTimestamp": 1636278040000
   }
 }

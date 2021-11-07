@@ -76,7 +76,7 @@ export default class Batiment extends mixins(JhiDataUtils) {
     this.batimentService()
       .delete(this.removeId)
       .then(() => {
-        const message = this.$t('lbstrawmapApp.batiment.deleted', { param: this.removeId });
+        const message = this.$t('cartePaillePorteuseApp.batiment.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

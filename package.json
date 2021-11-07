@@ -1,8 +1,8 @@
 {
-  "name": "lbstrawmap",
+  "name": "carte-paille-porteuse",
   "version": "0.0.0",
   "private": true,
-  "description": "Description for lbstrawmap",
+  "description": "Description for carte_paille_porteuse",
   "license": "UNLICENSED",
   "scripts": {
     "app:start": "./mvnw",

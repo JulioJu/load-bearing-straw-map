@@ -18,10 +18,10 @@ spring:
     # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
     #active: testcontainers
   application:
-    name: lbstrawmap
+    name: carte_paille_porteuse
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:lbstrawmap;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:carte_paille_porteuse;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name:
     username:
     password:
@@ -57,13 +57,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: lbstrawmap-task-
+      thread-name-prefix: carte-paille-porteuse-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: lbstrawmap-scheduling-
+      thread-name-prefix: carte-paille-porteuse-scheduling-
       pool:
         size: 1
   thymeleaf:
@@ -81,7 +81,7 @@ server:
 
 jhipster:
   clientApp:
-    name: 'lbstrawmapApp'
+    name: 'cartePaillePorteuseApp'
   logging:
     # To test json console appender
     use-json-format: false
@@ -97,7 +97,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: ZDdhNTMxNTk1NWJjYTVlYjRhYWFkNWFiY2RmZTc3OTM5NDhmZDllZjVkNDYwYzMxNmJiMWRiY2U2MTUzZTc0Yjc1YTIxYzRlNjZhM2U4YTBmZDViNGNmNjEzMDgzZjIxYzBjOTNmZTZlNTVkMWYwYWNjNzYwODQ2OTQ1MzBlMDU=
+        base64-secret: OWNkZmJmMmFiYzE3ZTBiNTJjM2RkOWViMThhYWZmOTc0YWY2NjZjOTJiZWU4YmRkOGIxMDMwMjg3OGMyNWU5ODgyMmI1ZWNjNDU2NGY3M2UzNWE3M2U4YzkyMjBkYjA4MjhlZGEyMmU3MTBiY2ZhYzg5NmI1NzViMzQ3M2Y1NjA=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
 # ===================================================================

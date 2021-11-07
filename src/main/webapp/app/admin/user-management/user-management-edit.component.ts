@@ -125,8 +125,8 @@ export default class JhiUserManagementEdit extends Vue {
   }
 
   private getMessageFromHeader(res: any): any {
-    return this.$t(res.headers['x-lbstrawmapapp-alert'], {
-      param: decodeURIComponent(res.headers['x-lbstrawmapapp-params'].replace(/\+/g, ' ')),
+    return this.$t(res.headers['x-cartepailleporteuseapp-alert'], {
+      param: decodeURIComponent(res.headers['x-cartepailleporteuseapp-params'].replace(/\+/g, ' ')),
     });
   }
 }
