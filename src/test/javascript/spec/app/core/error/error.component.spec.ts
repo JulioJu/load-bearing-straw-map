@@ -17,7 +17,7 @@ describe('Error component', () => {
   let loginService: LoginService;
 
   beforeEach(() => {
-    loginService = { login: jest.fn(), logout: jest.fn() };
+    loginService = { openLogin: jest.fn() };
     wrapper = shallowMount<ErrorClass>(Error, {
       i18n,
       store,
@@ -36,7 +36,7 @@ describe('Error component', () => {
     expect(error.errorMessage).toBe(customErrorMsg);
     expect(error.error403).toBeFalsy();
     expect(error.error404).toBeFalsy();
-    expect(loginService.login).toHaveBeenCalledTimes(0);
+    expect(loginService.openLogin).toHaveBeenCalledTimes(0);
   });
 
   it('should have set forbidden error on routing', () => {
@@ -45,7 +45,7 @@ describe('Error component', () => {
     expect(error.errorMessage).toBeNull();
     expect(error.error403).toBeTruthy();
     expect(error.error404).toBeFalsy();
-    expect(loginService.login).toHaveBeenCalled();
+    expect(loginService.openLogin).toHaveBeenCalled();
   });
 
   it('should have set not found error on routing', () => {
@@ -54,7 +54,7 @@ describe('Error component', () => {
     expect(error.errorMessage).toBeNull();
     expect(error.error403).toBeFalsy();
     expect(error.error404).toBeTruthy();
-    expect(loginService.login).toHaveBeenCalledTimes(0);
+    expect(loginService.openLogin).toHaveBeenCalledTimes(0);
   });
 
   it('should have retrieve custom error on init', () => {
@@ -63,7 +63,7 @@ describe('Error component', () => {
     expect(error.errorMessage).toBe(customErrorMsg);
     expect(error.error403).toBeFalsy();
     expect(error.error404).toBeFalsy();
-    expect(loginService.login).toHaveBeenCalledTimes(0);
+    expect(loginService.openLogin).toHaveBeenCalledTimes(0);
   });
 
   it('should have set forbidden error on init', () => {
@@ -72,7 +72,7 @@ describe('Error component', () => {
     expect(error.errorMessage).toBeNull();
     expect(error.error403).toBeTruthy();
     expect(error.error404).toBeFalsy();
-    expect(loginService.login).toHaveBeenCalled();
+    expect(loginService.openLogin).toHaveBeenCalled();
   });
 
   it('should have set not found error on init', () => {
@@ -81,7 +81,7 @@ describe('Error component', () => {
     expect(error.errorMessage).toBeNull();
     expect(error.error403).toBeFalsy();
     expect(error.error404).toBeTruthy();
-    expect(loginService.login).toHaveBeenCalledTimes(0);
+    expect(loginService.openLogin).toHaveBeenCalledTimes(0);
   });
 
   it('should have set default on init', () => {
@@ -90,6 +90,6 @@ describe('Error component', () => {
     expect(error.errorMessage).toBeNull();
     expect(error.error403).toBeFalsy();
     expect(error.error404).toBeFalsy();
-    expect(loginService.login).toHaveBeenCalledTimes(0);
+    expect(loginService.openLogin).toHaveBeenCalledTimes(0);
   });
 });

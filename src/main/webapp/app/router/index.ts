@@ -9,6 +9,7 @@ import Router from 'vue-router';
 
 const Home = () => import('@/core/home/home.vue');
 const Error = () => import('@/core/error/error.vue');
+import account from '@/router/account';
 import admin from '@/router/admin';
 import entities from '@/router/entities';
 import pages from '@/router/pages';
@@ -36,6 +37,7 @@ export default new Router({
       component: Error,
       meta: { error404: true }
     },
+    ...account,
     ...admin,
     ...entities,
     ...pages

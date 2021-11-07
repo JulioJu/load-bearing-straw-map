@@ -17,7 +17,6 @@ import './commands';
 import './navbar';
 import './entity';
 import './management';
-import './oauth2';
 
 // https://docs.cypress.io/api/events/catalog-of-events#Uncaught-Exceptions
 Cypress.on('uncaught:exception', (err, runnable) => {

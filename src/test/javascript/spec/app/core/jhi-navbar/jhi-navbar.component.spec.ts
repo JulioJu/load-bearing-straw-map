@@ -22,7 +22,7 @@ localVue.component('b-navbar-nav', {});
 describe('JhiNavbar', () => {
   let jhiNavbar: JhiNavbarClass;
   let wrapper: Wrapper<JhiNavbarClass>;
-  const loginService = { login: jest.fn(), logout: jest.fn() };
+  const loginService = { openLogin: jest.fn() };
   const accountService = { hasAnyAuthorityAndCheckAuth: jest.fn().mockImplementation(() => Promise.resolve(true)) };
   const translationService = { refreshTranslation: jest.fn() };
 
@@ -65,7 +65,7 @@ describe('JhiNavbar', () => {
 
   it('should use login service', () => {
     jhiNavbar.openLogin();
-    expect(loginService.login).toHaveBeenCalled();
+    expect(loginService.openLogin).toHaveBeenCalled();
   });
 
   it('should use account service', () => {
@@ -76,10 +76,9 @@ describe('JhiNavbar', () => {
 
   it('logout should clear credentials', () => {
     store.commit('authenticated', { login: 'test' });
-    loginService.logout.mockReturnValue(Promise.resolve());
     jhiNavbar.logout();
 
-    expect(loginService.logout).toHaveBeenCalled();
+    expect(jhiNavbar.authenticated).toBeFalsy();
   });
 
   it('should determine active route', () => {

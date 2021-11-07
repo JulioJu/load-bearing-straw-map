@@ -15,7 +15,7 @@ export default class Home extends Vue {
   private loginService: () => LoginService;
 
   public openLogin(): void {
-    this.loginService().login();
+    this.loginService().openLogin((<any>this).$root);
   }
 
   public get authenticated(): boolean {

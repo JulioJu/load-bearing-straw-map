@@ -7,7 +7,7 @@ import { decimal, required, minValue, maxValue, maxLength } from 'vuelidate/lib/
 
 import AlertService from '@/shared/alert/alert.service';
 
-import UserOAuth2Service from '@/entities/user/user.oauth2.service';
+import UserService from '@/admin/user-management/user-management.service';
 
 import { IBatiment, Batiment } from '@/shared/model/batiment.model';
 import BatimentService from './batiment.service';
@@ -154,7 +154,7 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
 
   public batiment: IBatiment = new Batiment();
 
-  @Inject('userOAuth2Service') private userOAuth2Service: () => UserOAuth2Service;
+  @Inject('userService') private userService: () => UserService;
 
   public users: Array<any> = [];
   public usageBatimentValues: string[] = Object.keys(UsageBatiment);
@@ -278,7 +278,7 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
   }
 
   public initRelationships(): void {
-    this.userOAuth2Service()
+    this.userService()
       .retrieve()
       .then(res => {
         this.users = res.data;

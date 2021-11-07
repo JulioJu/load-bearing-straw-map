@@ -1,4 +1,5 @@
 import {
+  userManagementPageHeadingSelector,
   metricsPageHeadingSelector,
   healthPageHeadingSelector,
   logsPageHeadingSelector,
@@ -11,16 +12,20 @@ describe('/admin', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'admin';
   const password = Cypress.env('E2E_PASSWORD') ?? 'admin';
 
-  beforeEach(() => {
-    cy.getOauth2Data();
-    cy.get('@oauth2Data').then(oauth2Data => {
-      cy.oauthLogin(oauth2Data, username, password);
+  before(() => {
+    cy.window().then(win => {
+      win.sessionStorage.clear();
     });
+    cy.clearCookies();
+    cy.visit('');
+    cy.login(username, password);
   });
 
-  afterEach(() => {
-    cy.oauthLogout();
-    cy.clearCache();
+  describe('/user-management', () => {
+    it('should load the page', () => {
+      cy.clickOnAdminMenuItem('user-management');
+      cy.get(userManagementPageHeadingSelector).should('be.visible');
+    });
   });
 
   describe('/metrics', () => {

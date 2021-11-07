@@ -2,7 +2,6 @@ package org.julioju.lbstrawmap.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -478,12 +477,7 @@ class BatimentResourceIT {
         int databaseSizeBeforeCreate = batimentRepository.findAll().size();
         // Create the Batiment
         restBatimentMockMvc
-            .perform(
-                post(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(batiment))
-            )
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiment)))
             .andExpect(status().isCreated());
 
         // Validate the Batiment in the database
@@ -578,12 +572,7 @@ class BatimentResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restBatimentMockMvc
-            .perform(
-                post(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(batiment))
-            )
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiment)))
             .andExpect(status().isBadRequest());
 
         // Validate the Batiment in the database
@@ -601,12 +590,7 @@ class BatimentResourceIT {
         // Create the Batiment, which fails.
 
         restBatimentMockMvc
-            .perform(
-                post(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(batiment))
-            )
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiment)))
             .andExpect(status().isBadRequest());
 
         List<Batiment> batimentList = batimentRepository.findAll();
@@ -623,12 +607,7 @@ class BatimentResourceIT {
         // Create the Batiment, which fails.
 
         restBatimentMockMvc
-            .perform(
-                post(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(batiment))
-            )
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiment)))
             .andExpect(status().isBadRequest());
 
         List<Batiment> batimentList = batimentRepository.findAll();
@@ -645,12 +624,7 @@ class BatimentResourceIT {
         // Create the Batiment, which fails.
 
         restBatimentMockMvc
-            .perform(
-                post(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(batiment))
-            )
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiment)))
             .andExpect(status().isBadRequest());
 
         List<Batiment> batimentList = batimentRepository.findAll();
@@ -667,12 +641,7 @@ class BatimentResourceIT {
         // Create the Batiment, which fails.
 
         restBatimentMockMvc
-            .perform(
-                post(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(batiment))
-            )
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiment)))
             .andExpect(status().isBadRequest());
 
         List<Batiment> batimentList = batimentRepository.findAll();
@@ -959,7 +928,6 @@ class BatimentResourceIT {
         restBatimentMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, updatedBatiment.getId())
-                    .with(csrf())
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(TestUtil.convertObjectToJsonBytes(updatedBatiment))
             )
@@ -1057,7 +1025,6 @@ class BatimentResourceIT {
         restBatimentMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, batiment.getId())
-                    .with(csrf())
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(TestUtil.convertObjectToJsonBytes(batiment))
             )
@@ -1078,7 +1045,6 @@ class BatimentResourceIT {
         restBatimentMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, count.incrementAndGet())
-                    .with(csrf())
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(TestUtil.convertObjectToJsonBytes(batiment))
             )
@@ -1097,12 +1063,7 @@ class BatimentResourceIT {
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restBatimentMockMvc
-            .perform(
-                put(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(batiment))
-            )
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(batiment)))
             .andExpect(status().isMethodNotAllowed());
 
         // Validate the Batiment in the database
@@ -1165,7 +1126,6 @@ class BatimentResourceIT {
         restBatimentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedBatiment.getId())
-                    .with(csrf())
                     .contentType("application/merge-patch+json")
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedBatiment))
             )
@@ -1346,7 +1306,6 @@ class BatimentResourceIT {
         restBatimentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedBatiment.getId())
-                    .with(csrf())
                     .contentType("application/merge-patch+json")
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedBatiment))
             )
@@ -1444,7 +1403,6 @@ class BatimentResourceIT {
         restBatimentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, batiment.getId())
-                    .with(csrf())
                     .contentType("application/merge-patch+json")
                     .content(TestUtil.convertObjectToJsonBytes(batiment))
             )
@@ -1465,7 +1423,6 @@ class BatimentResourceIT {
         restBatimentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, count.incrementAndGet())
-                    .with(csrf())
                     .contentType("application/merge-patch+json")
                     .content(TestUtil.convertObjectToJsonBytes(batiment))
             )
@@ -1484,12 +1441,7 @@ class BatimentResourceIT {
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restBatimentMockMvc
-            .perform(
-                patch(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType("application/merge-patch+json")
-                    .content(TestUtil.convertObjectToJsonBytes(batiment))
-            )
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(TestUtil.convertObjectToJsonBytes(batiment)))
             .andExpect(status().isMethodNotAllowed());
 
         // Validate the Batiment in the database
@@ -1507,7 +1459,7 @@ class BatimentResourceIT {
 
         // Delete the batiment
         restBatimentMockMvc
-            .perform(delete(ENTITY_API_URL_ID, batiment.getId()).with(csrf()).accept(MediaType.APPLICATION_JSON))
+            .perform(delete(ENTITY_API_URL_ID, batiment.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

@@ -16,23 +16,18 @@ describe('Batiment e2e test', () => {
   const batimentPageUrlPattern = new RegExp('/batiment(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'admin';
   const password = Cypress.env('E2E_PASSWORD') ?? 'admin';
-  const batimentSample = { latitude: -21, longitude: -80, dateCreationFiche: '2021-11-06', dateModificationFiche: '2021-11-06' };
+  const batimentSample = { latitude: -21, longitude: -80, dateCreationFiche: '2021-11-07', dateModificationFiche: '2021-11-06' };
 
   let batiment: any;
   //let user: any;
 
-  beforeEach(() => {
-    cy.getOauth2Data();
-    cy.get('@oauth2Data').then(oauth2Data => {
-      cy.oauthLogin(oauth2Data, username, password);
+  before(() => {
+    cy.window().then(win => {
+      win.sessionStorage.clear();
     });
-    cy.intercept('GET', '/api/batiments').as('entitiesRequest');
     cy.visit('');
+    cy.login(username, password);
     cy.get(entityItemSelector).should('exist');
-  });
-
-  beforeEach(() => {
-    Cypress.Cookies.preserveOnce('XSRF-TOKEN', 'JSESSIONID');
   });
 
   /* Disabled due to incompatibility
@@ -41,7 +36,7 @@ describe('Batiment e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/users',
-      body: {"id":"7eff38e2-50f7-47b5-9090-d27f07fdf8f7","login":"Concrete Handcrafted approach","firstName":"Edmond","lastName":"Robin"},
+      body: {"login":"c blue","firstName":"Céleste","lastName":"Lopez"},
     }).then(({ body }) => {
       user = body;
     });
@@ -88,11 +83,6 @@ describe('Batiment e2e test', () => {
     }
   });
    */
-
-  afterEach(() => {
-    cy.oauthLogout();
-    cy.clearCache();
-  });
 
   it('Batiments menu should load Batiments page', () => {
     cy.visit('/');
@@ -289,9 +279,9 @@ describe('Batiment e2e test', () => {
       cy.get(`[data-cy="travauxIti"]`).should('not.be.checked');
       cy.get(`[data-cy="travauxIti"]`).click().should('be.checked');
 
-      cy.get(`[data-cy="constructionDebut"]`).type('2021-11-06').should('have.value', '2021-11-06');
+      cy.get(`[data-cy="constructionDebut"]`).type('2021-11-07').should('have.value', '2021-11-07');
 
-      cy.get(`[data-cy="constructionFin"]`).type('2021-11-06').should('have.value', '2021-11-06');
+      cy.get(`[data-cy="constructionFin"]`).type('2021-11-07').should('have.value', '2021-11-07');
 
       cy.get(`[data-cy="bottesTaille"]`).select('T_50_X_80_X_110_a_200_CM');
 
@@ -378,9 +368,9 @@ describe('Batiment e2e test', () => {
       cy.get(`[data-cy="nonBatimentEtPhotosPublics"]`).should('not.be.checked');
       cy.get(`[data-cy="nonBatimentEtPhotosPublics"]`).click().should('be.checked');
 
-      cy.get(`[data-cy="dateCreationFiche"]`).type('2021-11-06').should('have.value', '2021-11-06');
+      cy.get(`[data-cy="dateCreationFiche"]`).type('2021-11-07').should('have.value', '2021-11-07');
 
-      cy.get(`[data-cy="dateModificationFiche"]`).type('2021-11-05').should('have.value', '2021-11-05');
+      cy.get(`[data-cy="dateModificationFiche"]`).type('2021-11-06').should('have.value', '2021-11-06');
 
       cy.get(`[data-cy="creator"]`).select(1);
 

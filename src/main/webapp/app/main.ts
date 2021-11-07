@@ -15,6 +15,9 @@ import HealthService from './admin/health/health.service';
 import MetricsService from './admin/metrics/metrics.service';
 import LogsService from './admin/logs/logs.service';
 import ConfigurationService from '@/admin/configuration/configuration.service';
+import ActivateService from './account/activate/activate.service';
+import RegisterService from './account/register/register.service';
+import UserManagementService from '@/admin/user-management/user-management.service';
 import LoginService from './account/login.service';
 import AccountService from './account/account.service';
 import AlertService from './shared/alert/alert.service';
@@ -44,7 +47,7 @@ const store = config.initVueXStore(Vue);
 
 const translationService = new TranslationService(store, i18n);
 const loginService = new LoginService();
-const accountService = new AccountService(store, translationService, (<any>Vue).cookie, router);
+const accountService = new AccountService(store, translationService, router);
 
 router.beforeEach((to, from, next) => {
   if (!to.matched.length) {
@@ -74,6 +77,9 @@ new Vue({
   router,
   provide: {
     loginService: () => loginService,
+    activateService: () => new ActivateService(),
+    registerService: () => new RegisterService(),
+    userService: () => new UserManagementService(),
     healthService: () => new HealthService(),
     configurationService: () => new ConfigurationService(),
     logsService: () => new LogsService(),
