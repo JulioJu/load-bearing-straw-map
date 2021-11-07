@@ -129,9 +129,6 @@ public class BatimentService {
                 if (batiment.getPhoto5Description() != null) {
                     existingBatiment.setPhoto5Description(batiment.getPhoto5Description());
                 }
-                if (batiment.getTechniqueSecondaire() != null) {
-                    existingBatiment.setTechniqueSecondaire(batiment.getTechniqueSecondaire());
-                }
                 if (batiment.getUsageBatiment() != null) {
                     existingBatiment.setUsageBatiment(batiment.getUsageBatiment());
                 }
@@ -186,11 +183,14 @@ public class BatimentService {
                 if (batiment.getParticipatif() != null) {
                     existingBatiment.setParticipatif(batiment.getParticipatif());
                 }
-                if (batiment.getStructSuppl() != null) {
-                    existingBatiment.setStructSuppl(batiment.getStructSuppl());
+                if (batiment.getStructCompl() != null) {
+                    existingBatiment.setStructCompl(batiment.getStructCompl());
                 }
-                if (batiment.getStructSupplNature() != null) {
-                    existingBatiment.setStructSupplNature(batiment.getStructSupplNature());
+                if (batiment.getStructComplNature() != null) {
+                    existingBatiment.setStructComplNature(batiment.getStructComplNature());
+                }
+                if (batiment.getStructComplNatureAutre() != null) {
+                    existingBatiment.setStructComplNatureAutre(batiment.getStructComplNatureAutre());
                 }
                 if (batiment.getNoteCalcul() != null) {
                     existingBatiment.setNoteCalcul(batiment.getNoteCalcul());
@@ -207,8 +207,8 @@ public class BatimentService {
                 if (batiment.getSupportAncrage() != null) {
                     existingBatiment.setSupportAncrage(batiment.getSupportAncrage());
                 }
-                if (batiment.getSupportAncragePrecisions() != null) {
-                    existingBatiment.setSupportAncragePrecisions(batiment.getSupportAncragePrecisions());
+                if (batiment.getSupportAncrageAutre() != null) {
+                    existingBatiment.setSupportAncrageAutre(batiment.getSupportAncrageAutre());
                 }
                 if (batiment.getRevetInt() != null) {
                     existingBatiment.setRevetInt(batiment.getRevetInt());

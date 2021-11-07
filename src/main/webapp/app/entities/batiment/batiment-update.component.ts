@@ -15,7 +15,7 @@ import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model'
 import { TaillesBottes } from '@/shared/model/enumerations/tailles-bottes.model';
 import { Cereale } from '@/shared/model/enumerations/cereale.model';
 import { YesNoPartial } from '@/shared/model/enumerations/yes-no-partial.model';
-import { StructureSupplementaire } from '@/shared/model/enumerations/structure-supplementaire.model';
+import { StructureComplementaire } from '@/shared/model/enumerations/structure-complementaire.model';
 import { IntegBaie } from '@/shared/model/enumerations/integ-baie.model';
 import { SupportAncrage } from '@/shared/model/enumerations/support-ancrage.model';
 import { RevetInt } from '@/shared/model/enumerations/revet-int.model';
@@ -68,7 +68,6 @@ const validations: any = {
       maxLength: maxLength(50),
     },
     photo5Description: {},
-    techniqueSecondaire: {},
     usageBatiment: {},
     cout: {},
     surfacePlancher: {},
@@ -87,14 +86,15 @@ const validations: any = {
     distanceAppro: {},
     autoconstruction: {},
     participatif: {},
-    structSuppl: {},
-    structSupplNature: {},
+    structCompl: {},
+    structComplNature: {},
+    structComplNatureAutre: {},
     noteCalcul: {},
     nbrRangDeBottes: {},
     longMaxSansMurRefend: {},
     integBaie: {},
     supportAncrage: {},
-    supportAncragePrecisions: {},
+    supportAncrageAutre: {},
     revetInt: {},
     revetExt: {},
     revetExtAutre: {},
@@ -161,7 +161,7 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
   public taillesBottesValues: string[] = Object.keys(TaillesBottes);
   public cerealeValues: string[] = Object.keys(Cereale);
   public yesNoPartialValues: string[] = Object.keys(YesNoPartial);
-  public structureSupplementaireValues: string[] = Object.keys(StructureSupplementaire);
+  public structureComplementaireValues: string[] = Object.keys(StructureComplementaire);
   public integBaieValues: string[] = Object.keys(IntegBaie);
   public supportAncrageValues: string[] = Object.keys(SupportAncrage);
   public revetIntValues: string[] = Object.keys(RevetInt);

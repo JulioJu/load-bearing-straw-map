@@ -4,7 +4,7 @@ import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model'
 import { TaillesBottes } from '@/shared/model/enumerations/tailles-bottes.model';
 import { Cereale } from '@/shared/model/enumerations/cereale.model';
 import { YesNoPartial } from '@/shared/model/enumerations/yes-no-partial.model';
-import { StructureSupplementaire } from '@/shared/model/enumerations/structure-supplementaire.model';
+import { StructureComplementaire } from '@/shared/model/enumerations/structure-complementaire.model';
 import { IntegBaie } from '@/shared/model/enumerations/integ-baie.model';
 import { SupportAncrage } from '@/shared/model/enumerations/support-ancrage.model';
 import { RevetInt } from '@/shared/model/enumerations/revet-int.model';
@@ -38,7 +38,6 @@ export interface IBatiment {
   photo5?: string | null;
   photo5Legende?: string | null;
   photo5Description?: string | null;
-  techniqueSecondaire?: boolean | null;
   usageBatiment?: UsageBatiment | null;
   cout?: number | null;
   surfacePlancher?: number | null;
@@ -57,14 +56,15 @@ export interface IBatiment {
   distanceAppro?: number | null;
   autoconstruction?: YesNoPartial | null;
   participatif?: YesNoPartial | null;
-  structSuppl?: boolean | null;
-  structSupplNature?: StructureSupplementaire | null;
+  structCompl?: boolean | null;
+  structComplNature?: StructureComplementaire | null;
+  structComplNatureAutre?: string | null;
   noteCalcul?: boolean | null;
   nbrRangDeBottes?: number | null;
   longMaxSansMurRefend?: number | null;
   integBaie?: IntegBaie | null;
   supportAncrage?: SupportAncrage | null;
-  supportAncragePrecisions?: string | null;
+  supportAncrageAutre?: string | null;
   revetInt?: RevetInt | null;
   revetExt?: RevetExt | null;
   revetExtAutre?: string | null;
@@ -120,7 +120,6 @@ export class Batiment implements IBatiment {
     public photo5?: string | null,
     public photo5Legende?: string | null,
     public photo5Description?: string | null,
-    public techniqueSecondaire?: boolean | null,
     public usageBatiment?: UsageBatiment | null,
     public cout?: number | null,
     public surfacePlancher?: number | null,
@@ -139,14 +138,15 @@ export class Batiment implements IBatiment {
     public distanceAppro?: number | null,
     public autoconstruction?: YesNoPartial | null,
     public participatif?: YesNoPartial | null,
-    public structSuppl?: boolean | null,
-    public structSupplNature?: StructureSupplementaire | null,
+    public structCompl?: boolean | null,
+    public structComplNature?: StructureComplementaire | null,
+    public structComplNatureAutre?: string | null,
     public noteCalcul?: boolean | null,
     public nbrRangDeBottes?: number | null,
     public longMaxSansMurRefend?: number | null,
     public integBaie?: IntegBaie | null,
     public supportAncrage?: SupportAncrage | null,
-    public supportAncragePrecisions?: string | null,
+    public supportAncrageAutre?: string | null,
     public revetInt?: RevetInt | null,
     public revetExt?: RevetExt | null,
     public revetExtAutre?: string | null,
@@ -171,13 +171,12 @@ export class Batiment implements IBatiment {
     public dateModificationFiche?: Date,
     public creator?: IUser
   ) {
-    this.techniqueSecondaire = this.techniqueSecondaire ?? false;
     this.travauxNeuf = this.travauxNeuf ?? false;
     this.travauxExtension = this.travauxExtension ?? false;
     this.travauxRenov = this.travauxRenov ?? false;
     this.travauxIte = this.travauxIte ?? false;
     this.travauxIti = this.travauxIti ?? false;
-    this.structSuppl = this.structSuppl ?? false;
+    this.structCompl = this.structCompl ?? false;
     this.noteCalcul = this.noteCalcul ?? false;
     this.nonBatimentEtPhotosPublics = this.nonBatimentEtPhotosPublics ?? false;
   }

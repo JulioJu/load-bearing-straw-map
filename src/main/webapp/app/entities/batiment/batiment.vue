@@ -120,10 +120,6 @@
               <span v-text="$t('cartePaillePorteuseApp.batiment.photo5Description')">Photo 5 Description</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo5Description'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('techniqueSecondaire')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.techniqueSecondaire')">Technique Secondaire</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'techniqueSecondaire'"></jhi-sort-indicator>
-            </th>
             <th scope="row" v-on:click="changeOrder('usageBatiment')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')">Usage Batiment</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'usageBatiment'"></jhi-sort-indicator>
@@ -196,13 +192,17 @@
               <span v-text="$t('cartePaillePorteuseApp.batiment.participatif')">Participatif</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'participatif'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('structSuppl')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.structSuppl')">Struct Suppl</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structSuppl'"></jhi-sort-indicator>
+            <th scope="row" v-on:click="changeOrder('structCompl')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.structCompl')">Struct Compl</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structCompl'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('structSupplNature')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.structSupplNature')">Struct Suppl Nature</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structSupplNature'"></jhi-sort-indicator>
+            <th scope="row" v-on:click="changeOrder('structComplNature')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.structComplNature')">Struct Compl Nature</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structComplNature'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('structComplNatureAutre')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.structComplNatureAutre')">Struct Compl Nature Autre</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structComplNatureAutre'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('noteCalcul')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.noteCalcul')">Note Calcul</span>
@@ -224,13 +224,9 @@
               <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncrage')">Support Ancrage</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'supportAncrage'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('supportAncragePrecisions')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncragePrecisions')">Support Ancrage Precisions</span>
-              <jhi-sort-indicator
-                :current-order="propOrder"
-                :reverse="reverse"
-                :field-name="'supportAncragePrecisions'"
-              ></jhi-sort-indicator>
+            <th scope="row" v-on:click="changeOrder('supportAncrageAutre')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncrageAutre')">Support Ancrage Autre</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'supportAncrageAutre'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('revetInt')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.revetInt')">Revet Int</span>
@@ -413,7 +409,6 @@
             </td>
             <td>{{ batiment.photo5Legende }}</td>
             <td>{{ batiment.photo5Description }}</td>
-            <td>{{ batiment.techniqueSecondaire }}</td>
             <td v-text="$t('cartePaillePorteuseApp.UsageBatiment.' + batiment.usageBatiment)">{{ batiment.usageBatiment }}</td>
             <td>{{ batiment.cout }}</td>
             <td>{{ batiment.surfacePlancher }}</td>
@@ -432,16 +427,17 @@
             <td>{{ batiment.distanceAppro }}</td>
             <td v-text="$t('cartePaillePorteuseApp.YesNoPartial.' + batiment.autoconstruction)">{{ batiment.autoconstruction }}</td>
             <td v-text="$t('cartePaillePorteuseApp.YesNoPartial.' + batiment.participatif)">{{ batiment.participatif }}</td>
-            <td>{{ batiment.structSuppl }}</td>
-            <td v-text="$t('cartePaillePorteuseApp.StructureSupplementaire.' + batiment.structSupplNature)">
-              {{ batiment.structSupplNature }}
+            <td>{{ batiment.structCompl }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.StructureComplementaire.' + batiment.structComplNature)">
+              {{ batiment.structComplNature }}
             </td>
+            <td>{{ batiment.structComplNatureAutre }}</td>
             <td>{{ batiment.noteCalcul }}</td>
             <td>{{ batiment.nbrRangDeBottes }}</td>
             <td>{{ batiment.longMaxSansMurRefend }}</td>
             <td v-text="$t('cartePaillePorteuseApp.IntegBaie.' + batiment.integBaie)">{{ batiment.integBaie }}</td>
             <td v-text="$t('cartePaillePorteuseApp.SupportAncrage.' + batiment.supportAncrage)">{{ batiment.supportAncrage }}</td>
-            <td>{{ batiment.supportAncragePrecisions }}</td>
+            <td>{{ batiment.supportAncrageAutre }}</td>
             <td v-text="$t('cartePaillePorteuseApp.RevetInt.' + batiment.revetInt)">{{ batiment.revetInt }}</td>
             <td v-text="$t('cartePaillePorteuseApp.RevetExt.' + batiment.revetExt)">{{ batiment.revetExt }}</td>
             <td>{{ batiment.revetExtAutre }}</td>

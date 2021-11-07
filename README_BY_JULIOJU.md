@@ -19,6 +19,32 @@ To upgrade JHipster, I advise to perform manual upgrade
 Then, into your favorite GitHub diff tool, search all occurent of `JulioJu`
 and check if added or removed code around this should be checkout or not.
 
+If you remove all before regenerate app (and for instance change Data Model),
+you could type:
+
+```sh
+mv -i ./.git node_modules ../
+rm -rf .* *
+mv ../.git ../node_modules .
+git checkout .yo-rc-global.json .yo-rc.json
+jhipster
+git checkout \
+    HOW_TO_RETRIEVE_DATA_FROM_QGIS_DB.md \
+    data-model.jdl \
+    README_BY_JULIOJU.md \
+    LICENSE \
+    src/main/webapp/app/map/ \
+    src/main/java/org/julioju/lbstrawmap/domain/BatimentLazyView.java \
+    src/main/java/org/julioju/lbstrawmap/domain/BatimentWithOnlyCreatorId.java \
+    pom.xml \
+    Procfile \
+    src/main/resources/config/application-heroku.yml \
+    src/main/resources/config/bootstrap-heroku.yml \
+    system.properties
+npm install --save ol
+jhipster jdl ./data-model.jdl --force
+```
+
 ## TODO
 
 - Check TODO into the code

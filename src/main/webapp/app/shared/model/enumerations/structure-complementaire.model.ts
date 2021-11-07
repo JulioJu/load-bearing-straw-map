@@ -1,4 +1,4 @@
-export enum StructureSupplementaire {
+export enum StructureComplementaire {
   BOIS = 'Bois',
 
   BETON_ARME = 'Béton armé',
@@ -6,4 +6,6 @@ export enum StructureSupplementaire {
   METAL = 'Métal',
 
   MACONNERIE = 'Maçonnerie [brique - parpaing - pierre - …]',
+
+  AUTRE = 'Autre',
 }

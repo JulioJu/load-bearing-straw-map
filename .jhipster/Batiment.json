@@ -113,11 +113,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "techniqueSecondaire",
-      "fieldType": "Boolean",
-      "javadoc": "Paille porteuse en technique secondaire"
-    },
-    {
       "fieldName": "usageBatiment",
       "fieldType": "UsageBatiment",
       "javadoc": "Usage",
@@ -183,7 +178,7 @@
     {
       "fieldName": "botteTailleAutre",
       "fieldType": "String",
-      "javadoc": "Si taille des bottes non standard"
+      "javadoc": "Autre type de botte"
     },
     {
       "fieldName": "bottesDensite",
@@ -215,16 +210,21 @@
       "fieldValues": "OUI (Oui),NON (Non),PARTIEL (Partiel)"
     },
     {
-      "fieldName": "structSuppl",
+      "fieldName": "structCompl",
       "fieldType": "Boolean",
-      "javadoc": "Structure supplémentaire"
+      "javadoc": "Structure complémentaire"
     },
     {
-      "fieldName": "structSupplNature",
-      "fieldType": "StructureSupplementaire",
-      "javadoc": "Nature Structure supplémentaire",
-      "fieldValues": "BOIS (Bois),BETON_ARME (Béton armé),METAL (Métal),MACONNERIE (Maçonnerie [brique - parpaing - pierre - …])",
-      "fieldTypeJavadoc": "Nature support supplémentaire"
+      "fieldName": "structComplNature",
+      "fieldType": "StructureComplementaire",
+      "javadoc": "Nature de la structure complémentaire",
+      "fieldValues": "BOIS (Bois),BETON_ARME (Béton armé),METAL (Métal),MACONNERIE (Maçonnerie [brique - parpaing - pierre - …]),AUTRE (Autre)",
+      "fieldTypeJavadoc": "Nature support complémentaire"
+    },
+    {
+      "fieldName": "structComplNatureAutre",
+      "fieldType": "String",
+      "javadoc": "Autre nature de structure complémentaire"
     },
     {
       "fieldName": "noteCalcul",
@@ -256,9 +256,9 @@
       "fieldTypeJavadoc": "Nature du support d'ancrage"
     },
     {
-      "fieldName": "supportAncragePrecisions",
+      "fieldName": "supportAncrageAutre",
       "fieldType": "String",
-      "javadoc": "Nature du support d'ancrage précisions"
+      "javadoc": "Autre nature du support d'ancrage"
     },
     {
       "fieldName": "revetInt",
@@ -419,5 +419,5 @@
   "readOnly": false,
   "embedded": false,
   "applications": "*",
-  "changelogDate": "20211107094040"
+  "changelogDate": "20211107111612"
 }

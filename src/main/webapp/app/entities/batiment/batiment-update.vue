@@ -617,23 +617,6 @@
             />
           </div>
           <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.techniqueSecondaire')"
-              for="batiment-techniqueSecondaire"
-              >Technique Secondaire</label
-            >
-            <input
-              type="checkbox"
-              class="form-check"
-              name="techniqueSecondaire"
-              id="batiment-techniqueSecondaire"
-              data-cy="techniqueSecondaire"
-              :class="{ valid: !$v.batiment.techniqueSecondaire.$invalid, invalid: $v.batiment.techniqueSecondaire.$invalid }"
-              v-model="$v.batiment.techniqueSecondaire.$model"
-            />
-          </div>
-          <div class="form-group">
             <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')" for="batiment-usageBatiment"
               >Usage Batiment</label
             >
@@ -966,43 +949,60 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.structSuppl')" for="batiment-structSuppl"
-              >Struct Suppl</label
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.structCompl')" for="batiment-structCompl"
+              >Struct Compl</label
             >
             <input
               type="checkbox"
               class="form-check"
-              name="structSuppl"
-              id="batiment-structSuppl"
-              data-cy="structSuppl"
-              :class="{ valid: !$v.batiment.structSuppl.$invalid, invalid: $v.batiment.structSuppl.$invalid }"
-              v-model="$v.batiment.structSuppl.$model"
+              name="structCompl"
+              id="batiment-structCompl"
+              data-cy="structCompl"
+              :class="{ valid: !$v.batiment.structCompl.$invalid, invalid: $v.batiment.structCompl.$invalid }"
+              v-model="$v.batiment.structCompl.$model"
             />
           </div>
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.structSupplNature')"
-              for="batiment-structSupplNature"
-              >Struct Suppl Nature</label
+              v-text="$t('cartePaillePorteuseApp.batiment.structComplNature')"
+              for="batiment-structComplNature"
+              >Struct Compl Nature</label
             >
             <select
               class="form-control"
-              name="structSupplNature"
-              :class="{ valid: !$v.batiment.structSupplNature.$invalid, invalid: $v.batiment.structSupplNature.$invalid }"
-              v-model="$v.batiment.structSupplNature.$model"
-              id="batiment-structSupplNature"
-              data-cy="structSupplNature"
+              name="structComplNature"
+              :class="{ valid: !$v.batiment.structComplNature.$invalid, invalid: $v.batiment.structComplNature.$invalid }"
+              v-model="$v.batiment.structComplNature.$model"
+              id="batiment-structComplNature"
+              data-cy="structComplNature"
             >
               <option
-                v-for="structureSupplementaire in structureSupplementaireValues"
-                :key="structureSupplementaire"
-                v-bind:value="structureSupplementaire"
-                v-bind:label="$t('cartePaillePorteuseApp.StructureSupplementaire.' + structureSupplementaire)"
+                v-for="structureComplementaire in structureComplementaireValues"
+                :key="structureComplementaire"
+                v-bind:value="structureComplementaire"
+                v-bind:label="$t('cartePaillePorteuseApp.StructureComplementaire.' + structureComplementaire)"
               >
-                {{ structureSupplementaire }}
+                {{ structureComplementaire }}
               </option>
             </select>
+          </div>
+          <div class="form-group">
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.structComplNatureAutre')"
+              for="batiment-structComplNatureAutre"
+              >Struct Compl Nature Autre</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="structComplNatureAutre"
+              id="batiment-structComplNatureAutre"
+              data-cy="structComplNatureAutre"
+              :class="{ valid: !$v.batiment.structComplNatureAutre.$invalid, invalid: $v.batiment.structComplNatureAutre.$invalid }"
+              v-model="$v.batiment.structComplNatureAutre.$model"
+            />
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.noteCalcul')" for="batiment-noteCalcul"
@@ -1096,18 +1096,18 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.supportAncragePrecisions')"
-              for="batiment-supportAncragePrecisions"
-              >Support Ancrage Precisions</label
+              v-text="$t('cartePaillePorteuseApp.batiment.supportAncrageAutre')"
+              for="batiment-supportAncrageAutre"
+              >Support Ancrage Autre</label
             >
             <input
               type="text"
               class="form-control"
-              name="supportAncragePrecisions"
-              id="batiment-supportAncragePrecisions"
-              data-cy="supportAncragePrecisions"
-              :class="{ valid: !$v.batiment.supportAncragePrecisions.$invalid, invalid: $v.batiment.supportAncragePrecisions.$invalid }"
-              v-model="$v.batiment.supportAncragePrecisions.$model"
+              name="supportAncrageAutre"
+              id="batiment-supportAncrageAutre"
+              data-cy="supportAncrageAutre"
+              :class="{ valid: !$v.batiment.supportAncrageAutre.$invalid, invalid: $v.batiment.supportAncrageAutre.$invalid }"
+              v-model="$v.batiment.supportAncrageAutre.$model"
             />
           </div>
           <div class="form-group">

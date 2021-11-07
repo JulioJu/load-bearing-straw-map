@@ -12,7 +12,7 @@ import org.julioju.lbstrawmap.domain.enumeration.Cereale;
 import org.julioju.lbstrawmap.domain.enumeration.IntegBaie;
 import org.julioju.lbstrawmap.domain.enumeration.RevetExt;
 import org.julioju.lbstrawmap.domain.enumeration.RevetInt;
-import org.julioju.lbstrawmap.domain.enumeration.StructureSupplementaire;
+import org.julioju.lbstrawmap.domain.enumeration.StructureComplementaire;
 import org.julioju.lbstrawmap.domain.enumeration.SupportAncrage;
 import org.julioju.lbstrawmap.domain.enumeration.TaillesBottes;
 import org.julioju.lbstrawmap.domain.enumeration.UsageBatiment;
@@ -139,13 +139,6 @@ public class Batiment implements Serializable {
     private String photo5Description;
 
     /**
-     * Paille porteuse en technique secondaire
-     */
-    @ApiModelProperty(value = "Paille porteuse en technique secondaire")
-    @Column(name = "technique_secondaire")
-    private Boolean techniqueSecondaire;
-
-    /**
      * Usage
      */
     @ApiModelProperty(value = "Usage")
@@ -232,9 +225,9 @@ public class Batiment implements Serializable {
     private TaillesBottes bottesTaille;
 
     /**
-     * Si taille des bottes non standard
+     * Autre type de botte
      */
-    @ApiModelProperty(value = "Si taille des bottes non standard")
+    @ApiModelProperty(value = "Autre type de botte")
     @Column(name = "botte_taille_autre")
     private String botteTailleAutre;
 
@@ -277,19 +270,26 @@ public class Batiment implements Serializable {
     private YesNoPartial participatif;
 
     /**
-     * Structure supplémentaire
+     * Structure complémentaire
      */
-    @ApiModelProperty(value = "Structure supplémentaire")
-    @Column(name = "struct_suppl")
-    private Boolean structSuppl;
+    @ApiModelProperty(value = "Structure complémentaire")
+    @Column(name = "struct_compl")
+    private Boolean structCompl;
 
     /**
-     * Nature Structure supplémentaire
+     * Nature de la structure complémentaire
      */
-    @ApiModelProperty(value = "Nature Structure supplémentaire")
+    @ApiModelProperty(value = "Nature de la structure complémentaire")
     @Enumerated(EnumType.STRING)
-    @Column(name = "struct_suppl_nature")
-    private StructureSupplementaire structSupplNature;
+    @Column(name = "struct_compl_nature")
+    private StructureComplementaire structComplNature;
+
+    /**
+     * Autre nature de structure complémentaire
+     */
+    @ApiModelProperty(value = "Autre nature de structure complémentaire")
+    @Column(name = "struct_compl_nature_autre")
+    private String structComplNatureAutre;
 
     /**
      * Note de calcul
@@ -329,11 +329,11 @@ public class Batiment implements Serializable {
     private SupportAncrage supportAncrage;
 
     /**
-     * Nature du support d'ancrage précisions
+     * Autre nature du support d'ancrage
      */
-    @ApiModelProperty(value = "Nature du support d'ancrage précisions")
-    @Column(name = "support_ancrage_precisions")
-    private String supportAncragePrecisions;
+    @ApiModelProperty(value = "Autre nature du support d'ancrage")
+    @Column(name = "support_ancrage_autre")
+    private String supportAncrageAutre;
 
     /**
      * Revêtement intérieur
@@ -884,19 +884,6 @@ public class Batiment implements Serializable {
         this.photo5Description = photo5Description;
     }
 
-    public Boolean getTechniqueSecondaire() {
-        return this.techniqueSecondaire;
-    }
-
-    public Batiment techniqueSecondaire(Boolean techniqueSecondaire) {
-        this.setTechniqueSecondaire(techniqueSecondaire);
-        return this;
-    }
-
-    public void setTechniqueSecondaire(Boolean techniqueSecondaire) {
-        this.techniqueSecondaire = techniqueSecondaire;
-    }
-
     public UsageBatiment getUsageBatiment() {
         return this.usageBatiment;
     }
@@ -1131,30 +1118,43 @@ public class Batiment implements Serializable {
         this.participatif = participatif;
     }
 
-    public Boolean getStructSuppl() {
-        return this.structSuppl;
+    public Boolean getStructCompl() {
+        return this.structCompl;
     }
 
-    public Batiment structSuppl(Boolean structSuppl) {
-        this.setStructSuppl(structSuppl);
+    public Batiment structCompl(Boolean structCompl) {
+        this.setStructCompl(structCompl);
         return this;
     }
 
-    public void setStructSuppl(Boolean structSuppl) {
-        this.structSuppl = structSuppl;
+    public void setStructCompl(Boolean structCompl) {
+        this.structCompl = structCompl;
     }
 
-    public StructureSupplementaire getStructSupplNature() {
-        return this.structSupplNature;
+    public StructureComplementaire getStructComplNature() {
+        return this.structComplNature;
     }
 
-    public Batiment structSupplNature(StructureSupplementaire structSupplNature) {
-        this.setStructSupplNature(structSupplNature);
+    public Batiment structComplNature(StructureComplementaire structComplNature) {
+        this.setStructComplNature(structComplNature);
         return this;
     }
 
-    public void setStructSupplNature(StructureSupplementaire structSupplNature) {
-        this.structSupplNature = structSupplNature;
+    public void setStructComplNature(StructureComplementaire structComplNature) {
+        this.structComplNature = structComplNature;
+    }
+
+    public String getStructComplNatureAutre() {
+        return this.structComplNatureAutre;
+    }
+
+    public Batiment structComplNatureAutre(String structComplNatureAutre) {
+        this.setStructComplNatureAutre(structComplNatureAutre);
+        return this;
+    }
+
+    public void setStructComplNatureAutre(String structComplNatureAutre) {
+        this.structComplNatureAutre = structComplNatureAutre;
     }
 
     public Boolean getNoteCalcul() {
@@ -1222,17 +1222,17 @@ public class Batiment implements Serializable {
         this.supportAncrage = supportAncrage;
     }
 
-    public String getSupportAncragePrecisions() {
-        return this.supportAncragePrecisions;
+    public String getSupportAncrageAutre() {
+        return this.supportAncrageAutre;
     }
 
-    public Batiment supportAncragePrecisions(String supportAncragePrecisions) {
-        this.setSupportAncragePrecisions(supportAncragePrecisions);
+    public Batiment supportAncrageAutre(String supportAncrageAutre) {
+        this.setSupportAncrageAutre(supportAncrageAutre);
         return this;
     }
 
-    public void setSupportAncragePrecisions(String supportAncragePrecisions) {
-        this.supportAncragePrecisions = supportAncragePrecisions;
+    public void setSupportAncrageAutre(String supportAncrageAutre) {
+        this.supportAncrageAutre = supportAncrageAutre;
     }
 
     public RevetInt getRevetInt() {
@@ -1585,7 +1585,6 @@ public class Batiment implements Serializable {
             ", photo5ContentType='" + getPhoto5ContentType() + "'" +
             ", photo5Legende='" + getPhoto5Legende() + "'" +
             ", photo5Description='" + getPhoto5Description() + "'" +
-            ", techniqueSecondaire='" + getTechniqueSecondaire() + "'" +
             ", usageBatiment='" + getUsageBatiment() + "'" +
             ", cout=" + getCout() +
             ", surfacePlancher=" + getSurfacePlancher() +
@@ -1604,14 +1603,15 @@ public class Batiment implements Serializable {
             ", distanceAppro=" + getDistanceAppro() +
             ", autoconstruction='" + getAutoconstruction() + "'" +
             ", participatif='" + getParticipatif() + "'" +
-            ", structSuppl='" + getStructSuppl() + "'" +
-            ", structSupplNature='" + getStructSupplNature() + "'" +
+            ", structCompl='" + getStructCompl() + "'" +
+            ", structComplNature='" + getStructComplNature() + "'" +
+            ", structComplNatureAutre='" + getStructComplNatureAutre() + "'" +
             ", noteCalcul='" + getNoteCalcul() + "'" +
             ", nbrRangDeBottes=" + getNbrRangDeBottes() +
             ", longMaxSansMurRefend=" + getLongMaxSansMurRefend() +
             ", integBaie='" + getIntegBaie() + "'" +
             ", supportAncrage='" + getSupportAncrage() + "'" +
-            ", supportAncragePrecisions='" + getSupportAncragePrecisions() + "'" +
+            ", supportAncrageAutre='" + getSupportAncrageAutre() + "'" +
             ", revetInt='" + getRevetInt() + "'" +
             ", revetExt='" + getRevetExt() + "'" +
             ", revetExtAutre='" + getRevetExtAutre() + "'" +

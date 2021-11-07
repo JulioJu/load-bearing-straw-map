@@ -9,7 +9,7 @@
     <!--
         Added the entity Batiment.
     -->
-    <changeSet id="20211107094040-1" author="jhipster">
+    <changeSet id="20211107111612-1" author="jhipster">
         <createTable tableName="batiment">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
@@ -95,9 +95,6 @@
             <column name="photo_5_description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="technique_secondaire" type="boolean" remarks="Paille porteuse en technique secondaire">
-                <constraints nullable="true" />
-            </column>
             <column name="usage_batiment" type="varchar(255)" remarks="Usage">
                 <constraints nullable="true" />
             </column>
@@ -134,7 +131,7 @@
             <column name="bottes_taille" type="varchar(255)" remarks="Taille des bottes">
                 <constraints nullable="true" />
             </column>
-            <column name="botte_taille_autre" type="varchar(255)" remarks="Si taille des bottes non standard">
+            <column name="botte_taille_autre" type="varchar(255)" remarks="Autre type de botte">
                 <constraints nullable="true" />
             </column>
             <column name="bottes_densite" type="integer" remarks="Densité sur base sèche [kg/m³]">
@@ -152,10 +149,13 @@
             <column name="participatif" type="varchar(255)" remarks="Participatif">
                 <constraints nullable="true" />
             </column>
-            <column name="struct_suppl" type="boolean" remarks="Structure supplémentaire">
+            <column name="struct_compl" type="boolean" remarks="Structure complémentaire">
                 <constraints nullable="true" />
             </column>
-            <column name="struct_suppl_nature" type="varchar(255)" remarks="Nature Structure supplémentaire">
+            <column name="struct_compl_nature" type="varchar(255)" remarks="Nature de la structure complémentaire">
+                <constraints nullable="true" />
+            </column>
+            <column name="struct_compl_nature_autre" type="varchar(255)" remarks="Autre nature de structure complémentaire">
                 <constraints nullable="true" />
             </column>
             <column name="note_calcul" type="boolean" remarks="Note de calcul">
@@ -173,7 +173,7 @@
             <column name="support_ancrage" type="varchar(255)" remarks="Nature du support d&apos;ancrage">
                 <constraints nullable="true" />
             </column>
-            <column name="support_ancrage_precisions" type="varchar(255)" remarks="Nature du support d&apos;ancrage précisions">
+            <column name="support_ancrage_autre" type="varchar(255)" remarks="Autre nature du support d&apos;ancrage">
                 <constraints nullable="true" />
             </column>
             <column name="revet_int" type="varchar(255)" remarks="Revêtement intérieur">
@@ -259,7 +259,7 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20211107094040-1-data" author="jhipster" context="faker">
+    <changeSet id="20211107111612-1-data" author="jhipster" context="faker">
         <loadData
                   file="config/liquibase/fake-data/batiment.csv"
                   separator=";"
@@ -293,7 +293,6 @@
             <column name="photo_5_content_type" type="string"/>
             <column name="photo_5_legende" type="string"/>
             <column name="photo_5_description" type="string"/>
-            <column name="technique_secondaire" type="boolean"/>
             <column name="usage_batiment" type="string"/>
             <column name="cout" type="numeric"/>
             <column name="surface_plancher" type="numeric"/>
@@ -312,14 +311,15 @@
             <column name="distance_appro" type="numeric"/>
             <column name="autoconstruction" type="string"/>
             <column name="participatif" type="string"/>
-            <column name="struct_suppl" type="boolean"/>
-            <column name="struct_suppl_nature" type="string"/>
+            <column name="struct_compl" type="boolean"/>
+            <column name="struct_compl_nature" type="string"/>
+            <column name="struct_compl_nature_autre" type="string"/>
             <column name="note_calcul" type="boolean"/>
             <column name="nbr_rang_de_bottes" type="numeric"/>
             <column name="long_max_sans_mur_refend" type="numeric"/>
             <column name="integ_baie" type="string"/>
             <column name="support_ancrage" type="string"/>
-            <column name="support_ancrage_precisions" type="string"/>
+            <column name="support_ancrage_autre" type="string"/>
             <column name="revet_int" type="string"/>
             <column name="revet_ext" type="string"/>
             <column name="revet_ext_autre" type="string"/>

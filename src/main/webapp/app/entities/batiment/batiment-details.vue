@@ -187,12 +187,6 @@
             <span>{{ batiment.photo5Description }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.techniqueSecondaire')">Technique Secondaire</span>
-          </dt>
-          <dd>
-            <span>{{ batiment.techniqueSecondaire }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')">Usage Batiment</span>
           </dt>
           <dd>
@@ -301,18 +295,24 @@
             <span v-text="$t('cartePaillePorteuseApp.YesNoPartial.' + batiment.participatif)">{{ batiment.participatif }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.structSuppl')">Struct Suppl</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.structCompl')">Struct Compl</span>
           </dt>
           <dd>
-            <span>{{ batiment.structSuppl }}</span>
+            <span>{{ batiment.structCompl }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.structSupplNature')">Struct Suppl Nature</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.structComplNature')">Struct Compl Nature</span>
           </dt>
           <dd>
-            <span v-text="$t('cartePaillePorteuseApp.StructureSupplementaire.' + batiment.structSupplNature)">{{
-              batiment.structSupplNature
+            <span v-text="$t('cartePaillePorteuseApp.StructureComplementaire.' + batiment.structComplNature)">{{
+              batiment.structComplNature
             }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.structComplNatureAutre')">Struct Compl Nature Autre</span>
+          </dt>
+          <dd>
+            <span>{{ batiment.structComplNatureAutre }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.noteCalcul')">Note Calcul</span>
@@ -345,10 +345,10 @@
             <span v-text="$t('cartePaillePorteuseApp.SupportAncrage.' + batiment.supportAncrage)">{{ batiment.supportAncrage }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncragePrecisions')">Support Ancrage Precisions</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncrageAutre')">Support Ancrage Autre</span>
           </dt>
           <dd>
-            <span>{{ batiment.supportAncragePrecisions }}</span>
+            <span>{{ batiment.supportAncrageAutre }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.revetInt')">Revet Int</span>

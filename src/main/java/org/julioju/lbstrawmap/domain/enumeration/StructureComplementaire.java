@@ -1,17 +1,18 @@
 package org.julioju.lbstrawmap.domain.enumeration;
 
 /**
- * Nature support supplémentaire
+ * Nature support complémentaire
  */
-public enum StructureSupplementaire {
+public enum StructureComplementaire {
     BOIS("Bois"),
     BETON_ARME("Béton armé"),
     METAL("Métal"),
-    MACONNERIE("Maçonnerie [brique - parpaing - pierre - …]");
+    MACONNERIE("Maçonnerie [brique - parpaing - pierre - …]"),
+    AUTRE("Autre");
 
     private final String value;
 
-    StructureSupplementaire(String value) {
+    StructureComplementaire(String value) {
         this.value = value;
     }
 

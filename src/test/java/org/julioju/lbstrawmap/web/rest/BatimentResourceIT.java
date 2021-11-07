@@ -18,7 +18,7 @@ import org.julioju.lbstrawmap.domain.enumeration.Cereale;
 import org.julioju.lbstrawmap.domain.enumeration.IntegBaie;
 import org.julioju.lbstrawmap.domain.enumeration.RevetExt;
 import org.julioju.lbstrawmap.domain.enumeration.RevetInt;
-import org.julioju.lbstrawmap.domain.enumeration.StructureSupplementaire;
+import org.julioju.lbstrawmap.domain.enumeration.StructureComplementaire;
 import org.julioju.lbstrawmap.domain.enumeration.SupportAncrage;
 import org.julioju.lbstrawmap.domain.enumeration.TaillesBottes;
 import org.julioju.lbstrawmap.domain.enumeration.UsageBatiment;
@@ -118,9 +118,6 @@ class BatimentResourceIT {
     private static final String DEFAULT_PHOTO_5_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_PHOTO_5_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final Boolean DEFAULT_TECHNIQUE_SECONDAIRE = false;
-    private static final Boolean UPDATED_TECHNIQUE_SECONDAIRE = true;
-
     private static final UsageBatiment DEFAULT_USAGE_BATIMENT = UsageBatiment.LOGEMENT_COLLECTIF;
     private static final UsageBatiment UPDATED_USAGE_BATIMENT = UsageBatiment.LOGEMENT_INDIVIDUEL;
 
@@ -175,11 +172,14 @@ class BatimentResourceIT {
     private static final YesNoPartial DEFAULT_PARTICIPATIF = YesNoPartial.OUI;
     private static final YesNoPartial UPDATED_PARTICIPATIF = YesNoPartial.NON;
 
-    private static final Boolean DEFAULT_STRUCT_SUPPL = false;
-    private static final Boolean UPDATED_STRUCT_SUPPL = true;
+    private static final Boolean DEFAULT_STRUCT_COMPL = false;
+    private static final Boolean UPDATED_STRUCT_COMPL = true;
 
-    private static final StructureSupplementaire DEFAULT_STRUCT_SUPPL_NATURE = StructureSupplementaire.BOIS;
-    private static final StructureSupplementaire UPDATED_STRUCT_SUPPL_NATURE = StructureSupplementaire.BETON_ARME;
+    private static final StructureComplementaire DEFAULT_STRUCT_COMPL_NATURE = StructureComplementaire.BOIS;
+    private static final StructureComplementaire UPDATED_STRUCT_COMPL_NATURE = StructureComplementaire.BETON_ARME;
+
+    private static final String DEFAULT_STRUCT_COMPL_NATURE_AUTRE = "AAAAAAAAAA";
+    private static final String UPDATED_STRUCT_COMPL_NATURE_AUTRE = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_NOTE_CALCUL = false;
     private static final Boolean UPDATED_NOTE_CALCUL = true;
@@ -196,8 +196,8 @@ class BatimentResourceIT {
     private static final SupportAncrage DEFAULT_SUPPORT_ANCRAGE = SupportAncrage.BOIS;
     private static final SupportAncrage UPDATED_SUPPORT_ANCRAGE = SupportAncrage.BETON_ARME;
 
-    private static final String DEFAULT_SUPPORT_ANCRAGE_PRECISIONS = "AAAAAAAAAA";
-    private static final String UPDATED_SUPPORT_ANCRAGE_PRECISIONS = "BBBBBBBBBB";
+    private static final String DEFAULT_SUPPORT_ANCRAGE_AUTRE = "AAAAAAAAAA";
+    private static final String UPDATED_SUPPORT_ANCRAGE_AUTRE = "BBBBBBBBBB";
 
     private static final RevetInt DEFAULT_REVET_INT = RevetInt.PLAQUE_DE_PLATRE;
     private static final RevetInt UPDATED_REVET_INT = RevetInt.LAMBRIS;
@@ -317,7 +317,6 @@ class BatimentResourceIT {
             .photo5ContentType(DEFAULT_PHOTO_5_CONTENT_TYPE)
             .photo5Legende(DEFAULT_PHOTO_5_LEGENDE)
             .photo5Description(DEFAULT_PHOTO_5_DESCRIPTION)
-            .techniqueSecondaire(DEFAULT_TECHNIQUE_SECONDAIRE)
             .usageBatiment(DEFAULT_USAGE_BATIMENT)
             .cout(DEFAULT_COUT)
             .surfacePlancher(DEFAULT_SURFACE_PLANCHER)
@@ -336,14 +335,15 @@ class BatimentResourceIT {
             .distanceAppro(DEFAULT_DISTANCE_APPRO)
             .autoconstruction(DEFAULT_AUTOCONSTRUCTION)
             .participatif(DEFAULT_PARTICIPATIF)
-            .structSuppl(DEFAULT_STRUCT_SUPPL)
-            .structSupplNature(DEFAULT_STRUCT_SUPPL_NATURE)
+            .structCompl(DEFAULT_STRUCT_COMPL)
+            .structComplNature(DEFAULT_STRUCT_COMPL_NATURE)
+            .structComplNatureAutre(DEFAULT_STRUCT_COMPL_NATURE_AUTRE)
             .noteCalcul(DEFAULT_NOTE_CALCUL)
             .nbrRangDeBottes(DEFAULT_NBR_RANG_DE_BOTTES)
             .longMaxSansMurRefend(DEFAULT_LONG_MAX_SANS_MUR_REFEND)
             .integBaie(DEFAULT_INTEG_BAIE)
             .supportAncrage(DEFAULT_SUPPORT_ANCRAGE)
-            .supportAncragePrecisions(DEFAULT_SUPPORT_ANCRAGE_PRECISIONS)
+            .supportAncrageAutre(DEFAULT_SUPPORT_ANCRAGE_AUTRE)
             .revetInt(DEFAULT_REVET_INT)
             .revetExt(DEFAULT_REVET_EXT)
             .revetExtAutre(DEFAULT_REVET_EXT_AUTRE)
@@ -409,7 +409,6 @@ class BatimentResourceIT {
             .photo5ContentType(UPDATED_PHOTO_5_CONTENT_TYPE)
             .photo5Legende(UPDATED_PHOTO_5_LEGENDE)
             .photo5Description(UPDATED_PHOTO_5_DESCRIPTION)
-            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
             .usageBatiment(UPDATED_USAGE_BATIMENT)
             .cout(UPDATED_COUT)
             .surfacePlancher(UPDATED_SURFACE_PLANCHER)
@@ -428,14 +427,15 @@ class BatimentResourceIT {
             .distanceAppro(UPDATED_DISTANCE_APPRO)
             .autoconstruction(UPDATED_AUTOCONSTRUCTION)
             .participatif(UPDATED_PARTICIPATIF)
-            .structSuppl(UPDATED_STRUCT_SUPPL)
-            .structSupplNature(UPDATED_STRUCT_SUPPL_NATURE)
+            .structCompl(UPDATED_STRUCT_COMPL)
+            .structComplNature(UPDATED_STRUCT_COMPL_NATURE)
+            .structComplNatureAutre(UPDATED_STRUCT_COMPL_NATURE_AUTRE)
             .noteCalcul(UPDATED_NOTE_CALCUL)
             .nbrRangDeBottes(UPDATED_NBR_RANG_DE_BOTTES)
             .longMaxSansMurRefend(UPDATED_LONG_MAX_SANS_MUR_REFEND)
             .integBaie(UPDATED_INTEG_BAIE)
             .supportAncrage(UPDATED_SUPPORT_ANCRAGE)
-            .supportAncragePrecisions(UPDATED_SUPPORT_ANCRAGE_PRECISIONS)
+            .supportAncrageAutre(UPDATED_SUPPORT_ANCRAGE_AUTRE)
             .revetInt(UPDATED_REVET_INT)
             .revetExt(UPDATED_REVET_EXT)
             .revetExtAutre(UPDATED_REVET_EXT_AUTRE)
@@ -511,7 +511,6 @@ class BatimentResourceIT {
         assertThat(testBatiment.getPhoto5ContentType()).isEqualTo(DEFAULT_PHOTO_5_CONTENT_TYPE);
         assertThat(testBatiment.getPhoto5Legende()).isEqualTo(DEFAULT_PHOTO_5_LEGENDE);
         assertThat(testBatiment.getPhoto5Description()).isEqualTo(DEFAULT_PHOTO_5_DESCRIPTION);
-        assertThat(testBatiment.getTechniqueSecondaire()).isEqualTo(DEFAULT_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiment.getUsageBatiment()).isEqualTo(DEFAULT_USAGE_BATIMENT);
         assertThat(testBatiment.getCout()).isEqualTo(DEFAULT_COUT);
         assertThat(testBatiment.getSurfacePlancher()).isEqualTo(DEFAULT_SURFACE_PLANCHER);
@@ -530,14 +529,15 @@ class BatimentResourceIT {
         assertThat(testBatiment.getDistanceAppro()).isEqualTo(DEFAULT_DISTANCE_APPRO);
         assertThat(testBatiment.getAutoconstruction()).isEqualTo(DEFAULT_AUTOCONSTRUCTION);
         assertThat(testBatiment.getParticipatif()).isEqualTo(DEFAULT_PARTICIPATIF);
-        assertThat(testBatiment.getStructSuppl()).isEqualTo(DEFAULT_STRUCT_SUPPL);
-        assertThat(testBatiment.getStructSupplNature()).isEqualTo(DEFAULT_STRUCT_SUPPL_NATURE);
+        assertThat(testBatiment.getStructCompl()).isEqualTo(DEFAULT_STRUCT_COMPL);
+        assertThat(testBatiment.getStructComplNature()).isEqualTo(DEFAULT_STRUCT_COMPL_NATURE);
+        assertThat(testBatiment.getStructComplNatureAutre()).isEqualTo(DEFAULT_STRUCT_COMPL_NATURE_AUTRE);
         assertThat(testBatiment.getNoteCalcul()).isEqualTo(DEFAULT_NOTE_CALCUL);
         assertThat(testBatiment.getNbrRangDeBottes()).isEqualTo(DEFAULT_NBR_RANG_DE_BOTTES);
         assertThat(testBatiment.getLongMaxSansMurRefend()).isEqualTo(DEFAULT_LONG_MAX_SANS_MUR_REFEND);
         assertThat(testBatiment.getIntegBaie()).isEqualTo(DEFAULT_INTEG_BAIE);
         assertThat(testBatiment.getSupportAncrage()).isEqualTo(DEFAULT_SUPPORT_ANCRAGE);
-        assertThat(testBatiment.getSupportAncragePrecisions()).isEqualTo(DEFAULT_SUPPORT_ANCRAGE_PRECISIONS);
+        assertThat(testBatiment.getSupportAncrageAutre()).isEqualTo(DEFAULT_SUPPORT_ANCRAGE_AUTRE);
         assertThat(testBatiment.getRevetInt()).isEqualTo(DEFAULT_REVET_INT);
         assertThat(testBatiment.getRevetExt()).isEqualTo(DEFAULT_REVET_EXT);
         assertThat(testBatiment.getRevetExtAutre()).isEqualTo(DEFAULT_REVET_EXT_AUTRE);
@@ -687,7 +687,6 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.[*].photo5").value(hasItem(Base64Utils.encodeToString(DEFAULT_PHOTO_5))))
             .andExpect(jsonPath("$.[*].photo5Legende").value(hasItem(DEFAULT_PHOTO_5_LEGENDE)))
             .andExpect(jsonPath("$.[*].photo5Description").value(hasItem(DEFAULT_PHOTO_5_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].techniqueSecondaire").value(hasItem(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue())))
             .andExpect(jsonPath("$.[*].usageBatiment").value(hasItem(DEFAULT_USAGE_BATIMENT.toString())))
             .andExpect(jsonPath("$.[*].cout").value(hasItem(DEFAULT_COUT)))
             .andExpect(jsonPath("$.[*].surfacePlancher").value(hasItem(DEFAULT_SURFACE_PLANCHER)))
@@ -706,14 +705,15 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.[*].distanceAppro").value(hasItem(DEFAULT_DISTANCE_APPRO)))
             .andExpect(jsonPath("$.[*].autoconstruction").value(hasItem(DEFAULT_AUTOCONSTRUCTION.toString())))
             .andExpect(jsonPath("$.[*].participatif").value(hasItem(DEFAULT_PARTICIPATIF.toString())))
-            .andExpect(jsonPath("$.[*].structSuppl").value(hasItem(DEFAULT_STRUCT_SUPPL.booleanValue())))
-            .andExpect(jsonPath("$.[*].structSupplNature").value(hasItem(DEFAULT_STRUCT_SUPPL_NATURE.toString())))
+            .andExpect(jsonPath("$.[*].structCompl").value(hasItem(DEFAULT_STRUCT_COMPL.booleanValue())))
+            .andExpect(jsonPath("$.[*].structComplNature").value(hasItem(DEFAULT_STRUCT_COMPL_NATURE.toString())))
+            .andExpect(jsonPath("$.[*].structComplNatureAutre").value(hasItem(DEFAULT_STRUCT_COMPL_NATURE_AUTRE)))
             .andExpect(jsonPath("$.[*].noteCalcul").value(hasItem(DEFAULT_NOTE_CALCUL.booleanValue())))
             .andExpect(jsonPath("$.[*].nbrRangDeBottes").value(hasItem(DEFAULT_NBR_RANG_DE_BOTTES)))
             .andExpect(jsonPath("$.[*].longMaxSansMurRefend").value(hasItem(DEFAULT_LONG_MAX_SANS_MUR_REFEND.doubleValue())))
             .andExpect(jsonPath("$.[*].integBaie").value(hasItem(DEFAULT_INTEG_BAIE.toString())))
             .andExpect(jsonPath("$.[*].supportAncrage").value(hasItem(DEFAULT_SUPPORT_ANCRAGE.toString())))
-            .andExpect(jsonPath("$.[*].supportAncragePrecisions").value(hasItem(DEFAULT_SUPPORT_ANCRAGE_PRECISIONS)))
+            .andExpect(jsonPath("$.[*].supportAncrageAutre").value(hasItem(DEFAULT_SUPPORT_ANCRAGE_AUTRE)))
             .andExpect(jsonPath("$.[*].revetInt").value(hasItem(DEFAULT_REVET_INT.toString())))
             .andExpect(jsonPath("$.[*].revetExt").value(hasItem(DEFAULT_REVET_EXT.toString())))
             .andExpect(jsonPath("$.[*].revetExtAutre").value(hasItem(DEFAULT_REVET_EXT_AUTRE)))
@@ -777,7 +777,6 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.photo5").value(Base64Utils.encodeToString(DEFAULT_PHOTO_5)))
             .andExpect(jsonPath("$.photo5Legende").value(DEFAULT_PHOTO_5_LEGENDE))
             .andExpect(jsonPath("$.photo5Description").value(DEFAULT_PHOTO_5_DESCRIPTION))
-            .andExpect(jsonPath("$.techniqueSecondaire").value(DEFAULT_TECHNIQUE_SECONDAIRE.booleanValue()))
             .andExpect(jsonPath("$.usageBatiment").value(DEFAULT_USAGE_BATIMENT.toString()))
             .andExpect(jsonPath("$.cout").value(DEFAULT_COUT))
             .andExpect(jsonPath("$.surfacePlancher").value(DEFAULT_SURFACE_PLANCHER))
@@ -796,14 +795,15 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.distanceAppro").value(DEFAULT_DISTANCE_APPRO))
             .andExpect(jsonPath("$.autoconstruction").value(DEFAULT_AUTOCONSTRUCTION.toString()))
             .andExpect(jsonPath("$.participatif").value(DEFAULT_PARTICIPATIF.toString()))
-            .andExpect(jsonPath("$.structSuppl").value(DEFAULT_STRUCT_SUPPL.booleanValue()))
-            .andExpect(jsonPath("$.structSupplNature").value(DEFAULT_STRUCT_SUPPL_NATURE.toString()))
+            .andExpect(jsonPath("$.structCompl").value(DEFAULT_STRUCT_COMPL.booleanValue()))
+            .andExpect(jsonPath("$.structComplNature").value(DEFAULT_STRUCT_COMPL_NATURE.toString()))
+            .andExpect(jsonPath("$.structComplNatureAutre").value(DEFAULT_STRUCT_COMPL_NATURE_AUTRE))
             .andExpect(jsonPath("$.noteCalcul").value(DEFAULT_NOTE_CALCUL.booleanValue()))
             .andExpect(jsonPath("$.nbrRangDeBottes").value(DEFAULT_NBR_RANG_DE_BOTTES))
             .andExpect(jsonPath("$.longMaxSansMurRefend").value(DEFAULT_LONG_MAX_SANS_MUR_REFEND.doubleValue()))
             .andExpect(jsonPath("$.integBaie").value(DEFAULT_INTEG_BAIE.toString()))
             .andExpect(jsonPath("$.supportAncrage").value(DEFAULT_SUPPORT_ANCRAGE.toString()))
-            .andExpect(jsonPath("$.supportAncragePrecisions").value(DEFAULT_SUPPORT_ANCRAGE_PRECISIONS))
+            .andExpect(jsonPath("$.supportAncrageAutre").value(DEFAULT_SUPPORT_ANCRAGE_AUTRE))
             .andExpect(jsonPath("$.revetInt").value(DEFAULT_REVET_INT.toString()))
             .andExpect(jsonPath("$.revetExt").value(DEFAULT_REVET_EXT.toString()))
             .andExpect(jsonPath("$.revetExtAutre").value(DEFAULT_REVET_EXT_AUTRE))
@@ -875,7 +875,6 @@ class BatimentResourceIT {
             .photo5ContentType(UPDATED_PHOTO_5_CONTENT_TYPE)
             .photo5Legende(UPDATED_PHOTO_5_LEGENDE)
             .photo5Description(UPDATED_PHOTO_5_DESCRIPTION)
-            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
             .usageBatiment(UPDATED_USAGE_BATIMENT)
             .cout(UPDATED_COUT)
             .surfacePlancher(UPDATED_SURFACE_PLANCHER)
@@ -894,14 +893,15 @@ class BatimentResourceIT {
             .distanceAppro(UPDATED_DISTANCE_APPRO)
             .autoconstruction(UPDATED_AUTOCONSTRUCTION)
             .participatif(UPDATED_PARTICIPATIF)
-            .structSuppl(UPDATED_STRUCT_SUPPL)
-            .structSupplNature(UPDATED_STRUCT_SUPPL_NATURE)
+            .structCompl(UPDATED_STRUCT_COMPL)
+            .structComplNature(UPDATED_STRUCT_COMPL_NATURE)
+            .structComplNatureAutre(UPDATED_STRUCT_COMPL_NATURE_AUTRE)
             .noteCalcul(UPDATED_NOTE_CALCUL)
             .nbrRangDeBottes(UPDATED_NBR_RANG_DE_BOTTES)
             .longMaxSansMurRefend(UPDATED_LONG_MAX_SANS_MUR_REFEND)
             .integBaie(UPDATED_INTEG_BAIE)
             .supportAncrage(UPDATED_SUPPORT_ANCRAGE)
-            .supportAncragePrecisions(UPDATED_SUPPORT_ANCRAGE_PRECISIONS)
+            .supportAncrageAutre(UPDATED_SUPPORT_ANCRAGE_AUTRE)
             .revetInt(UPDATED_REVET_INT)
             .revetExt(UPDATED_REVET_EXT)
             .revetExtAutre(UPDATED_REVET_EXT_AUTRE)
@@ -964,7 +964,6 @@ class BatimentResourceIT {
         assertThat(testBatiment.getPhoto5ContentType()).isEqualTo(UPDATED_PHOTO_5_CONTENT_TYPE);
         assertThat(testBatiment.getPhoto5Legende()).isEqualTo(UPDATED_PHOTO_5_LEGENDE);
         assertThat(testBatiment.getPhoto5Description()).isEqualTo(UPDATED_PHOTO_5_DESCRIPTION);
-        assertThat(testBatiment.getTechniqueSecondaire()).isEqualTo(UPDATED_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiment.getUsageBatiment()).isEqualTo(UPDATED_USAGE_BATIMENT);
         assertThat(testBatiment.getCout()).isEqualTo(UPDATED_COUT);
         assertThat(testBatiment.getSurfacePlancher()).isEqualTo(UPDATED_SURFACE_PLANCHER);
@@ -983,14 +982,15 @@ class BatimentResourceIT {
         assertThat(testBatiment.getDistanceAppro()).isEqualTo(UPDATED_DISTANCE_APPRO);
         assertThat(testBatiment.getAutoconstruction()).isEqualTo(UPDATED_AUTOCONSTRUCTION);
         assertThat(testBatiment.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
-        assertThat(testBatiment.getStructSuppl()).isEqualTo(UPDATED_STRUCT_SUPPL);
-        assertThat(testBatiment.getStructSupplNature()).isEqualTo(UPDATED_STRUCT_SUPPL_NATURE);
+        assertThat(testBatiment.getStructCompl()).isEqualTo(UPDATED_STRUCT_COMPL);
+        assertThat(testBatiment.getStructComplNature()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE);
+        assertThat(testBatiment.getStructComplNatureAutre()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE_AUTRE);
         assertThat(testBatiment.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
         assertThat(testBatiment.getNbrRangDeBottes()).isEqualTo(UPDATED_NBR_RANG_DE_BOTTES);
         assertThat(testBatiment.getLongMaxSansMurRefend()).isEqualTo(UPDATED_LONG_MAX_SANS_MUR_REFEND);
         assertThat(testBatiment.getIntegBaie()).isEqualTo(UPDATED_INTEG_BAIE);
         assertThat(testBatiment.getSupportAncrage()).isEqualTo(UPDATED_SUPPORT_ANCRAGE);
-        assertThat(testBatiment.getSupportAncragePrecisions()).isEqualTo(UPDATED_SUPPORT_ANCRAGE_PRECISIONS);
+        assertThat(testBatiment.getSupportAncrageAutre()).isEqualTo(UPDATED_SUPPORT_ANCRAGE_AUTRE);
         assertThat(testBatiment.getRevetInt()).isEqualTo(UPDATED_REVET_INT);
         assertThat(testBatiment.getRevetExt()).isEqualTo(UPDATED_REVET_EXT);
         assertThat(testBatiment.getRevetExtAutre()).isEqualTo(UPDATED_REVET_EXT_AUTRE);
@@ -1097,20 +1097,20 @@ class BatimentResourceIT {
             .photo4Legende(UPDATED_PHOTO_4_LEGENDE)
             .photo4Description(UPDATED_PHOTO_4_DESCRIPTION)
             .photo5Description(UPDATED_PHOTO_5_DESCRIPTION)
-            .cout(UPDATED_COUT)
-            .travauxNeuf(UPDATED_TRAVAUX_NEUF)
-            .travauxIti(UPDATED_TRAVAUX_ITI)
-            .bottesTaille(UPDATED_BOTTES_TAILLE)
+            .surfacePlancher(UPDATED_SURFACE_PLANCHER)
+            .travauxExtension(UPDATED_TRAVAUX_EXTENSION)
+            .constructionDebut(UPDATED_CONSTRUCTION_DEBUT)
             .botteTailleAutre(UPDATED_BOTTE_TAILLE_AUTRE)
             .bottesDensite(UPDATED_BOTTES_DENSITE)
-            .distanceAppro(UPDATED_DISTANCE_APPRO)
+            .bottesCereale(UPDATED_BOTTES_CEREALE)
             .autoconstruction(UPDATED_AUTOCONSTRUCTION)
             .participatif(UPDATED_PARTICIPATIF)
-            .structSupplNature(UPDATED_STRUCT_SUPPL_NATURE)
+            .structCompl(UPDATED_STRUCT_COMPL)
+            .structComplNatureAutre(UPDATED_STRUCT_COMPL_NATURE_AUTRE)
             .longMaxSansMurRefend(UPDATED_LONG_MAX_SANS_MUR_REFEND)
             .integBaie(UPDATED_INTEG_BAIE)
             .supportAncrage(UPDATED_SUPPORT_ANCRAGE)
-            .supportAncragePrecisions(UPDATED_SUPPORT_ANCRAGE_PRECISIONS)
+            .supportAncrageAutre(UPDATED_SUPPORT_ANCRAGE_AUTRE)
             .revetExtAutre(UPDATED_REVET_EXT_AUTRE)
             .maitreDOuvrage(UPDATED_MAITRE_D_OUVRAGE)
             .maitreDOeuvre(UPDATED_MAITRE_D_OEUVRE)
@@ -1162,33 +1162,33 @@ class BatimentResourceIT {
         assertThat(testBatiment.getPhoto5ContentType()).isEqualTo(DEFAULT_PHOTO_5_CONTENT_TYPE);
         assertThat(testBatiment.getPhoto5Legende()).isEqualTo(DEFAULT_PHOTO_5_LEGENDE);
         assertThat(testBatiment.getPhoto5Description()).isEqualTo(UPDATED_PHOTO_5_DESCRIPTION);
-        assertThat(testBatiment.getTechniqueSecondaire()).isEqualTo(DEFAULT_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiment.getUsageBatiment()).isEqualTo(DEFAULT_USAGE_BATIMENT);
-        assertThat(testBatiment.getCout()).isEqualTo(UPDATED_COUT);
-        assertThat(testBatiment.getSurfacePlancher()).isEqualTo(DEFAULT_SURFACE_PLANCHER);
+        assertThat(testBatiment.getCout()).isEqualTo(DEFAULT_COUT);
+        assertThat(testBatiment.getSurfacePlancher()).isEqualTo(UPDATED_SURFACE_PLANCHER);
         assertThat(testBatiment.getNiveaux()).isEqualTo(DEFAULT_NIVEAUX);
-        assertThat(testBatiment.getTravauxNeuf()).isEqualTo(UPDATED_TRAVAUX_NEUF);
-        assertThat(testBatiment.getTravauxExtension()).isEqualTo(DEFAULT_TRAVAUX_EXTENSION);
+        assertThat(testBatiment.getTravauxNeuf()).isEqualTo(DEFAULT_TRAVAUX_NEUF);
+        assertThat(testBatiment.getTravauxExtension()).isEqualTo(UPDATED_TRAVAUX_EXTENSION);
         assertThat(testBatiment.getTravauxRenov()).isEqualTo(DEFAULT_TRAVAUX_RENOV);
         assertThat(testBatiment.getTravauxIte()).isEqualTo(DEFAULT_TRAVAUX_ITE);
-        assertThat(testBatiment.getTravauxIti()).isEqualTo(UPDATED_TRAVAUX_ITI);
-        assertThat(testBatiment.getConstructionDebut()).isEqualTo(DEFAULT_CONSTRUCTION_DEBUT);
+        assertThat(testBatiment.getTravauxIti()).isEqualTo(DEFAULT_TRAVAUX_ITI);
+        assertThat(testBatiment.getConstructionDebut()).isEqualTo(UPDATED_CONSTRUCTION_DEBUT);
         assertThat(testBatiment.getConstructionFin()).isEqualTo(DEFAULT_CONSTRUCTION_FIN);
-        assertThat(testBatiment.getBottesTaille()).isEqualTo(UPDATED_BOTTES_TAILLE);
+        assertThat(testBatiment.getBottesTaille()).isEqualTo(DEFAULT_BOTTES_TAILLE);
         assertThat(testBatiment.getBotteTailleAutre()).isEqualTo(UPDATED_BOTTE_TAILLE_AUTRE);
         assertThat(testBatiment.getBottesDensite()).isEqualTo(UPDATED_BOTTES_DENSITE);
-        assertThat(testBatiment.getBottesCereale()).isEqualTo(DEFAULT_BOTTES_CEREALE);
-        assertThat(testBatiment.getDistanceAppro()).isEqualTo(UPDATED_DISTANCE_APPRO);
+        assertThat(testBatiment.getBottesCereale()).isEqualTo(UPDATED_BOTTES_CEREALE);
+        assertThat(testBatiment.getDistanceAppro()).isEqualTo(DEFAULT_DISTANCE_APPRO);
         assertThat(testBatiment.getAutoconstruction()).isEqualTo(UPDATED_AUTOCONSTRUCTION);
         assertThat(testBatiment.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
-        assertThat(testBatiment.getStructSuppl()).isEqualTo(DEFAULT_STRUCT_SUPPL);
-        assertThat(testBatiment.getStructSupplNature()).isEqualTo(UPDATED_STRUCT_SUPPL_NATURE);
+        assertThat(testBatiment.getStructCompl()).isEqualTo(UPDATED_STRUCT_COMPL);
+        assertThat(testBatiment.getStructComplNature()).isEqualTo(DEFAULT_STRUCT_COMPL_NATURE);
+        assertThat(testBatiment.getStructComplNatureAutre()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE_AUTRE);
         assertThat(testBatiment.getNoteCalcul()).isEqualTo(DEFAULT_NOTE_CALCUL);
         assertThat(testBatiment.getNbrRangDeBottes()).isEqualTo(DEFAULT_NBR_RANG_DE_BOTTES);
         assertThat(testBatiment.getLongMaxSansMurRefend()).isEqualTo(UPDATED_LONG_MAX_SANS_MUR_REFEND);
         assertThat(testBatiment.getIntegBaie()).isEqualTo(UPDATED_INTEG_BAIE);
         assertThat(testBatiment.getSupportAncrage()).isEqualTo(UPDATED_SUPPORT_ANCRAGE);
-        assertThat(testBatiment.getSupportAncragePrecisions()).isEqualTo(UPDATED_SUPPORT_ANCRAGE_PRECISIONS);
+        assertThat(testBatiment.getSupportAncrageAutre()).isEqualTo(UPDATED_SUPPORT_ANCRAGE_AUTRE);
         assertThat(testBatiment.getRevetInt()).isEqualTo(DEFAULT_REVET_INT);
         assertThat(testBatiment.getRevetExt()).isEqualTo(DEFAULT_REVET_EXT);
         assertThat(testBatiment.getRevetExtAutre()).isEqualTo(UPDATED_REVET_EXT_AUTRE);
@@ -1253,7 +1253,6 @@ class BatimentResourceIT {
             .photo5ContentType(UPDATED_PHOTO_5_CONTENT_TYPE)
             .photo5Legende(UPDATED_PHOTO_5_LEGENDE)
             .photo5Description(UPDATED_PHOTO_5_DESCRIPTION)
-            .techniqueSecondaire(UPDATED_TECHNIQUE_SECONDAIRE)
             .usageBatiment(UPDATED_USAGE_BATIMENT)
             .cout(UPDATED_COUT)
             .surfacePlancher(UPDATED_SURFACE_PLANCHER)
@@ -1272,14 +1271,15 @@ class BatimentResourceIT {
             .distanceAppro(UPDATED_DISTANCE_APPRO)
             .autoconstruction(UPDATED_AUTOCONSTRUCTION)
             .participatif(UPDATED_PARTICIPATIF)
-            .structSuppl(UPDATED_STRUCT_SUPPL)
-            .structSupplNature(UPDATED_STRUCT_SUPPL_NATURE)
+            .structCompl(UPDATED_STRUCT_COMPL)
+            .structComplNature(UPDATED_STRUCT_COMPL_NATURE)
+            .structComplNatureAutre(UPDATED_STRUCT_COMPL_NATURE_AUTRE)
             .noteCalcul(UPDATED_NOTE_CALCUL)
             .nbrRangDeBottes(UPDATED_NBR_RANG_DE_BOTTES)
             .longMaxSansMurRefend(UPDATED_LONG_MAX_SANS_MUR_REFEND)
             .integBaie(UPDATED_INTEG_BAIE)
             .supportAncrage(UPDATED_SUPPORT_ANCRAGE)
-            .supportAncragePrecisions(UPDATED_SUPPORT_ANCRAGE_PRECISIONS)
+            .supportAncrageAutre(UPDATED_SUPPORT_ANCRAGE_AUTRE)
             .revetInt(UPDATED_REVET_INT)
             .revetExt(UPDATED_REVET_EXT)
             .revetExtAutre(UPDATED_REVET_EXT_AUTRE)
@@ -1342,7 +1342,6 @@ class BatimentResourceIT {
         assertThat(testBatiment.getPhoto5ContentType()).isEqualTo(UPDATED_PHOTO_5_CONTENT_TYPE);
         assertThat(testBatiment.getPhoto5Legende()).isEqualTo(UPDATED_PHOTO_5_LEGENDE);
         assertThat(testBatiment.getPhoto5Description()).isEqualTo(UPDATED_PHOTO_5_DESCRIPTION);
-        assertThat(testBatiment.getTechniqueSecondaire()).isEqualTo(UPDATED_TECHNIQUE_SECONDAIRE);
         assertThat(testBatiment.getUsageBatiment()).isEqualTo(UPDATED_USAGE_BATIMENT);
         assertThat(testBatiment.getCout()).isEqualTo(UPDATED_COUT);
         assertThat(testBatiment.getSurfacePlancher()).isEqualTo(UPDATED_SURFACE_PLANCHER);
@@ -1361,14 +1360,15 @@ class BatimentResourceIT {
         assertThat(testBatiment.getDistanceAppro()).isEqualTo(UPDATED_DISTANCE_APPRO);
         assertThat(testBatiment.getAutoconstruction()).isEqualTo(UPDATED_AUTOCONSTRUCTION);
         assertThat(testBatiment.getParticipatif()).isEqualTo(UPDATED_PARTICIPATIF);
-        assertThat(testBatiment.getStructSuppl()).isEqualTo(UPDATED_STRUCT_SUPPL);
-        assertThat(testBatiment.getStructSupplNature()).isEqualTo(UPDATED_STRUCT_SUPPL_NATURE);
+        assertThat(testBatiment.getStructCompl()).isEqualTo(UPDATED_STRUCT_COMPL);
+        assertThat(testBatiment.getStructComplNature()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE);
+        assertThat(testBatiment.getStructComplNatureAutre()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE_AUTRE);
         assertThat(testBatiment.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
         assertThat(testBatiment.getNbrRangDeBottes()).isEqualTo(UPDATED_NBR_RANG_DE_BOTTES);
         assertThat(testBatiment.getLongMaxSansMurRefend()).isEqualTo(UPDATED_LONG_MAX_SANS_MUR_REFEND);
         assertThat(testBatiment.getIntegBaie()).isEqualTo(UPDATED_INTEG_BAIE);
         assertThat(testBatiment.getSupportAncrage()).isEqualTo(UPDATED_SUPPORT_ANCRAGE);
-        assertThat(testBatiment.getSupportAncragePrecisions()).isEqualTo(UPDATED_SUPPORT_ANCRAGE_PRECISIONS);
+        assertThat(testBatiment.getSupportAncrageAutre()).isEqualTo(UPDATED_SUPPORT_ANCRAGE_AUTRE);
         assertThat(testBatiment.getRevetInt()).isEqualTo(UPDATED_REVET_INT);
         assertThat(testBatiment.getRevetExt()).isEqualTo(UPDATED_REVET_EXT);
         assertThat(testBatiment.getRevetExtAutre()).isEqualTo(UPDATED_REVET_EXT_AUTRE);
