@@ -13,13 +13,14 @@ enum Cereale {
 
 
 /**
-  * Nature support supplémentaire
+  * Nature support complémentaire
   */
-enum StructureSupplementaire {
+enum StructureComplementaire {
     BOIS ("Bois"),
     BETON_ARME ("Béton armé"),
     METAL ("Métal"),
     MACONNERIE ("Maçonnerie [brique - parpaing - pierre - …]")
+    AUTRE ("Autre")
 }
 
 /**
@@ -152,10 +153,6 @@ entity Batiment {
     // =========================================================================
 
     /**
-      * Paille porteuse en technique secondaire
-      */
-    techniqueSecondaire Boolean,
-    /**
       * Usage
       */
     usageBatiment UsageBatiment,
@@ -213,7 +210,7 @@ entity Batiment {
       */
     bottesTaille TaillesBottes,
     /**
-      * Si taille des bottes non standard
+      * Autre type de botte
       */
     botteTailleAutre String,
     /**
@@ -243,13 +240,17 @@ entity Batiment {
     // Section "Construction"
     // =========================================================================
     /**
-      * Structure supplémentaire
+      * Structure complémentaire
       */
-    structSuppl Boolean,
+    structCompl Boolean,
     /**
-      * Nature Structure supplémentaire
+      * Nature de la structure complémentaire
       */
-    structSupplNature StructureSupplementaire,
+    structComplNature StructureComplementaire,
+    /**
+      * Autre nature de structure complémentaire
+      */
+    structComplNatureAutre String,
     /**
       * Note de calcul
       */
@@ -271,9 +272,9 @@ entity Batiment {
       */
     supportAncrage SupportAncrage,
     /**
-      * Nature du support d'ancrage précisions
+      * Autre nature du support d'ancrage
       */
-    supportAncragePrecisions String,
+    supportAncrageAutre String,
 
         // Sub-section "Revêtement"
         // ==============
