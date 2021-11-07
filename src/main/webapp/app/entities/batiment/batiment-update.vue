@@ -1498,93 +1498,76 @@
             />
           </div>
           <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.dateCreationFiche')"
-              for="batiment-dateCreationFiche"
-              >Date Creation Fiche</label
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.createdDate')" for="batiment-createdDate"
+              >Created Date</label
             >
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="batiment-dateCreationFiche"
-                  v-model="$v.batiment.dateCreationFiche.$model"
-                  name="dateCreationFiche"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="batiment-dateCreationFiche"
-                data-cy="dateCreationFiche"
-                type="text"
+            <div class="d-flex">
+              <input
+                id="batiment-createdDate"
+                data-cy="createdDate"
+                type="datetime-local"
                 class="form-control"
-                name="dateCreationFiche"
-                :class="{ valid: !$v.batiment.dateCreationFiche.$invalid, invalid: $v.batiment.dateCreationFiche.$invalid }"
-                v-model="$v.batiment.dateCreationFiche.$model"
+                name="createdDate"
+                :class="{ valid: !$v.batiment.createdDate.$invalid, invalid: $v.batiment.createdDate.$invalid }"
                 required
+                :value="convertDateTimeFromServer($v.batiment.createdDate.$model)"
+                @change="updateInstantField('createdDate', $event)"
               />
-            </b-input-group>
-            <div v-if="$v.batiment.dateCreationFiche.$anyDirty && $v.batiment.dateCreationFiche.$invalid">
-              <small class="form-text text-danger" v-if="!$v.batiment.dateCreationFiche.required" v-text="$t('entity.validation.required')">
+            </div>
+            <div v-if="$v.batiment.createdDate.$anyDirty && $v.batiment.createdDate.$invalid">
+              <small class="form-text text-danger" v-if="!$v.batiment.createdDate.required" v-text="$t('entity.validation.required')">
                 This field is required.
               </small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.dateModificationFiche')"
-              for="batiment-dateModificationFiche"
-              >Date Modification Fiche</label
-            >
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="batiment-dateModificationFiche"
-                  v-model="$v.batiment.dateModificationFiche.$model"
-                  name="dateModificationFiche"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="batiment-dateModificationFiche"
-                data-cy="dateModificationFiche"
-                type="text"
-                class="form-control"
-                name="dateModificationFiche"
-                :class="{ valid: !$v.batiment.dateModificationFiche.$invalid, invalid: $v.batiment.dateModificationFiche.$invalid }"
-                v-model="$v.batiment.dateModificationFiche.$model"
-                required
-              />
-            </b-input-group>
-            <div v-if="$v.batiment.dateModificationFiche.$anyDirty && $v.batiment.dateModificationFiche.$invalid">
               <small
                 class="form-text text-danger"
-                v-if="!$v.batiment.dateModificationFiche.required"
-                v-text="$t('entity.validation.required')"
+                v-if="!$v.batiment.createdDate.ZonedDateTimelocal"
+                v-text="$t('entity.validation.ZonedDateTimelocal')"
               >
-                This field is required.
+                This field should be a date and time.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.creator')" for="batiment-creator">Creator</label>
-            <select class="form-control" id="batiment-creator" data-cy="creator" name="creator" v-model="batiment.creator" required>
-              <option v-if="!batiment.creator" v-bind:value="null" selected></option>
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.lastModifiedDate')"
+              for="batiment-lastModifiedDate"
+              >Last Modified Date</label
+            >
+            <div class="d-flex">
+              <input
+                id="batiment-lastModifiedDate"
+                data-cy="lastModifiedDate"
+                type="datetime-local"
+                class="form-control"
+                name="lastModifiedDate"
+                :class="{ valid: !$v.batiment.lastModifiedDate.$invalid, invalid: $v.batiment.lastModifiedDate.$invalid }"
+                required
+                :value="convertDateTimeFromServer($v.batiment.lastModifiedDate.$model)"
+                @change="updateInstantField('lastModifiedDate', $event)"
+              />
+            </div>
+            <div v-if="$v.batiment.lastModifiedDate.$anyDirty && $v.batiment.lastModifiedDate.$invalid">
+              <small class="form-text text-danger" v-if="!$v.batiment.lastModifiedDate.required" v-text="$t('entity.validation.required')">
+                This field is required.
+              </small>
+              <small
+                class="form-text text-danger"
+                v-if="!$v.batiment.lastModifiedDate.ZonedDateTimelocal"
+                v-text="$t('entity.validation.ZonedDateTimelocal')"
+              >
+                This field should be a date and time.
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.createdBy')" for="batiment-createdBy"
+              >Created By</label
+            >
+            <select class="form-control" id="batiment-createdBy" data-cy="createdBy" name="createdBy" v-model="batiment.createdBy" required>
+              <option v-if="!batiment.createdBy" v-bind:value="null" selected></option>
               <option
-                v-bind:value="batiment.creator && userOption.id === batiment.creator.id ? batiment.creator : userOption"
+                v-bind:value="batiment.createdBy && userOption.id === batiment.createdBy.id ? batiment.createdBy : userOption"
                 v-for="userOption in users"
                 :key="userOption.id"
               >
@@ -1592,8 +1575,8 @@
               </option>
             </select>
           </div>
-          <div v-if="$v.batiment.creator.$anyDirty && $v.batiment.creator.$invalid">
-            <small class="form-text text-danger" v-if="!$v.batiment.creator.required" v-text="$t('entity.validation.required')">
+          <div v-if="$v.batiment.createdBy.$anyDirty && $v.batiment.createdBy.$invalid">
+            <small class="form-text text-danger" v-if="!$v.batiment.createdBy.required" v-text="$t('entity.validation.required')">
               This field is required.
             </small>
           </div>

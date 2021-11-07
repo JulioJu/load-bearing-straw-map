@@ -16,7 +16,12 @@ describe('Batiment e2e test', () => {
   const batimentPageUrlPattern = new RegExp('/batiment(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'admin';
   const password = Cypress.env('E2E_PASSWORD') ?? 'admin';
-  const batimentSample = { latitude: 21, longitude: -69, dateCreationFiche: '2021-11-07', dateModificationFiche: '2021-11-07' };
+  const batimentSample = {
+    latitude: 21,
+    longitude: -69,
+    createdDate: '2021-11-07T17:31:00.029Z',
+    lastModifiedDate: '2021-11-07T19:55:14.121Z',
+  };
 
   let batiment: any;
   //let user: any;
@@ -127,7 +132,7 @@ describe('Batiment e2e test', () => {
   
           body: {
             ...batimentSample,
-            creator: user,
+            createdBy: user,
           },
         }).then(({ body }) => {
           batiment = body;
@@ -369,11 +374,11 @@ describe('Batiment e2e test', () => {
       cy.get(`[data-cy="nonBatimentEtPhotosPublics"]`).should('not.be.checked');
       cy.get(`[data-cy="nonBatimentEtPhotosPublics"]`).click().should('be.checked');
 
-      cy.get(`[data-cy="dateCreationFiche"]`).type('2021-11-07').should('have.value', '2021-11-07');
+      cy.get(`[data-cy="createdDate"]`).type('2021-11-07T15:06').should('have.value', '2021-11-07T15:06');
 
-      cy.get(`[data-cy="dateModificationFiche"]`).type('2021-11-07').should('have.value', '2021-11-07');
+      cy.get(`[data-cy="lastModifiedDate"]`).type('2021-11-07T09:23').should('have.value', '2021-11-07T09:23');
 
-      cy.get(`[data-cy="creator"]`).select(1);
+      cy.get(`[data-cy="createdBy"]`).select(1);
 
       // since cypress clicks submit too fast before the blob fields are validated
       cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting

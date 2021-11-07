@@ -19,6 +19,8 @@ To upgrade JHipster, I advise to perform manual upgrade
 Then, into your favorite GitHub diff tool, search all occurent of `JulioJu`
 and check if added or removed code around this should be checkout or not.
 
+## Change data-model and regenerate all (without Liquibase)
+
 If you remove all before regenerate app (and for instance change Data Model),
 you could type:
 

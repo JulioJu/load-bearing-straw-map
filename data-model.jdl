@@ -382,18 +382,18 @@ entity Batiment {
         * Date de création de l'enregistrement dans la Base de donnée
         * (autogénéré en back)
         */
-        dateCreationFiche LocalDate required,
+        createdDate Instant required,
         /**
         * Date de modification de l'enregistrement dans la Base de donnée
         * (autogénéré en back)
         */
-        dateModificationFiche LocalDate required
+        lastModifiedDate Instant required,
 }
 
 relationship ManyToOne {
 
     /**
-     * Only creator (set in back at creation) of a Batiment could update or delete it
+     * Only createdBy of a Batiment could update or delete it (set in back at creation)
      */
-    Batiment{creator(login) required}  to User
+    Batiment{createdBy(login) required}  to User
 }

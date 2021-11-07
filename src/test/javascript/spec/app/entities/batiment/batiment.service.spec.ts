@@ -3,7 +3,7 @@ import axios from 'axios';
 import sinon from 'sinon';
 import dayjs from 'dayjs';
 
-import { DATE_FORMAT } from '@/shared/date/filters';
+import { DATE_FORMAT, DATE_TIME_FORMAT } from '@/shared/date/filters';
 import BatimentService from '@/entities/batiment/batiment.service';
 import { Batiment } from '@/shared/model/batiment.model';
 import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model';
@@ -129,8 +129,8 @@ describe('Service Tests', () => {
           {
             constructionDebut: dayjs(currentDate).format(DATE_FORMAT),
             constructionFin: dayjs(currentDate).format(DATE_FORMAT),
-            dateCreationFiche: dayjs(currentDate).format(DATE_FORMAT),
-            dateModificationFiche: dayjs(currentDate).format(DATE_FORMAT),
+            createdDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
+            lastModifiedDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -157,8 +157,8 @@ describe('Service Tests', () => {
             id: 123,
             constructionDebut: dayjs(currentDate).format(DATE_FORMAT),
             constructionFin: dayjs(currentDate).format(DATE_FORMAT),
-            dateCreationFiche: dayjs(currentDate).format(DATE_FORMAT),
-            dateModificationFiche: dayjs(currentDate).format(DATE_FORMAT),
+            createdDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
+            lastModifiedDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -166,8 +166,8 @@ describe('Service Tests', () => {
           {
             constructionDebut: currentDate,
             constructionFin: currentDate,
-            dateCreationFiche: currentDate,
-            dateModificationFiche: currentDate,
+            createdDate: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );
@@ -260,8 +260,8 @@ describe('Service Tests', () => {
             contactPhone: 'BBBBBB',
             codePostal: 'BBBBBB',
             nonBatimentEtPhotosPublics: true,
-            dateCreationFiche: dayjs(currentDate).format(DATE_FORMAT),
-            dateModificationFiche: dayjs(currentDate).format(DATE_FORMAT),
+            createdDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
+            lastModifiedDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -270,8 +270,8 @@ describe('Service Tests', () => {
           {
             constructionDebut: currentDate,
             constructionFin: currentDate,
-            dateCreationFiche: currentDate,
-            dateModificationFiche: currentDate,
+            createdDate: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );
@@ -330,8 +330,8 @@ describe('Service Tests', () => {
             descriptionProjet: 'BBBBBB',
             difficultees: 'BBBBBB',
             codePostal: 'BBBBBB',
-            dateCreationFiche: dayjs(currentDate).format(DATE_FORMAT),
-            dateModificationFiche: dayjs(currentDate).format(DATE_FORMAT),
+            createdDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
+            lastModifiedDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           new Batiment()
         );
@@ -341,8 +341,8 @@ describe('Service Tests', () => {
           {
             constructionDebut: currentDate,
             constructionFin: currentDate,
-            dateCreationFiche: currentDate,
-            dateModificationFiche: currentDate,
+            createdDate: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );
@@ -435,8 +435,8 @@ describe('Service Tests', () => {
             contactPhone: 'BBBBBB',
             codePostal: 'BBBBBB',
             nonBatimentEtPhotosPublics: true,
-            dateCreationFiche: dayjs(currentDate).format(DATE_FORMAT),
-            dateModificationFiche: dayjs(currentDate).format(DATE_FORMAT),
+            createdDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
+            lastModifiedDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -444,8 +444,8 @@ describe('Service Tests', () => {
           {
             constructionDebut: currentDate,
             constructionFin: currentDate,
-            dateCreationFiche: currentDate,
-            dateModificationFiche: currentDate,
+            createdDate: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );

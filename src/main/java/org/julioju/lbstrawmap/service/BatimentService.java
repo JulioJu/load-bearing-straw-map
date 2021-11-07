@@ -270,11 +270,11 @@ public class BatimentService {
                 if (batiment.getNonBatimentEtPhotosPublics() != null) {
                     existingBatiment.setNonBatimentEtPhotosPublics(batiment.getNonBatimentEtPhotosPublics());
                 }
-                if (batiment.getDateCreationFiche() != null) {
-                    existingBatiment.setDateCreationFiche(batiment.getDateCreationFiche());
+                if (batiment.getCreatedDate() != null) {
+                    existingBatiment.setCreatedDate(batiment.getCreatedDate());
                 }
-                if (batiment.getDateModificationFiche() != null) {
-                    existingBatiment.setDateModificationFiche(batiment.getDateModificationFiche());
+                if (batiment.getLastModifiedDate() != null) {
+                    existingBatiment.setLastModifiedDate(batiment.getLastModifiedDate());
                 }
 
                 return existingBatiment;

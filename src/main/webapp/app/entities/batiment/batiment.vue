@@ -312,17 +312,17 @@
                 :field-name="'nonBatimentEtPhotosPublics'"
               ></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('dateCreationFiche')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.dateCreationFiche')">Date Creation Fiche</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dateCreationFiche'"></jhi-sort-indicator>
+            <th scope="row" v-on:click="changeOrder('createdDate')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.createdDate')">Created Date</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdDate'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('dateModificationFiche')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.dateModificationFiche')">Date Modification Fiche</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'dateModificationFiche'"></jhi-sort-indicator>
+            <th scope="row" v-on:click="changeOrder('lastModifiedDate')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.lastModifiedDate')">Last Modified Date</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'lastModifiedDate'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('creator.login')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.creator')">Creator</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'creator.login'"></jhi-sort-indicator>
+            <th scope="row" v-on:click="changeOrder('createdBy.login')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.createdBy')">Created By</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdBy.login'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
           </tr>
@@ -458,10 +458,10 @@
             <td>{{ batiment.contactPhone }}</td>
             <td>{{ batiment.codePostal }}</td>
             <td>{{ batiment.nonBatimentEtPhotosPublics }}</td>
-            <td>{{ batiment.dateCreationFiche }}</td>
-            <td>{{ batiment.dateModificationFiche }}</td>
+            <td>{{ batiment.createdDate ? $d(Date.parse(batiment.createdDate), 'short') : '' }}</td>
+            <td>{{ batiment.lastModifiedDate ? $d(Date.parse(batiment.lastModifiedDate), 'short') : '' }}</td>
             <td>
-              {{ batiment.creator ? batiment.creator.login : '' }}
+              {{ batiment.createdBy ? batiment.createdBy.login : '' }}
             </td>
             <td class="text-right">
               <div class="btn-group">

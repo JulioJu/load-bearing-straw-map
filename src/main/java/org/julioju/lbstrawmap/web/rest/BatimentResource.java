@@ -65,7 +65,7 @@ public class BatimentResource {
     }
 
     private void updateOrDeleteCheckUser(Long batimentId) {
-        String batimentCreatorId = batimentRepository.findWithOnlyCreatorIds(batimentId).get(0).getCreatorId();
+        Long batimentCreatorId = batimentRepository.findWithOnlyCreatorIds(batimentId).get(0).getCreatedBy();
         if (!this.currentUser().getId().equals(batimentCreatorId)) {
             throw new BadRequestAlertException(
                 "You are not the creator, you could not change this",
@@ -90,10 +90,6 @@ public class BatimentResource {
         if (batiment.getId() != null) {
             throw new BadRequestAlertException("A new batiment cannot already have an ID", ENTITY_NAME, "idexists");
         }
-
-        // START added by JulioJu
-        batiment.setCreator(this.currentUser());
-        // END added by JulioJu
 
         Batiment result = batimentService.save(batiment);
         return ResponseEntity

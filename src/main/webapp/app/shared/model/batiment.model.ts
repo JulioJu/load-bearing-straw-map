@@ -85,9 +85,9 @@ export interface IBatiment {
   contactPhone?: string | null;
   codePostal?: string | null;
   nonBatimentEtPhotosPublics?: boolean | null;
-  dateCreationFiche?: Date;
-  dateModificationFiche?: Date;
-  creator?: IUser;
+  createdDate?: Date;
+  lastModifiedDate?: Date;
+  createdBy?: IUser;
 }
 
 export class Batiment implements IBatiment {
@@ -167,9 +167,9 @@ export class Batiment implements IBatiment {
     public contactPhone?: string | null,
     public codePostal?: string | null,
     public nonBatimentEtPhotosPublics?: boolean | null,
-    public dateCreationFiche?: Date,
-    public dateModificationFiche?: Date,
-    public creator?: IUser
+    public createdDate?: Date,
+    public lastModifiedDate?: Date,
+    public createdBy?: IUser
   ) {
     this.travauxNeuf = this.travauxNeuf ?? false;
     this.travauxExtension = this.travauxExtension ?? false;

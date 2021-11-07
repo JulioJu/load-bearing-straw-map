@@ -6,11 +6,11 @@
     <!--
         Added the constraints for entity Batiment.
     -->
-    <changeSet id="20211107111612-2" author="jhipster">
+    <changeSet id="20211107201932-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="creator_id"
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
                                  baseTableName="batiment"
-                                 constraintName="fk_batiment__creator_id"
+                                 constraintName="fk_batiment__created_by_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
     </changeSet>

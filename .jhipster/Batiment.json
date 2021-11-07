@@ -387,15 +387,15 @@
       "javadoc": "If true, anonymous users (not authenticated) could see photos. Search\\nengine could  index it."
     },
     {
-      "fieldName": "dateCreationFiche",
-      "fieldType": "LocalDate",
-      "javadoc": "Date de création de l'enregistrement dans la Base de donnée\\n(autogénéré en back)",
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "javadoc": "Date de création de l'enregistrement dans la Base de donnée\\n(autogénéré en back)\\nUse `@CreatedDate` Spring Data annotation",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "dateModificationFiche",
-      "fieldType": "LocalDate",
-      "javadoc": "Date de modification de l'enregistrement dans la Base de donnée\\n(autogénéré en back)",
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
+      "javadoc": "Date de modification de l'enregistrement dans la Base de donnée\\n(autogénéré en back)\\nUse `@LastModifiedDate` Spring Data annotation",
       "fieldValidateRules": ["required"]
     }
   ],
@@ -405,8 +405,8 @@
       "otherEntityName": "user",
       "otherEntityRelationshipName": "batiment",
       "relationshipValidateRules": "required",
-      "javadoc": "Only creator (set in back at creation) of a Batiment could update or delete it",
-      "relationshipName": "creator",
+      "javadoc": "Only createdBy (set in back at creation) of a Batiment could update or delete it",
+      "relationshipName": "createdBy",
       "otherEntityField": "login"
     }
   ],
@@ -419,5 +419,5 @@
   "readOnly": false,
   "embedded": false,
   "applications": "*",
-  "changelogDate": "20211107111612"
+  "changelogDate": "20211107201932"
 }

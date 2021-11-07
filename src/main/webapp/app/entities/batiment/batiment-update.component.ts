@@ -4,6 +4,8 @@ import { mixins } from 'vue-class-component';
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import { decimal, required, minValue, maxValue, maxLength } from 'vuelidate/lib/validators';
+import dayjs from 'dayjs';
+import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 
 import AlertService from '@/shared/alert/alert.service';
 
@@ -133,13 +135,13 @@ const validations: any = {
       maxLength: maxLength(6),
     },
     nonBatimentEtPhotosPublics: {},
-    dateCreationFiche: {
+    createdDate: {
       required,
     },
-    dateModificationFiche: {
+    lastModifiedDate: {
       required,
     },
-    creator: {
+    createdBy: {
       required,
     },
   },
@@ -248,10 +250,35 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
     }
   }
 
+  public convertDateTimeFromServer(date: Date): string {
+    if (date && dayjs(date).isValid()) {
+      return dayjs(date).format(DATE_TIME_LONG_FORMAT);
+    }
+    return null;
+  }
+
+  public updateInstantField(field, event) {
+    if (event.target.value) {
+      this.batiment[field] = dayjs(event.target.value, DATE_TIME_LONG_FORMAT);
+    } else {
+      this.batiment[field] = null;
+    }
+  }
+
+  public updateZonedDateTimeField(field, event) {
+    if (event.target.value) {
+      this.batiment[field] = dayjs(event.target.value, DATE_TIME_LONG_FORMAT);
+    } else {
+      this.batiment[field] = null;
+    }
+  }
+
   public retrieveBatiment(batimentId): void {
     this.batimentService()
       .find(batimentId)
       .then(res => {
+        res.createdDate = new Date(res.createdDate);
+        res.lastModifiedDate = new Date(res.lastModifiedDate);
         this.batiment = res;
       })
       .catch(error => {

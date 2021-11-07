@@ -471,22 +471,22 @@
             <span>{{ batiment.nonBatimentEtPhotosPublics }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.dateCreationFiche')">Date Creation Fiche</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.createdDate')">Created Date</span>
           </dt>
           <dd>
-            <span>{{ batiment.dateCreationFiche }}</span>
+            <span v-if="batiment.createdDate">{{ $d(Date.parse(batiment.createdDate), 'long') }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.dateModificationFiche')">Date Modification Fiche</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.lastModifiedDate')">Last Modified Date</span>
           </dt>
           <dd>
-            <span>{{ batiment.dateModificationFiche }}</span>
+            <span v-if="batiment.lastModifiedDate">{{ $d(Date.parse(batiment.lastModifiedDate), 'long') }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.creator')">Creator</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.createdBy')">Created By</span>
           </dt>
           <dd>
-            {{ batiment.creator ? batiment.creator.login : '' }}
+            {{ batiment.createdBy ? batiment.createdBy.login : '' }}
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

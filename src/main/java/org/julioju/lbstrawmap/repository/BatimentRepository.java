@@ -17,11 +17,13 @@ public interface BatimentRepository extends JpaRepository<Batiment, Long> {
     )
     List<org.julioju.lbstrawmap.domain.BatimentLazyView> findAllLazy();
 
-    @Query(nativeQuery = true, value = "select ba.creator_id as creatorId from Batiment ba where ba.id = :batId")
+    @Query(nativeQuery = true, value = "select ba.created_by_id as createdBy from Batiment ba where ba.id = :batId")
     List<org.julioju.lbstrawmap.domain.BatimentWithOnlyCreatorId> findWithOnlyCreatorIds(
         @org.springframework.data.repository.query.Param("batId") Long batId
     );
 
-    @Query("select batiment from Batiment batiment where batiment.creator.login = ?#{principal.preferredUsername}")
-    List<Batiment> findByCreatorIsCurrentUser();
+    // END added by JulioJu
+
+    @Query("select batiment from Batiment batiment where batiment.createdBy.login = ?#{principal.username}")
+    List<Batiment> findByCreatedByIsCurrentUser();
 }

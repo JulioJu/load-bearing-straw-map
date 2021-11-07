@@ -2,6 +2,7 @@ package org.julioju.lbstrawmap.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -24,6 +25,9 @@ import org.julioju.lbstrawmap.domain.enumeration.YesNoPartial;
 @Entity
 @Table(name = "batiment")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+// START added by JulioJu
+@EntityListeners(org.springframework.data.jpa.domain.support.AuditingEntityListener.class)
+// END added by JulioJu
 public class Batiment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -495,28 +499,46 @@ public class Batiment implements Serializable {
     private Boolean nonBatimentEtPhotosPublics;
 
     /**
-     * Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)
+     * Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)\nUse `@CreatedDate` Spring Data annotation
      */
-    @ApiModelProperty(value = "Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)", required = true)
-    @NotNull
-    @Column(name = "date_creation_fiche", nullable = false)
-    private LocalDate dateCreationFiche;
+    @ApiModelProperty(
+        value = "Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)\nUse `@CreatedDate` Spring Data annotation",
+        required = true
+    )
+    // START added by JulioJu
+    @org.hibernate.annotations.CreationTimestamp
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    private Instant createdDate;
+
+    // END added by JulioJu
 
     /**
-     * Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)
+     * Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)\nUse `@LastModifiedDate` Spring Data annotation
      */
-    @ApiModelProperty(value = "Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)", required = true)
-    @NotNull
-    @Column(name = "date_modification_fiche", nullable = false)
-    private LocalDate dateModificationFiche;
+    @ApiModelProperty(
+        value = "Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)\nUse `@LastModifiedDate` Spring Data annotation",
+        required = true
+    )
+    @Column(name = "last_modified_date", nullable = false)
+    // START added by JulioJu
+    @org.hibernate.annotations.UpdateTimestamp
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    private Instant lastModifiedDate;
+
+    // END added by JulioJu
 
     /**
-     * Only creator (set in back at creation) of a Batiment could update or delete it
+     * Only createdBy (set in back at creation) of a Batiment could update or delete it
      */
-    @ApiModelProperty(value = "Only creator (set in back at creation) of a Batiment could update or delete it")
+    @ApiModelProperty(value = "Only createdBy (set in back at creation) of a Batiment could update or delete it")
     @ManyToOne(optional = false)
-    @NotNull
-    private User creator;
+    // START added by JulioJu
+    @org.springframework.data.annotation.CreatedBy
+    @JoinColumn(name = "created_by_id", nullable = false, updatable = false)
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    // END added by JulioJu
+    private User createdBy;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -1495,42 +1517,42 @@ public class Batiment implements Serializable {
         this.nonBatimentEtPhotosPublics = nonBatimentEtPhotosPublics;
     }
 
-    public LocalDate getDateCreationFiche() {
-        return this.dateCreationFiche;
+    public Instant getCreatedDate() {
+        return this.createdDate;
     }
 
-    public Batiment dateCreationFiche(LocalDate dateCreationFiche) {
-        this.setDateCreationFiche(dateCreationFiche);
+    public Batiment createdDate(Instant createdDate) {
+        this.setCreatedDate(createdDate);
         return this;
     }
 
-    public void setDateCreationFiche(LocalDate dateCreationFiche) {
-        this.dateCreationFiche = dateCreationFiche;
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public LocalDate getDateModificationFiche() {
-        return this.dateModificationFiche;
+    public Instant getLastModifiedDate() {
+        return this.lastModifiedDate;
     }
 
-    public Batiment dateModificationFiche(LocalDate dateModificationFiche) {
-        this.setDateModificationFiche(dateModificationFiche);
+    public Batiment lastModifiedDate(Instant lastModifiedDate) {
+        this.setLastModifiedDate(lastModifiedDate);
         return this;
     }
 
-    public void setDateModificationFiche(LocalDate dateModificationFiche) {
-        this.dateModificationFiche = dateModificationFiche;
+    public void setLastModifiedDate(Instant lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
-    public User getCreator() {
-        return this.creator;
+    public User getCreatedBy() {
+        return this.createdBy;
     }
 
-    public void setCreator(User user) {
-        this.creator = user;
+    public void setCreatedBy(User user) {
+        this.createdBy = user;
     }
 
-    public Batiment creator(User user) {
-        this.setCreator(user);
+    public Batiment createdBy(User user) {
+        this.setCreatedBy(user);
         return this;
     }
 
@@ -1632,8 +1654,8 @@ public class Batiment implements Serializable {
             ", contactPhone='" + getContactPhone() + "'" +
             ", codePostal='" + getCodePostal() + "'" +
             ", nonBatimentEtPhotosPublics='" + getNonBatimentEtPhotosPublics() + "'" +
-            ", dateCreationFiche='" + getDateCreationFiche() + "'" +
-            ", dateModificationFiche='" + getDateModificationFiche() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

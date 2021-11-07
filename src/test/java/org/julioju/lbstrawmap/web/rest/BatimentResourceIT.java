@@ -5,8 +5,10 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -259,11 +261,11 @@ class BatimentResourceIT {
     private static final Boolean DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS = false;
     private static final Boolean UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS = true;
 
-    private static final LocalDate DEFAULT_DATE_CREATION_FICHE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_CREATION_FICHE = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final LocalDate DEFAULT_DATE_MODIFICATION_FICHE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_MODIFICATION_FICHE = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_LAST_MODIFIED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_LAST_MODIFIED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final String ENTITY_API_URL = "/api/batiments";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -364,13 +366,13 @@ class BatimentResourceIT {
             .contactPhone(DEFAULT_CONTACT_PHONE)
             .codePostal(DEFAULT_CODE_POSTAL)
             .nonBatimentEtPhotosPublics(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS)
-            .dateCreationFiche(DEFAULT_DATE_CREATION_FICHE)
-            .dateModificationFiche(DEFAULT_DATE_MODIFICATION_FICHE);
+            .createdDate(DEFAULT_CREATED_DATE)
+            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE);
         // Add required entity
         User user = UserResourceIT.createEntity(em);
         em.persist(user);
         em.flush();
-        batiment.setCreator(user);
+        batiment.setCreatedBy(user);
         return batiment;
     }
 
@@ -456,13 +458,13 @@ class BatimentResourceIT {
             .contactPhone(UPDATED_CONTACT_PHONE)
             .codePostal(UPDATED_CODE_POSTAL)
             .nonBatimentEtPhotosPublics(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS)
-            .dateCreationFiche(UPDATED_DATE_CREATION_FICHE)
-            .dateModificationFiche(UPDATED_DATE_MODIFICATION_FICHE);
+            .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
         // Add required entity
         User user = UserResourceIT.createEntity(em);
         em.persist(user);
         em.flush();
-        batiment.setCreator(user);
+        batiment.setCreatedBy(user);
         return batiment;
     }
 
@@ -558,8 +560,8 @@ class BatimentResourceIT {
         assertThat(testBatiment.getContactPhone()).isEqualTo(DEFAULT_CONTACT_PHONE);
         assertThat(testBatiment.getCodePostal()).isEqualTo(DEFAULT_CODE_POSTAL);
         assertThat(testBatiment.getNonBatimentEtPhotosPublics()).isEqualTo(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS);
-        assertThat(testBatiment.getDateCreationFiche()).isEqualTo(DEFAULT_DATE_CREATION_FICHE);
-        assertThat(testBatiment.getDateModificationFiche()).isEqualTo(DEFAULT_DATE_MODIFICATION_FICHE);
+        assertThat(testBatiment.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testBatiment.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
     }
 
     @Test
@@ -616,10 +618,10 @@ class BatimentResourceIT {
 
     @Test
     @Transactional
-    void checkDateCreationFicheIsRequired() throws Exception {
+    void checkCreatedDateIsRequired() throws Exception {
         int databaseSizeBeforeTest = batimentRepository.findAll().size();
         // set the field null
-        batiment.setDateCreationFiche(null);
+        batiment.setCreatedDate(null);
 
         // Create the Batiment, which fails.
 
@@ -633,10 +635,10 @@ class BatimentResourceIT {
 
     @Test
     @Transactional
-    void checkDateModificationFicheIsRequired() throws Exception {
+    void checkLastModifiedDateIsRequired() throws Exception {
         int databaseSizeBeforeTest = batimentRepository.findAll().size();
         // set the field null
-        batiment.setDateModificationFiche(null);
+        batiment.setLastModifiedDate(null);
 
         // Create the Batiment, which fails.
 
@@ -734,8 +736,8 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.[*].contactPhone").value(hasItem(DEFAULT_CONTACT_PHONE)))
             .andExpect(jsonPath("$.[*].codePostal").value(hasItem(DEFAULT_CODE_POSTAL)))
             .andExpect(jsonPath("$.[*].nonBatimentEtPhotosPublics").value(hasItem(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS.booleanValue())))
-            .andExpect(jsonPath("$.[*].dateCreationFiche").value(hasItem(DEFAULT_DATE_CREATION_FICHE.toString())))
-            .andExpect(jsonPath("$.[*].dateModificationFiche").value(hasItem(DEFAULT_DATE_MODIFICATION_FICHE.toString())));
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())));
     }
 
     @Test
@@ -824,8 +826,8 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.contactPhone").value(DEFAULT_CONTACT_PHONE))
             .andExpect(jsonPath("$.codePostal").value(DEFAULT_CODE_POSTAL))
             .andExpect(jsonPath("$.nonBatimentEtPhotosPublics").value(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS.booleanValue()))
-            .andExpect(jsonPath("$.dateCreationFiche").value(DEFAULT_DATE_CREATION_FICHE.toString()))
-            .andExpect(jsonPath("$.dateModificationFiche").value(DEFAULT_DATE_MODIFICATION_FICHE.toString()));
+            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
+            .andExpect(jsonPath("$.lastModifiedDate").value(DEFAULT_LAST_MODIFIED_DATE.toString()));
     }
 
     @Test
@@ -922,8 +924,8 @@ class BatimentResourceIT {
             .contactPhone(UPDATED_CONTACT_PHONE)
             .codePostal(UPDATED_CODE_POSTAL)
             .nonBatimentEtPhotosPublics(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS)
-            .dateCreationFiche(UPDATED_DATE_CREATION_FICHE)
-            .dateModificationFiche(UPDATED_DATE_MODIFICATION_FICHE);
+            .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
 
         restBatimentMockMvc
             .perform(
@@ -1011,8 +1013,8 @@ class BatimentResourceIT {
         assertThat(testBatiment.getContactPhone()).isEqualTo(UPDATED_CONTACT_PHONE);
         assertThat(testBatiment.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
         assertThat(testBatiment.getNonBatimentEtPhotosPublics()).isEqualTo(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS);
-        assertThat(testBatiment.getDateCreationFiche()).isEqualTo(UPDATED_DATE_CREATION_FICHE);
-        assertThat(testBatiment.getDateModificationFiche()).isEqualTo(UPDATED_DATE_MODIFICATION_FICHE);
+        assertThat(testBatiment.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testBatiment.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }
 
     @Test
@@ -1209,8 +1211,8 @@ class BatimentResourceIT {
         assertThat(testBatiment.getContactPhone()).isEqualTo(DEFAULT_CONTACT_PHONE);
         assertThat(testBatiment.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
         assertThat(testBatiment.getNonBatimentEtPhotosPublics()).isEqualTo(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS);
-        assertThat(testBatiment.getDateCreationFiche()).isEqualTo(DEFAULT_DATE_CREATION_FICHE);
-        assertThat(testBatiment.getDateModificationFiche()).isEqualTo(DEFAULT_DATE_MODIFICATION_FICHE);
+        assertThat(testBatiment.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testBatiment.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
     }
 
     @Test
@@ -1300,8 +1302,8 @@ class BatimentResourceIT {
             .contactPhone(UPDATED_CONTACT_PHONE)
             .codePostal(UPDATED_CODE_POSTAL)
             .nonBatimentEtPhotosPublics(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS)
-            .dateCreationFiche(UPDATED_DATE_CREATION_FICHE)
-            .dateModificationFiche(UPDATED_DATE_MODIFICATION_FICHE);
+            .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
 
         restBatimentMockMvc
             .perform(
@@ -1389,8 +1391,8 @@ class BatimentResourceIT {
         assertThat(testBatiment.getContactPhone()).isEqualTo(UPDATED_CONTACT_PHONE);
         assertThat(testBatiment.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
         assertThat(testBatiment.getNonBatimentEtPhotosPublics()).isEqualTo(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS);
-        assertThat(testBatiment.getDateCreationFiche()).isEqualTo(UPDATED_DATE_CREATION_FICHE);
-        assertThat(testBatiment.getDateModificationFiche()).isEqualTo(UPDATED_DATE_MODIFICATION_FICHE);
+        assertThat(testBatiment.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testBatiment.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }
 
     @Test
