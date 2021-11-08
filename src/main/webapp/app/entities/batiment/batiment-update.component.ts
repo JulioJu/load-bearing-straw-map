@@ -9,8 +9,6 @@ import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 
 import AlertService from '@/shared/alert/alert.service';
 
-import UserService from '@/admin/user-management/user-management.service';
-
 import { IBatiment, Batiment } from '@/shared/model/batiment.model';
 import BatimentService from './batiment.service';
 import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model';
@@ -70,7 +68,9 @@ const validations: any = {
       maxLength: maxLength(50),
     },
     photo5Description: {},
+    nonBatimentEtPhotosPublics: {},
     usageBatiment: {},
+    usageBatimentAutre: {},
     cout: {},
     surfacePlancher: {},
     niveaux: {},
@@ -90,14 +90,21 @@ const validations: any = {
     participatif: {},
     structCompl: {},
     structComplNature: {},
-    structComplNatureAutre: {},
+    structComplAutre: {
+      maxLength: maxLength(512),
+    },
+    structComplNaturePrecision: {
+      maxLength: maxLength(512),
+    },
+    longMaxSansMurRefend: {},
     noteCalcul: {},
     nbrRangDeBottes: {},
-    longMaxSansMurRefend: {},
     integBaie: {},
+    integBaieAutre: {},
     supportAncrage: {},
     supportAncrageAutre: {},
     revetInt: {},
+    revetIntAutre: {},
     revetExt: {},
     revetExtAutre: {},
     maitreDOuvrage: {
@@ -134,16 +141,9 @@ const validations: any = {
     codePostal: {
       maxLength: maxLength(6),
     },
-    nonBatimentEtPhotosPublics: {},
-    createdDate: {
-      required,
-    },
-    lastModifiedDate: {
-      required,
-    },
-    createdBy: {
-      required,
-    },
+    createdDate: {},
+    lastModifiedDate: {},
+    createdBy: {},
   },
 };
 
@@ -155,10 +155,6 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
   @Inject('alertService') private alertService: () => AlertService;
 
   public batiment: IBatiment = new Batiment();
-
-  @Inject('userService') private userService: () => UserService;
-
-  public users: Array<any> = [];
   public usageBatimentValues: string[] = Object.keys(UsageBatiment);
   public taillesBottesValues: string[] = Object.keys(TaillesBottes);
   public cerealeValues: string[] = Object.keys(Cereale);
@@ -304,11 +300,5 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
     }
   }
 
-  public initRelationships(): void {
-    this.userService()
-      .retrieve()
-      .then(res => {
-        this.users = res.data;
-      });
-  }
+  public initRelationships(): void {}
 }

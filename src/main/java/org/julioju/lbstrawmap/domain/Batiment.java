@@ -143,12 +143,27 @@ public class Batiment implements Serializable {
     private String photo5Description;
 
     /**
+     * If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.
+     */
+    @ApiModelProperty(value = "If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.")
+    @Column(name = "non_batiment_et_photos_publics")
+    private Boolean nonBatimentEtPhotosPublics;
+
+    /**
      * Usage
      */
     @ApiModelProperty(value = "Usage")
     @Enumerated(EnumType.STRING)
     @Column(name = "usage_batiment")
     private UsageBatiment usageBatiment;
+
+    /**
+     * Si \"Autre\", préciser
+     */
+    @ApiModelProperty(value = "Si \"Autre\", préciser")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "usage_batiment_autre")
+    private UsageBatiment usageBatimentAutre;
 
     /**
      * Coût [€]
@@ -274,9 +289,9 @@ public class Batiment implements Serializable {
     private YesNoPartial participatif;
 
     /**
-     * Structure complémentaire
+     * Structure complémentaire à la structure en paille porteuse (poteau, mur de refend, …)
      */
-    @ApiModelProperty(value = "Structure complémentaire")
+    @ApiModelProperty(value = "Structure complémentaire à la structure en paille porteuse (poteau, mur de refend, …)")
     @Column(name = "struct_compl")
     private Boolean structCompl;
 
@@ -289,11 +304,27 @@ public class Batiment implements Serializable {
     private StructureComplementaire structComplNature;
 
     /**
-     * Autre nature de structure complémentaire
+     * Si \"Autre\", préciser
      */
-    @ApiModelProperty(value = "Autre nature de structure complémentaire")
-    @Column(name = "struct_compl_nature_autre")
-    private String structComplNatureAutre;
+    @ApiModelProperty(value = "Si \"Autre\", préciser")
+    @Size(max = 512)
+    @Column(name = "struct_compl_autre", length = 512)
+    private String structComplAutre;
+
+    /**
+     * Longueur maximum sans mur de refend (mètre)
+     */
+    @ApiModelProperty(value = "Longueur maximum sans mur de refend (mètre)")
+    @Size(max = 512)
+    @Column(name = "struct_compl_nature_precision", length = 512)
+    private String structComplNaturePrecision;
+
+    /**
+     * Longueur maximum sans mur de refend (mètre)
+     */
+    @ApiModelProperty(value = "Longueur maximum sans mur de refend (mètre)")
+    @Column(name = "long_max_sans_mur_refend")
+    private Float longMaxSansMurRefend;
 
     /**
      * Note de calcul
@@ -310,19 +341,19 @@ public class Batiment implements Serializable {
     private Integer nbrRangDeBottes;
 
     /**
-     * Longueur maximum sans mur de refend (mètre)
-     */
-    @ApiModelProperty(value = "Longueur maximum sans mur de refend (mètre)")
-    @Column(name = "long_max_sans_mur_refend")
-    private Float longMaxSansMurRefend;
-
-    /**
      * Intégration des baies
      */
     @ApiModelProperty(value = "Intégration des baies")
     @Enumerated(EnumType.STRING)
     @Column(name = "integ_baie")
     private IntegBaie integBaie;
+
+    /**
+     * Si \"Autre\", préciser
+     */
+    @ApiModelProperty(value = "Si \"Autre\", préciser")
+    @Column(name = "integ_baie_autre")
+    private String integBaieAutre;
 
     /**
      * Nature du support d'ancrage
@@ -333,9 +364,9 @@ public class Batiment implements Serializable {
     private SupportAncrage supportAncrage;
 
     /**
-     * Autre nature du support d'ancrage
+     * Si \"Autre\", préciser
      */
-    @ApiModelProperty(value = "Autre nature du support d'ancrage")
+    @ApiModelProperty(value = "Si \"Autre\", préciser")
     @Column(name = "support_ancrage_autre")
     private String supportAncrageAutre;
 
@@ -348,6 +379,13 @@ public class Batiment implements Serializable {
     private RevetInt revetInt;
 
     /**
+     * Si \"Autre\", préciser
+     */
+    @ApiModelProperty(value = "Si \"Autre\", préciser")
+    @Column(name = "revet_int_autre")
+    private String revetIntAutre;
+
+    /**
      * Revêtement extérieur
      */
     @ApiModelProperty(value = "Revêtement extérieur")
@@ -356,9 +394,9 @@ public class Batiment implements Serializable {
     private RevetExt revetExt;
 
     /**
-     * Revêtement extérieur autre
+     * Si \"Autre\", préciser
      */
-    @ApiModelProperty(value = "Revêtement extérieur autre")
+    @ApiModelProperty(value = "Si \"Autre\", préciser")
     @Column(name = "revet_ext_autre")
     private String revetExtAutre;
 
@@ -492,53 +530,37 @@ public class Batiment implements Serializable {
     private String codePostal;
 
     /**
-     * If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.
+     * Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)
      */
-    @ApiModelProperty(value = "If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.")
-    @Column(name = "non_batiment_et_photos_publics")
-    private Boolean nonBatimentEtPhotosPublics;
-
-    /**
-     * Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)\nUse `@CreatedDate` Spring Data annotation
-     */
-    @ApiModelProperty(
-        value = "Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)\nUse `@CreatedDate` Spring Data annotation",
-        required = true
-    )
+    @ApiModelProperty(value = "Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)")
     // START added by JulioJu
+    @Column(name = "created_date", updatable = false)
     @org.hibernate.annotations.CreationTimestamp
-    @Column(name = "created_date", nullable = false, updatable = false)
     @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    // END added by JulioJu
     private Instant createdDate;
 
-    // END added by JulioJu
-
     /**
-     * Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)\nUse `@LastModifiedDate` Spring Data annotation
+     * Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)
      */
-    @ApiModelProperty(
-        value = "Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)\nUse `@LastModifiedDate` Spring Data annotation",
-        required = true
-    )
-    @Column(name = "last_modified_date", nullable = false)
+    @ApiModelProperty(value = "Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)")
+    @Column(name = "last_modified_date")
     // START added by JulioJu
     @org.hibernate.annotations.UpdateTimestamp
     @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    // END added by JulioJu
     private Instant lastModifiedDate;
 
-    // END added by JulioJu
-
     /**
-     * Only createdBy (set in back at creation) of a Batiment could update or delete it
+     * Only createdBy of a Batiment could update or delete it (set in back at creation)
      */
-    @ApiModelProperty(value = "Only createdBy (set in back at creation) of a Batiment could update or delete it")
-    @ManyToOne(optional = false)
+    @ApiModelProperty(value = "Only createdBy of a Batiment could update or delete it (set in back at creation)")
     // START added by JulioJu
+    @Column(name = "created_by", updatable = false)
     @org.springframework.data.annotation.CreatedBy
-    @JoinColumn(name = "created_by_id", nullable = false, updatable = false)
     @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
     // END added by JulioJu
-    private User createdBy;
+    private String createdBy;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -906,6 +928,19 @@ public class Batiment implements Serializable {
         this.photo5Description = photo5Description;
     }
 
+    public Boolean getNonBatimentEtPhotosPublics() {
+        return this.nonBatimentEtPhotosPublics;
+    }
+
+    public Batiment nonBatimentEtPhotosPublics(Boolean nonBatimentEtPhotosPublics) {
+        this.setNonBatimentEtPhotosPublics(nonBatimentEtPhotosPublics);
+        return this;
+    }
+
+    public void setNonBatimentEtPhotosPublics(Boolean nonBatimentEtPhotosPublics) {
+        this.nonBatimentEtPhotosPublics = nonBatimentEtPhotosPublics;
+    }
+
     public UsageBatiment getUsageBatiment() {
         return this.usageBatiment;
     }
@@ -917,6 +952,19 @@ public class Batiment implements Serializable {
 
     public void setUsageBatiment(UsageBatiment usageBatiment) {
         this.usageBatiment = usageBatiment;
+    }
+
+    public UsageBatiment getUsageBatimentAutre() {
+        return this.usageBatimentAutre;
+    }
+
+    public Batiment usageBatimentAutre(UsageBatiment usageBatimentAutre) {
+        this.setUsageBatimentAutre(usageBatimentAutre);
+        return this;
+    }
+
+    public void setUsageBatimentAutre(UsageBatiment usageBatimentAutre) {
+        this.usageBatimentAutre = usageBatimentAutre;
     }
 
     public Integer getCout() {
@@ -1166,17 +1214,43 @@ public class Batiment implements Serializable {
         this.structComplNature = structComplNature;
     }
 
-    public String getStructComplNatureAutre() {
-        return this.structComplNatureAutre;
+    public String getStructComplAutre() {
+        return this.structComplAutre;
     }
 
-    public Batiment structComplNatureAutre(String structComplNatureAutre) {
-        this.setStructComplNatureAutre(structComplNatureAutre);
+    public Batiment structComplAutre(String structComplAutre) {
+        this.setStructComplAutre(structComplAutre);
         return this;
     }
 
-    public void setStructComplNatureAutre(String structComplNatureAutre) {
-        this.structComplNatureAutre = structComplNatureAutre;
+    public void setStructComplAutre(String structComplAutre) {
+        this.structComplAutre = structComplAutre;
+    }
+
+    public String getStructComplNaturePrecision() {
+        return this.structComplNaturePrecision;
+    }
+
+    public Batiment structComplNaturePrecision(String structComplNaturePrecision) {
+        this.setStructComplNaturePrecision(structComplNaturePrecision);
+        return this;
+    }
+
+    public void setStructComplNaturePrecision(String structComplNaturePrecision) {
+        this.structComplNaturePrecision = structComplNaturePrecision;
+    }
+
+    public Float getLongMaxSansMurRefend() {
+        return this.longMaxSansMurRefend;
+    }
+
+    public Batiment longMaxSansMurRefend(Float longMaxSansMurRefend) {
+        this.setLongMaxSansMurRefend(longMaxSansMurRefend);
+        return this;
+    }
+
+    public void setLongMaxSansMurRefend(Float longMaxSansMurRefend) {
+        this.longMaxSansMurRefend = longMaxSansMurRefend;
     }
 
     public Boolean getNoteCalcul() {
@@ -1205,19 +1279,6 @@ public class Batiment implements Serializable {
         this.nbrRangDeBottes = nbrRangDeBottes;
     }
 
-    public Float getLongMaxSansMurRefend() {
-        return this.longMaxSansMurRefend;
-    }
-
-    public Batiment longMaxSansMurRefend(Float longMaxSansMurRefend) {
-        this.setLongMaxSansMurRefend(longMaxSansMurRefend);
-        return this;
-    }
-
-    public void setLongMaxSansMurRefend(Float longMaxSansMurRefend) {
-        this.longMaxSansMurRefend = longMaxSansMurRefend;
-    }
-
     public IntegBaie getIntegBaie() {
         return this.integBaie;
     }
@@ -1229,6 +1290,19 @@ public class Batiment implements Serializable {
 
     public void setIntegBaie(IntegBaie integBaie) {
         this.integBaie = integBaie;
+    }
+
+    public String getIntegBaieAutre() {
+        return this.integBaieAutre;
+    }
+
+    public Batiment integBaieAutre(String integBaieAutre) {
+        this.setIntegBaieAutre(integBaieAutre);
+        return this;
+    }
+
+    public void setIntegBaieAutre(String integBaieAutre) {
+        this.integBaieAutre = integBaieAutre;
     }
 
     public SupportAncrage getSupportAncrage() {
@@ -1268,6 +1342,19 @@ public class Batiment implements Serializable {
 
     public void setRevetInt(RevetInt revetInt) {
         this.revetInt = revetInt;
+    }
+
+    public String getRevetIntAutre() {
+        return this.revetIntAutre;
+    }
+
+    public Batiment revetIntAutre(String revetIntAutre) {
+        this.setRevetIntAutre(revetIntAutre);
+        return this;
+    }
+
+    public void setRevetIntAutre(String revetIntAutre) {
+        this.revetIntAutre = revetIntAutre;
     }
 
     public RevetExt getRevetExt() {
@@ -1504,19 +1591,6 @@ public class Batiment implements Serializable {
         this.codePostal = codePostal;
     }
 
-    public Boolean getNonBatimentEtPhotosPublics() {
-        return this.nonBatimentEtPhotosPublics;
-    }
-
-    public Batiment nonBatimentEtPhotosPublics(Boolean nonBatimentEtPhotosPublics) {
-        this.setNonBatimentEtPhotosPublics(nonBatimentEtPhotosPublics);
-        return this;
-    }
-
-    public void setNonBatimentEtPhotosPublics(Boolean nonBatimentEtPhotosPublics) {
-        this.nonBatimentEtPhotosPublics = nonBatimentEtPhotosPublics;
-    }
-
     public Instant getCreatedDate() {
         return this.createdDate;
     }
@@ -1543,17 +1617,17 @@ public class Batiment implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public User getCreatedBy() {
+    public String getCreatedBy() {
         return this.createdBy;
     }
 
-    public void setCreatedBy(User user) {
-        this.createdBy = user;
+    public Batiment createdBy(String createdBy) {
+        this.setCreatedBy(createdBy);
+        return this;
     }
 
-    public Batiment createdBy(User user) {
-        this.setCreatedBy(user);
-        return this;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -1607,7 +1681,9 @@ public class Batiment implements Serializable {
             ", photo5ContentType='" + getPhoto5ContentType() + "'" +
             ", photo5Legende='" + getPhoto5Legende() + "'" +
             ", photo5Description='" + getPhoto5Description() + "'" +
+            ", nonBatimentEtPhotosPublics='" + getNonBatimentEtPhotosPublics() + "'" +
             ", usageBatiment='" + getUsageBatiment() + "'" +
+            ", usageBatimentAutre='" + getUsageBatimentAutre() + "'" +
             ", cout=" + getCout() +
             ", surfacePlancher=" + getSurfacePlancher() +
             ", niveaux=" + getNiveaux() +
@@ -1627,14 +1703,17 @@ public class Batiment implements Serializable {
             ", participatif='" + getParticipatif() + "'" +
             ", structCompl='" + getStructCompl() + "'" +
             ", structComplNature='" + getStructComplNature() + "'" +
-            ", structComplNatureAutre='" + getStructComplNatureAutre() + "'" +
+            ", structComplAutre='" + getStructComplAutre() + "'" +
+            ", structComplNaturePrecision='" + getStructComplNaturePrecision() + "'" +
+            ", longMaxSansMurRefend=" + getLongMaxSansMurRefend() +
             ", noteCalcul='" + getNoteCalcul() + "'" +
             ", nbrRangDeBottes=" + getNbrRangDeBottes() +
-            ", longMaxSansMurRefend=" + getLongMaxSansMurRefend() +
             ", integBaie='" + getIntegBaie() + "'" +
+            ", integBaieAutre='" + getIntegBaieAutre() + "'" +
             ", supportAncrage='" + getSupportAncrage() + "'" +
             ", supportAncrageAutre='" + getSupportAncrageAutre() + "'" +
             ", revetInt='" + getRevetInt() + "'" +
+            ", revetIntAutre='" + getRevetIntAutre() + "'" +
             ", revetExt='" + getRevetExt() + "'" +
             ", revetExtAutre='" + getRevetExtAutre() + "'" +
             ", maitreDOuvrage='" + getMaitreDOuvrage() + "'" +
@@ -1653,9 +1732,9 @@ public class Batiment implements Serializable {
             ", contactMail='" + getContactMail() + "'" +
             ", contactPhone='" + getContactPhone() + "'" +
             ", codePostal='" + getCodePostal() + "'" +
-            ", nonBatimentEtPhotosPublics='" + getNonBatimentEtPhotosPublics() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
             "}";
     }
 }

@@ -16,15 +16,9 @@ describe('Batiment e2e test', () => {
   const batimentPageUrlPattern = new RegExp('/batiment(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'admin';
   const password = Cypress.env('E2E_PASSWORD') ?? 'admin';
-  const batimentSample = {
-    latitude: 21,
-    longitude: -69,
-    createdDate: '2021-11-07T17:31:00.029Z',
-    lastModifiedDate: '2021-11-07T19:55:14.121Z',
-  };
+  const batimentSample = { latitude: 57, longitude: -39 };
 
   let batiment: any;
-  //let user: any;
 
   before(() => {
     cy.window().then(win => {
@@ -35,35 +29,11 @@ describe('Batiment e2e test', () => {
     cy.get(entityItemSelector).should('exist');
   });
 
-  /* Disabled due to incompatibility
-  beforeEach(() => {
-    // create an instance at the required relationship entity:
-    cy.authenticatedRequest({
-      method: 'POST',
-      url: '/api/users',
-      body: {"login":"c blue","firstName":"Céleste","lastName":"Lopez"},
-    }).then(({ body }) => {
-      user = body;
-    });
-  });
-   */
-
   beforeEach(() => {
     cy.intercept('GET', '/api/batiments+(?*|)').as('entitiesRequest');
     cy.intercept('POST', '/api/batiments').as('postEntityRequest');
     cy.intercept('DELETE', '/api/batiments/*').as('deleteEntityRequest');
   });
-
-  /* Disabled due to incompatibility
-  beforeEach(() => {
-    // Simulate relationships api for better performance and reproducibility.
-    cy.intercept('GET', '/api/users', {
-      statusCode: 200,
-      body: [user],
-    });
-
-  });
-   */
 
   afterEach(() => {
     if (batiment) {
@@ -75,19 +45,6 @@ describe('Batiment e2e test', () => {
       });
     }
   });
-
-  /* Disabled due to incompatibility
-  afterEach(() => {
-    if (user) {
-      cy.authenticatedRequest({
-        method: 'DELETE',
-        url: `/api/users/${user.id}`,
-      }).then(() => {
-        user = undefined;
-      });
-    }
-  });
-   */
 
   it('Batiments menu should load Batiments page', () => {
     cy.visit('/');
@@ -124,16 +81,11 @@ describe('Batiment e2e test', () => {
     });
 
     describe('with existing value', () => {
-      /* Disabled due to incompatibility
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
           url: '/api/batiments',
-  
-          body: {
-            ...batimentSample,
-            createdBy: user,
-          },
+          body: batimentSample,
         }).then(({ body }) => {
           batiment = body;
 
@@ -153,17 +105,6 @@ describe('Batiment e2e test', () => {
         cy.visit(batimentPageUrl);
 
         cy.wait('@entitiesRequestInternal');
-      });
-       */
-
-      beforeEach(function () {
-        cy.visit(batimentPageUrl);
-
-        cy.wait('@entitiesRequest').then(({ response }) => {
-          if (response!.body.length === 0) {
-            this.skip();
-          }
-        });
       });
 
       it('detail button click should load details Batiment page', () => {
@@ -187,7 +128,7 @@ describe('Batiment e2e test', () => {
         cy.url().should('match', batimentPageUrlPattern);
       });
 
-      it.skip('last delete button click should delete instance of Batiment', () => {
+      it('last delete button click should delete instance of Batiment', () => {
         cy.get(entityDeleteButtonSelector).last().click();
         cy.getEntityDeleteDialogHeading('batiment').should('exist');
         cy.get(entityConfirmDeleteButtonSelector).click({ force: true });
@@ -211,7 +152,7 @@ describe('Batiment e2e test', () => {
       cy.getEntityCreateUpdateHeading('Batiment');
     });
 
-    it.skip('should create an instance of Batiment', () => {
+    it('should create an instance of Batiment', () => {
       cy.get(`[data-cy="latitude"]`).type('31').should('have.value', '31');
 
       cy.get(`[data-cy="longitude"]`).type('3').should('have.value', '3');
@@ -258,13 +199,18 @@ describe('Batiment e2e test', () => {
 
       cy.get(`[data-cy="photo5Description"]`).type('PCI Peso interactive').should('have.value', 'PCI Peso interactive');
 
-      cy.get(`[data-cy="usageBatiment"]`).select('AUTRE');
+      cy.get(`[data-cy="nonBatimentEtPhotosPublics"]`).should('not.be.checked');
+      cy.get(`[data-cy="nonBatimentEtPhotosPublics"]`).click().should('be.checked');
 
-      cy.get(`[data-cy="cout"]`).type('23718').should('have.value', '23718');
+      cy.get(`[data-cy="usageBatiment"]`).select('BATIMENT_ADMINISTRATIF');
 
-      cy.get(`[data-cy="surfacePlancher"]`).type('65659').should('have.value', '65659');
+      cy.get(`[data-cy="usageBatimentAutre"]`).select('BATIMENT_EDUCATIF');
 
-      cy.get(`[data-cy="niveaux"]`).type('49566').should('have.value', '49566');
+      cy.get(`[data-cy="cout"]`).type('49566').should('have.value', '49566');
+
+      cy.get(`[data-cy="surfacePlancher"]`).type('45866').should('have.value', '45866');
+
+      cy.get(`[data-cy="niveaux"]`).type('40741').should('have.value', '40741');
 
       cy.get(`[data-cy="travauxNeuf"]`).should('not.be.checked');
       cy.get(`[data-cy="travauxNeuf"]`).click().should('be.checked');
@@ -281,67 +227,73 @@ describe('Batiment e2e test', () => {
       cy.get(`[data-cy="travauxIti"]`).should('not.be.checked');
       cy.get(`[data-cy="travauxIti"]`).click().should('be.checked');
 
-      cy.get(`[data-cy="constructionDebut"]`).type('2021-11-07').should('have.value', '2021-11-07');
+      cy.get(`[data-cy="constructionDebut"]`).type('2021-11-08').should('have.value', '2021-11-08');
 
-      cy.get(`[data-cy="constructionFin"]`).type('2021-11-07').should('have.value', '2021-11-07');
+      cy.get(`[data-cy="constructionFin"]`).type('2021-11-08').should('have.value', '2021-11-08');
 
-      cy.get(`[data-cy="bottesTaille"]`).select('T_70_X_120_X_230_CM');
+      cy.get(`[data-cy="bottesTaille"]`).select('T_36_X_46_X_70_a_120_CM');
 
-      cy.get(`[data-cy="botteTailleAutre"]`).type('Australie Baby').should('have.value', 'Australie Baby');
+      cy.get(`[data-cy="botteTailleAutre"]`).type('Chair').should('have.value', 'Chair');
 
-      cy.get(`[data-cy="bottesDensite"]`).type('58951').should('have.value', '58951');
+      cy.get(`[data-cy="bottesDensite"]`).type('82610').should('have.value', '82610');
 
-      cy.get(`[data-cy="bottesCereale"]`).select('AVOINE');
+      cy.get(`[data-cy="bottesCereale"]`).select('TRITICALE');
 
-      cy.get(`[data-cy="distanceAppro"]`).type('62424').should('have.value', '62424');
+      cy.get(`[data-cy="distanceAppro"]`).type('36649').should('have.value', '36649');
 
-      cy.get(`[data-cy="autoconstruction"]`).select('OUI');
+      cy.get(`[data-cy="autoconstruction"]`).select('NON');
 
       cy.get(`[data-cy="participatif"]`).select('OUI');
 
       cy.get(`[data-cy="structCompl"]`).should('not.be.checked');
       cy.get(`[data-cy="structCompl"]`).click().should('be.checked');
 
-      cy.get(`[data-cy="structComplNature"]`).select('METAL');
+      cy.get(`[data-cy="structComplNature"]`).select('BOIS');
 
-      cy.get(`[data-cy="structComplNatureAutre"]`)
-        .type('Shoes Uruguayo Franche-Comté')
-        .should('have.value', 'Shoes Uruguayo Franche-Comté');
+      cy.get(`[data-cy="structComplAutre"]`).type('hacking Metal').should('have.value', 'hacking Metal');
+
+      cy.get(`[data-cy="structComplNaturePrecision"]`)
+        .type('Franche-Comté project wireless')
+        .should('have.value', 'Franche-Comté project wireless');
+
+      cy.get(`[data-cy="longMaxSansMurRefend"]`).type('93843').should('have.value', '93843');
 
       cy.get(`[data-cy="noteCalcul"]`).should('not.be.checked');
       cy.get(`[data-cy="noteCalcul"]`).click().should('be.checked');
 
-      cy.get(`[data-cy="nbrRangDeBottes"]`).type('79122').should('have.value', '79122');
+      cy.get(`[data-cy="nbrRangDeBottes"]`).type('65545').should('have.value', '65545');
 
-      cy.get(`[data-cy="longMaxSansMurRefend"]`).type('54816').should('have.value', '54816');
+      cy.get(`[data-cy="integBaie"]`).select('PRE_CADRE_FLOTTANT');
 
-      cy.get(`[data-cy="integBaie"]`).select('COULISSANT');
+      cy.get(`[data-cy="integBaieAutre"]`).type('solution up').should('have.value', 'solution up');
 
-      cy.get(`[data-cy="supportAncrage"]`).select('AUTRE');
+      cy.get(`[data-cy="supportAncrage"]`).select('METAL');
 
-      cy.get(`[data-cy="supportAncrageAutre"]`).type('a').should('have.value', 'a');
+      cy.get(`[data-cy="supportAncrageAutre"]`).type('EXE override').should('have.value', 'EXE override');
 
-      cy.get(`[data-cy="revetInt"]`).select('PLAQUE_DE_PLATRE');
+      cy.get(`[data-cy="revetInt"]`).select('ENDUIT_PLATRE');
+
+      cy.get(`[data-cy="revetIntAutre"]`).type('architecture a Zimbabwe').should('have.value', 'architecture a Zimbabwe');
 
       cy.get(`[data-cy="revetExt"]`).select('ENDUIT_TERRE_ET_CHAUX');
 
-      cy.get(`[data-cy="revetExtAutre"]`).type('PNG').should('have.value', 'PNG');
+      cy.get(`[data-cy="revetExtAutre"]`).type('transform Games BCEAO').should('have.value', 'transform Games BCEAO');
 
-      cy.get(`[data-cy="maitreDOuvrage"]`).type('Berkshire').should('have.value', 'Berkshire');
+      cy.get(`[data-cy="maitreDOuvrage"]`).type('deposit').should('have.value', 'deposit');
 
-      cy.get(`[data-cy="maitreDOeuvre"]`).type('Liberia lime a').should('have.value', 'Liberia lime a');
+      cy.get(`[data-cy="maitreDOeuvre"]`).type('d&#39;Orsel').should('have.value', 'd&#39;Orsel');
 
-      cy.get(`[data-cy="architecte"]`).type('a').should('have.value', 'a');
+      cy.get(`[data-cy="architecte"]`).type('strategic copying').should('have.value', 'strategic copying');
 
-      cy.get(`[data-cy="bureauDEtudeStructure"]`).type('Manager b red').should('have.value', 'Manager b red');
+      cy.get(`[data-cy="bureauDEtudeStructure"]`).type('Hat programming').should('have.value', 'Hat programming');
 
-      cy.get(`[data-cy="bureauControl"]`).type('BCEAO Metal').should('have.value', 'BCEAO Metal');
+      cy.get(`[data-cy="bureauControl"]`).type('Incredible').should('have.value', 'Incredible');
 
-      cy.get(`[data-cy="entrepriseBottes"]`).type('Granite reintermediate').should('have.value', 'Granite reintermediate');
+      cy.get(`[data-cy="entrepriseBottes"]`).type('Table visionary b').should('have.value', 'Table visionary b');
 
-      cy.get(`[data-cy="entrepriseCharpente"]`).type('Plastic').should('have.value', 'Plastic');
+      cy.get(`[data-cy="entrepriseCharpente"]`).type('cross-media schemas').should('have.value', 'cross-media schemas');
 
-      cy.get(`[data-cy="entrepriseEnduits"]`).type('Comores').should('have.value', 'Comores');
+      cy.get(`[data-cy="entrepriseEnduits"]`).type('microchip').should('have.value', 'microchip');
 
       cy.get(`[data-cy="descriptionProjet"]`)
         .type('../fake-data/blob/hipster.txt')
@@ -363,22 +315,19 @@ describe('Batiment e2e test', () => {
         .invoke('val')
         .should('match', new RegExp('../fake-data/blob/hipster.txt'));
 
-      cy.get(`[data-cy="contactNom"]`).type('back toolset cyan').should('have.value', 'back toolset cyan');
+      cy.get(`[data-cy="contactNom"]`).type('streamline des Steel').should('have.value', 'streamline des Steel');
 
-      cy.get(`[data-cy="contactMail"]`).type('Pants Loan').should('have.value', 'Pants Loan');
+      cy.get(`[data-cy="contactMail"]`).type('transform Dollar').should('have.value', 'transform Dollar');
 
-      cy.get(`[data-cy="contactPhone"]`).type('withdrawal redundant overriding').should('have.value', 'withdrawal redundant overriding');
+      cy.get(`[data-cy="contactPhone"]`).type('Outdoors').should('have.value', 'Outdoors');
 
-      cy.get(`[data-cy="codePostal"]`).type('Pizza').should('have.value', 'Pizza');
+      cy.get(`[data-cy="codePostal"]`).type('encomp').should('have.value', 'encomp');
 
-      cy.get(`[data-cy="nonBatimentEtPhotosPublics"]`).should('not.be.checked');
-      cy.get(`[data-cy="nonBatimentEtPhotosPublics"]`).click().should('be.checked');
+      cy.get(`[data-cy="createdDate"]`).type('2021-11-08T19:56').should('have.value', '2021-11-08T19:56');
 
-      cy.get(`[data-cy="createdDate"]`).type('2021-11-07T15:06').should('have.value', '2021-11-07T15:06');
+      cy.get(`[data-cy="lastModifiedDate"]`).type('2021-11-08T00:44').should('have.value', '2021-11-08T00:44');
 
-      cy.get(`[data-cy="lastModifiedDate"]`).type('2021-11-07T09:23').should('have.value', '2021-11-07T09:23');
-
-      cy.get(`[data-cy="createdBy"]`).select(1);
+      cy.get(`[data-cy="createdBy"]`).type('Lituanie').should('have.value', 'Lituanie');
 
       // since cypress clicks submit too fast before the blob fields are validated
       cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting

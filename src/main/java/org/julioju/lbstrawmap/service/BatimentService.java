@@ -129,8 +129,14 @@ public class BatimentService {
                 if (batiment.getPhoto5Description() != null) {
                     existingBatiment.setPhoto5Description(batiment.getPhoto5Description());
                 }
+                if (batiment.getNonBatimentEtPhotosPublics() != null) {
+                    existingBatiment.setNonBatimentEtPhotosPublics(batiment.getNonBatimentEtPhotosPublics());
+                }
                 if (batiment.getUsageBatiment() != null) {
                     existingBatiment.setUsageBatiment(batiment.getUsageBatiment());
+                }
+                if (batiment.getUsageBatimentAutre() != null) {
+                    existingBatiment.setUsageBatimentAutre(batiment.getUsageBatimentAutre());
                 }
                 if (batiment.getCout() != null) {
                     existingBatiment.setCout(batiment.getCout());
@@ -189,8 +195,14 @@ public class BatimentService {
                 if (batiment.getStructComplNature() != null) {
                     existingBatiment.setStructComplNature(batiment.getStructComplNature());
                 }
-                if (batiment.getStructComplNatureAutre() != null) {
-                    existingBatiment.setStructComplNatureAutre(batiment.getStructComplNatureAutre());
+                if (batiment.getStructComplAutre() != null) {
+                    existingBatiment.setStructComplAutre(batiment.getStructComplAutre());
+                }
+                if (batiment.getStructComplNaturePrecision() != null) {
+                    existingBatiment.setStructComplNaturePrecision(batiment.getStructComplNaturePrecision());
+                }
+                if (batiment.getLongMaxSansMurRefend() != null) {
+                    existingBatiment.setLongMaxSansMurRefend(batiment.getLongMaxSansMurRefend());
                 }
                 if (batiment.getNoteCalcul() != null) {
                     existingBatiment.setNoteCalcul(batiment.getNoteCalcul());
@@ -198,11 +210,11 @@ public class BatimentService {
                 if (batiment.getNbrRangDeBottes() != null) {
                     existingBatiment.setNbrRangDeBottes(batiment.getNbrRangDeBottes());
                 }
-                if (batiment.getLongMaxSansMurRefend() != null) {
-                    existingBatiment.setLongMaxSansMurRefend(batiment.getLongMaxSansMurRefend());
-                }
                 if (batiment.getIntegBaie() != null) {
                     existingBatiment.setIntegBaie(batiment.getIntegBaie());
+                }
+                if (batiment.getIntegBaieAutre() != null) {
+                    existingBatiment.setIntegBaieAutre(batiment.getIntegBaieAutre());
                 }
                 if (batiment.getSupportAncrage() != null) {
                     existingBatiment.setSupportAncrage(batiment.getSupportAncrage());
@@ -212,6 +224,9 @@ public class BatimentService {
                 }
                 if (batiment.getRevetInt() != null) {
                     existingBatiment.setRevetInt(batiment.getRevetInt());
+                }
+                if (batiment.getRevetIntAutre() != null) {
+                    existingBatiment.setRevetIntAutre(batiment.getRevetIntAutre());
                 }
                 if (batiment.getRevetExt() != null) {
                     existingBatiment.setRevetExt(batiment.getRevetExt());
@@ -267,14 +282,14 @@ public class BatimentService {
                 if (batiment.getCodePostal() != null) {
                     existingBatiment.setCodePostal(batiment.getCodePostal());
                 }
-                if (batiment.getNonBatimentEtPhotosPublics() != null) {
-                    existingBatiment.setNonBatimentEtPhotosPublics(batiment.getNonBatimentEtPhotosPublics());
-                }
                 if (batiment.getCreatedDate() != null) {
                     existingBatiment.setCreatedDate(batiment.getCreatedDate());
                 }
                 if (batiment.getLastModifiedDate() != null) {
                     existingBatiment.setLastModifiedDate(batiment.getLastModifiedDate());
+                }
+                if (batiment.getCreatedBy() != null) {
+                    existingBatiment.setCreatedBy(batiment.getCreatedBy());
                 }
 
                 return existingBatiment;

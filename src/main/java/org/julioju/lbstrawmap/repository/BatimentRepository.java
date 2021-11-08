@@ -1,6 +1,5 @@
 package org.julioju.lbstrawmap.repository;
 
-import java.util.List;
 import org.julioju.lbstrawmap.domain.Batiment;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
@@ -15,15 +14,11 @@ public interface BatimentRepository extends JpaRepository<Batiment, Long> {
     @Query(
         "select ba.id as id, ba.nomBatiment as nomBatiment, ba.latitude as latitude, ba.longitude as longitude, ba.usageBatiment as usageBatiment, ba.surfacePlancher as surfacePlancher from Batiment ba"
     )
-    List<org.julioju.lbstrawmap.domain.BatimentLazyView> findAllLazy();
+    java.util.List<org.julioju.lbstrawmap.domain.BatimentLazyView> findAllLazy();
 
     @Query(nativeQuery = true, value = "select ba.created_by_id as createdBy from Batiment ba where ba.id = :batId")
-    List<org.julioju.lbstrawmap.domain.BatimentWithOnlyCreatorId> findWithOnlyCreatorIds(
+    java.util.List<org.julioju.lbstrawmap.domain.BatimentWithOnlyCreatorId> findWithOnlyCreatorIds(
         @org.springframework.data.repository.query.Param("batId") Long batId
     );
-
     // END added by JulioJu
-
-    @Query("select batiment from Batiment batiment where batiment.createdBy.login = ?#{principal.username}")
-    List<Batiment> findByCreatedByIsCurrentUser();
 }

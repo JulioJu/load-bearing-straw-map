@@ -120,9 +120,21 @@
               <span v-text="$t('cartePaillePorteuseApp.batiment.photo5Description')">Photo 5 Description</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo5Description'"></jhi-sort-indicator>
             </th>
+            <th scope="row" v-on:click="changeOrder('nonBatimentEtPhotosPublics')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')">Non Batiment Et Photos Publics</span>
+              <jhi-sort-indicator
+                :current-order="propOrder"
+                :reverse="reverse"
+                :field-name="'nonBatimentEtPhotosPublics'"
+              ></jhi-sort-indicator>
+            </th>
             <th scope="row" v-on:click="changeOrder('usageBatiment')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')">Usage Batiment</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'usageBatiment'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('usageBatimentAutre')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.usageBatimentAutre')">Usage Batiment Autre</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'usageBatimentAutre'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('cout')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.cout')">Cout</span>
@@ -200,9 +212,21 @@
               <span v-text="$t('cartePaillePorteuseApp.batiment.structComplNature')">Struct Compl Nature</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structComplNature'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('structComplNatureAutre')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.structComplNatureAutre')">Struct Compl Nature Autre</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structComplNatureAutre'"></jhi-sort-indicator>
+            <th scope="row" v-on:click="changeOrder('structComplAutre')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.structComplAutre')">Struct Compl Autre</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'structComplAutre'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('structComplNaturePrecision')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.structComplNaturePrecision')">Struct Compl Nature Precision</span>
+              <jhi-sort-indicator
+                :current-order="propOrder"
+                :reverse="reverse"
+                :field-name="'structComplNaturePrecision'"
+              ></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('longMaxSansMurRefend')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')">Long Max Sans Mur Refend</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'longMaxSansMurRefend'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('noteCalcul')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.noteCalcul')">Note Calcul</span>
@@ -212,13 +236,13 @@
               <span v-text="$t('cartePaillePorteuseApp.batiment.nbrRangDeBottes')">Nbr Rang De Bottes</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nbrRangDeBottes'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('longMaxSansMurRefend')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')">Long Max Sans Mur Refend</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'longMaxSansMurRefend'"></jhi-sort-indicator>
-            </th>
             <th scope="row" v-on:click="changeOrder('integBaie')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.integBaie')">Integ Baie</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'integBaie'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('integBaieAutre')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.integBaieAutre')">Integ Baie Autre</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'integBaieAutre'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('supportAncrage')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncrage')">Support Ancrage</span>
@@ -231,6 +255,10 @@
             <th scope="row" v-on:click="changeOrder('revetInt')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.revetInt')">Revet Int</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'revetInt'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('revetIntAutre')">
+              <span v-text="$t('cartePaillePorteuseApp.batiment.revetIntAutre')">Revet Int Autre</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'revetIntAutre'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('revetExt')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.revetExt')">Revet Ext</span>
@@ -304,14 +332,6 @@
               <span v-text="$t('cartePaillePorteuseApp.batiment.codePostal')">Code Postal</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'codePostal'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('nonBatimentEtPhotosPublics')">
-              <span v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')">Non Batiment Et Photos Publics</span>
-              <jhi-sort-indicator
-                :current-order="propOrder"
-                :reverse="reverse"
-                :field-name="'nonBatimentEtPhotosPublics'"
-              ></jhi-sort-indicator>
-            </th>
             <th scope="row" v-on:click="changeOrder('createdDate')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.createdDate')">Created Date</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdDate'"></jhi-sort-indicator>
@@ -320,9 +340,9 @@
               <span v-text="$t('cartePaillePorteuseApp.batiment.lastModifiedDate')">Last Modified Date</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'lastModifiedDate'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('createdBy.login')">
+            <th scope="row" v-on:click="changeOrder('createdBy')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.createdBy')">Created By</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdBy.login'"></jhi-sort-indicator>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdBy'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
           </tr>
@@ -409,7 +429,9 @@
             </td>
             <td>{{ batiment.photo5Legende }}</td>
             <td>{{ batiment.photo5Description }}</td>
+            <td>{{ batiment.nonBatimentEtPhotosPublics }}</td>
             <td v-text="$t('cartePaillePorteuseApp.UsageBatiment.' + batiment.usageBatiment)">{{ batiment.usageBatiment }}</td>
+            <td v-text="$t('cartePaillePorteuseApp.UsageBatiment.' + batiment.usageBatimentAutre)">{{ batiment.usageBatimentAutre }}</td>
             <td>{{ batiment.cout }}</td>
             <td>{{ batiment.surfacePlancher }}</td>
             <td>{{ batiment.niveaux }}</td>
@@ -431,14 +453,17 @@
             <td v-text="$t('cartePaillePorteuseApp.StructureComplementaire.' + batiment.structComplNature)">
               {{ batiment.structComplNature }}
             </td>
-            <td>{{ batiment.structComplNatureAutre }}</td>
+            <td>{{ batiment.structComplAutre }}</td>
+            <td>{{ batiment.structComplNaturePrecision }}</td>
+            <td>{{ batiment.longMaxSansMurRefend }}</td>
             <td>{{ batiment.noteCalcul }}</td>
             <td>{{ batiment.nbrRangDeBottes }}</td>
-            <td>{{ batiment.longMaxSansMurRefend }}</td>
             <td v-text="$t('cartePaillePorteuseApp.IntegBaie.' + batiment.integBaie)">{{ batiment.integBaie }}</td>
+            <td>{{ batiment.integBaieAutre }}</td>
             <td v-text="$t('cartePaillePorteuseApp.SupportAncrage.' + batiment.supportAncrage)">{{ batiment.supportAncrage }}</td>
             <td>{{ batiment.supportAncrageAutre }}</td>
             <td v-text="$t('cartePaillePorteuseApp.RevetInt.' + batiment.revetInt)">{{ batiment.revetInt }}</td>
+            <td>{{ batiment.revetIntAutre }}</td>
             <td v-text="$t('cartePaillePorteuseApp.RevetExt.' + batiment.revetExt)">{{ batiment.revetExt }}</td>
             <td>{{ batiment.revetExtAutre }}</td>
             <td>{{ batiment.maitreDOuvrage }}</td>
@@ -457,12 +482,9 @@
             <td>{{ batiment.contactMail }}</td>
             <td>{{ batiment.contactPhone }}</td>
             <td>{{ batiment.codePostal }}</td>
-            <td>{{ batiment.nonBatimentEtPhotosPublics }}</td>
             <td>{{ batiment.createdDate ? $d(Date.parse(batiment.createdDate), 'short') : '' }}</td>
             <td>{{ batiment.lastModifiedDate ? $d(Date.parse(batiment.lastModifiedDate), 'short') : '' }}</td>
-            <td>
-              {{ batiment.createdBy ? batiment.createdBy.login : '' }}
-            </td>
+            <td>{{ batiment.createdBy }}</td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'BatimentView', params: { batimentId: batiment.id } }" custom v-slot="{ navigate }">

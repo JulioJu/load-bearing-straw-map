@@ -113,9 +113,20 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "nonBatimentEtPhotosPublics",
+      "fieldType": "Boolean",
+      "javadoc": "If true, anonymous users (not authenticated) could see photos. Search\\nengine could  index it."
+    },
+    {
       "fieldName": "usageBatiment",
       "fieldType": "UsageBatiment",
       "javadoc": "Usage",
+      "fieldValues": "LOGEMENT_COLLECTIF (Logement collectif),LOGEMENT_INDIVIDUEL (Logement individuel),LOGEMENT_INDIVIDUEL_GROUPE (Logement individuel groupé),BATIMENT_ADMINISTRATIF (Bâtiment administratif),BATIMENT_COMMERCIAL (Bâtiment commercial),BATIMENT_INDUSTRIEL (Bâtiment industriel),BATIMENT_DE_LOISIRS (Bâtiment de loisirs),BATIMENT_DE_SANTE (Bâtiment de santé),BATIMENT_DE_RETRAITE (Bâtiment de retraite),BATIMENT_EDUCATIF (Bâtiment éducatif),BATIMENT_SOCIO_CULTUREl (Bâtiment socio-culturel),BATIMENT_AGRICOLE (Bâtiment agricole),OUVRAGE_EXCEPTIONNEL (Ouvrage exceptionnel),AUTRE (Autre)"
+    },
+    {
+      "fieldName": "usageBatimentAutre",
+      "fieldType": "UsageBatiment",
+      "javadoc": "Si \"Autre\", préciser",
       "fieldValues": "LOGEMENT_COLLECTIF (Logement collectif),LOGEMENT_INDIVIDUEL (Logement individuel),LOGEMENT_INDIVIDUEL_GROUPE (Logement individuel groupé),BATIMENT_ADMINISTRATIF (Bâtiment administratif),BATIMENT_COMMERCIAL (Bâtiment commercial),BATIMENT_INDUSTRIEL (Bâtiment industriel),BATIMENT_DE_LOISIRS (Bâtiment de loisirs),BATIMENT_DE_SANTE (Bâtiment de santé),BATIMENT_DE_RETRAITE (Bâtiment de retraite),BATIMENT_EDUCATIF (Bâtiment éducatif),BATIMENT_SOCIO_CULTUREl (Bâtiment socio-culturel),BATIMENT_AGRICOLE (Bâtiment agricole),OUVRAGE_EXCEPTIONNEL (Ouvrage exceptionnel),AUTRE (Autre)"
     },
     {
@@ -212,7 +223,7 @@
     {
       "fieldName": "structCompl",
       "fieldType": "Boolean",
-      "javadoc": "Structure complémentaire"
+      "javadoc": "Structure complémentaire à la structure en paille porteuse (poteau, mur de refend, …)"
     },
     {
       "fieldName": "structComplNature",
@@ -222,9 +233,23 @@
       "fieldTypeJavadoc": "Nature support complémentaire"
     },
     {
-      "fieldName": "structComplNatureAutre",
+      "fieldName": "structComplAutre",
       "fieldType": "String",
-      "javadoc": "Autre nature de structure complémentaire"
+      "javadoc": "Si \"Autre\", préciser",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "structComplNaturePrecision",
+      "fieldType": "String",
+      "javadoc": "Longueur maximum sans mur de refend (mètre)",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "longMaxSansMurRefend",
+      "fieldType": "Float",
+      "javadoc": "Longueur maximum sans mur de refend (mètre)"
     },
     {
       "fieldName": "noteCalcul",
@@ -237,16 +262,16 @@
       "javadoc": "Nombre de rangs de bottes"
     },
     {
-      "fieldName": "longMaxSansMurRefend",
-      "fieldType": "Float",
-      "javadoc": "Longueur maximum sans mur de refend (mètre)"
-    },
-    {
       "fieldName": "integBaie",
       "fieldType": "IntegBaie",
       "javadoc": "Intégration des baies",
       "fieldValues": "PRE_CADRE_FLOTTANT (Pré-cadre flottant),COULISSANT (Élément coulissant),FIXE (Élément fixe [poteau - montant - …]),AUTRE (Autre)",
       "fieldTypeJavadoc": "Intégration des baies"
+    },
+    {
+      "fieldName": "integBaieAutre",
+      "fieldType": "String",
+      "javadoc": "Si \"Autre\", préciser"
     },
     {
       "fieldName": "supportAncrage",
@@ -258,7 +283,7 @@
     {
       "fieldName": "supportAncrageAutre",
       "fieldType": "String",
-      "javadoc": "Autre nature du support d'ancrage"
+      "javadoc": "Si \"Autre\", préciser"
     },
     {
       "fieldName": "revetInt",
@@ -266,6 +291,11 @@
       "javadoc": "Revêtement intérieur",
       "fieldValues": "PLAQUE_DE_PLATRE (Plaque de plâtre),LAMBRIS (Lambris),ENDUIT_TERRE (Enduit terre),ENDUIT_CHAUX (Enduit chaux),ENDUIT_TERRE_ET_CHAUX (Enduit terre et chaux),ENDUIT_PLATRE (Enduit plâtre),AUTRE (Autre)",
       "fieldTypeJavadoc": "Revêtement intérieur"
+    },
+    {
+      "fieldName": "revetIntAutre",
+      "fieldType": "String",
+      "javadoc": "Si \"Autre\", préciser"
     },
     {
       "fieldName": "revetExt",
@@ -277,7 +307,7 @@
     {
       "fieldName": "revetExtAutre",
       "fieldType": "String",
-      "javadoc": "Revêtement extérieur autre"
+      "javadoc": "Si \"Autre\", préciser"
     },
     {
       "fieldName": "maitreDOuvrage",
@@ -382,34 +412,22 @@
       "fieldValidateRulesMaxlength": "6"
     },
     {
-      "fieldName": "nonBatimentEtPhotosPublics",
-      "fieldType": "Boolean",
-      "javadoc": "If true, anonymous users (not authenticated) could see photos. Search\\nengine could  index it."
-    },
-    {
       "fieldName": "createdDate",
       "fieldType": "Instant",
-      "javadoc": "Date de création de l'enregistrement dans la Base de donnée\\n(autogénéré en back)\\nUse `@CreatedDate` Spring Data annotation",
-      "fieldValidateRules": ["required"]
+      "javadoc": "Date de création de l'enregistrement dans la Base de donnée\\n(autogénéré en back)"
     },
     {
       "fieldName": "lastModifiedDate",
       "fieldType": "Instant",
-      "javadoc": "Date de modification de l'enregistrement dans la Base de donnée\\n(autogénéré en back)\\nUse `@LastModifiedDate` Spring Data annotation",
-      "fieldValidateRules": ["required"]
-    }
-  ],
-  "relationships": [
+      "javadoc": "Date de modification de l'enregistrement dans la Base de donnée\\n(autogénéré en back)"
+    },
     {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "user",
-      "otherEntityRelationshipName": "batiment",
-      "relationshipValidateRules": "required",
-      "javadoc": "Only createdBy (set in back at creation) of a Batiment could update or delete it",
-      "relationshipName": "createdBy",
-      "otherEntityField": "login"
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "javadoc": "Only createdBy of a Batiment could update or delete it (set in back at creation)"
     }
   ],
+  "relationships": [],
   "entityTableName": "batiment",
   "dto": "no",
   "pagination": "pagination",
@@ -419,5 +437,5 @@
   "readOnly": false,
   "embedded": false,
   "applications": "*",
-  "changelogDate": "20211107201932"
+  "changelogDate": "20211108204159"
 }

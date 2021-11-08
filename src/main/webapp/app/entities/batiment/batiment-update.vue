@@ -1,6 +1,8 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-8">
+    <!-- START added by JulioJu -->
+    <div class="col-3">
+      <!-- END added by JulioJu -->
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
           id="cartePaillePorteuseApp.batiment.home.createOrEditLabel"
@@ -617,6 +619,23 @@
             />
           </div>
           <div class="form-group">
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')"
+              for="batiment-nonBatimentEtPhotosPublics"
+              >Non Batiment Et Photos Publics</label
+            >
+            <input
+              type="checkbox"
+              class="form-check"
+              name="nonBatimentEtPhotosPublics"
+              id="batiment-nonBatimentEtPhotosPublics"
+              data-cy="nonBatimentEtPhotosPublics"
+              :class="{ valid: !$v.batiment.nonBatimentEtPhotosPublics.$invalid, invalid: $v.batiment.nonBatimentEtPhotosPublics.$invalid }"
+              v-model="$v.batiment.nonBatimentEtPhotosPublics.$model"
+            />
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')" for="batiment-usageBatiment"
               >Usage Batiment</label
             >
@@ -627,6 +646,31 @@
               v-model="$v.batiment.usageBatiment.$model"
               id="batiment-usageBatiment"
               data-cy="usageBatiment"
+            >
+              <option
+                v-for="usageBatiment in usageBatimentValues"
+                :key="usageBatiment"
+                v-bind:value="usageBatiment"
+                v-bind:label="$t('cartePaillePorteuseApp.UsageBatiment.' + usageBatiment)"
+              >
+                {{ usageBatiment }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.usageBatimentAutre')"
+              for="batiment-usageBatimentAutre"
+              >Usage Batiment Autre</label
+            >
+            <select
+              class="form-control"
+              name="usageBatimentAutre"
+              :class="{ valid: !$v.batiment.usageBatimentAutre.$invalid, invalid: $v.batiment.usageBatimentAutre.$invalid }"
+              v-model="$v.batiment.usageBatimentAutre.$model"
+              id="batiment-usageBatimentAutre"
+              data-cy="usageBatimentAutre"
             >
               <option
                 v-for="usageBatiment in usageBatimentValues"
@@ -990,18 +1034,70 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.structComplNatureAutre')"
-              for="batiment-structComplNatureAutre"
-              >Struct Compl Nature Autre</label
+              v-text="$t('cartePaillePorteuseApp.batiment.structComplAutre')"
+              for="batiment-structComplAutre"
+              >Struct Compl Autre</label
             >
             <input
               type="text"
               class="form-control"
-              name="structComplNatureAutre"
-              id="batiment-structComplNatureAutre"
-              data-cy="structComplNatureAutre"
-              :class="{ valid: !$v.batiment.structComplNatureAutre.$invalid, invalid: $v.batiment.structComplNatureAutre.$invalid }"
-              v-model="$v.batiment.structComplNatureAutre.$model"
+              name="structComplAutre"
+              id="batiment-structComplAutre"
+              data-cy="structComplAutre"
+              :class="{ valid: !$v.batiment.structComplAutre.$invalid, invalid: $v.batiment.structComplAutre.$invalid }"
+              v-model="$v.batiment.structComplAutre.$model"
+            />
+            <div v-if="$v.batiment.structComplAutre.$anyDirty && $v.batiment.structComplAutre.$invalid">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.batiment.structComplAutre.maxLength"
+                v-text="$t('entity.validation.maxlength', { max: 512 })"
+              >
+                This field cannot be longer than 512 characters.
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.structComplNaturePrecision')"
+              for="batiment-structComplNaturePrecision"
+              >Struct Compl Nature Precision</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="structComplNaturePrecision"
+              id="batiment-structComplNaturePrecision"
+              data-cy="structComplNaturePrecision"
+              :class="{ valid: !$v.batiment.structComplNaturePrecision.$invalid, invalid: $v.batiment.structComplNaturePrecision.$invalid }"
+              v-model="$v.batiment.structComplNaturePrecision.$model"
+            />
+            <div v-if="$v.batiment.structComplNaturePrecision.$anyDirty && $v.batiment.structComplNaturePrecision.$invalid">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.batiment.structComplNaturePrecision.maxLength"
+                v-text="$t('entity.validation.maxlength', { max: 512 })"
+              >
+                This field cannot be longer than 512 characters.
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label
+              class="form-control-label"
+              v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')"
+              for="batiment-longMaxSansMurRefend"
+              >Long Max Sans Mur Refend</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              name="longMaxSansMurRefend"
+              id="batiment-longMaxSansMurRefend"
+              data-cy="longMaxSansMurRefend"
+              :class="{ valid: !$v.batiment.longMaxSansMurRefend.$invalid, invalid: $v.batiment.longMaxSansMurRefend.$invalid }"
+              v-model.number="$v.batiment.longMaxSansMurRefend.$model"
             />
           </div>
           <div class="form-group">
@@ -1033,23 +1129,6 @@
             />
           </div>
           <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')"
-              for="batiment-longMaxSansMurRefend"
-              >Long Max Sans Mur Refend</label
-            >
-            <input
-              type="number"
-              class="form-control"
-              name="longMaxSansMurRefend"
-              id="batiment-longMaxSansMurRefend"
-              data-cy="longMaxSansMurRefend"
-              :class="{ valid: !$v.batiment.longMaxSansMurRefend.$invalid, invalid: $v.batiment.longMaxSansMurRefend.$invalid }"
-              v-model.number="$v.batiment.longMaxSansMurRefend.$model"
-            />
-          </div>
-          <div class="form-group">
             <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.integBaie')" for="batiment-integBaie"
               >Integ Baie</label
             >
@@ -1070,6 +1149,20 @@
                 {{ integBaie }}
               </option>
             </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.integBaieAutre')" for="batiment-integBaieAutre"
+              >Integ Baie Autre</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="integBaieAutre"
+              id="batiment-integBaieAutre"
+              data-cy="integBaieAutre"
+              :class="{ valid: !$v.batiment.integBaieAutre.$invalid, invalid: $v.batiment.integBaieAutre.$invalid }"
+              v-model="$v.batiment.integBaieAutre.$model"
+            />
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.supportAncrage')" for="batiment-supportAncrage"
@@ -1131,6 +1224,20 @@
                 {{ revetInt }}
               </option>
             </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.revetIntAutre')" for="batiment-revetIntAutre"
+              >Revet Int Autre</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="revetIntAutre"
+              id="batiment-revetIntAutre"
+              data-cy="revetIntAutre"
+              :class="{ valid: !$v.batiment.revetIntAutre.$invalid, invalid: $v.batiment.revetIntAutre.$invalid }"
+              v-model="$v.batiment.revetIntAutre.$model"
+            />
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.revetExt')" for="batiment-revetExt"
@@ -1480,106 +1587,9 @@
               </small>
             </div>
           </div>
-          <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')"
-              for="batiment-nonBatimentEtPhotosPublics"
-              >Non Batiment Et Photos Publics</label
-            >
-            <input
-              type="checkbox"
-              class="form-check"
-              name="nonBatimentEtPhotosPublics"
-              id="batiment-nonBatimentEtPhotosPublics"
-              data-cy="nonBatimentEtPhotosPublics"
-              :class="{ valid: !$v.batiment.nonBatimentEtPhotosPublics.$invalid, invalid: $v.batiment.nonBatimentEtPhotosPublics.$invalid }"
-              v-model="$v.batiment.nonBatimentEtPhotosPublics.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.createdDate')" for="batiment-createdDate"
-              >Created Date</label
-            >
-            <div class="d-flex">
-              <input
-                id="batiment-createdDate"
-                data-cy="createdDate"
-                type="datetime-local"
-                class="form-control"
-                name="createdDate"
-                :class="{ valid: !$v.batiment.createdDate.$invalid, invalid: $v.batiment.createdDate.$invalid }"
-                required
-                :value="convertDateTimeFromServer($v.batiment.createdDate.$model)"
-                @change="updateInstantField('createdDate', $event)"
-              />
-            </div>
-            <div v-if="$v.batiment.createdDate.$anyDirty && $v.batiment.createdDate.$invalid">
-              <small class="form-text text-danger" v-if="!$v.batiment.createdDate.required" v-text="$t('entity.validation.required')">
-                This field is required.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.batiment.createdDate.ZonedDateTimelocal"
-                v-text="$t('entity.validation.ZonedDateTimelocal')"
-              >
-                This field should be a date and time.
-              </small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.lastModifiedDate')"
-              for="batiment-lastModifiedDate"
-              >Last Modified Date</label
-            >
-            <div class="d-flex">
-              <input
-                id="batiment-lastModifiedDate"
-                data-cy="lastModifiedDate"
-                type="datetime-local"
-                class="form-control"
-                name="lastModifiedDate"
-                :class="{ valid: !$v.batiment.lastModifiedDate.$invalid, invalid: $v.batiment.lastModifiedDate.$invalid }"
-                required
-                :value="convertDateTimeFromServer($v.batiment.lastModifiedDate.$model)"
-                @change="updateInstantField('lastModifiedDate', $event)"
-              />
-            </div>
-            <div v-if="$v.batiment.lastModifiedDate.$anyDirty && $v.batiment.lastModifiedDate.$invalid">
-              <small class="form-text text-danger" v-if="!$v.batiment.lastModifiedDate.required" v-text="$t('entity.validation.required')">
-                This field is required.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.batiment.lastModifiedDate.ZonedDateTimelocal"
-                v-text="$t('entity.validation.ZonedDateTimelocal')"
-              >
-                This field should be a date and time.
-              </small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.createdBy')" for="batiment-createdBy"
-              >Created By</label
-            >
-            <select class="form-control" id="batiment-createdBy" data-cy="createdBy" name="createdBy" v-model="batiment.createdBy" required>
-              <option v-if="!batiment.createdBy" v-bind:value="null" selected></option>
-              <option
-                v-bind:value="batiment.createdBy && userOption.id === batiment.createdBy.id ? batiment.createdBy : userOption"
-                v-for="userOption in users"
-                :key="userOption.id"
-              >
-                {{ userOption.login }}
-              </option>
-            </select>
-          </div>
-          <div v-if="$v.batiment.createdBy.$anyDirty && $v.batiment.createdBy.$invalid">
-            <small class="form-text text-danger" v-if="!$v.batiment.createdBy.required" v-text="$t('entity.validation.required')">
-              This field is required.
-            </small>
-          </div>
+          <!-- START added by JulioJu -->
+          <!-- Some fields deleted here -->
+          <!-- END added by JulioJu -->
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">

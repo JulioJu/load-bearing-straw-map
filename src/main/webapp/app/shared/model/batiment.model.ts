@@ -1,5 +1,3 @@
-import { IUser } from '@/shared/model/user.model';
-
 import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model';
 import { TaillesBottes } from '@/shared/model/enumerations/tailles-bottes.model';
 import { Cereale } from '@/shared/model/enumerations/cereale.model';
@@ -38,7 +36,9 @@ export interface IBatiment {
   photo5?: string | null;
   photo5Legende?: string | null;
   photo5Description?: string | null;
+  nonBatimentEtPhotosPublics?: boolean | null;
   usageBatiment?: UsageBatiment | null;
+  usageBatimentAutre?: UsageBatiment | null;
   cout?: number | null;
   surfacePlancher?: number | null;
   niveaux?: number | null;
@@ -58,14 +58,17 @@ export interface IBatiment {
   participatif?: YesNoPartial | null;
   structCompl?: boolean | null;
   structComplNature?: StructureComplementaire | null;
-  structComplNatureAutre?: string | null;
+  structComplAutre?: string | null;
+  structComplNaturePrecision?: string | null;
+  longMaxSansMurRefend?: number | null;
   noteCalcul?: boolean | null;
   nbrRangDeBottes?: number | null;
-  longMaxSansMurRefend?: number | null;
   integBaie?: IntegBaie | null;
+  integBaieAutre?: string | null;
   supportAncrage?: SupportAncrage | null;
   supportAncrageAutre?: string | null;
   revetInt?: RevetInt | null;
+  revetIntAutre?: string | null;
   revetExt?: RevetExt | null;
   revetExtAutre?: string | null;
   maitreDOuvrage?: string | null;
@@ -84,10 +87,9 @@ export interface IBatiment {
   contactMail?: string | null;
   contactPhone?: string | null;
   codePostal?: string | null;
-  nonBatimentEtPhotosPublics?: boolean | null;
-  createdDate?: Date;
-  lastModifiedDate?: Date;
-  createdBy?: IUser;
+  createdDate?: Date | null;
+  lastModifiedDate?: Date | null;
+  createdBy?: string | null;
 }
 
 export class Batiment implements IBatiment {
@@ -120,7 +122,9 @@ export class Batiment implements IBatiment {
     public photo5?: string | null,
     public photo5Legende?: string | null,
     public photo5Description?: string | null,
+    public nonBatimentEtPhotosPublics?: boolean | null,
     public usageBatiment?: UsageBatiment | null,
+    public usageBatimentAutre?: UsageBatiment | null,
     public cout?: number | null,
     public surfacePlancher?: number | null,
     public niveaux?: number | null,
@@ -140,14 +144,17 @@ export class Batiment implements IBatiment {
     public participatif?: YesNoPartial | null,
     public structCompl?: boolean | null,
     public structComplNature?: StructureComplementaire | null,
-    public structComplNatureAutre?: string | null,
+    public structComplAutre?: string | null,
+    public structComplNaturePrecision?: string | null,
+    public longMaxSansMurRefend?: number | null,
     public noteCalcul?: boolean | null,
     public nbrRangDeBottes?: number | null,
-    public longMaxSansMurRefend?: number | null,
     public integBaie?: IntegBaie | null,
+    public integBaieAutre?: string | null,
     public supportAncrage?: SupportAncrage | null,
     public supportAncrageAutre?: string | null,
     public revetInt?: RevetInt | null,
+    public revetIntAutre?: string | null,
     public revetExt?: RevetExt | null,
     public revetExtAutre?: string | null,
     public maitreDOuvrage?: string | null,
@@ -166,11 +173,11 @@ export class Batiment implements IBatiment {
     public contactMail?: string | null,
     public contactPhone?: string | null,
     public codePostal?: string | null,
-    public nonBatimentEtPhotosPublics?: boolean | null,
-    public createdDate?: Date,
-    public lastModifiedDate?: Date,
-    public createdBy?: IUser
+    public createdDate?: Date | null,
+    public lastModifiedDate?: Date | null,
+    public createdBy?: string | null
   ) {
+    this.nonBatimentEtPhotosPublics = this.nonBatimentEtPhotosPublics ?? false;
     this.travauxNeuf = this.travauxNeuf ?? false;
     this.travauxExtension = this.travauxExtension ?? false;
     this.travauxRenov = this.travauxRenov ?? false;
@@ -178,6 +185,5 @@ export class Batiment implements IBatiment {
     this.travauxIti = this.travauxIti ?? false;
     this.structCompl = this.structCompl ?? false;
     this.noteCalcul = this.noteCalcul ?? false;
-    this.nonBatimentEtPhotosPublics = this.nonBatimentEtPhotosPublics ?? false;
   }
 }

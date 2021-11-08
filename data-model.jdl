@@ -149,6 +149,17 @@ entity Batiment {
     photo5Legende String maxlength(50),
     photo5Description String,
 
+
+    // =========================================================================
+    // Section Autorisation
+    // =========================================================================
+
+    /**
+     * If true, anonymous users (not authenticated) could see photos. Search
+     * engine could  index it.
+     */
+    nonBatimentEtPhotosPublics Boolean,
+
     // Section "Informations générales"
     // =========================================================================
 
@@ -156,6 +167,10 @@ entity Batiment {
       * Usage
       */
     usageBatiment UsageBatiment,
+    /**
+      * Si "Autre", préciser
+      */
+    usageBatimentAutre UsageBatiment,
     /**
       * Coût [€]
       */
@@ -240,17 +255,27 @@ entity Batiment {
     // Section "Construction"
     // =========================================================================
     /**
-      * Structure complémentaire
+      * Structure complémentaire à la structure en paille porteuse (poteau, mur de refend, …)
       */
     structCompl Boolean,
+
     /**
       * Nature de la structure complémentaire
       */
     structComplNature StructureComplementaire,
     /**
-      * Autre nature de structure complémentaire
+      * Si "Autre", préciser
       */
-    structComplNatureAutre String,
+    structComplAutre String maxlength(512),
+    /**
+      * Longueur maximum sans mur de refend (mètre)
+      */
+    structComplNaturePrecision String maxlength(512),
+    /**
+      * Longueur maximum sans mur de refend (mètre)
+      */
+
+    longMaxSansMurRefend Float,
     /**
       * Note de calcul
       */
@@ -260,19 +285,21 @@ entity Batiment {
       */
     nbrRangDeBottes Integer,
     /**
-      * Longueur maximum sans mur de refend (mètre)
-      */
-    longMaxSansMurRefend Float,
-    /**
       * Intégration des baies
       */
+
     integBaie IntegBaie,
+    /**
+      * Si "Autre", préciser
+      */
+    integBaieAutre String,
+
     /**
       * Nature du support d'ancrage
       */
     supportAncrage SupportAncrage,
     /**
-      * Autre nature du support d'ancrage
+      * Si "Autre", préciser
       */
     supportAncrageAutre String,
 
@@ -283,11 +310,15 @@ entity Batiment {
          */
         revetInt RevetInt,
         /**
+         * Si "Autre", préciser
+         */
+        revetIntAutre String,
+        /**
          * Revêtement extérieur
          */
         revetExt RevetExt,
         /**
-         * Revêtement extérieur autre
+         * Si "Autre", préciser
          */
         revetExtAutre String,
 
@@ -329,71 +360,57 @@ entity Batiment {
     // =========================================================================
     // Section "Commentaire"
     // =========================================================================
-        /**
-        * Description du projet
-        */
-        descriptionProjet TextBlob,
-        /**
-        * Difficultés rencontrés
-        */
-        difficultees TextBlob,
-        /**
-        * Trucs et astuces
-        */
-        astuces TextBlob,
-        /**
-        * Autre commentaires
-        */
-        divers TextBlob,
+    /**
+     * Description du projet
+     */
+    descriptionProjet TextBlob,
+    /**
+     * Difficultés rencontrés
+     */
+    difficultees TextBlob,
+    /**
+     * Trucs et astuces
+     */
+    astuces TextBlob,
+    /**
+     * Autre commentaires
+     */
+    divers TextBlob,
     // =========================================================================
     // Section "Contact"
     // =========================================================================
-        /**
-        * Nom
-        */
-        contactNom String,
-        /**
-        * Mail
-        */
-        contactMail String,
-        /**
-        * Téléphone
-        */
-        contactPhone String,
-        /**
-        * Code postal
-        */
-        codePostal String maxlength(6),
-
-    // =========================================================================
-    // Section Autorisation
-    // =========================================================================
-
-        /**
-        * If true, anonymous users (not authenticated) could see photos. Search
-        * engine could  index it.
-        */
-        nonBatimentEtPhotosPublics Boolean,
+    /**
+     * Nom
+     */
+    contactNom String,
+    /**
+     * Mail
+     */
+    contactMail String,
+    /**
+     * Téléphone
+     */
+    contactPhone String,
+    /**
+     * Code postal
+     */
+    codePostal String maxlength(6),
 
     // =========================================================================
     // Autogénéré
     // =========================================================================
-        /**
-        * Date de création de l'enregistrement dans la Base de donnée
-        * (autogénéré en back)
-        */
-        createdDate Instant required,
-        /**
-        * Date de modification de l'enregistrement dans la Base de donnée
-        * (autogénéré en back)
-        */
-        lastModifiedDate Instant required,
-}
-
-relationship ManyToOne {
-
+    /**
+     * Date de création de l'enregistrement dans la Base de donnée
+     * (autogénéré en back)
+     */
+    createdDate Instant,
+    /**
+     * Date de modification de l'enregistrement dans la Base de donnée
+     * (autogénéré en back)
+     */
+    lastModifiedDate Instant,
     /**
      * Only createdBy of a Batiment could update or delete it (set in back at creation)
      */
-    Batiment{createdBy(login) required}  to User
+    createdBy String
 }

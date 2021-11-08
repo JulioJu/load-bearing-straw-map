@@ -187,10 +187,24 @@
             <span>{{ batiment.photo5Description }}</span>
           </dd>
           <dt>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')">Non Batiment Et Photos Publics</span>
+          </dt>
+          <dd>
+            <span>{{ batiment.nonBatimentEtPhotosPublics }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')">Usage Batiment</span>
           </dt>
           <dd>
             <span v-text="$t('cartePaillePorteuseApp.UsageBatiment.' + batiment.usageBatiment)">{{ batiment.usageBatiment }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.usageBatimentAutre')">Usage Batiment Autre</span>
+          </dt>
+          <dd>
+            <span v-text="$t('cartePaillePorteuseApp.UsageBatiment.' + batiment.usageBatimentAutre)">{{
+              batiment.usageBatimentAutre
+            }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.cout')">Cout</span>
@@ -309,10 +323,22 @@
             }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.structComplNatureAutre')">Struct Compl Nature Autre</span>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.structComplAutre')">Struct Compl Autre</span>
           </dt>
           <dd>
-            <span>{{ batiment.structComplNatureAutre }}</span>
+            <span>{{ batiment.structComplAutre }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.structComplNaturePrecision')">Struct Compl Nature Precision</span>
+          </dt>
+          <dd>
+            <span>{{ batiment.structComplNaturePrecision }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')">Long Max Sans Mur Refend</span>
+          </dt>
+          <dd>
+            <span>{{ batiment.longMaxSansMurRefend }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.noteCalcul')">Note Calcul</span>
@@ -327,16 +353,16 @@
             <span>{{ batiment.nbrRangDeBottes }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')">Long Max Sans Mur Refend</span>
-          </dt>
-          <dd>
-            <span>{{ batiment.longMaxSansMurRefend }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.integBaie')">Integ Baie</span>
           </dt>
           <dd>
             <span v-text="$t('cartePaillePorteuseApp.IntegBaie.' + batiment.integBaie)">{{ batiment.integBaie }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.integBaieAutre')">Integ Baie Autre</span>
+          </dt>
+          <dd>
+            <span>{{ batiment.integBaieAutre }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.supportAncrage')">Support Ancrage</span>
@@ -355,6 +381,12 @@
           </dt>
           <dd>
             <span v-text="$t('cartePaillePorteuseApp.RevetInt.' + batiment.revetInt)">{{ batiment.revetInt }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('cartePaillePorteuseApp.batiment.revetIntAutre')">Revet Int Autre</span>
+          </dt>
+          <dd>
+            <span>{{ batiment.revetIntAutre }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.revetExt')">Revet Ext</span>
@@ -465,12 +497,6 @@
             <span>{{ batiment.codePostal }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')">Non Batiment Et Photos Publics</span>
-          </dt>
-          <dd>
-            <span>{{ batiment.nonBatimentEtPhotosPublics }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('cartePaillePorteuseApp.batiment.createdDate')">Created Date</span>
           </dt>
           <dd>
@@ -486,7 +512,7 @@
             <span v-text="$t('cartePaillePorteuseApp.batiment.createdBy')">Created By</span>
           </dt>
           <dd>
-            {{ batiment.createdBy ? batiment.createdBy.login : '' }}
+            <span>{{ batiment.createdBy }}</span>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
