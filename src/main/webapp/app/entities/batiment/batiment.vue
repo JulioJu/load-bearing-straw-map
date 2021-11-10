@@ -340,9 +340,9 @@
               <span v-text="$t('cartePaillePorteuseApp.batiment.lastModifiedDate')">Last Modified Date</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'lastModifiedDate'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('createdBy')">
+            <th scope="row" v-on:click="changeOrder('createdBy.login')">
               <span v-text="$t('cartePaillePorteuseApp.batiment.createdBy')">Created By</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdBy'"></jhi-sort-indicator>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdBy.login'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
           </tr>
@@ -484,7 +484,9 @@
             <td>{{ batiment.codePostal }}</td>
             <td>{{ batiment.createdDate ? $d(Date.parse(batiment.createdDate), 'short') : '' }}</td>
             <td>{{ batiment.lastModifiedDate ? $d(Date.parse(batiment.lastModifiedDate), 'short') : '' }}</td>
-            <td>{{ batiment.createdBy }}</td>
+            <td>
+              {{ batiment.createdBy ? batiment.createdBy.login : '' }}
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'BatimentView', params: { batimentId: batiment.id } }" custom v-slot="{ navigate }">

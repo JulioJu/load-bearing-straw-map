@@ -288,9 +288,6 @@ public class BatimentService {
                 if (batiment.getLastModifiedDate() != null) {
                     existingBatiment.setLastModifiedDate(batiment.getLastModifiedDate());
                 }
-                if (batiment.getCreatedBy() != null) {
-                    existingBatiment.setCreatedBy(batiment.getCreatedBy());
-                }
 
                 return existingBatiment;
             })

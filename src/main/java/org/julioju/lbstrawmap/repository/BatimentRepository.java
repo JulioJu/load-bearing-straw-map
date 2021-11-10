@@ -1,5 +1,6 @@
 package org.julioju.lbstrawmap.repository;
 
+import java.util.List;
 import org.julioju.lbstrawmap.domain.Batiment;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
@@ -20,5 +21,9 @@ public interface BatimentRepository extends JpaRepository<Batiment, Long> {
     java.util.List<org.julioju.lbstrawmap.domain.BatimentWithOnlyCreatorId> findWithOnlyCreatorIds(
         @org.springframework.data.repository.query.Param("batId") Long batId
     );
+
     // END added by JulioJu
+
+    @Query("select batiment from Batiment batiment where batiment.createdBy.login = ?#{principal.username}")
+    List<Batiment> findByCreatedByIsCurrentUser();
 }

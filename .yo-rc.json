@@ -44,7 +44,7 @@
     "languages": ["fr"],
     "enableGradleEnterprise": false,
     "entities": ["Batiment"],
-    "lastLiquibaseTimestamp": 1636404119000,
+    "lastLiquibaseTimestamp": 1636544230000,
     "herokuAppName": "carte-paille-porteuse",
     "herokuDeployType": "git",
     "herokuJavaVersion": "11"

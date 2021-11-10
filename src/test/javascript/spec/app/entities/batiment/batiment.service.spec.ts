@@ -123,8 +123,7 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         currentDate,
-        currentDate,
-        'AAAAAAA'
+        currentDate
       );
     });
 
@@ -271,7 +270,6 @@ describe('Service Tests', () => {
             codePostal: 'BBBBBB',
             createdDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
             lastModifiedDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
-            createdBy: 'BBBBBB',
           },
           elemDefault
         );
@@ -344,7 +342,6 @@ describe('Service Tests', () => {
             contactMail: 'BBBBBB',
             contactPhone: 'BBBBBB',
             codePostal: 'BBBBBB',
-            createdBy: 'BBBBBB',
           },
           new Batiment()
         );
@@ -454,7 +451,6 @@ describe('Service Tests', () => {
             codePostal: 'BBBBBB',
             createdDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
             lastModifiedDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
-            createdBy: 'BBBBBB',
           },
           elemDefault
         );

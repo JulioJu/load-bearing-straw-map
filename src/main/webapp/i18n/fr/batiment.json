@@ -147,8 +147,7 @@
         "contactPhone": "Téléphone",
         "codePostal": "Code postal",
         "createdDate": "Date de création de l&#39;enregistrement dans la Base de donnée\n(autogénéré en back)",
-        "lastModifiedDate": "Date de modification de l&#39;enregistrement dans la Base de donnée\n(autogénéré en back)",
-        "createdBy": "Only createdBy of a Batiment could update or delete it (set in back at creation)"
+        "lastModifiedDate": "Date de modification de l&#39;enregistrement dans la Base de donnée\n(autogénéré en back)"
       }
     }
   }

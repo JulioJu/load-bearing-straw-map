@@ -420,14 +420,19 @@
       "fieldName": "lastModifiedDate",
       "fieldType": "Instant",
       "javadoc": "Date de modification de l'enregistrement dans la Base de donnée\\n(autogénéré en back)"
-    },
-    {
-      "fieldName": "createdBy",
-      "fieldType": "String",
-      "javadoc": "Only createdBy of a Batiment could update or delete it (set in back at creation)"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "batiment",
+      "relationshipValidateRules": "required",
+      "javadoc": "Only createdBy of a Batiment could update or delete it (set in back at creation)",
+      "relationshipName": "createdBy",
+      "otherEntityField": "login"
+    }
+  ],
   "entityTableName": "batiment",
   "dto": "no",
   "pagination": "pagination",
@@ -437,5 +442,5 @@
   "readOnly": false,
   "embedded": false,
   "applications": "*",
-  "changelogDate": "20211108204159"
+  "changelogDate": "20211110113710"
 }

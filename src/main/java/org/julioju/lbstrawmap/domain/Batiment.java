@@ -25,9 +25,6 @@ import org.julioju.lbstrawmap.domain.enumeration.YesNoPartial;
 @Entity
 @Table(name = "batiment")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-// START added by JulioJu
-@EntityListeners(org.springframework.data.jpa.domain.support.AuditingEntityListener.class)
-// END added by JulioJu
 public class Batiment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -555,12 +552,11 @@ public class Batiment implements Serializable {
      * Only createdBy of a Batiment could update or delete it (set in back at creation)
      */
     @ApiModelProperty(value = "Only createdBy of a Batiment could update or delete it (set in back at creation)")
+    @ManyToOne(optional = false)
     // START added by JulioJu
-    @Column(name = "created_by", updatable = false)
-    @org.springframework.data.annotation.CreatedBy
     @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
     // END added by JulioJu
-    private String createdBy;
+    private User createdBy;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -1617,17 +1613,17 @@ public class Batiment implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public String getCreatedBy() {
+    public User getCreatedBy() {
         return this.createdBy;
     }
 
-    public Batiment createdBy(String createdBy) {
-        this.setCreatedBy(createdBy);
-        return this;
+    public void setCreatedBy(User user) {
+        this.createdBy = user;
     }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    public Batiment createdBy(User user) {
+        this.setCreatedBy(user);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -1734,7 +1730,6 @@ public class Batiment implements Serializable {
             ", codePostal='" + getCodePostal() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
-            ", createdBy='" + getCreatedBy() + "'" +
             "}";
     }
 }

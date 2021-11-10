@@ -16,9 +16,10 @@ describe('Batiment e2e test', () => {
   const batimentPageUrlPattern = new RegExp('/batiment(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'admin';
   const password = Cypress.env('E2E_PASSWORD') ?? 'admin';
-  const batimentSample = { latitude: 57, longitude: -39 };
+  const batimentSample = { latitude: -44, longitude: 8 };
 
   let batiment: any;
+  //let user: any;
 
   before(() => {
     cy.window().then(win => {
@@ -29,11 +30,35 @@ describe('Batiment e2e test', () => {
     cy.get(entityItemSelector).should('exist');
   });
 
+  /* Disabled due to incompatibility
+  beforeEach(() => {
+    // create an instance at the required relationship entity:
+    cy.authenticatedRequest({
+      method: 'POST',
+      url: '/api/users',
+      body: {"login":"c blue","firstName":"Céleste","lastName":"Lopez"},
+    }).then(({ body }) => {
+      user = body;
+    });
+  });
+   */
+
   beforeEach(() => {
     cy.intercept('GET', '/api/batiments+(?*|)').as('entitiesRequest');
     cy.intercept('POST', '/api/batiments').as('postEntityRequest');
     cy.intercept('DELETE', '/api/batiments/*').as('deleteEntityRequest');
   });
+
+  /* Disabled due to incompatibility
+  beforeEach(() => {
+    // Simulate relationships api for better performance and reproducibility.
+    cy.intercept('GET', '/api/users', {
+      statusCode: 200,
+      body: [user],
+    });
+
+  });
+   */
 
   afterEach(() => {
     if (batiment) {
@@ -45,6 +70,19 @@ describe('Batiment e2e test', () => {
       });
     }
   });
+
+  /* Disabled due to incompatibility
+  afterEach(() => {
+    if (user) {
+      cy.authenticatedRequest({
+        method: 'DELETE',
+        url: `/api/users/${user.id}`,
+      }).then(() => {
+        user = undefined;
+      });
+    }
+  });
+   */
 
   it('Batiments menu should load Batiments page', () => {
     cy.visit('/');
@@ -81,11 +119,16 @@ describe('Batiment e2e test', () => {
     });
 
     describe('with existing value', () => {
+      /* Disabled due to incompatibility
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
           url: '/api/batiments',
-          body: batimentSample,
+  
+          body: {
+            ...batimentSample,
+            createdBy: user,
+          },
         }).then(({ body }) => {
           batiment = body;
 
@@ -105,6 +148,17 @@ describe('Batiment e2e test', () => {
         cy.visit(batimentPageUrl);
 
         cy.wait('@entitiesRequestInternal');
+      });
+       */
+
+      beforeEach(function () {
+        cy.visit(batimentPageUrl);
+
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          if (response!.body.length === 0) {
+            this.skip();
+          }
+        });
       });
 
       it('detail button click should load details Batiment page', () => {
@@ -128,7 +182,7 @@ describe('Batiment e2e test', () => {
         cy.url().should('match', batimentPageUrlPattern);
       });
 
-      it('last delete button click should delete instance of Batiment', () => {
+      it.skip('last delete button click should delete instance of Batiment', () => {
         cy.get(entityDeleteButtonSelector).last().click();
         cy.getEntityDeleteDialogHeading('batiment').should('exist');
         cy.get(entityConfirmDeleteButtonSelector).click({ force: true });
@@ -152,7 +206,7 @@ describe('Batiment e2e test', () => {
       cy.getEntityCreateUpdateHeading('Batiment');
     });
 
-    it('should create an instance of Batiment', () => {
+    it.skip('should create an instance of Batiment', () => {
       cy.get(`[data-cy="latitude"]`).type('31').should('have.value', '31');
 
       cy.get(`[data-cy="longitude"]`).type('3').should('have.value', '3');
@@ -227,9 +281,9 @@ describe('Batiment e2e test', () => {
       cy.get(`[data-cy="travauxIti"]`).should('not.be.checked');
       cy.get(`[data-cy="travauxIti"]`).click().should('be.checked');
 
-      cy.get(`[data-cy="constructionDebut"]`).type('2021-11-08').should('have.value', '2021-11-08');
+      cy.get(`[data-cy="constructionDebut"]`).type('2021-11-10').should('have.value', '2021-11-10');
 
-      cy.get(`[data-cy="constructionFin"]`).type('2021-11-08').should('have.value', '2021-11-08');
+      cy.get(`[data-cy="constructionFin"]`).type('2021-11-10').should('have.value', '2021-11-10');
 
       cy.get(`[data-cy="bottesTaille"]`).select('T_36_X_46_X_70_a_120_CM');
 
@@ -323,11 +377,11 @@ describe('Batiment e2e test', () => {
 
       cy.get(`[data-cy="codePostal"]`).type('encomp').should('have.value', 'encomp');
 
-      cy.get(`[data-cy="createdDate"]`).type('2021-11-08T19:56').should('have.value', '2021-11-08T19:56');
+      cy.get(`[data-cy="createdDate"]`).type('2021-11-10T10:51').should('have.value', '2021-11-10T10:51');
 
-      cy.get(`[data-cy="lastModifiedDate"]`).type('2021-11-08T00:44').should('have.value', '2021-11-08T00:44');
+      cy.get(`[data-cy="lastModifiedDate"]`).type('2021-11-09T15:39').should('have.value', '2021-11-09T15:39');
 
-      cy.get(`[data-cy="createdBy"]`).type('Lituanie').should('have.value', 'Lituanie');
+      cy.get(`[data-cy="createdBy"]`).select(1);
 
       // since cypress clicks submit too fast before the blob fields are validated
       cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting

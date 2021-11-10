@@ -409,8 +409,14 @@ entity Batiment {
      * (autogénéré en back)
      */
     lastModifiedDate Instant,
+}
+
+relationship ManyToOne {
+
+    // Do not use createdBy `org.springframework.data.annotation.CreatedBy` as
+    // it saves only the login, and not the id.
     /**
      * Only createdBy of a Batiment could update or delete it (set in back at creation)
      */
-    createdBy String
+    Batiment{createdBy(login) required}  to User
 }

@@ -91,6 +91,10 @@ public class BatimentResource {
             throw new BadRequestAlertException("A new batiment cannot already have an ID", ENTITY_NAME, "idexists");
         }
 
+        // START added by JulioJu
+        batiment.setCreatedBy(this.currentUser());
+        // END added by JulioJu
+
         Batiment result = batimentService.save(batiment);
         return ResponseEntity
             .created(new URI("/api/batiments/" + result.getId()))
@@ -127,6 +131,7 @@ public class BatimentResource {
 
         // START added by JulioJu
         this.updateOrDeleteCheckUser(batiment.getId());
+        batiment.setCreatedBy(null);
         // END added by JulioJu
 
         Batiment result = batimentService.save(batiment);
@@ -166,6 +171,7 @@ public class BatimentResource {
 
         // START added by JulioJu
         this.updateOrDeleteCheckUser(batiment.getId());
+        batiment.setCreatedBy(null);
         // END added by JulioJu
 
         Optional<Batiment> result = batimentService.partialUpdate(batiment);

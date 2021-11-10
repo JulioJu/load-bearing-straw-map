@@ -512,7 +512,7 @@
             <span v-text="$t('cartePaillePorteuseApp.batiment.createdBy')">Created By</span>
           </dt>
           <dd>
-            <span>{{ batiment.createdBy }}</span>
+            {{ batiment.createdBy ? batiment.createdBy.login : '' }}
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

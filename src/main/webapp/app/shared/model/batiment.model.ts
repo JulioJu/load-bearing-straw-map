@@ -1,3 +1,5 @@
+import { IUser } from '@/shared/model/user.model';
+
 import { UsageBatiment } from '@/shared/model/enumerations/usage-batiment.model';
 import { TaillesBottes } from '@/shared/model/enumerations/tailles-bottes.model';
 import { Cereale } from '@/shared/model/enumerations/cereale.model';
@@ -89,7 +91,7 @@ export interface IBatiment {
   codePostal?: string | null;
   createdDate?: Date | null;
   lastModifiedDate?: Date | null;
-  createdBy?: string | null;
+  createdBy?: IUser;
 }
 
 export class Batiment implements IBatiment {
@@ -175,7 +177,7 @@ export class Batiment implements IBatiment {
     public codePostal?: string | null,
     public createdDate?: Date | null,
     public lastModifiedDate?: Date | null,
-    public createdBy?: string | null
+    public createdBy?: IUser
   ) {
     this.nonBatimentEtPhotosPublics = this.nonBatimentEtPhotosPublics ?? false;
     this.travauxNeuf = this.travauxNeuf ?? false;

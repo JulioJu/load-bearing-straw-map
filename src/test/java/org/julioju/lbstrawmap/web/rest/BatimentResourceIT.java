@@ -15,6 +15,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.julioju.lbstrawmap.IntegrationTest;
 import org.julioju.lbstrawmap.domain.Batiment;
+import org.julioju.lbstrawmap.domain.User;
 import org.julioju.lbstrawmap.domain.enumeration.Cereale;
 import org.julioju.lbstrawmap.domain.enumeration.IntegBaie;
 import org.julioju.lbstrawmap.domain.enumeration.RevetExt;
@@ -279,9 +280,6 @@ class BatimentResourceIT {
     private static final Instant DEFAULT_LAST_MODIFIED_DATE = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_LAST_MODIFIED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
-    private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
-
     private static final String ENTITY_API_URL = "/api/batiments";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -386,8 +384,12 @@ class BatimentResourceIT {
             .contactPhone(DEFAULT_CONTACT_PHONE)
             .codePostal(DEFAULT_CODE_POSTAL)
             .createdDate(DEFAULT_CREATED_DATE)
-            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE)
-            .createdBy(DEFAULT_CREATED_BY);
+            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        batiment.setCreatedBy(user);
         return batiment;
     }
 
@@ -478,8 +480,12 @@ class BatimentResourceIT {
             .contactPhone(UPDATED_CONTACT_PHONE)
             .codePostal(UPDATED_CODE_POSTAL)
             .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE)
-            .createdBy(UPDATED_CREATED_BY);
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        batiment.setCreatedBy(user);
         return batiment;
     }
 
@@ -581,7 +587,6 @@ class BatimentResourceIT {
         assertThat(testBatiment.getCodePostal()).isEqualTo(DEFAULT_CODE_POSTAL);
         assertThat(testBatiment.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testBatiment.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
-        assertThat(testBatiment.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
     }
 
     @Test
@@ -727,8 +732,7 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.[*].contactPhone").value(hasItem(DEFAULT_CONTACT_PHONE)))
             .andExpect(jsonPath("$.[*].codePostal").value(hasItem(DEFAULT_CODE_POSTAL)))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
-            .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())))
-            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY)));
+            .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())));
     }
 
     @Test
@@ -822,8 +826,7 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.contactPhone").value(DEFAULT_CONTACT_PHONE))
             .andExpect(jsonPath("$.codePostal").value(DEFAULT_CODE_POSTAL))
             .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
-            .andExpect(jsonPath("$.lastModifiedDate").value(DEFAULT_LAST_MODIFIED_DATE.toString()))
-            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY));
+            .andExpect(jsonPath("$.lastModifiedDate").value(DEFAULT_LAST_MODIFIED_DATE.toString()));
     }
 
     @Test
@@ -925,8 +928,7 @@ class BatimentResourceIT {
             .contactPhone(UPDATED_CONTACT_PHONE)
             .codePostal(UPDATED_CODE_POSTAL)
             .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE)
-            .createdBy(UPDATED_CREATED_BY);
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
 
         restBatimentMockMvc
             .perform(
@@ -1020,7 +1022,6 @@ class BatimentResourceIT {
         assertThat(testBatiment.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
         assertThat(testBatiment.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testBatiment.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
-        assertThat(testBatiment.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
     }
 
     @Test
@@ -1225,7 +1226,6 @@ class BatimentResourceIT {
         assertThat(testBatiment.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
         assertThat(testBatiment.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testBatiment.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
-        assertThat(testBatiment.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
     }
 
     @Test
@@ -1320,8 +1320,7 @@ class BatimentResourceIT {
             .contactPhone(UPDATED_CONTACT_PHONE)
             .codePostal(UPDATED_CODE_POSTAL)
             .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE)
-            .createdBy(UPDATED_CREATED_BY);
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
 
         restBatimentMockMvc
             .perform(
@@ -1415,7 +1414,6 @@ class BatimentResourceIT {
         assertThat(testBatiment.getCodePostal()).isEqualTo(UPDATED_CODE_POSTAL);
         assertThat(testBatiment.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testBatiment.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
-        assertThat(testBatiment.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
     }
 
     @Test
