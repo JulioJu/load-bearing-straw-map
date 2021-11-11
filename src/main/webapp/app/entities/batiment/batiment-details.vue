@@ -187,12 +187,6 @@
             <span>{{ batiment.photo5Description }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartoPaillePorteuseApp.batiment.nomBatimentEtPhotosPublics')">Nom Batiment Et Photos Publics</span>
-          </dt>
-          <dd>
-            <span>{{ batiment.nomBatimentEtPhotosPublics }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.usageBatiment')">Usage Batiment</span>
           </dt>
           <dd>
@@ -493,6 +487,12 @@
           </dt>
           <dd>
             <span>{{ batiment.codePostal }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('cartoPaillePorteuseApp.batiment.profilPublic')">Profil Public</span>
+          </dt>
+          <dd>
+            <span>{{ batiment.profilPublic }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.createdDate')">Created Date</span>

@@ -113,7 +113,8 @@
       "codePostal": "Code postal",
 
       "sectionAutorisation": "Autorisation",
-      "nomBatimentEtPhotosPublics": "Le 'nom du bâtiment' et les 'photos' sont visibles pour les utilisateurs non authentifiés",
+      "profilPublic": " coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte).",
+      "localisationRecommendation": " Nous recommendons de positionner le bâti à une certaine distance de sa position exacte.",
 
       "sectionInfoEnregistrement": "Création det modification de l'enregistrement",
       "createdDate": "Date de création",

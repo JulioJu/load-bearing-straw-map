@@ -8,5 +8,5 @@ gradle
 .gradle
 
 # START added by JulioJu
-batiment-update.vue
+src/main/webapp/app/entities/batiment/batiment-update.vue
 # END added by JulioJu

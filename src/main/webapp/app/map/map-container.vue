@@ -3,10 +3,10 @@
   <section>
     <template v-if="authenticated">
       <template v-if="isEditMode">
-        <strong> Double cliquer sur la carte pour ajouter un bâti </strong>
+        <div class="text-info">Double cliquer sur la carte pour ajouter un bâti</div>
+        <div class="text-danger mb-3" v-text="$t('cartoPaillePorteuseApp.batiment.localisationRecommendation')"></div>
       </template>
-      <br />
-      <button @click="toggleEditionMode" class="btn btn-primary jh-create-entity">
+      <button @click="toggleEditionMode" class="btn btn-primary jh-create-entity mb-3">
         <template v-if="!isEditMode">
           <font-awesome-icon icon="plus"></font-awesome-icon>
           <span> Basculer en mode ajout d'un bâti </span>

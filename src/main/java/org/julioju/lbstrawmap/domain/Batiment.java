@@ -140,13 +140,6 @@ public class Batiment implements Serializable {
     private String photo5Description;
 
     /**
-     * If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.
-     */
-    @ApiModelProperty(value = "If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.")
-    @Column(name = "nom_batiment_et_photos_publics")
-    private Boolean nomBatimentEtPhotosPublics;
-
-    /**
      * Usage
      */
     @ApiModelProperty(value = "Usage")
@@ -526,6 +519,15 @@ public class Batiment implements Serializable {
     @Size(max = 6)
     @Column(name = "code_postal", length = 6)
     private String codePostal;
+
+    /**
+     * coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)
+     */
+    @ApiModelProperty(
+        value = "coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)"
+    )
+    @Column(name = "profil_public")
+    private Boolean profilPublic;
 
     /**
      * Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)
@@ -923,19 +925,6 @@ public class Batiment implements Serializable {
 
     public void setPhoto5Description(String photo5Description) {
         this.photo5Description = photo5Description;
-    }
-
-    public Boolean getNomBatimentEtPhotosPublics() {
-        return this.nomBatimentEtPhotosPublics;
-    }
-
-    public Batiment nomBatimentEtPhotosPublics(Boolean nomBatimentEtPhotosPublics) {
-        this.setNomBatimentEtPhotosPublics(nomBatimentEtPhotosPublics);
-        return this;
-    }
-
-    public void setNomBatimentEtPhotosPublics(Boolean nomBatimentEtPhotosPublics) {
-        this.nomBatimentEtPhotosPublics = nomBatimentEtPhotosPublics;
     }
 
     public UsageBatiment getUsageBatiment() {
@@ -1588,6 +1577,19 @@ public class Batiment implements Serializable {
         this.codePostal = codePostal;
     }
 
+    public Boolean getProfilPublic() {
+        return this.profilPublic;
+    }
+
+    public Batiment profilPublic(Boolean profilPublic) {
+        this.setProfilPublic(profilPublic);
+        return this;
+    }
+
+    public void setProfilPublic(Boolean profilPublic) {
+        this.profilPublic = profilPublic;
+    }
+
     public Instant getCreatedDate() {
         return this.createdDate;
     }
@@ -1678,7 +1680,6 @@ public class Batiment implements Serializable {
             ", photo5ContentType='" + getPhoto5ContentType() + "'" +
             ", photo5Legende='" + getPhoto5Legende() + "'" +
             ", photo5Description='" + getPhoto5Description() + "'" +
-            ", nomBatimentEtPhotosPublics='" + getNomBatimentEtPhotosPublics() + "'" +
             ", usageBatiment='" + getUsageBatiment() + "'" +
             ", usageBatimentAutre='" + getUsageBatimentAutre() + "'" +
             ", cout=" + getCout() +
@@ -1729,6 +1730,7 @@ public class Batiment implements Serializable {
             ", contactMail='" + getContactMail() + "'" +
             ", contactPhone='" + getContactPhone() + "'" +
             ", codePostal='" + getCodePostal() + "'" +
+            ", profilPublic='" + getProfilPublic() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";

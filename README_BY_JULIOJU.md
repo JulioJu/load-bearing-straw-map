@@ -42,6 +42,7 @@ git checkout \
     Procfile \
     src/main/resources/config/application-heroku.yml \
     src/main/resources/config/bootstrap-heroku.yml \
+    src/main/webapp/app/entities/batiment/batiment-update.vue \
     system.properties
 npm install --save ol
 jhipster jdl ./data-model.jdl --force

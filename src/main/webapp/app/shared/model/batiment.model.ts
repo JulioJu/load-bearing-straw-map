@@ -38,7 +38,6 @@ export interface IBatiment {
   photo5?: string | null;
   photo5Legende?: string | null;
   photo5Description?: string | null;
-  nomBatimentEtPhotosPublics?: boolean | null;
   usageBatiment?: UsageBatiment | null;
   usageBatimentAutre?: string | null;
   cout?: number | null;
@@ -89,6 +88,7 @@ export interface IBatiment {
   contactMail?: string | null;
   contactPhone?: string | null;
   codePostal?: string | null;
+  profilPublic?: boolean | null;
   createdDate?: Date | null;
   lastModifiedDate?: Date | null;
   createdBy?: IUser;
@@ -124,7 +124,6 @@ export class Batiment implements IBatiment {
     public photo5?: string | null,
     public photo5Legende?: string | null,
     public photo5Description?: string | null,
-    public nomBatimentEtPhotosPublics?: boolean | null,
     public usageBatiment?: UsageBatiment | null,
     public usageBatimentAutre?: string | null,
     public cout?: number | null,
@@ -175,11 +174,11 @@ export class Batiment implements IBatiment {
     public contactMail?: string | null,
     public contactPhone?: string | null,
     public codePostal?: string | null,
+    public profilPublic?: boolean | null,
     public createdDate?: Date | null,
     public lastModifiedDate?: Date | null,
     public createdBy?: IUser
   ) {
-    this.nomBatimentEtPhotosPublics = this.nomBatimentEtPhotosPublics ?? false;
     this.travauxNeuf = this.travauxNeuf ?? false;
     this.travauxExtension = this.travauxExtension ?? false;
     this.travauxRenov = this.travauxRenov ?? false;
@@ -187,5 +186,6 @@ export class Batiment implements IBatiment {
     this.travauxIti = this.travauxIti ?? false;
     this.structCompl = this.structCompl ?? false;
     this.noteCalcul = this.noteCalcul ?? false;
+    this.profilPublic = this.profilPublic ?? false;
   }
 }

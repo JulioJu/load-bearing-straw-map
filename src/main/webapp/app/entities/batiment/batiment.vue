@@ -120,14 +120,6 @@
               <span v-text="$t('cartoPaillePorteuseApp.batiment.photo5Description')">Photo 5 Description</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'photo5Description'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('nomBatimentEtPhotosPublics')">
-              <span v-text="$t('cartoPaillePorteuseApp.batiment.nomBatimentEtPhotosPublics')">Nom Batiment Et Photos Publics</span>
-              <jhi-sort-indicator
-                :current-order="propOrder"
-                :reverse="reverse"
-                :field-name="'nomBatimentEtPhotosPublics'"
-              ></jhi-sort-indicator>
-            </th>
             <th scope="row" v-on:click="changeOrder('usageBatiment')">
               <span v-text="$t('cartoPaillePorteuseApp.batiment.usageBatiment')">Usage Batiment</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'usageBatiment'"></jhi-sort-indicator>
@@ -328,6 +320,10 @@
               <span v-text="$t('cartoPaillePorteuseApp.batiment.codePostal')">Code Postal</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'codePostal'"></jhi-sort-indicator>
             </th>
+            <th scope="row" v-on:click="changeOrder('profilPublic')">
+              <span v-text="$t('cartoPaillePorteuseApp.batiment.profilPublic')">Profil Public</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'profilPublic'"></jhi-sort-indicator>
+            </th>
             <th scope="row" v-on:click="changeOrder('createdDate')">
               <span v-text="$t('cartoPaillePorteuseApp.batiment.createdDate')">Created Date</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdDate'"></jhi-sort-indicator>
@@ -425,7 +421,6 @@
             </td>
             <td>{{ batiment.photo5Legende }}</td>
             <td>{{ batiment.photo5Description }}</td>
-            <td>{{ batiment.nomBatimentEtPhotosPublics }}</td>
             <td v-text="$t('cartoPaillePorteuseApp.UsageBatiment.' + batiment.usageBatiment)">{{ batiment.usageBatiment }}</td>
             <td>{{ batiment.usageBatimentAutre }}</td>
             <td>{{ batiment.cout }}</td>
@@ -478,6 +473,7 @@
             <td>{{ batiment.contactMail }}</td>
             <td>{{ batiment.contactPhone }}</td>
             <td>{{ batiment.codePostal }}</td>
+            <td>{{ batiment.profilPublic }}</td>
             <td>{{ batiment.createdDate ? $d(Date.parse(batiment.createdDate), 'short') : '' }}</td>
             <td>{{ batiment.lastModifiedDate ? $d(Date.parse(batiment.lastModifiedDate), 'short') : '' }}</td>
             <td>

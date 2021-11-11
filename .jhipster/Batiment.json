@@ -113,11 +113,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "nomBatimentEtPhotosPublics",
-      "fieldType": "Boolean",
-      "javadoc": "If true, anonymous users (not authenticated) could see photos. Search\\nengine could  index it."
-    },
-    {
       "fieldName": "usageBatiment",
       "fieldType": "UsageBatiment",
       "javadoc": "Usage",
@@ -412,6 +407,11 @@
       "fieldValidateRulesMaxlength": "6"
     },
     {
+      "fieldName": "profilPublic",
+      "fieldType": "Boolean",
+      "javadoc": "coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)"
+    },
+    {
       "fieldName": "createdDate",
       "fieldType": "Instant",
       "javadoc": "Date de création de l'enregistrement dans la Base de donnée\\n(autogénéré en back)"
@@ -442,5 +442,5 @@
   "readOnly": false,
   "embedded": false,
   "applications": "*",
-  "changelogDate": "20211111182648"
+  "changelogDate": "20211111231504"
 }

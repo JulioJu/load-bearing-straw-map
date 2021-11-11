@@ -73,7 +73,6 @@ const validations: any = {
       maxLength: maxLength(30),
     },
     photo5Description: {},
-    nomBatimentEtPhotosPublics: {},
     usageBatiment: {},
     usageBatimentAutre: {},
     cout: {},
@@ -147,6 +146,7 @@ const validations: any = {
     codePostal: {
       maxLength: maxLength(6),
     },
+    profilPublic: {},
     createdDate: {},
     lastModifiedDate: {},
     createdBy: {

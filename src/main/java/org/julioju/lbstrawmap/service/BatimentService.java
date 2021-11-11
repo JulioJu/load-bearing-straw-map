@@ -129,9 +129,6 @@ public class BatimentService {
                 if (batiment.getPhoto5Description() != null) {
                     existingBatiment.setPhoto5Description(batiment.getPhoto5Description());
                 }
-                if (batiment.getNomBatimentEtPhotosPublics() != null) {
-                    existingBatiment.setNomBatimentEtPhotosPublics(batiment.getNomBatimentEtPhotosPublics());
-                }
                 if (batiment.getUsageBatiment() != null) {
                     existingBatiment.setUsageBatiment(batiment.getUsageBatiment());
                 }
@@ -281,6 +278,9 @@ public class BatimentService {
                 }
                 if (batiment.getCodePostal() != null) {
                     existingBatiment.setCodePostal(batiment.getCodePostal());
+                }
+                if (batiment.getProfilPublic() != null) {
+                    existingBatiment.setProfilPublic(batiment.getProfilPublic());
                 }
                 if (batiment.getCreatedDate() != null) {
                     existingBatiment.setCreatedDate(batiment.getCreatedDate());

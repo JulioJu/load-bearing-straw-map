@@ -732,34 +732,6 @@
 
         <b-card
           border-variant="primary"
-          :header="$t('cartoPaillePorteuseApp.batiment.sectionAutorisation')"
-          header-bg-variant="primary"
-          header-text-variant="white"
-          align="left"
-        >
-          <!-- END added by JulioJu -->
-          <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('cartoPaillePorteuseApp.batiment.nomBatimentEtPhotosPublics')"
-              for="batiment-nomBatimentEtPhotosPublics"
-              >Nom Batiment Et Photos Publics</label
-            >
-            <input
-              type="checkbox"
-              class="form-check"
-              name="nomBatimentEtPhotosPublics"
-              id="batiment-nomBatimentEtPhotosPublics"
-              data-cy="nomBatimentEtPhotosPublics"
-              :class="{ valid: !$v.batiment.nomBatimentEtPhotosPublics.$invalid, invalid: $v.batiment.nomBatimentEtPhotosPublics.$invalid }"
-              v-model="$v.batiment.nomBatimentEtPhotosPublics.$model"
-            />
-          </div>
-          <!-- START added by JulioJu -->
-        </b-card>
-
-        <b-card
-          border-variant="primary"
           :header="$t('cartoPaillePorteuseApp.batiment.sectionInformationGenerales')"
           header-bg-variant="primary"
           header-text-variant="white"
@@ -808,8 +780,9 @@
           </div>
           <!-- START added by JulioJu -->
         </b-card>
-          <div class="form-group">
             <!-- END added by JulioJu -->
+
+          <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.cout')" for="batiment-cout">Cout</label>
             <input
               type="number"
@@ -1820,8 +1793,35 @@
           <!-- START added by JulioJu -->
         </b-card>
 
+        <b-card
+          border-variant="danger"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionAutorisation')"
+          header-bg-variant="danger"
+          header-text-variant="white"
+          align="left"
+          class="mb-3"
+        >
+          <!-- END added by JulioJu -->
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.profilPublic')" for="batiment-profilPublic"
+              >Profil Public</label
+            >
+            <input
+              type="checkbox"
+              class="form-check"
+              name="profilPublic"
+              id="batiment-profilPublic"
+              data-cy="profilPublic"
+              :class="{ valid: !$v.batiment.profilPublic.$invalid, invalid: $v.batiment.profilPublic.$invalid }"
+              v-model="$v.batiment.profilPublic.$model"
+            />
+          </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
           <!-- Some fields deleted here -->
           <!-- END added by JulioJu -->
+
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">

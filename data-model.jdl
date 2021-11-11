@@ -150,16 +150,6 @@ entity Batiment {
     photo5Description String,
 
 
-    // =========================================================================
-    // Section Autorisation
-    // =========================================================================
-
-    /**
-     * If true, anonymous users (not authenticated) could see photos. Search
-     * engine could  index it.
-     */
-    nomBatimentEtPhotosPublics Boolean,
-
     // Section "Informations générales"
     // =========================================================================
 
@@ -376,6 +366,7 @@ entity Batiment {
      * Autre commentaires
      */
     divers TextBlob,
+
     // =========================================================================
     // Section "Contact"
     // =========================================================================
@@ -395,6 +386,15 @@ entity Batiment {
      * Code postal
      */
     codePostal String maxlength(6),
+
+    // =========================================================================
+    // Section Autorisation
+    // =========================================================================
+
+    /**
+     * coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)
+     */
+    profilPublic Boolean,
 
     // =========================================================================
     // Autogénéré
