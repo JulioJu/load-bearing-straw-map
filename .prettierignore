@@ -6,3 +6,7 @@ package-lock.json
 .mvn
 gradle
 .gradle
+
+# START added by JulioJu
+batiment-update.vue
+# END added by JulioJu

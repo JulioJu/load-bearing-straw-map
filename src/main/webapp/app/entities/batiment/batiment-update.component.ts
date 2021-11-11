@@ -22,6 +22,9 @@ import { IntegBaie } from '@/shared/model/enumerations/integ-baie.model';
 import { SupportAncrage } from '@/shared/model/enumerations/support-ancrage.model';
 import { RevetInt } from '@/shared/model/enumerations/revet-int.model';
 import { RevetExt } from '@/shared/model/enumerations/revet-ext.model';
+// START added by JulioJu
+import { BCard, BCardHeader, BCollapse } from 'bootstrap-vue';
+// END added by JulioJu
 
 const validations: any = {
   batiment: {
@@ -156,6 +159,9 @@ const validations: any = {
 
 @Component({
   validations,
+  // START added by JulioJu
+  components: { BCard, BCardHeader, BCollapse },
+  // END added by JulioJu
 })
 export default class BatimentUpdate extends mixins(JhiDataUtils) {
   @Inject('batimentService') private batimentService: () => BatimentService;
@@ -177,6 +183,15 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
   public revetExtValues: string[] = Object.keys(RevetExt);
   public isSaving = false;
   public currentLanguage = '';
+
+  // START added by JulioJu
+  public visiblePhotoPrincipale = false;
+  public visiblePhoto1 = false;
+  public visiblePhoto2 = false;
+  public visiblePhoto3 = false;
+  public visiblePhoto4 = false;
+  public visiblePhoto5 = false;
+  // END added by JulioJu
 
   beforeRouteEnter(to, from, next) {
     next(vm => {

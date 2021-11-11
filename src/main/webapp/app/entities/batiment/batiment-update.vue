@@ -1,7 +1,8 @@
 <template>
   <div class="row justify-content-center">
     <!-- START added by JulioJu -->
-    <div class="col-3">
+    <!-- eslint-disable prettier/prettier -->
+    <div class="col-4">
       <!-- END added by JulioJu -->
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
@@ -16,6 +17,16 @@
             <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="batiment.id" readonly />
           </div>
+
+          <!-- START added by JulioJu -->
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionGenerale')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+        >
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.latitude')" for="batiment-latitude"
               >Latitude</label
@@ -97,10 +108,31 @@
               </small>
             </div>
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
+    <b-card
+      border-variant="primary"
+      :header="$t('cartoPaillePorteuseApp.batiment.sectionPhoto')"
+      header-bg-variant="primary"
+      header-text-variant="white"
+      align="left"
+    >
+      <b-card
+        class="clickable"
+        :aria-expanded="visiblePhotoPrincipale ? 'true' : 'false'"
+        aria-controls="collapse-4"
+        @click="visiblePhotoPrincipale = !visiblePhotoPrincipale"
+        border-variant="secondary"
+        :header="$t('cartoPaillePorteuseApp.batiment.photoPrincipale')"
+        align="left"
+      >
+        <b-collapse v-model="visiblePhotoPrincipale">
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photoPrincipale')" for="batiment-photoPrincipale"
-              >Photo Principale</label
-            >
+            <!-- <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photoPrincipale')" for="batiment-photoPrincipale" -->
+            <!--   >Photo Principale</label -->
+            <!-- > -->
+            <!-- END added by JulioJu -->
             <div>
               <img
                 v-bind:src="'data:' + batiment.photoPrincipaleContentType + ';base64,' + batiment.photoPrincipale"
@@ -188,8 +220,23 @@
               v-model="$v.batiment.photoPrincipaleDescription.$model"
             />
           </div>
+        <!-- START added by JulioJu -->
+        </b-collapse>
+      </b-card>
+
+      <b-card
+        class="clickable"
+        :aria-expanded="visiblePhoto1 ? 'true' : 'false'"
+        aria-controls="collapse-4"
+        @click="visiblePhoto1 = !visiblePhoto1"
+        border-variant="secondary"
+        :header="$t('cartoPaillePorteuseApp.batiment.photo1')"
+        align="left"
+      >
+        <b-collapse v-model="visiblePhoto1">
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo1')" for="batiment-photo1">Photo 1</label>
+            <!-- <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo1')" for="batiment-photo1">Photo 1</label> -->
+            <!-- END added by JulioJu -->
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo1ContentType + ';base64,' + batiment.photo1"
@@ -274,8 +321,23 @@
               v-model="$v.batiment.photo1Description.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-collapse>
+      </b-card>
+
+      <b-card
+        class="clickable"
+        :aria-expanded="visiblePhoto2 ? 'true' : 'false'"
+        aria-controls="collapse-4"
+        @click="visiblePhoto2 = !visiblePhoto2"
+        border-variant="secondary"
+        :header="$t('cartoPaillePorteuseApp.batiment.photo2')"
+        align="left"
+      >
+        <b-collapse v-model="visiblePhoto2">
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo2')" for="batiment-photo2">Photo 2</label>
+            <!-- <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo2')" for="batiment-photo2">Photo 2</label> -->
+            <!-- END added by JulioJu -->
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo2ContentType + ';base64,' + batiment.photo2"
@@ -360,8 +422,23 @@
               v-model="$v.batiment.photo2Description.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-collapse>
+      </b-card>
+
+      <b-card
+        class="clickable"
+        :aria-expanded="visiblePhoto3 ? 'true' : 'false'"
+        aria-controls="collapse-4"
+        @click="visiblePhoto3 = !visiblePhoto3"
+        border-variant="secondary"
+        :header="$t('cartoPaillePorteuseApp.batiment.photo3')"
+        align="left"
+      >
+        <b-collapse v-model="visiblePhoto3">
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo3')" for="batiment-photo3">Photo 3</label>
+            <!-- <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo3')" for="batiment-photo3">Photo 3</label> -->
+            <!-- END added by JulioJu -->
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo3ContentType + ';base64,' + batiment.photo3"
@@ -446,8 +523,23 @@
               v-model="$v.batiment.photo3Description.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-collapse>
+      </b-card>
+
+      <b-card
+        class="clickable"
+        :aria-expanded="visiblePhoto4 ? 'true' : 'false'"
+        aria-controls="collapse-4"
+        @click="visiblePhoto4 = !visiblePhoto4"
+        border-variant="secondary"
+        :header="$t('cartoPaillePorteuseApp.batiment.photo4')"
+        align="left"
+      >
+        <b-collapse v-model="visiblePhoto4">
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo4')" for="batiment-photo4">Photo 4</label>
+            <!-- <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo4')" for="batiment-photo4">Photo 4</label> -->
+            <!-- END added by JulioJu -->
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo4ContentType + ';base64,' + batiment.photo4"
@@ -532,8 +624,23 @@
               v-model="$v.batiment.photo4Description.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-collapse>
+      </b-card>
+
+      <b-card
+        class="clickable"
+        :aria-expanded="visiblePhoto5 ? 'true' : 'false'"
+        aria-controls="collapse-4"
+        @click="visiblePhoto5 = !visiblePhoto5"
+        border-variant="secondary"
+        :header="$t('cartoPaillePorteuseApp.batiment.photo5')"
+        align="left"
+      >
+        <b-collapse v-model="visiblePhoto5">
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo5')" for="batiment-photo5">Photo 5</label>
+            <!-- <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo5')" for="batiment-photo5">Photo 5</label> -->
+            <!-- END added by JulioJu -->
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo5ContentType + ';base64,' + batiment.photo5"
@@ -618,6 +725,19 @@
               v-model="$v.batiment.photo5Description.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-collapse>
+      </b-card>
+    </b-card>
+
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionAutorisation')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+        >
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label
               class="form-control-label"
@@ -635,6 +755,18 @@
               v-model="$v.batiment.nomBatimentEtPhotosPublics.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionInformationGenerales')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+        >
+        <b-card border-variant="secondary" align="left" class="mb-3">
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.usageBatiment')" for="batiment-usageBatiment"
               >Usage Batiment</label
@@ -674,7 +806,10 @@
               v-model="$v.batiment.usageBatimentAutre.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
           <div class="form-group">
+            <!-- END added by JulioJu -->
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.cout')" for="batiment-cout">Cout</label>
             <input
               type="number"
@@ -793,6 +928,17 @@
               v-model="$v.batiment.travauxIti.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionChronologie')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+        >
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label
               class="form-control-label"
@@ -856,6 +1002,18 @@
               />
             </b-input-group>
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionBotteDePaille')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+        >
+        <b-card border-variant="secondary" align="left" class="mb-3">
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.bottesTaille')" for="batiment-bottesTaille"
               >Bottes Taille</label
@@ -895,6 +1053,9 @@
               v-model="$v.batiment.botteTailleAutre.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.bottesDensite')" for="batiment-bottesDensite"
               >Bottes Densite</label
@@ -945,6 +1106,17 @@
               v-model.number="$v.batiment.distanceAppro.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionChantier')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+        >
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label
               class="form-control-label"
@@ -992,6 +1164,18 @@
               </option>
             </select>
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionConstruction')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+        >
+        <b-card border-variant="secondary" align="left" class="mb-3">
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.structCompl')" for="batiment-structCompl"
               >Struct Compl</label
@@ -1073,6 +1257,9 @@
               v-model="$v.batiment.structComplInfos.$model"
             ></textarea>
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label
               class="form-control-label"
@@ -1118,6 +1305,9 @@
               v-model.number="$v.batiment.nbrRangDeBottes.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        <b-card border-variant="secondary" align="left" class="mb-3">
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.integBaie')" for="batiment-integBaie"
               >Integ Baie</label
@@ -1154,6 +1344,10 @@
               v-model="$v.batiment.integBaieAutre.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+        <b-card border-variant="secondary" align="left" class="mb-3">
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.supportAncrage')" for="batiment-supportAncrage"
               >Support Ancrage</label
@@ -1193,6 +1387,12 @@
               v-model="$v.batiment.supportAncrageAutre.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
+      <b-card border-variant="secondary" :header="$t('cartoPaillePorteuseApp.batiment.sousSectionRevetement')" align="left">
+        <b-card border-variant="secondary" align="left" class="mb-3">
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetInt')" for="batiment-revetInt"
               >Revet Int</label
@@ -1229,6 +1429,10 @@
               v-model="$v.batiment.revetIntAutre.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+        <b-card border-variant="secondary" align="left" class="mb-3">
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetExt')" for="batiment-revetExt"
               >Revet Ext</label
@@ -1265,6 +1469,19 @@
               v-model="$v.batiment.revetExtAutre.$model"
             />
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+      </b-card>
+    </b-card>
+
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionActrices')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+        >
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.maitreDOuvrage')" for="batiment-maitreDOuvrage"
               >Maitre D Ouvrage</label
@@ -1461,6 +1678,17 @@
               </small>
             </div>
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionCommentaire')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+        >
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label
               class="form-control-label"
@@ -1512,6 +1740,18 @@
               v-model="$v.batiment.divers.$model"
             ></textarea>
           </div>
+          <!-- START added by JulioJu -->
+        </b-card>
+
+        <b-card
+          border-variant="primary"
+          :header="$t('cartoPaillePorteuseApp.batiment.sectionContact')"
+          header-bg-variant="primary"
+          header-text-variant="white"
+          align="left"
+          class="mb-3"
+        >
+          <!-- END added by JulioJu -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.contactNom')" for="batiment-contactNom"
               >Contact Nom</label
@@ -1578,6 +1818,8 @@
             </div>
           </div>
           <!-- START added by JulioJu -->
+        </b-card>
+
           <!-- Some fields deleted here -->
           <!-- END added by JulioJu -->
         </div>
@@ -1600,3 +1842,10 @@
   </div>
 </template>
 <script lang="ts" src="./batiment-update.component.ts"></script>
+<style>
+/* START added by JulioJu */
+.clickable {
+  cursor: pointer;
+}
+/* END added by JulioJu */
+</style>
