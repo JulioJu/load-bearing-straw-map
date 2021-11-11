@@ -20,18 +20,18 @@ import tech.jhipster.config.JHipsterConstants;
 
 @SpringBootApplication
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
-public class CartePaillePorteuseApp {
+public class CartoPaillePorteuseApp {
 
-    private static final Logger log = LoggerFactory.getLogger(CartePaillePorteuseApp.class);
+    private static final Logger log = LoggerFactory.getLogger(CartoPaillePorteuseApp.class);
 
     private final Environment env;
 
-    public CartePaillePorteuseApp(Environment env) {
+    public CartoPaillePorteuseApp(Environment env) {
         this.env = env;
     }
 
     /**
-     * Initializes carte_paille_porteuse.
+     * Initializes carto_paille_porteuse.
      * <p>
      * Spring profiles can be configured with a program argument --spring.profiles.active=your-active-profile
      * <p>
@@ -64,7 +64,7 @@ public class CartePaillePorteuseApp {
      * @param args the command line arguments.
      */
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(CartePaillePorteuseApp.class);
+        SpringApplication app = new SpringApplication(CartoPaillePorteuseApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);

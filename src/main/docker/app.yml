@@ -1,25 +1,25 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
 version: '3.8'
 services:
-  carte_paille_porteuse-app:
-    image: carte_paille_porteuse
+  carto_paille_porteuse-app:
+    image: carto_paille_porteuse
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://carte_paille_porteuse-postgresql:5432/carte_paille_porteuse
-      - SPRING_LIQUIBASE_URL=jdbc:postgresql://carte_paille_porteuse-postgresql:5432/carte_paille_porteuse
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://carto_paille_porteuse-postgresql:5432/carto_paille_porteuse
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://carto_paille_porteuse-postgresql:5432/carto_paille_porteuse
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:
       - 127.0.0.1:8080:8080
-  carte_paille_porteuse-postgresql:
+  carto_paille_porteuse-postgresql:
     image: postgres:13.4
     # volumes:
-    #   - ~/volumes/jhipster/carte_paille_porteuse/postgresql/:/var/lib/postgresql/data/
+    #   - ~/volumes/jhipster/carto_paille_porteuse/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=carte_paille_porteuse
+      - POSTGRES_USER=carto_paille_porteuse
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
     # If you want to expose these ports outside your dev PC,

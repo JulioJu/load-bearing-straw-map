@@ -1,5 +1,5 @@
 {
-  "cartePaillePorteuseApp": {
+  "cartoPaillePorteuseApp": {
     "batiment": {
       "home": {
         "title": "Batiments",
@@ -39,7 +39,7 @@
       "photo5": "Photo 5",
       "photo5Legende": "Photo 5 Legende",
       "photo5Description": "Photo 5 Description",
-      "nonBatimentEtPhotosPublics": "Non Batiment Et Photos Publics",
+      "nomBatimentEtPhotosPublics": "Nom Batiment Et Photos Publics",
       "usageBatiment": "Usage Batiment",
       "usageBatimentAutre": "Usage Batiment Autre",
       "cout": "Cout",
@@ -62,7 +62,7 @@
       "structCompl": "Struct Compl",
       "structComplNature": "Struct Compl Nature",
       "structComplAutre": "Struct Compl Autre",
-      "structComplNaturePrecision": "Struct Compl Nature Precision",
+      "structComplInfos": "Struct Compl Infos",
       "longMaxSansMurRefend": "Long Max Sans Mur Refend",
       "noteCalcul": "Note Calcul",
       "nbrRangDeBottes": "Nbr Rang De Bottes",
@@ -95,12 +95,12 @@
       "createdBy": "Created By",
       "help": {
         "nomBatiment": "Nom du bâtiment",
-        "nonBatimentEtPhotosPublics": "If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.",
+        "nomBatimentEtPhotosPublics": "If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.",
         "usageBatiment": "Usage",
         "usageBatimentAutre": "Si &#34;Autre&#34;, préciser",
         "cout": "Coût [€]",
         "surfacePlancher": "Surface de plancher [m²]",
-        "niveaux": "Nombre de niveaux du bâtiment",
+        "niveaux": "Nombre de niveaux du bâtiment (ex: RDC = 1, 1 étage = 2 niveau, sous-sol non compté)",
         "travauxNeuf": "Neuf",
         "travauxExtension": "Extension",
         "travauxRenov": "Rénovation",
@@ -109,7 +109,7 @@
         "constructionDebut": "Début de construction",
         "constructionFin": "Achèvement",
         "bottesTaille": "Taille des bottes",
-        "botteTailleAutre": "Autre type de botte",
+        "botteTailleAutre": "Si &#34;Autre&#34;, préciser",
         "bottesDensite": "Densité sur base sèche [kg/m³]",
         "bottesCereale": "Céréale",
         "distanceAppro": "Distance d&#39;approvisionnement [km]",
@@ -118,7 +118,7 @@
         "structCompl": "Structure complémentaire à la structure en paille porteuse (poteau, mur de refend, …)",
         "structComplNature": "Nature de la structure complémentaire",
         "structComplAutre": "Si &#34;Autre&#34;, préciser",
-        "structComplNaturePrecision": "Longueur maximum sans mur de refend (mètre)",
+        "structComplInfos": "Infos sur la structure complémentaire",
         "longMaxSansMurRefend": "Longueur maximum sans mur de refend (mètre)",
         "noteCalcul": "Note de calcul",
         "nbrRangDeBottes": "Nombre de rangs de bottes",

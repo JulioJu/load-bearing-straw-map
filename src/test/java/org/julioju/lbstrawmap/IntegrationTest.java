@@ -4,7 +4,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import org.julioju.lbstrawmap.CartePaillePorteuseApp;
+import org.julioju.lbstrawmap.CartoPaillePorteuseApp;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -12,6 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = CartePaillePorteuseApp.class)
+@SpringBootTest(classes = CartoPaillePorteuseApp.class)
 public @interface IntegrationTest {
 }

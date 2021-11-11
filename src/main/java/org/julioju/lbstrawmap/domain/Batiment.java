@@ -62,8 +62,8 @@ public class Batiment implements Serializable {
     @Column(name = "photo_principale_content_type")
     private String photoPrincipaleContentType;
 
-    @Size(max = 50)
-    @Column(name = "photo_principale_legende", length = 50)
+    @Size(max = 30)
+    @Column(name = "photo_principale_legende", length = 30)
     private String photoPrincipaleLegende;
 
     @Column(name = "photo_principale_description")
@@ -76,8 +76,8 @@ public class Batiment implements Serializable {
     @Column(name = "photo_1_content_type")
     private String photo1ContentType;
 
-    @Size(max = 50)
-    @Column(name = "photo_1_legende", length = 50)
+    @Size(max = 30)
+    @Column(name = "photo_1_legende", length = 30)
     private String photo1Legende;
 
     @Column(name = "photo_1_description")
@@ -90,8 +90,8 @@ public class Batiment implements Serializable {
     @Column(name = "photo_2_content_type")
     private String photo2ContentType;
 
-    @Size(max = 50)
-    @Column(name = "photo_2_legende", length = 50)
+    @Size(max = 30)
+    @Column(name = "photo_2_legende", length = 30)
     private String photo2Legende;
 
     @Column(name = "photo_2_description")
@@ -104,8 +104,8 @@ public class Batiment implements Serializable {
     @Column(name = "photo_3_content_type")
     private String photo3ContentType;
 
-    @Size(max = 50)
-    @Column(name = "photo_3_legende", length = 50)
+    @Size(max = 30)
+    @Column(name = "photo_3_legende", length = 30)
     private String photo3Legende;
 
     @Column(name = "photo_3_description")
@@ -118,8 +118,8 @@ public class Batiment implements Serializable {
     @Column(name = "photo_4_content_type")
     private String photo4ContentType;
 
-    @Size(max = 50)
-    @Column(name = "photo_4_legende", length = 50)
+    @Size(max = 30)
+    @Column(name = "photo_4_legende", length = 30)
     private String photo4Legende;
 
     @Column(name = "photo_4_description")
@@ -132,8 +132,8 @@ public class Batiment implements Serializable {
     @Column(name = "photo_5_content_type")
     private String photo5ContentType;
 
-    @Size(max = 50)
-    @Column(name = "photo_5_legende", length = 50)
+    @Size(max = 30)
+    @Column(name = "photo_5_legende", length = 30)
     private String photo5Legende;
 
     @Column(name = "photo_5_description")
@@ -143,8 +143,8 @@ public class Batiment implements Serializable {
      * If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.
      */
     @ApiModelProperty(value = "If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.")
-    @Column(name = "non_batiment_et_photos_publics")
-    private Boolean nonBatimentEtPhotosPublics;
+    @Column(name = "nom_batiment_et_photos_publics")
+    private Boolean nomBatimentEtPhotosPublics;
 
     /**
      * Usage
@@ -158,9 +158,8 @@ public class Batiment implements Serializable {
      * Si \"Autre\", préciser
      */
     @ApiModelProperty(value = "Si \"Autre\", préciser")
-    @Enumerated(EnumType.STRING)
     @Column(name = "usage_batiment_autre")
-    private UsageBatiment usageBatimentAutre;
+    private String usageBatimentAutre;
 
     /**
      * Coût [€]
@@ -177,9 +176,10 @@ public class Batiment implements Serializable {
     private Integer surfacePlancher;
 
     /**
-     * Nombre de niveaux du bâtiment
+     * Nombre de niveaux du bâtiment (ex: RDC = 1, 1 étage = 2 niveau, sous-sol non compté)
      */
-    @ApiModelProperty(value = "Nombre de niveaux du bâtiment")
+    @ApiModelProperty(value = "Nombre de niveaux du bâtiment (ex: RDC = 1, 1 étage = 2 niveau, sous-sol non compté)")
+    @Min(value = 1)
     @Column(name = "niveaux")
     private Integer niveaux;
 
@@ -241,9 +241,9 @@ public class Batiment implements Serializable {
     private TaillesBottes bottesTaille;
 
     /**
-     * Autre type de botte
+     * Si \"Autre\", préciser
      */
-    @ApiModelProperty(value = "Autre type de botte")
+    @ApiModelProperty(value = "Si \"Autre\", préciser")
     @Column(name = "botte_taille_autre")
     private String botteTailleAutre;
 
@@ -309,12 +309,13 @@ public class Batiment implements Serializable {
     private String structComplAutre;
 
     /**
-     * Longueur maximum sans mur de refend (mètre)
+     * Infos sur la structure complémentaire
      */
-    @ApiModelProperty(value = "Longueur maximum sans mur de refend (mètre)")
-    @Size(max = 512)
-    @Column(name = "struct_compl_nature_precision", length = 512)
-    private String structComplNaturePrecision;
+    @ApiModelProperty(value = "Infos sur la structure complémentaire")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "struct_compl_infos")
+    private String structComplInfos;
 
     /**
      * Longueur maximum sans mur de refend (mètre)
@@ -924,17 +925,17 @@ public class Batiment implements Serializable {
         this.photo5Description = photo5Description;
     }
 
-    public Boolean getNonBatimentEtPhotosPublics() {
-        return this.nonBatimentEtPhotosPublics;
+    public Boolean getNomBatimentEtPhotosPublics() {
+        return this.nomBatimentEtPhotosPublics;
     }
 
-    public Batiment nonBatimentEtPhotosPublics(Boolean nonBatimentEtPhotosPublics) {
-        this.setNonBatimentEtPhotosPublics(nonBatimentEtPhotosPublics);
+    public Batiment nomBatimentEtPhotosPublics(Boolean nomBatimentEtPhotosPublics) {
+        this.setNomBatimentEtPhotosPublics(nomBatimentEtPhotosPublics);
         return this;
     }
 
-    public void setNonBatimentEtPhotosPublics(Boolean nonBatimentEtPhotosPublics) {
-        this.nonBatimentEtPhotosPublics = nonBatimentEtPhotosPublics;
+    public void setNomBatimentEtPhotosPublics(Boolean nomBatimentEtPhotosPublics) {
+        this.nomBatimentEtPhotosPublics = nomBatimentEtPhotosPublics;
     }
 
     public UsageBatiment getUsageBatiment() {
@@ -950,16 +951,16 @@ public class Batiment implements Serializable {
         this.usageBatiment = usageBatiment;
     }
 
-    public UsageBatiment getUsageBatimentAutre() {
+    public String getUsageBatimentAutre() {
         return this.usageBatimentAutre;
     }
 
-    public Batiment usageBatimentAutre(UsageBatiment usageBatimentAutre) {
+    public Batiment usageBatimentAutre(String usageBatimentAutre) {
         this.setUsageBatimentAutre(usageBatimentAutre);
         return this;
     }
 
-    public void setUsageBatimentAutre(UsageBatiment usageBatimentAutre) {
+    public void setUsageBatimentAutre(String usageBatimentAutre) {
         this.usageBatimentAutre = usageBatimentAutre;
     }
 
@@ -1223,17 +1224,17 @@ public class Batiment implements Serializable {
         this.structComplAutre = structComplAutre;
     }
 
-    public String getStructComplNaturePrecision() {
-        return this.structComplNaturePrecision;
+    public String getStructComplInfos() {
+        return this.structComplInfos;
     }
 
-    public Batiment structComplNaturePrecision(String structComplNaturePrecision) {
-        this.setStructComplNaturePrecision(structComplNaturePrecision);
+    public Batiment structComplInfos(String structComplInfos) {
+        this.setStructComplInfos(structComplInfos);
         return this;
     }
 
-    public void setStructComplNaturePrecision(String structComplNaturePrecision) {
-        this.structComplNaturePrecision = structComplNaturePrecision;
+    public void setStructComplInfos(String structComplInfos) {
+        this.structComplInfos = structComplInfos;
     }
 
     public Float getLongMaxSansMurRefend() {
@@ -1677,7 +1678,7 @@ public class Batiment implements Serializable {
             ", photo5ContentType='" + getPhoto5ContentType() + "'" +
             ", photo5Legende='" + getPhoto5Legende() + "'" +
             ", photo5Description='" + getPhoto5Description() + "'" +
-            ", nonBatimentEtPhotosPublics='" + getNonBatimentEtPhotosPublics() + "'" +
+            ", nomBatimentEtPhotosPublics='" + getNomBatimentEtPhotosPublics() + "'" +
             ", usageBatiment='" + getUsageBatiment() + "'" +
             ", usageBatimentAutre='" + getUsageBatimentAutre() + "'" +
             ", cout=" + getCout() +
@@ -1700,7 +1701,7 @@ public class Batiment implements Serializable {
             ", structCompl='" + getStructCompl() + "'" +
             ", structComplNature='" + getStructComplNature() + "'" +
             ", structComplAutre='" + getStructComplAutre() + "'" +
-            ", structComplNaturePrecision='" + getStructComplNaturePrecision() + "'" +
+            ", structComplInfos='" + getStructComplInfos() + "'" +
             ", longMaxSansMurRefend=" + getLongMaxSansMurRefend() +
             ", noteCalcul='" + getNoteCalcul() + "'" +
             ", nbrRangDeBottes=" + getNbrRangDeBottes() +

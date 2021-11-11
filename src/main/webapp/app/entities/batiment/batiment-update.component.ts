@@ -3,7 +3,7 @@ import { Component, Inject } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
-import { decimal, required, minValue, maxValue, maxLength } from 'vuelidate/lib/validators';
+import { decimal, required, minValue, maxValue, maxLength, numeric } from 'vuelidate/lib/validators';
 import dayjs from 'dayjs';
 import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 
@@ -42,40 +42,43 @@ const validations: any = {
     },
     photoPrincipale: {},
     photoPrincipaleLegende: {
-      maxLength: maxLength(50),
+      maxLength: maxLength(30),
     },
     photoPrincipaleDescription: {},
     photo1: {},
     photo1Legende: {
-      maxLength: maxLength(50),
+      maxLength: maxLength(30),
     },
     photo1Description: {},
     photo2: {},
     photo2Legende: {
-      maxLength: maxLength(50),
+      maxLength: maxLength(30),
     },
     photo2Description: {},
     photo3: {},
     photo3Legende: {
-      maxLength: maxLength(50),
+      maxLength: maxLength(30),
     },
     photo3Description: {},
     photo4: {},
     photo4Legende: {
-      maxLength: maxLength(50),
+      maxLength: maxLength(30),
     },
     photo4Description: {},
     photo5: {},
     photo5Legende: {
-      maxLength: maxLength(50),
+      maxLength: maxLength(30),
     },
     photo5Description: {},
-    nonBatimentEtPhotosPublics: {},
+    nomBatimentEtPhotosPublics: {},
     usageBatiment: {},
     usageBatimentAutre: {},
     cout: {},
     surfacePlancher: {},
-    niveaux: {},
+    niveaux: {
+      numeric,
+      min: minValue(1),
+    },
     travauxNeuf: {},
     travauxExtension: {},
     travauxRenov: {},
@@ -95,9 +98,7 @@ const validations: any = {
     structComplAutre: {
       maxLength: maxLength(512),
     },
-    structComplNaturePrecision: {
-      maxLength: maxLength(512),
-    },
+    structComplInfos: {},
     longMaxSansMurRefend: {},
     noteCalcul: {},
     nbrRangDeBottes: {},
@@ -145,7 +146,11 @@ const validations: any = {
     },
     createdDate: {},
     lastModifiedDate: {},
-    createdBy: {},
+    createdBy: {
+      // START added by JulioJu
+      // required,
+      // END added by JulioJu
+    },
   },
 };
 
@@ -217,7 +222,7 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('cartePaillePorteuseApp.batiment.updated', { param: param.id });
+          const message = this.$t('cartoPaillePorteuseApp.batiment.updated', { param: param.id });
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -236,7 +241,7 @@ export default class BatimentUpdate extends mixins(JhiDataUtils) {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('cartePaillePorteuseApp.batiment.created', { param: param.id });
+          const message = this.$t('cartoPaillePorteuseApp.batiment.created', { param: param.id });
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

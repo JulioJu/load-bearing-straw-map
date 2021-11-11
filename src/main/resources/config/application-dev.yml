@@ -32,8 +32,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/carte_paille_porteuse
-    username: carte_paille_porteuse
+    url: jdbc:postgresql://localhost:5432/carto_paille_porteuse
+    username: carto_paille_porteuse
     password:
     hikari:
       poolName: Hikari

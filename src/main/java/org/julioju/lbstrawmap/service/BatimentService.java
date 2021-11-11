@@ -129,8 +129,8 @@ public class BatimentService {
                 if (batiment.getPhoto5Description() != null) {
                     existingBatiment.setPhoto5Description(batiment.getPhoto5Description());
                 }
-                if (batiment.getNonBatimentEtPhotosPublics() != null) {
-                    existingBatiment.setNonBatimentEtPhotosPublics(batiment.getNonBatimentEtPhotosPublics());
+                if (batiment.getNomBatimentEtPhotosPublics() != null) {
+                    existingBatiment.setNomBatimentEtPhotosPublics(batiment.getNomBatimentEtPhotosPublics());
                 }
                 if (batiment.getUsageBatiment() != null) {
                     existingBatiment.setUsageBatiment(batiment.getUsageBatiment());
@@ -198,8 +198,8 @@ public class BatimentService {
                 if (batiment.getStructComplAutre() != null) {
                     existingBatiment.setStructComplAutre(batiment.getStructComplAutre());
                 }
-                if (batiment.getStructComplNaturePrecision() != null) {
-                    existingBatiment.setStructComplNaturePrecision(batiment.getStructComplNaturePrecision());
+                if (batiment.getStructComplInfos() != null) {
+                    existingBatiment.setStructComplInfos(batiment.getStructComplInfos());
                 }
                 if (batiment.getLongMaxSansMurRefend() != null) {
                     existingBatiment.setLongMaxSansMurRefend(batiment.getLongMaxSansMurRefend());

@@ -31,7 +31,7 @@
       "fieldName": "photoPrincipaleLegende",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "50"
+      "fieldValidateRulesMaxlength": "30"
     },
     {
       "fieldName": "photoPrincipaleDescription",
@@ -46,7 +46,7 @@
       "fieldName": "photo1Legende",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "50"
+      "fieldValidateRulesMaxlength": "30"
     },
     {
       "fieldName": "photo1Description",
@@ -61,7 +61,7 @@
       "fieldName": "photo2Legende",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "50"
+      "fieldValidateRulesMaxlength": "30"
     },
     {
       "fieldName": "photo2Description",
@@ -76,7 +76,7 @@
       "fieldName": "photo3Legende",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "50"
+      "fieldValidateRulesMaxlength": "30"
     },
     {
       "fieldName": "photo3Description",
@@ -91,7 +91,7 @@
       "fieldName": "photo4Legende",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "50"
+      "fieldValidateRulesMaxlength": "30"
     },
     {
       "fieldName": "photo4Description",
@@ -106,14 +106,14 @@
       "fieldName": "photo5Legende",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "50"
+      "fieldValidateRulesMaxlength": "30"
     },
     {
       "fieldName": "photo5Description",
       "fieldType": "String"
     },
     {
-      "fieldName": "nonBatimentEtPhotosPublics",
+      "fieldName": "nomBatimentEtPhotosPublics",
       "fieldType": "Boolean",
       "javadoc": "If true, anonymous users (not authenticated) could see photos. Search\\nengine could  index it."
     },
@@ -125,9 +125,8 @@
     },
     {
       "fieldName": "usageBatimentAutre",
-      "fieldType": "UsageBatiment",
-      "javadoc": "Si \"Autre\", préciser",
-      "fieldValues": "LOGEMENT_COLLECTIF (Logement collectif),LOGEMENT_INDIVIDUEL (Logement individuel),LOGEMENT_INDIVIDUEL_GROUPE (Logement individuel groupé),BATIMENT_ADMINISTRATIF (Bâtiment administratif),BATIMENT_COMMERCIAL (Bâtiment commercial),BATIMENT_INDUSTRIEL (Bâtiment industriel),BATIMENT_DE_LOISIRS (Bâtiment de loisirs),BATIMENT_DE_SANTE (Bâtiment de santé),BATIMENT_DE_RETRAITE (Bâtiment de retraite),BATIMENT_EDUCATIF (Bâtiment éducatif),BATIMENT_SOCIO_CULTUREl (Bâtiment socio-culturel),BATIMENT_AGRICOLE (Bâtiment agricole),OUVRAGE_EXCEPTIONNEL (Ouvrage exceptionnel),AUTRE (Autre)"
+      "fieldType": "String",
+      "javadoc": "Si \"Autre\", préciser"
     },
     {
       "fieldName": "cout",
@@ -142,7 +141,9 @@
     {
       "fieldName": "niveaux",
       "fieldType": "Integer",
-      "javadoc": "Nombre de niveaux du bâtiment"
+      "javadoc": "Nombre de niveaux du bâtiment (ex: RDC = 1, 1 étage = 2 niveau, sous-sol non compté)",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "1"
     },
     {
       "fieldName": "travauxNeuf",
@@ -189,7 +190,7 @@
     {
       "fieldName": "botteTailleAutre",
       "fieldType": "String",
-      "javadoc": "Autre type de botte"
+      "javadoc": "Si \"Autre\", préciser"
     },
     {
       "fieldName": "bottesDensite",
@@ -240,11 +241,10 @@
       "fieldValidateRulesMaxlength": "512"
     },
     {
-      "fieldName": "structComplNaturePrecision",
-      "fieldType": "String",
-      "javadoc": "Longueur maximum sans mur de refend (mètre)",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "512"
+      "fieldName": "structComplInfos",
+      "fieldType": "byte[]",
+      "javadoc": "Infos sur la structure complémentaire",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "longMaxSansMurRefend",
@@ -442,5 +442,5 @@
   "readOnly": false,
   "embedded": false,
   "applications": "*",
-  "changelogDate": "20211110113710"
+  "changelogDate": "20211111182648"
 }

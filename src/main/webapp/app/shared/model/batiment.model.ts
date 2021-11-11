@@ -38,9 +38,9 @@ export interface IBatiment {
   photo5?: string | null;
   photo5Legende?: string | null;
   photo5Description?: string | null;
-  nonBatimentEtPhotosPublics?: boolean | null;
+  nomBatimentEtPhotosPublics?: boolean | null;
   usageBatiment?: UsageBatiment | null;
-  usageBatimentAutre?: UsageBatiment | null;
+  usageBatimentAutre?: string | null;
   cout?: number | null;
   surfacePlancher?: number | null;
   niveaux?: number | null;
@@ -61,7 +61,7 @@ export interface IBatiment {
   structCompl?: boolean | null;
   structComplNature?: StructureComplementaire | null;
   structComplAutre?: string | null;
-  structComplNaturePrecision?: string | null;
+  structComplInfos?: string | null;
   longMaxSansMurRefend?: number | null;
   noteCalcul?: boolean | null;
   nbrRangDeBottes?: number | null;
@@ -124,9 +124,9 @@ export class Batiment implements IBatiment {
     public photo5?: string | null,
     public photo5Legende?: string | null,
     public photo5Description?: string | null,
-    public nonBatimentEtPhotosPublics?: boolean | null,
+    public nomBatimentEtPhotosPublics?: boolean | null,
     public usageBatiment?: UsageBatiment | null,
-    public usageBatimentAutre?: UsageBatiment | null,
+    public usageBatimentAutre?: string | null,
     public cout?: number | null,
     public surfacePlancher?: number | null,
     public niveaux?: number | null,
@@ -147,7 +147,7 @@ export class Batiment implements IBatiment {
     public structCompl?: boolean | null,
     public structComplNature?: StructureComplementaire | null,
     public structComplAutre?: string | null,
-    public structComplNaturePrecision?: string | null,
+    public structComplInfos?: string | null,
     public longMaxSansMurRefend?: number | null,
     public noteCalcul?: boolean | null,
     public nbrRangDeBottes?: number | null,
@@ -179,7 +179,7 @@ export class Batiment implements IBatiment {
     public lastModifiedDate?: Date | null,
     public createdBy?: IUser
   ) {
-    this.nonBatimentEtPhotosPublics = this.nonBatimentEtPhotosPublics ?? false;
+    this.nomBatimentEtPhotosPublics = this.nomBatimentEtPhotosPublics ?? false;
     this.travauxNeuf = this.travauxNeuf ?? false;
     this.travauxExtension = this.travauxExtension ?? false;
     this.travauxRenov = this.travauxRenov ?? false;

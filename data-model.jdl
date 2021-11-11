@@ -126,27 +126,27 @@ entity Batiment {
     // (bad idea to have fat HTML page and bad idea to save binary into database)
 
     photoPrincipale ImageBlob,
-    photoPrincipaleLegende String maxlength(50),
+    photoPrincipaleLegende String maxlength(30),
     photoPrincipaleDescription String,
 
     photo1 ImageBlob,
-    photo1Legende String maxlength(50),
+    photo1Legende String maxlength(30),
     photo1Description String,
 
     photo2 ImageBlob,
-    photo2Legende String maxlength(50),
+    photo2Legende String maxlength(30),
     photo2Description String,
 
     photo3 ImageBlob,
-    photo3Legende String maxlength(50),
+    photo3Legende String maxlength(30),
     photo3Description String,
 
     photo4 ImageBlob,
-    photo4Legende String maxlength(50),
+    photo4Legende String maxlength(30),
     photo4Description String,
 
     photo5 ImageBlob,
-    photo5Legende String maxlength(50),
+    photo5Legende String maxlength(30),
     photo5Description String,
 
 
@@ -158,7 +158,7 @@ entity Batiment {
      * If true, anonymous users (not authenticated) could see photos. Search
      * engine could  index it.
      */
-    nonBatimentEtPhotosPublics Boolean,
+    nomBatimentEtPhotosPublics Boolean,
 
     // Section "Informations générales"
     // =========================================================================
@@ -170,7 +170,7 @@ entity Batiment {
     /**
       * Si "Autre", préciser
       */
-    usageBatimentAutre UsageBatiment,
+    usageBatimentAutre String,
     /**
       * Coût [€]
       */
@@ -180,9 +180,9 @@ entity Batiment {
       */
     surfacePlancher Integer,
     /**
-      * Nombre de niveaux du bâtiment
+      * Nombre de niveaux du bâtiment (ex: RDC = 1, 1 étage = 2 niveau, sous-sol non compté)
       */
-    niveaux Integer,
+    niveaux Integer min(1),
 
     // Section "Nature des travaux"
     // =========================================================================
@@ -225,7 +225,7 @@ entity Batiment {
       */
     bottesTaille TaillesBottes,
     /**
-      * Autre type de botte
+      * Si "Autre", préciser
       */
     botteTailleAutre String,
     /**
@@ -268,9 +268,9 @@ entity Batiment {
       */
     structComplAutre String maxlength(512),
     /**
-      * Longueur maximum sans mur de refend (mètre)
+      * Infos sur la structure complémentaire
       */
-    structComplNaturePrecision String maxlength(512),
+    structComplInfos TextBlob,
     /**
       * Longueur maximum sans mur de refend (mètre)
       */

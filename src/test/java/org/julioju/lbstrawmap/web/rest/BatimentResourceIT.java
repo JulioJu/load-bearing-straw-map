@@ -24,7 +24,6 @@ import org.julioju.lbstrawmap.domain.enumeration.StructureComplementaire;
 import org.julioju.lbstrawmap.domain.enumeration.SupportAncrage;
 import org.julioju.lbstrawmap.domain.enumeration.TaillesBottes;
 import org.julioju.lbstrawmap.domain.enumeration.UsageBatiment;
-import org.julioju.lbstrawmap.domain.enumeration.UsageBatiment;
 import org.julioju.lbstrawmap.domain.enumeration.YesNoPartial;
 import org.julioju.lbstrawmap.domain.enumeration.YesNoPartial;
 import org.julioju.lbstrawmap.repository.BatimentRepository;
@@ -121,14 +120,14 @@ class BatimentResourceIT {
     private static final String DEFAULT_PHOTO_5_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_PHOTO_5_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final Boolean DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS = false;
-    private static final Boolean UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS = true;
+    private static final Boolean DEFAULT_NOM_BATIMENT_ET_PHOTOS_PUBLICS = false;
+    private static final Boolean UPDATED_NOM_BATIMENT_ET_PHOTOS_PUBLICS = true;
 
     private static final UsageBatiment DEFAULT_USAGE_BATIMENT = UsageBatiment.LOGEMENT_COLLECTIF;
     private static final UsageBatiment UPDATED_USAGE_BATIMENT = UsageBatiment.LOGEMENT_INDIVIDUEL;
 
-    private static final UsageBatiment DEFAULT_USAGE_BATIMENT_AUTRE = UsageBatiment.LOGEMENT_COLLECTIF;
-    private static final UsageBatiment UPDATED_USAGE_BATIMENT_AUTRE = UsageBatiment.LOGEMENT_INDIVIDUEL;
+    private static final String DEFAULT_USAGE_BATIMENT_AUTRE = "AAAAAAAAAA";
+    private static final String UPDATED_USAGE_BATIMENT_AUTRE = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_COUT = 1;
     private static final Integer UPDATED_COUT = 2;
@@ -190,8 +189,8 @@ class BatimentResourceIT {
     private static final String DEFAULT_STRUCT_COMPL_AUTRE = "AAAAAAAAAA";
     private static final String UPDATED_STRUCT_COMPL_AUTRE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_STRUCT_COMPL_NATURE_PRECISION = "AAAAAAAAAA";
-    private static final String UPDATED_STRUCT_COMPL_NATURE_PRECISION = "BBBBBBBBBB";
+    private static final String DEFAULT_STRUCT_COMPL_INFOS = "AAAAAAAAAA";
+    private static final String UPDATED_STRUCT_COMPL_INFOS = "BBBBBBBBBB";
 
     private static final Float DEFAULT_LONG_MAX_SANS_MUR_REFEND = 1F;
     private static final Float UPDATED_LONG_MAX_SANS_MUR_REFEND = 2F;
@@ -332,7 +331,7 @@ class BatimentResourceIT {
             .photo5ContentType(DEFAULT_PHOTO_5_CONTENT_TYPE)
             .photo5Legende(DEFAULT_PHOTO_5_LEGENDE)
             .photo5Description(DEFAULT_PHOTO_5_DESCRIPTION)
-            .nonBatimentEtPhotosPublics(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS)
+            .nomBatimentEtPhotosPublics(DEFAULT_NOM_BATIMENT_ET_PHOTOS_PUBLICS)
             .usageBatiment(DEFAULT_USAGE_BATIMENT)
             .usageBatimentAutre(DEFAULT_USAGE_BATIMENT_AUTRE)
             .cout(DEFAULT_COUT)
@@ -355,7 +354,7 @@ class BatimentResourceIT {
             .structCompl(DEFAULT_STRUCT_COMPL)
             .structComplNature(DEFAULT_STRUCT_COMPL_NATURE)
             .structComplAutre(DEFAULT_STRUCT_COMPL_AUTRE)
-            .structComplNaturePrecision(DEFAULT_STRUCT_COMPL_NATURE_PRECISION)
+            .structComplInfos(DEFAULT_STRUCT_COMPL_INFOS)
             .longMaxSansMurRefend(DEFAULT_LONG_MAX_SANS_MUR_REFEND)
             .noteCalcul(DEFAULT_NOTE_CALCUL)
             .nbrRangDeBottes(DEFAULT_NBR_RANG_DE_BOTTES)
@@ -428,7 +427,7 @@ class BatimentResourceIT {
             .photo5ContentType(UPDATED_PHOTO_5_CONTENT_TYPE)
             .photo5Legende(UPDATED_PHOTO_5_LEGENDE)
             .photo5Description(UPDATED_PHOTO_5_DESCRIPTION)
-            .nonBatimentEtPhotosPublics(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS)
+            .nomBatimentEtPhotosPublics(UPDATED_NOM_BATIMENT_ET_PHOTOS_PUBLICS)
             .usageBatiment(UPDATED_USAGE_BATIMENT)
             .usageBatimentAutre(UPDATED_USAGE_BATIMENT_AUTRE)
             .cout(UPDATED_COUT)
@@ -451,7 +450,7 @@ class BatimentResourceIT {
             .structCompl(UPDATED_STRUCT_COMPL)
             .structComplNature(UPDATED_STRUCT_COMPL_NATURE)
             .structComplAutre(UPDATED_STRUCT_COMPL_AUTRE)
-            .structComplNaturePrecision(UPDATED_STRUCT_COMPL_NATURE_PRECISION)
+            .structComplInfos(UPDATED_STRUCT_COMPL_INFOS)
             .longMaxSansMurRefend(UPDATED_LONG_MAX_SANS_MUR_REFEND)
             .noteCalcul(UPDATED_NOTE_CALCUL)
             .nbrRangDeBottes(UPDATED_NBR_RANG_DE_BOTTES)
@@ -534,7 +533,7 @@ class BatimentResourceIT {
         assertThat(testBatiment.getPhoto5ContentType()).isEqualTo(DEFAULT_PHOTO_5_CONTENT_TYPE);
         assertThat(testBatiment.getPhoto5Legende()).isEqualTo(DEFAULT_PHOTO_5_LEGENDE);
         assertThat(testBatiment.getPhoto5Description()).isEqualTo(DEFAULT_PHOTO_5_DESCRIPTION);
-        assertThat(testBatiment.getNonBatimentEtPhotosPublics()).isEqualTo(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS);
+        assertThat(testBatiment.getNomBatimentEtPhotosPublics()).isEqualTo(DEFAULT_NOM_BATIMENT_ET_PHOTOS_PUBLICS);
         assertThat(testBatiment.getUsageBatiment()).isEqualTo(DEFAULT_USAGE_BATIMENT);
         assertThat(testBatiment.getUsageBatimentAutre()).isEqualTo(DEFAULT_USAGE_BATIMENT_AUTRE);
         assertThat(testBatiment.getCout()).isEqualTo(DEFAULT_COUT);
@@ -557,7 +556,7 @@ class BatimentResourceIT {
         assertThat(testBatiment.getStructCompl()).isEqualTo(DEFAULT_STRUCT_COMPL);
         assertThat(testBatiment.getStructComplNature()).isEqualTo(DEFAULT_STRUCT_COMPL_NATURE);
         assertThat(testBatiment.getStructComplAutre()).isEqualTo(DEFAULT_STRUCT_COMPL_AUTRE);
-        assertThat(testBatiment.getStructComplNaturePrecision()).isEqualTo(DEFAULT_STRUCT_COMPL_NATURE_PRECISION);
+        assertThat(testBatiment.getStructComplInfos()).isEqualTo(DEFAULT_STRUCT_COMPL_INFOS);
         assertThat(testBatiment.getLongMaxSansMurRefend()).isEqualTo(DEFAULT_LONG_MAX_SANS_MUR_REFEND);
         assertThat(testBatiment.getNoteCalcul()).isEqualTo(DEFAULT_NOTE_CALCUL);
         assertThat(testBatiment.getNbrRangDeBottes()).isEqualTo(DEFAULT_NBR_RANG_DE_BOTTES);
@@ -680,9 +679,9 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.[*].photo5").value(hasItem(Base64Utils.encodeToString(DEFAULT_PHOTO_5))))
             .andExpect(jsonPath("$.[*].photo5Legende").value(hasItem(DEFAULT_PHOTO_5_LEGENDE)))
             .andExpect(jsonPath("$.[*].photo5Description").value(hasItem(DEFAULT_PHOTO_5_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].nonBatimentEtPhotosPublics").value(hasItem(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS.booleanValue())))
+            .andExpect(jsonPath("$.[*].nomBatimentEtPhotosPublics").value(hasItem(DEFAULT_NOM_BATIMENT_ET_PHOTOS_PUBLICS.booleanValue())))
             .andExpect(jsonPath("$.[*].usageBatiment").value(hasItem(DEFAULT_USAGE_BATIMENT.toString())))
-            .andExpect(jsonPath("$.[*].usageBatimentAutre").value(hasItem(DEFAULT_USAGE_BATIMENT_AUTRE.toString())))
+            .andExpect(jsonPath("$.[*].usageBatimentAutre").value(hasItem(DEFAULT_USAGE_BATIMENT_AUTRE)))
             .andExpect(jsonPath("$.[*].cout").value(hasItem(DEFAULT_COUT)))
             .andExpect(jsonPath("$.[*].surfacePlancher").value(hasItem(DEFAULT_SURFACE_PLANCHER)))
             .andExpect(jsonPath("$.[*].niveaux").value(hasItem(DEFAULT_NIVEAUX)))
@@ -703,7 +702,7 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.[*].structCompl").value(hasItem(DEFAULT_STRUCT_COMPL.booleanValue())))
             .andExpect(jsonPath("$.[*].structComplNature").value(hasItem(DEFAULT_STRUCT_COMPL_NATURE.toString())))
             .andExpect(jsonPath("$.[*].structComplAutre").value(hasItem(DEFAULT_STRUCT_COMPL_AUTRE)))
-            .andExpect(jsonPath("$.[*].structComplNaturePrecision").value(hasItem(DEFAULT_STRUCT_COMPL_NATURE_PRECISION)))
+            .andExpect(jsonPath("$.[*].structComplInfos").value(hasItem(DEFAULT_STRUCT_COMPL_INFOS.toString())))
             .andExpect(jsonPath("$.[*].longMaxSansMurRefend").value(hasItem(DEFAULT_LONG_MAX_SANS_MUR_REFEND.doubleValue())))
             .andExpect(jsonPath("$.[*].noteCalcul").value(hasItem(DEFAULT_NOTE_CALCUL.booleanValue())))
             .andExpect(jsonPath("$.[*].nbrRangDeBottes").value(hasItem(DEFAULT_NBR_RANG_DE_BOTTES)))
@@ -774,9 +773,9 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.photo5").value(Base64Utils.encodeToString(DEFAULT_PHOTO_5)))
             .andExpect(jsonPath("$.photo5Legende").value(DEFAULT_PHOTO_5_LEGENDE))
             .andExpect(jsonPath("$.photo5Description").value(DEFAULT_PHOTO_5_DESCRIPTION))
-            .andExpect(jsonPath("$.nonBatimentEtPhotosPublics").value(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS.booleanValue()))
+            .andExpect(jsonPath("$.nomBatimentEtPhotosPublics").value(DEFAULT_NOM_BATIMENT_ET_PHOTOS_PUBLICS.booleanValue()))
             .andExpect(jsonPath("$.usageBatiment").value(DEFAULT_USAGE_BATIMENT.toString()))
-            .andExpect(jsonPath("$.usageBatimentAutre").value(DEFAULT_USAGE_BATIMENT_AUTRE.toString()))
+            .andExpect(jsonPath("$.usageBatimentAutre").value(DEFAULT_USAGE_BATIMENT_AUTRE))
             .andExpect(jsonPath("$.cout").value(DEFAULT_COUT))
             .andExpect(jsonPath("$.surfacePlancher").value(DEFAULT_SURFACE_PLANCHER))
             .andExpect(jsonPath("$.niveaux").value(DEFAULT_NIVEAUX))
@@ -797,7 +796,7 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.structCompl").value(DEFAULT_STRUCT_COMPL.booleanValue()))
             .andExpect(jsonPath("$.structComplNature").value(DEFAULT_STRUCT_COMPL_NATURE.toString()))
             .andExpect(jsonPath("$.structComplAutre").value(DEFAULT_STRUCT_COMPL_AUTRE))
-            .andExpect(jsonPath("$.structComplNaturePrecision").value(DEFAULT_STRUCT_COMPL_NATURE_PRECISION))
+            .andExpect(jsonPath("$.structComplInfos").value(DEFAULT_STRUCT_COMPL_INFOS.toString()))
             .andExpect(jsonPath("$.longMaxSansMurRefend").value(DEFAULT_LONG_MAX_SANS_MUR_REFEND.doubleValue()))
             .andExpect(jsonPath("$.noteCalcul").value(DEFAULT_NOTE_CALCUL.booleanValue()))
             .andExpect(jsonPath("$.nbrRangDeBottes").value(DEFAULT_NBR_RANG_DE_BOTTES))
@@ -876,7 +875,7 @@ class BatimentResourceIT {
             .photo5ContentType(UPDATED_PHOTO_5_CONTENT_TYPE)
             .photo5Legende(UPDATED_PHOTO_5_LEGENDE)
             .photo5Description(UPDATED_PHOTO_5_DESCRIPTION)
-            .nonBatimentEtPhotosPublics(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS)
+            .nomBatimentEtPhotosPublics(UPDATED_NOM_BATIMENT_ET_PHOTOS_PUBLICS)
             .usageBatiment(UPDATED_USAGE_BATIMENT)
             .usageBatimentAutre(UPDATED_USAGE_BATIMENT_AUTRE)
             .cout(UPDATED_COUT)
@@ -899,7 +898,7 @@ class BatimentResourceIT {
             .structCompl(UPDATED_STRUCT_COMPL)
             .structComplNature(UPDATED_STRUCT_COMPL_NATURE)
             .structComplAutre(UPDATED_STRUCT_COMPL_AUTRE)
-            .structComplNaturePrecision(UPDATED_STRUCT_COMPL_NATURE_PRECISION)
+            .structComplInfos(UPDATED_STRUCT_COMPL_INFOS)
             .longMaxSansMurRefend(UPDATED_LONG_MAX_SANS_MUR_REFEND)
             .noteCalcul(UPDATED_NOTE_CALCUL)
             .nbrRangDeBottes(UPDATED_NBR_RANG_DE_BOTTES)
@@ -969,7 +968,7 @@ class BatimentResourceIT {
         assertThat(testBatiment.getPhoto5ContentType()).isEqualTo(UPDATED_PHOTO_5_CONTENT_TYPE);
         assertThat(testBatiment.getPhoto5Legende()).isEqualTo(UPDATED_PHOTO_5_LEGENDE);
         assertThat(testBatiment.getPhoto5Description()).isEqualTo(UPDATED_PHOTO_5_DESCRIPTION);
-        assertThat(testBatiment.getNonBatimentEtPhotosPublics()).isEqualTo(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS);
+        assertThat(testBatiment.getNomBatimentEtPhotosPublics()).isEqualTo(UPDATED_NOM_BATIMENT_ET_PHOTOS_PUBLICS);
         assertThat(testBatiment.getUsageBatiment()).isEqualTo(UPDATED_USAGE_BATIMENT);
         assertThat(testBatiment.getUsageBatimentAutre()).isEqualTo(UPDATED_USAGE_BATIMENT_AUTRE);
         assertThat(testBatiment.getCout()).isEqualTo(UPDATED_COUT);
@@ -992,7 +991,7 @@ class BatimentResourceIT {
         assertThat(testBatiment.getStructCompl()).isEqualTo(UPDATED_STRUCT_COMPL);
         assertThat(testBatiment.getStructComplNature()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE);
         assertThat(testBatiment.getStructComplAutre()).isEqualTo(UPDATED_STRUCT_COMPL_AUTRE);
-        assertThat(testBatiment.getStructComplNaturePrecision()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE_PRECISION);
+        assertThat(testBatiment.getStructComplInfos()).isEqualTo(UPDATED_STRUCT_COMPL_INFOS);
         assertThat(testBatiment.getLongMaxSansMurRefend()).isEqualTo(UPDATED_LONG_MAX_SANS_MUR_REFEND);
         assertThat(testBatiment.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
         assertThat(testBatiment.getNbrRangDeBottes()).isEqualTo(UPDATED_NBR_RANG_DE_BOTTES);
@@ -1116,7 +1115,7 @@ class BatimentResourceIT {
             .distanceAppro(UPDATED_DISTANCE_APPRO)
             .autoconstruction(UPDATED_AUTOCONSTRUCTION)
             .structCompl(UPDATED_STRUCT_COMPL)
-            .structComplNaturePrecision(UPDATED_STRUCT_COMPL_NATURE_PRECISION)
+            .structComplInfos(UPDATED_STRUCT_COMPL_INFOS)
             .longMaxSansMurRefend(UPDATED_LONG_MAX_SANS_MUR_REFEND)
             .noteCalcul(UPDATED_NOTE_CALCUL)
             .nbrRangDeBottes(UPDATED_NBR_RANG_DE_BOTTES)
@@ -1173,7 +1172,7 @@ class BatimentResourceIT {
         assertThat(testBatiment.getPhoto5ContentType()).isEqualTo(DEFAULT_PHOTO_5_CONTENT_TYPE);
         assertThat(testBatiment.getPhoto5Legende()).isEqualTo(DEFAULT_PHOTO_5_LEGENDE);
         assertThat(testBatiment.getPhoto5Description()).isEqualTo(UPDATED_PHOTO_5_DESCRIPTION);
-        assertThat(testBatiment.getNonBatimentEtPhotosPublics()).isEqualTo(DEFAULT_NON_BATIMENT_ET_PHOTOS_PUBLICS);
+        assertThat(testBatiment.getNomBatimentEtPhotosPublics()).isEqualTo(DEFAULT_NOM_BATIMENT_ET_PHOTOS_PUBLICS);
         assertThat(testBatiment.getUsageBatiment()).isEqualTo(DEFAULT_USAGE_BATIMENT);
         assertThat(testBatiment.getUsageBatimentAutre()).isEqualTo(UPDATED_USAGE_BATIMENT_AUTRE);
         assertThat(testBatiment.getCout()).isEqualTo(DEFAULT_COUT);
@@ -1196,7 +1195,7 @@ class BatimentResourceIT {
         assertThat(testBatiment.getStructCompl()).isEqualTo(UPDATED_STRUCT_COMPL);
         assertThat(testBatiment.getStructComplNature()).isEqualTo(DEFAULT_STRUCT_COMPL_NATURE);
         assertThat(testBatiment.getStructComplAutre()).isEqualTo(DEFAULT_STRUCT_COMPL_AUTRE);
-        assertThat(testBatiment.getStructComplNaturePrecision()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE_PRECISION);
+        assertThat(testBatiment.getStructComplInfos()).isEqualTo(UPDATED_STRUCT_COMPL_INFOS);
         assertThat(testBatiment.getLongMaxSansMurRefend()).isEqualTo(UPDATED_LONG_MAX_SANS_MUR_REFEND);
         assertThat(testBatiment.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
         assertThat(testBatiment.getNbrRangDeBottes()).isEqualTo(UPDATED_NBR_RANG_DE_BOTTES);
@@ -1268,7 +1267,7 @@ class BatimentResourceIT {
             .photo5ContentType(UPDATED_PHOTO_5_CONTENT_TYPE)
             .photo5Legende(UPDATED_PHOTO_5_LEGENDE)
             .photo5Description(UPDATED_PHOTO_5_DESCRIPTION)
-            .nonBatimentEtPhotosPublics(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS)
+            .nomBatimentEtPhotosPublics(UPDATED_NOM_BATIMENT_ET_PHOTOS_PUBLICS)
             .usageBatiment(UPDATED_USAGE_BATIMENT)
             .usageBatimentAutre(UPDATED_USAGE_BATIMENT_AUTRE)
             .cout(UPDATED_COUT)
@@ -1291,7 +1290,7 @@ class BatimentResourceIT {
             .structCompl(UPDATED_STRUCT_COMPL)
             .structComplNature(UPDATED_STRUCT_COMPL_NATURE)
             .structComplAutre(UPDATED_STRUCT_COMPL_AUTRE)
-            .structComplNaturePrecision(UPDATED_STRUCT_COMPL_NATURE_PRECISION)
+            .structComplInfos(UPDATED_STRUCT_COMPL_INFOS)
             .longMaxSansMurRefend(UPDATED_LONG_MAX_SANS_MUR_REFEND)
             .noteCalcul(UPDATED_NOTE_CALCUL)
             .nbrRangDeBottes(UPDATED_NBR_RANG_DE_BOTTES)
@@ -1361,7 +1360,7 @@ class BatimentResourceIT {
         assertThat(testBatiment.getPhoto5ContentType()).isEqualTo(UPDATED_PHOTO_5_CONTENT_TYPE);
         assertThat(testBatiment.getPhoto5Legende()).isEqualTo(UPDATED_PHOTO_5_LEGENDE);
         assertThat(testBatiment.getPhoto5Description()).isEqualTo(UPDATED_PHOTO_5_DESCRIPTION);
-        assertThat(testBatiment.getNonBatimentEtPhotosPublics()).isEqualTo(UPDATED_NON_BATIMENT_ET_PHOTOS_PUBLICS);
+        assertThat(testBatiment.getNomBatimentEtPhotosPublics()).isEqualTo(UPDATED_NOM_BATIMENT_ET_PHOTOS_PUBLICS);
         assertThat(testBatiment.getUsageBatiment()).isEqualTo(UPDATED_USAGE_BATIMENT);
         assertThat(testBatiment.getUsageBatimentAutre()).isEqualTo(UPDATED_USAGE_BATIMENT_AUTRE);
         assertThat(testBatiment.getCout()).isEqualTo(UPDATED_COUT);
@@ -1384,7 +1383,7 @@ class BatimentResourceIT {
         assertThat(testBatiment.getStructCompl()).isEqualTo(UPDATED_STRUCT_COMPL);
         assertThat(testBatiment.getStructComplNature()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE);
         assertThat(testBatiment.getStructComplAutre()).isEqualTo(UPDATED_STRUCT_COMPL_AUTRE);
-        assertThat(testBatiment.getStructComplNaturePrecision()).isEqualTo(UPDATED_STRUCT_COMPL_NATURE_PRECISION);
+        assertThat(testBatiment.getStructComplInfos()).isEqualTo(UPDATED_STRUCT_COMPL_INFOS);
         assertThat(testBatiment.getLongMaxSansMurRefend()).isEqualTo(UPDATED_LONG_MAX_SANS_MUR_REFEND);
         assertThat(testBatiment.getNoteCalcul()).isEqualTo(UPDATED_NOTE_CALCUL);
         assertThat(testBatiment.getNbrRangDeBottes()).isEqualTo(UPDATED_NBR_RANG_DE_BOTTES);

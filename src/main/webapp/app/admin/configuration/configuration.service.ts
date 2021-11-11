@@ -56,6 +56,6 @@ export default class ConfigurationService {
       }
     }
     // by default, use the default ApplicationContext Id
-    return res['contexts']['carte_paille_porteuse']['beans'];
+    return res['contexts']['carto_paille_porteuse']['beans'];
   }
 }

@@ -9,7 +9,7 @@
     <!--
         Added the entity Batiment.
     -->
-    <changeSet id="20211110113710-1" author="jhipster">
+    <changeSet id="20211111182648-1" author="jhipster">
         <createTable tableName="batiment">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
@@ -29,7 +29,7 @@
             <column name="photo_principale_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="photo_principale_legende" type="varchar(50)">
+            <column name="photo_principale_legende" type="varchar(30)">
                 <constraints nullable="true" />
             </column>
             <column name="photo_principale_description" type="varchar(255)">
@@ -41,7 +41,7 @@
             <column name="photo_1_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="photo_1_legende" type="varchar(50)">
+            <column name="photo_1_legende" type="varchar(30)">
                 <constraints nullable="true" />
             </column>
             <column name="photo_1_description" type="varchar(255)">
@@ -53,7 +53,7 @@
             <column name="photo_2_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="photo_2_legende" type="varchar(50)">
+            <column name="photo_2_legende" type="varchar(30)">
                 <constraints nullable="true" />
             </column>
             <column name="photo_2_description" type="varchar(255)">
@@ -65,7 +65,7 @@
             <column name="photo_3_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="photo_3_legende" type="varchar(50)">
+            <column name="photo_3_legende" type="varchar(30)">
                 <constraints nullable="true" />
             </column>
             <column name="photo_3_description" type="varchar(255)">
@@ -77,7 +77,7 @@
             <column name="photo_4_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="photo_4_legende" type="varchar(50)">
+            <column name="photo_4_legende" type="varchar(30)">
                 <constraints nullable="true" />
             </column>
             <column name="photo_4_description" type="varchar(255)">
@@ -89,13 +89,13 @@
             <column name="photo_5_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="photo_5_legende" type="varchar(50)">
+            <column name="photo_5_legende" type="varchar(30)">
                 <constraints nullable="true" />
             </column>
             <column name="photo_5_description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="non_batiment_et_photos_publics" type="boolean" remarks="If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.">
+            <column name="nom_batiment_et_photos_publics" type="boolean" remarks="If true, anonymous users (not authenticated) could see photos. Search\nengine could  index it.">
                 <constraints nullable="true" />
             </column>
             <column name="usage_batiment" type="varchar(255)" remarks="Usage">
@@ -110,7 +110,7 @@
             <column name="surface_plancher" type="integer" remarks="Surface de plancher [m²]">
                 <constraints nullable="true" />
             </column>
-            <column name="niveaux" type="integer" remarks="Nombre de niveaux du bâtiment">
+            <column name="niveaux" type="integer" remarks="Nombre de niveaux du bâtiment (ex: RDC = 1, 1 étage = 2 niveau, sous-sol non compté)">
                 <constraints nullable="true" />
             </column>
             <column name="travaux_neuf" type="boolean" remarks="Neuf">
@@ -137,7 +137,7 @@
             <column name="bottes_taille" type="varchar(255)" remarks="Taille des bottes">
                 <constraints nullable="true" />
             </column>
-            <column name="botte_taille_autre" type="varchar(255)" remarks="Autre type de botte">
+            <column name="botte_taille_autre" type="varchar(255)" remarks="Si &quot;Autre&quot;, préciser">
                 <constraints nullable="true" />
             </column>
             <column name="bottes_densite" type="integer" remarks="Densité sur base sèche [kg/m³]">
@@ -164,7 +164,7 @@
             <column name="struct_compl_autre" type="varchar(512)" remarks="Si &quot;Autre&quot;, préciser">
                 <constraints nullable="true" />
             </column>
-            <column name="struct_compl_nature_precision" type="varchar(512)" remarks="Longueur maximum sans mur de refend (mètre)">
+            <column name="struct_compl_infos" type="${clobType}" remarks="Infos sur la structure complémentaire">
                 <constraints nullable="true" />
             </column>
             <column name="long_max_sans_mur_refend" type="${floatType}" remarks="Longueur maximum sans mur de refend (mètre)">
@@ -273,7 +273,7 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20211110113710-1-data" author="jhipster" context="faker">
+    <changeSet id="20211111182648-1-data" author="jhipster" context="faker">
         <loadData
                   file="config/liquibase/fake-data/batiment.csv"
                   separator=";"
@@ -307,7 +307,7 @@
             <column name="photo_5_content_type" type="string"/>
             <column name="photo_5_legende" type="string"/>
             <column name="photo_5_description" type="string"/>
-            <column name="non_batiment_et_photos_publics" type="boolean"/>
+            <column name="nom_batiment_et_photos_publics" type="boolean"/>
             <column name="usage_batiment" type="string"/>
             <column name="usage_batiment_autre" type="string"/>
             <column name="cout" type="numeric"/>
@@ -330,7 +330,7 @@
             <column name="struct_compl" type="boolean"/>
             <column name="struct_compl_nature" type="string"/>
             <column name="struct_compl_autre" type="string"/>
-            <column name="struct_compl_nature_precision" type="string"/>
+            <column name="struct_compl_infos" type="clob"/>
             <column name="long_max_sans_mur_refend" type="numeric"/>
             <column name="note_calcul" type="boolean"/>
             <column name="nbr_rang_de_bottes" type="numeric"/>

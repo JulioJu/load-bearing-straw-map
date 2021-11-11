@@ -1,8 +1,8 @@
 {
-  "name": "carte-paille-porteuse",
+  "name": "carto-paille-porteuse",
   "version": "0.0.0",
   "private": true,
-  "description": "Description for carte_paille_porteuse",
+  "description": "Description for carto_paille_porteuse",
   "license": "UNLICENSED",
   "scripts": {
     "app:start": "./mvnw",

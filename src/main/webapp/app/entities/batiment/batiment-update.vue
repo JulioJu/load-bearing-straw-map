@@ -5,9 +5,9 @@
       <!-- END added by JulioJu -->
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          id="cartePaillePorteuseApp.batiment.home.createOrEditLabel"
+          id="cartoPaillePorteuseApp.batiment.home.createOrEditLabel"
           data-cy="BatimentCreateUpdateHeading"
-          v-text="$t('cartePaillePorteuseApp.batiment.home.createOrEditLabel')"
+          v-text="$t('cartoPaillePorteuseApp.batiment.home.createOrEditLabel')"
         >
           Create or edit a Batiment
         </h2>
@@ -17,7 +17,7 @@
             <input type="text" class="form-control" id="id" name="id" v-model="batiment.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.latitude')" for="batiment-latitude"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.latitude')" for="batiment-latitude"
               >Latitude</label
             >
             <input
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.longitude')" for="batiment-longitude"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.longitude')" for="batiment-longitude"
               >Longitude</label
             >
             <input
@@ -75,7 +75,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.nomBatiment')" for="batiment-nomBatiment"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.nomBatiment')" for="batiment-nomBatiment"
               >Nom Batiment</label
             >
             <input
@@ -98,7 +98,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipale')" for="batiment-photoPrincipale"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photoPrincipale')" for="batiment-photoPrincipale"
               >Photo Principale</label
             >
             <div>
@@ -148,7 +148,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipaleLegende')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.photoPrincipaleLegende')"
               for="batiment-photoPrincipaleLegende"
               >Photo Principale Legende</label
             >
@@ -165,16 +165,16 @@
               <small
                 class="form-text text-danger"
                 v-if="!$v.batiment.photoPrincipaleLegende.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 50 })"
+                v-text="$t('entity.validation.maxlength', { max: 30 })"
               >
-                This field cannot be longer than 50 characters.
+                This field cannot be longer than 30 characters.
               </small>
             </div>
           </div>
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.photoPrincipaleDescription')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.photoPrincipaleDescription')"
               for="batiment-photoPrincipaleDescription"
               >Photo Principale Description</label
             >
@@ -189,7 +189,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo1')" for="batiment-photo1">Photo 1</label>
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo1')" for="batiment-photo1">Photo 1</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo1ContentType + ';base64,' + batiment.photo1"
@@ -235,7 +235,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo1Legende')" for="batiment-photo1Legende"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo1Legende')" for="batiment-photo1Legende"
               >Photo 1 Legende</label
             >
             <input
@@ -251,16 +251,16 @@
               <small
                 class="form-text text-danger"
                 v-if="!$v.batiment.photo1Legende.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 50 })"
+                v-text="$t('entity.validation.maxlength', { max: 30 })"
               >
-                This field cannot be longer than 50 characters.
+                This field cannot be longer than 30 characters.
               </small>
             </div>
           </div>
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.photo1Description')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.photo1Description')"
               for="batiment-photo1Description"
               >Photo 1 Description</label
             >
@@ -275,7 +275,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo2')" for="batiment-photo2">Photo 2</label>
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo2')" for="batiment-photo2">Photo 2</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo2ContentType + ';base64,' + batiment.photo2"
@@ -321,7 +321,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo2Legende')" for="batiment-photo2Legende"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo2Legende')" for="batiment-photo2Legende"
               >Photo 2 Legende</label
             >
             <input
@@ -337,16 +337,16 @@
               <small
                 class="form-text text-danger"
                 v-if="!$v.batiment.photo2Legende.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 50 })"
+                v-text="$t('entity.validation.maxlength', { max: 30 })"
               >
-                This field cannot be longer than 50 characters.
+                This field cannot be longer than 30 characters.
               </small>
             </div>
           </div>
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.photo2Description')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.photo2Description')"
               for="batiment-photo2Description"
               >Photo 2 Description</label
             >
@@ -361,7 +361,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo3')" for="batiment-photo3">Photo 3</label>
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo3')" for="batiment-photo3">Photo 3</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo3ContentType + ';base64,' + batiment.photo3"
@@ -407,7 +407,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo3Legende')" for="batiment-photo3Legende"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo3Legende')" for="batiment-photo3Legende"
               >Photo 3 Legende</label
             >
             <input
@@ -423,16 +423,16 @@
               <small
                 class="form-text text-danger"
                 v-if="!$v.batiment.photo3Legende.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 50 })"
+                v-text="$t('entity.validation.maxlength', { max: 30 })"
               >
-                This field cannot be longer than 50 characters.
+                This field cannot be longer than 30 characters.
               </small>
             </div>
           </div>
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.photo3Description')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.photo3Description')"
               for="batiment-photo3Description"
               >Photo 3 Description</label
             >
@@ -447,7 +447,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo4')" for="batiment-photo4">Photo 4</label>
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo4')" for="batiment-photo4">Photo 4</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo4ContentType + ';base64,' + batiment.photo4"
@@ -493,7 +493,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo4Legende')" for="batiment-photo4Legende"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo4Legende')" for="batiment-photo4Legende"
               >Photo 4 Legende</label
             >
             <input
@@ -509,16 +509,16 @@
               <small
                 class="form-text text-danger"
                 v-if="!$v.batiment.photo4Legende.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 50 })"
+                v-text="$t('entity.validation.maxlength', { max: 30 })"
               >
-                This field cannot be longer than 50 characters.
+                This field cannot be longer than 30 characters.
               </small>
             </div>
           </div>
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.photo4Description')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.photo4Description')"
               for="batiment-photo4Description"
               >Photo 4 Description</label
             >
@@ -533,7 +533,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo5')" for="batiment-photo5">Photo 5</label>
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo5')" for="batiment-photo5">Photo 5</label>
             <div>
               <img
                 v-bind:src="'data:' + batiment.photo5ContentType + ';base64,' + batiment.photo5"
@@ -579,7 +579,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.photo5Legende')" for="batiment-photo5Legende"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.photo5Legende')" for="batiment-photo5Legende"
               >Photo 5 Legende</label
             >
             <input
@@ -595,16 +595,16 @@
               <small
                 class="form-text text-danger"
                 v-if="!$v.batiment.photo5Legende.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 50 })"
+                v-text="$t('entity.validation.maxlength', { max: 30 })"
               >
-                This field cannot be longer than 50 characters.
+                This field cannot be longer than 30 characters.
               </small>
             </div>
           </div>
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.photo5Description')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.photo5Description')"
               for="batiment-photo5Description"
               >Photo 5 Description</label
             >
@@ -621,22 +621,22 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.nonBatimentEtPhotosPublics')"
-              for="batiment-nonBatimentEtPhotosPublics"
-              >Non Batiment Et Photos Publics</label
+              v-text="$t('cartoPaillePorteuseApp.batiment.nomBatimentEtPhotosPublics')"
+              for="batiment-nomBatimentEtPhotosPublics"
+              >Nom Batiment Et Photos Publics</label
             >
             <input
               type="checkbox"
               class="form-check"
-              name="nonBatimentEtPhotosPublics"
-              id="batiment-nonBatimentEtPhotosPublics"
-              data-cy="nonBatimentEtPhotosPublics"
-              :class="{ valid: !$v.batiment.nonBatimentEtPhotosPublics.$invalid, invalid: $v.batiment.nonBatimentEtPhotosPublics.$invalid }"
-              v-model="$v.batiment.nonBatimentEtPhotosPublics.$model"
+              name="nomBatimentEtPhotosPublics"
+              id="batiment-nomBatimentEtPhotosPublics"
+              data-cy="nomBatimentEtPhotosPublics"
+              :class="{ valid: !$v.batiment.nomBatimentEtPhotosPublics.$invalid, invalid: $v.batiment.nomBatimentEtPhotosPublics.$invalid }"
+              v-model="$v.batiment.nomBatimentEtPhotosPublics.$model"
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.usageBatiment')" for="batiment-usageBatiment"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.usageBatiment')" for="batiment-usageBatiment"
               >Usage Batiment</label
             >
             <select
@@ -651,7 +651,7 @@
                 v-for="usageBatiment in usageBatimentValues"
                 :key="usageBatiment"
                 v-bind:value="usageBatiment"
-                v-bind:label="$t('cartePaillePorteuseApp.UsageBatiment.' + usageBatiment)"
+                v-bind:label="$t('cartoPaillePorteuseApp.UsageBatiment.' + usageBatiment)"
               >
                 {{ usageBatiment }}
               </option>
@@ -660,30 +660,22 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.usageBatimentAutre')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.usageBatimentAutre')"
               for="batiment-usageBatimentAutre"
               >Usage Batiment Autre</label
             >
-            <select
+            <input
+              type="text"
               class="form-control"
               name="usageBatimentAutre"
-              :class="{ valid: !$v.batiment.usageBatimentAutre.$invalid, invalid: $v.batiment.usageBatimentAutre.$invalid }"
-              v-model="$v.batiment.usageBatimentAutre.$model"
               id="batiment-usageBatimentAutre"
               data-cy="usageBatimentAutre"
-            >
-              <option
-                v-for="usageBatiment in usageBatimentValues"
-                :key="usageBatiment"
-                v-bind:value="usageBatiment"
-                v-bind:label="$t('cartePaillePorteuseApp.UsageBatiment.' + usageBatiment)"
-              >
-                {{ usageBatiment }}
-              </option>
-            </select>
+              :class="{ valid: !$v.batiment.usageBatimentAutre.$invalid, invalid: $v.batiment.usageBatimentAutre.$invalid }"
+              v-model="$v.batiment.usageBatimentAutre.$model"
+            />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.cout')" for="batiment-cout">Cout</label>
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.cout')" for="batiment-cout">Cout</label>
             <input
               type="number"
               class="form-control"
@@ -695,7 +687,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.surfacePlancher')" for="batiment-surfacePlancher"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.surfacePlancher')" for="batiment-surfacePlancher"
               >Surface Plancher</label
             >
             <input
@@ -709,7 +701,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.niveaux')" for="batiment-niveaux">Niveaux</label>
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.niveaux')" for="batiment-niveaux">Niveaux</label>
             <input
               type="number"
               class="form-control"
@@ -719,9 +711,17 @@
               :class="{ valid: !$v.batiment.niveaux.$invalid, invalid: $v.batiment.niveaux.$invalid }"
               v-model.number="$v.batiment.niveaux.$model"
             />
+            <div v-if="$v.batiment.niveaux.$anyDirty && $v.batiment.niveaux.$invalid">
+              <small class="form-text text-danger" v-if="!$v.batiment.niveaux.min" v-text="$t('entity.validation.min', { min: 1 })">
+                This field should be at least 1.
+              </small>
+              <small class="form-text text-danger" v-if="!$v.batiment.niveaux.numeric" v-text="$t('entity.validation.number')">
+                This field should be a number.
+              </small>
+            </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.travauxNeuf')" for="batiment-travauxNeuf"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.travauxNeuf')" for="batiment-travauxNeuf"
               >Travaux Neuf</label
             >
             <input
@@ -737,7 +737,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.travauxExtension')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.travauxExtension')"
               for="batiment-travauxExtension"
               >Travaux Extension</label
             >
@@ -752,7 +752,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.travauxRenov')" for="batiment-travauxRenov"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.travauxRenov')" for="batiment-travauxRenov"
               >Travaux Renov</label
             >
             <input
@@ -766,7 +766,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.travauxIte')" for="batiment-travauxIte"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.travauxIte')" for="batiment-travauxIte"
               >Travaux Ite</label
             >
             <input
@@ -780,7 +780,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.travauxIti')" for="batiment-travauxIti"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.travauxIti')" for="batiment-travauxIti"
               >Travaux Iti</label
             >
             <input
@@ -796,7 +796,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.constructionDebut')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.constructionDebut')"
               for="batiment-constructionDebut"
               >Construction Debut</label
             >
@@ -827,7 +827,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.constructionFin')" for="batiment-constructionFin"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.constructionFin')" for="batiment-constructionFin"
               >Construction Fin</label
             >
             <b-input-group class="mb-3">
@@ -857,7 +857,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.bottesTaille')" for="batiment-bottesTaille"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.bottesTaille')" for="batiment-bottesTaille"
               >Bottes Taille</label
             >
             <select
@@ -872,7 +872,7 @@
                 v-for="taillesBottes in taillesBottesValues"
                 :key="taillesBottes"
                 v-bind:value="taillesBottes"
-                v-bind:label="$t('cartePaillePorteuseApp.TaillesBottes.' + taillesBottes)"
+                v-bind:label="$t('cartoPaillePorteuseApp.TaillesBottes.' + taillesBottes)"
               >
                 {{ taillesBottes }}
               </option>
@@ -881,7 +881,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.botteTailleAutre')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.botteTailleAutre')"
               for="batiment-botteTailleAutre"
               >Botte Taille Autre</label
             >
@@ -896,7 +896,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.bottesDensite')" for="batiment-bottesDensite"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.bottesDensite')" for="batiment-bottesDensite"
               >Bottes Densite</label
             >
             <input
@@ -910,7 +910,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.bottesCereale')" for="batiment-bottesCereale"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.bottesCereale')" for="batiment-bottesCereale"
               >Bottes Cereale</label
             >
             <select
@@ -925,14 +925,14 @@
                 v-for="cereale in cerealeValues"
                 :key="cereale"
                 v-bind:value="cereale"
-                v-bind:label="$t('cartePaillePorteuseApp.Cereale.' + cereale)"
+                v-bind:label="$t('cartoPaillePorteuseApp.Cereale.' + cereale)"
               >
                 {{ cereale }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.distanceAppro')" for="batiment-distanceAppro"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.distanceAppro')" for="batiment-distanceAppro"
               >Distance Appro</label
             >
             <input
@@ -948,7 +948,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.autoconstruction')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.autoconstruction')"
               for="batiment-autoconstruction"
               >Autoconstruction</label
             >
@@ -964,14 +964,14 @@
                 v-for="yesNoPartial in yesNoPartialValues"
                 :key="yesNoPartial"
                 v-bind:value="yesNoPartial"
-                v-bind:label="$t('cartePaillePorteuseApp.YesNoPartial.' + yesNoPartial)"
+                v-bind:label="$t('cartoPaillePorteuseApp.YesNoPartial.' + yesNoPartial)"
               >
                 {{ yesNoPartial }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.participatif')" for="batiment-participatif"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.participatif')" for="batiment-participatif"
               >Participatif</label
             >
             <select
@@ -986,14 +986,14 @@
                 v-for="yesNoPartial in yesNoPartialValues"
                 :key="yesNoPartial"
                 v-bind:value="yesNoPartial"
-                v-bind:label="$t('cartePaillePorteuseApp.YesNoPartial.' + yesNoPartial)"
+                v-bind:label="$t('cartoPaillePorteuseApp.YesNoPartial.' + yesNoPartial)"
               >
                 {{ yesNoPartial }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.structCompl')" for="batiment-structCompl"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.structCompl')" for="batiment-structCompl"
               >Struct Compl</label
             >
             <input
@@ -1009,7 +1009,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.structComplNature')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.structComplNature')"
               for="batiment-structComplNature"
               >Struct Compl Nature</label
             >
@@ -1025,7 +1025,7 @@
                 v-for="structureComplementaire in structureComplementaireValues"
                 :key="structureComplementaire"
                 v-bind:value="structureComplementaire"
-                v-bind:label="$t('cartePaillePorteuseApp.StructureComplementaire.' + structureComplementaire)"
+                v-bind:label="$t('cartoPaillePorteuseApp.StructureComplementaire.' + structureComplementaire)"
               >
                 {{ structureComplementaire }}
               </option>
@@ -1034,7 +1034,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.structComplAutre')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.structComplAutre')"
               for="batiment-structComplAutre"
               >Struct Compl Autre</label
             >
@@ -1060,33 +1060,23 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.structComplNaturePrecision')"
-              for="batiment-structComplNaturePrecision"
-              >Struct Compl Nature Precision</label
+              v-text="$t('cartoPaillePorteuseApp.batiment.structComplInfos')"
+              for="batiment-structComplInfos"
+              >Struct Compl Infos</label
             >
-            <input
-              type="text"
+            <textarea
               class="form-control"
-              name="structComplNaturePrecision"
-              id="batiment-structComplNaturePrecision"
-              data-cy="structComplNaturePrecision"
-              :class="{ valid: !$v.batiment.structComplNaturePrecision.$invalid, invalid: $v.batiment.structComplNaturePrecision.$invalid }"
-              v-model="$v.batiment.structComplNaturePrecision.$model"
-            />
-            <div v-if="$v.batiment.structComplNaturePrecision.$anyDirty && $v.batiment.structComplNaturePrecision.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.batiment.structComplNaturePrecision.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 512 })"
-              >
-                This field cannot be longer than 512 characters.
-              </small>
-            </div>
+              name="structComplInfos"
+              id="batiment-structComplInfos"
+              data-cy="structComplInfos"
+              :class="{ valid: !$v.batiment.structComplInfos.$invalid, invalid: $v.batiment.structComplInfos.$invalid }"
+              v-model="$v.batiment.structComplInfos.$model"
+            ></textarea>
           </div>
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.longMaxSansMurRefend')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.longMaxSansMurRefend')"
               for="batiment-longMaxSansMurRefend"
               >Long Max Sans Mur Refend</label
             >
@@ -1101,7 +1091,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.noteCalcul')" for="batiment-noteCalcul"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.noteCalcul')" for="batiment-noteCalcul"
               >Note Calcul</label
             >
             <input
@@ -1115,7 +1105,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.nbrRangDeBottes')" for="batiment-nbrRangDeBottes"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.nbrRangDeBottes')" for="batiment-nbrRangDeBottes"
               >Nbr Rang De Bottes</label
             >
             <input
@@ -1129,7 +1119,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.integBaie')" for="batiment-integBaie"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.integBaie')" for="batiment-integBaie"
               >Integ Baie</label
             >
             <select
@@ -1144,14 +1134,14 @@
                 v-for="integBaie in integBaieValues"
                 :key="integBaie"
                 v-bind:value="integBaie"
-                v-bind:label="$t('cartePaillePorteuseApp.IntegBaie.' + integBaie)"
+                v-bind:label="$t('cartoPaillePorteuseApp.IntegBaie.' + integBaie)"
               >
                 {{ integBaie }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.integBaieAutre')" for="batiment-integBaieAutre"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.integBaieAutre')" for="batiment-integBaieAutre"
               >Integ Baie Autre</label
             >
             <input
@@ -1165,7 +1155,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.supportAncrage')" for="batiment-supportAncrage"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.supportAncrage')" for="batiment-supportAncrage"
               >Support Ancrage</label
             >
             <select
@@ -1180,7 +1170,7 @@
                 v-for="supportAncrage in supportAncrageValues"
                 :key="supportAncrage"
                 v-bind:value="supportAncrage"
-                v-bind:label="$t('cartePaillePorteuseApp.SupportAncrage.' + supportAncrage)"
+                v-bind:label="$t('cartoPaillePorteuseApp.SupportAncrage.' + supportAncrage)"
               >
                 {{ supportAncrage }}
               </option>
@@ -1189,7 +1179,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.supportAncrageAutre')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.supportAncrageAutre')"
               for="batiment-supportAncrageAutre"
               >Support Ancrage Autre</label
             >
@@ -1204,7 +1194,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.revetInt')" for="batiment-revetInt"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetInt')" for="batiment-revetInt"
               >Revet Int</label
             >
             <select
@@ -1219,14 +1209,14 @@
                 v-for="revetInt in revetIntValues"
                 :key="revetInt"
                 v-bind:value="revetInt"
-                v-bind:label="$t('cartePaillePorteuseApp.RevetInt.' + revetInt)"
+                v-bind:label="$t('cartoPaillePorteuseApp.RevetInt.' + revetInt)"
               >
                 {{ revetInt }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.revetIntAutre')" for="batiment-revetIntAutre"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetIntAutre')" for="batiment-revetIntAutre"
               >Revet Int Autre</label
             >
             <input
@@ -1240,7 +1230,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.revetExt')" for="batiment-revetExt"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetExt')" for="batiment-revetExt"
               >Revet Ext</label
             >
             <select
@@ -1255,14 +1245,14 @@
                 v-for="revetExt in revetExtValues"
                 :key="revetExt"
                 v-bind:value="revetExt"
-                v-bind:label="$t('cartePaillePorteuseApp.RevetExt.' + revetExt)"
+                v-bind:label="$t('cartoPaillePorteuseApp.RevetExt.' + revetExt)"
               >
                 {{ revetExt }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.revetExtAutre')" for="batiment-revetExtAutre"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetExtAutre')" for="batiment-revetExtAutre"
               >Revet Ext Autre</label
             >
             <input
@@ -1276,7 +1266,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.maitreDOuvrage')" for="batiment-maitreDOuvrage"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.maitreDOuvrage')" for="batiment-maitreDOuvrage"
               >Maitre D Ouvrage</label
             >
             <input
@@ -1299,7 +1289,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.maitreDOeuvre')" for="batiment-maitreDOeuvre"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.maitreDOeuvre')" for="batiment-maitreDOeuvre"
               >Maitre D Oeuvre</label
             >
             <input
@@ -1322,7 +1312,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.architecte')" for="batiment-architecte"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.architecte')" for="batiment-architecte"
               >Architecte</label
             >
             <input
@@ -1347,7 +1337,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.bureauDEtudeStructure')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.bureauDEtudeStructure')"
               for="batiment-bureauDEtudeStructure"
               >Bureau D Etude Structure</label
             >
@@ -1371,7 +1361,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.bureauControl')" for="batiment-bureauControl"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.bureauControl')" for="batiment-bureauControl"
               >Bureau Control</label
             >
             <input
@@ -1396,7 +1386,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.entrepriseBottes')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.entrepriseBottes')"
               for="batiment-entrepriseBottes"
               >Entreprise Bottes</label
             >
@@ -1422,7 +1412,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.entrepriseCharpente')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.entrepriseCharpente')"
               for="batiment-entrepriseCharpente"
               >Entreprise Charpente</label
             >
@@ -1448,7 +1438,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.entrepriseEnduits')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.entrepriseEnduits')"
               for="batiment-entrepriseEnduits"
               >Entreprise Enduits</label
             >
@@ -1474,7 +1464,7 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartePaillePorteuseApp.batiment.descriptionProjet')"
+              v-text="$t('cartoPaillePorteuseApp.batiment.descriptionProjet')"
               for="batiment-descriptionProjet"
               >Description Projet</label
             >
@@ -1488,7 +1478,7 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.difficultees')" for="batiment-difficultees"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.difficultees')" for="batiment-difficultees"
               >Difficultees</label
             >
             <textarea
@@ -1501,7 +1491,7 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.astuces')" for="batiment-astuces">Astuces</label>
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.astuces')" for="batiment-astuces">Astuces</label>
             <textarea
               class="form-control"
               name="astuces"
@@ -1512,7 +1502,7 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.divers')" for="batiment-divers">Divers</label>
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.divers')" for="batiment-divers">Divers</label>
             <textarea
               class="form-control"
               name="divers"
@@ -1523,7 +1513,7 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.contactNom')" for="batiment-contactNom"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.contactNom')" for="batiment-contactNom"
               >Contact Nom</label
             >
             <input
@@ -1537,7 +1527,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.contactMail')" for="batiment-contactMail"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.contactMail')" for="batiment-contactMail"
               >Contact Mail</label
             >
             <input
@@ -1551,7 +1541,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.contactPhone')" for="batiment-contactPhone"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.contactPhone')" for="batiment-contactPhone"
               >Contact Phone</label
             >
             <input
@@ -1565,7 +1555,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartePaillePorteuseApp.batiment.codePostal')" for="batiment-codePostal"
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.codePostal')" for="batiment-codePostal"
               >Code Postal</label
             >
             <input

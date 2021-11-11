@@ -1,12 +1,12 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
 version: '3.8'
 services:
-  carte_paille_porteuse-postgresql:
+  carto_paille_porteuse-postgresql:
     image: postgres:13.4
     # volumes:
-    #   - ~/volumes/jhipster/carte_paille_porteuse/postgresql/:/var/lib/postgresql/data/
+    #   - ~/volumes/jhipster/carto_paille_porteuse/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=carte_paille_porteuse
+      - POSTGRES_USER=carto_paille_porteuse
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
     # If you want to expose these ports outside your dev PC,

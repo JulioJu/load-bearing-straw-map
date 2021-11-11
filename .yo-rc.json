@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "applicationType": "monolith",
-    "baseName": "carte_paille_porteuse",
+    "baseName": "carto_paille_porteuse",
     "jhipsterVersion": "7.3.1",
     "skipClient": false,
     "skipServer": false,
@@ -44,8 +44,8 @@
     "languages": ["fr"],
     "enableGradleEnterprise": false,
     "entities": ["Batiment"],
-    "lastLiquibaseTimestamp": 1636544230000,
-    "herokuAppName": "carte-paille-porteuse",
+    "lastLiquibaseTimestamp": 1636655208000,
+    "herokuAppName": "carto-paille-porteuse",
     "herokuDeployType": "git",
     "herokuJavaVersion": "11"
   }
