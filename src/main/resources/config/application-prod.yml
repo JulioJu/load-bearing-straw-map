@@ -110,10 +110,12 @@ jhipster:
         # - In the JHipster Registry (which includes a Spring Cloud Config server)
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: OWNkZmJmMmFiYzE3ZTBiNTJjM2RkOWViMThhYWZmOTc0YWY2NjZjOTJiZWU4YmRkOGIxMDMwMjg3OGMyNWU5ODgyMmI1ZWNjNDU2NGY3M2UzNWE3M2U4YzkyMjBkYjA4MjhlZGEyMmU3MTBiY2ZhYzg5NmI1NzViMzQ3M2Y1NjA=
+        # START aded by JulioJu
+        base64-secret: ${JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET}
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
-        token-validity-in-seconds-for-remember-me: 2592000
+        token-validity-in-seconds-for-remember-me: 86400
+        # END aded by JulioJu
   mail: # specific JHipster mail property, for standard properties see MailProperties
     base-url: http://my-server-url-to-change # Modify according to your server's URL
   logging:
