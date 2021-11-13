@@ -202,19 +202,25 @@
             </div>
           </div>
 
+          <!-- START added by JulioJu -->
+          <div class="mb-3">
+            <strong class="text-danger">
+              En cliquant sur "{{ $t('register.form.button') }}" vous vous engagagez à avoir lu
+              <a class="text-info" target="_blank" to="/legal"
+                >les Conditions générales d'utilisation, les limitations de responsabilité, la politique de traitement des données</a
+              >
+              et vous manifestez votre acceptation de toutes les dispositions sans restriction.
+            </strong>
+          </div>
+          <!-- END added by JulioJu -->
+
           <button type="submit" :disabled="$v.$invalid" class="btn btn-primary" v-text="$t('register.form.button')" data-cy="submit">
             Register
           </button>
         </form>
-        <p></p>
-        <div class="alert alert-warning">
-          <span v-text="$t('global.messages.info.authenticated.prefix')">If you want to </span>
-          <a class="alert-link" v-on:click="openLogin()" v-text="$t('global.messages.info.authenticated.link')">sign in</a
-          ><span v-html="$t('global.messages.info.authenticated.suffix')"
-            >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
-            password="user").</span
-          >
-        </div>
+        <!-- START added by JulioJu -->
+        <!-- text deleted here -->
+        <!-- END added by JulioJu -->
       </div>
     </div>
   </div>

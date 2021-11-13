@@ -1819,7 +1819,17 @@
           <!-- START added by JulioJu -->
         </b-card>
 
-          <!-- Some fields deleted here -->
+          <!-- START added by JulioJu -->
+          <div class="mb-3">
+            <strong class="text-danger">
+              En cliquant sur "{{ $t('entity.action.save') }}" vous vous engagagez à avoir lu
+              <a class="text-info" target="_blank" to="/legal"
+                                 >les Conditions générales d'utilisation, les limitations de responsabilité, la politique de traitement des données</a
+                               >
+                               et vous manifestez votre acceptation de toutes les dispositions sans restriction. Vous vous engagez également à ce que votre enregistrement soit conforme aux dispositions énoncées.
+            </strong>
+          </div>
+          <!-- END added by JulioJu -->
           <!-- END added by JulioJu -->
 
         </div>

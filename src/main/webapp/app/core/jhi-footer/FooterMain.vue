@@ -17,7 +17,7 @@
       Association pour le développement de la paille porteuse
     </section>
     <div class="footer-main__legal">
-      <RouterLink to="/legal"> Mentions légales </RouterLink>
+      <RouterLink to="/legal">Mentions légales, Traitement des données, Cookies, CGU, Limitation de responsabilité </RouterLink>
     </div>
   </section>
 </template>

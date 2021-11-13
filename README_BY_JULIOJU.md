@@ -36,6 +36,7 @@ git checkout \
     migration-old-db-to-jhipster.sql \
     README_BY_JULIOJU.md \
     LICENSE \
+    src/main/webapp/app/legal/ \
     src/main/webapp/app/map/ \
     src/main/webapp/app/core/jhi-footer/FooterMain.vue \
     src/main/webapp/content/images/GitHub.svg \

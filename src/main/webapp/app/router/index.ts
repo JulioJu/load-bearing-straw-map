@@ -8,6 +8,9 @@ Component.registerHooks([
 import Router from 'vue-router';
 
 const Home = () => import('@/core/home/home.vue');
+// ADDED by JulioJu
+const Legal = () => import('@/legal/legal.vue');
+// END by JulioJu
 const Error = () => import('@/core/error/error.vue');
 import account from '@/router/account';
 import admin from '@/router/admin';
@@ -25,6 +28,13 @@ export default new Router({
       name: 'Home',
       component: Home
     },
+    // ADDED by JulioJu
+    {
+      path: '/legal',
+      component: Legal,
+      name: 'Mentions légales',
+    },
+    // END by JulioJu
     {
       path: '/forbidden',
       name: 'Forbidden',
