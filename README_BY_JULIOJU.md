@@ -37,6 +37,10 @@ git checkout \
     README_BY_JULIOJU.md \
     LICENSE \
     src/main/webapp/app/map/ \
+    src/main/webapp/app/core/jhi-footer/FooterMain.vue \
+    src/main/webapp/content/images/GitHub.svg \
+    src/main/webapp/content/images/logo_nebraska.jpg \
+    src/main/webapp/content/images/logo_rfcp.png \
     src/main/java/org/julioju/lbstrawmap/domain/BatimentLazyView.java \
     src/main/java/org/julioju/lbstrawmap/domain/BatimentWithOnlyCreatorId.java \
     pom.xml \

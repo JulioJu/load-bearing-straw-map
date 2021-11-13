@@ -2,7 +2,9 @@
   <b-navbar data-cy="navbar" toggleable="md" type="dark" class="jh-navbar">
     <b-navbar-brand class="logo" b-link to="/">
       <span class="logo-img"></span>
-      <span v-text="$t('global.title')" class="navbar-title">carto_paille_porteuse</span> <span class="navbar-version">{{ version }}</span>
+      <!-- START added by JulioJu -->
+      <span class="navbar-title">Recensement des bâtiments en paille porteuse</span>
+      <!-- END added by JulioJu -->
     </b-navbar-brand>
     <b-navbar-toggle
       right
@@ -24,17 +26,23 @@
             <span v-text="$t('global.menu.home')">Home</span>
           </span>
         </b-nav-item>
-        <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
-          <span slot="button-content" class="navbar-dropdown-menu">
-            <font-awesome-icon icon="th-list" />
-            <span class="no-bold" v-text="$t('global.menu.entities.main')">Entities</span>
-          </span>
-          <b-dropdown-item to="/batiment">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.batiment')">Batiment</span>
-          </b-dropdown-item>
-          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-        </b-nav-item-dropdown>
+        <!-- START added by JulioJu -->
+        <b-nav-item to="/batiment" v-if="authenticated">
+          <font-awesome-icon icon="asterisk" />
+          <span v-text="$t('global.menu.entities.batiment')">Batiment</span>
+        </b-nav-item>
+        <!-- <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity"> -->
+        <!--   <span slot="button-content" class="navbar-dropdown-menu"> -->
+        <!--     <font-awesome-icon icon="th-list" /> -->
+        <!--     <span class="no-bold" v-text="$t('global.menu.entities.main')">Entities</span> -->
+        <!--   </span> -->
+        <!--   <b-dropdown-item to="/batiment"> -->
+        <!--     <font-awesome-icon icon="asterisk" /> -->
+        <!--     <span v-text="$t('global.menu.entities.batiment')">Batiment</span> -->
+        <!--   </b-dropdown-item> -->
+        <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+        <!-- </b-nav-item-dropdown> -->
+        <!-- END added by JulioJu -->
         <b-nav-item-dropdown
           right
           id="admin-menu"
@@ -229,4 +237,25 @@
   width: 100%;
   filter: drop-shadow(0 0 0.05rem white);
 }
+
+/** START added by JulioJu */
+.navbar-title {
+  white-space: normal;
+}
+
+.jh-navbar {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.logo .logo-img {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .logo .logo-img {
+    display: inline-block;
+  }
+}
+/** END added by JulioJu */
 </style>
