@@ -33,6 +33,7 @@ jhipster
 git checkout \
     HOW_TO_RETRIEVE_DATA_FROM_QGIS_DB.md \
     data-model.jdl \
+    migration-old-db-to-jhipster.sql \
     README_BY_JULIOJU.md \
     LICENSE \
     src/main/webapp/app/map/ \
