@@ -88,6 +88,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
             // START added by JulioJu
             .antMatchers("/api/batiments-lazy").permitAll()
+            .antMatchers("/api/auth-histories").hasAuthority(AuthoritiesConstants.ADMIN)
             // END added by JulioJu
 
             .antMatchers("/api/authenticate").permitAll()

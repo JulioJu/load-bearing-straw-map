@@ -25,7 +25,19 @@ public class UserJWTController {
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
-    public UserJWTController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder) {
+    // START added by JulioJu
+    private final org.julioju.lbstrawmap.repository.UserRepository userRepository;
+    private final org.julioju.lbstrawmap.repository.AuthHistoryRepository authHistoryRepository;
+
+    public UserJWTController(
+        TokenProvider tokenProvider,
+        AuthenticationManagerBuilder authenticationManagerBuilder,
+        org.julioju.lbstrawmap.repository.UserRepository userRepository,
+        org.julioju.lbstrawmap.repository.AuthHistoryRepository authHistoryRepository
+    ) {
+        this.userRepository = userRepository;
+        this.authHistoryRepository = authHistoryRepository;
+        // END added by JulioJu
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
     }
@@ -38,6 +50,16 @@ public class UserJWTController {
         );
 
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+
+        // START added by JulioJu
+        // Not very optimized, but well.
+        var user = userRepository.findOneByLogin(loginVM.getUsername());
+        var authHistory = new org.julioju.lbstrawmap.domain.AuthHistory();
+        authHistory.setUserId(user.get().getId());
+        authHistory.setDate(java.time.Instant.now());
+        authHistoryRepository.save(authHistory);
+        // END added by JulioJu
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.createToken(authentication, loginVM.isRememberMe());
         HttpHeaders httpHeaders = new HttpHeaders();

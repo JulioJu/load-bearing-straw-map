@@ -420,3 +420,11 @@ relationship ManyToOne {
      */
     Batiment{createdBy(login) required}  to User
 }
+
+// No relation OneToOne as we would like delete a User and do not delete something
+// here.
+@skipClient
+entity AuthHistory {
+    userId Long required,
+    date Instant required,
+}

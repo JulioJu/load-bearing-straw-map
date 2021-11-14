@@ -49,6 +49,7 @@ public class CacheConfiguration {
             createCache(cm, org.julioju.lbstrawmap.domain.Authority.class.getName());
             createCache(cm, org.julioju.lbstrawmap.domain.User.class.getName() + ".authorities");
             createCache(cm, org.julioju.lbstrawmap.domain.Batiment.class.getName());
+            createCache(cm, org.julioju.lbstrawmap.domain.AuthHistory.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

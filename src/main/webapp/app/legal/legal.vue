@@ -128,6 +128,7 @@
             >.
           </li>
           <li>Nebraska se réserve le droit de mettre fin à ce service, et ce sans préavis.</li>
+          <li>Nebraska est autorisé à enregistrer des informations à des fin d'analyse de fréquentation et d'utilisation du site.</li>
         </ul>
         <h2>Limitation de responsabilité</h2>
         <ul>
