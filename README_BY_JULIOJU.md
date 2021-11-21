@@ -54,6 +54,13 @@ npm install --save ol
 jhipster jdl ./data-model.jdl --force
 ```
 
+Note : on `global.json`, followings keys are changed or added by JulioJu
+
+```
+global.messages.validate.newpassword.pattern
+global.messages.validate.newpassword.minlength
+```
+
 ## TODO
 
 - Check TODO into the code

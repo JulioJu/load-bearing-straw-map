@@ -2,12 +2,18 @@ import axios from 'axios';
 import { maxLength, minLength, required, sameAs } from 'vuelidate/lib/validators';
 import { Inject, Vue, Component } from 'vue-property-decorator';
 import LoginService from '@/account/login.service';
+// START added by JulioJu
+import { PASSWORD_PATTERN } from '@/constants';
+// END added by JulioJu
 
 const validations = {
   resetAccount: {
     newPassword: {
       required,
-      minLength: minLength(4),
+      // START added by JulioJu
+      pattern: PASSWORD_PATTERN,
+      minLength: minLength(8),
+      // END added by JulioJu
       maxLength: maxLength(254),
     },
     confirmPassword: {

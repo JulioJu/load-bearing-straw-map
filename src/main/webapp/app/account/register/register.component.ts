@@ -3,7 +3,9 @@ import { Component, Inject } from 'vue-property-decorator';
 import { email, helpers, maxLength, minLength, required, sameAs } from 'vuelidate/lib/validators';
 import LoginService from '@/account/login.service';
 import RegisterService from '@/account/register/register.service';
-import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '@/constants';
+// START added by JulioJu
+import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE, PASSWORD_PATTERN } from '@/constants';
+// END added by JulioJu
 
 const loginPattern = helpers.regex('alpha', /^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$/);
 const validations: any = {
@@ -22,7 +24,10 @@ const validations: any = {
     },
     password: {
       required,
-      minLength: minLength(4),
+      // START added by JulioJu
+      pattern: PASSWORD_PATTERN,
+      minLength: minLength(8),
+      // END added by JulioJu
       maxLength: maxLength(254),
     },
   },

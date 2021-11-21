@@ -30,6 +30,7 @@
           <form v-if="!success" name="form" role="form" v-on:submit.prevent="finishReset()">
             <div class="form-group">
               <label class="form-control-label" for="newPassword" v-text="$t('global.form[\'newpassword.label\']')">New password</label>
+              <!-- START added by JulioJu -->
               <input
                 type="password"
                 class="form-control"
@@ -38,11 +39,12 @@
                 v-bind:placeholder="$t('global.form[\'newpassword.placeholder\']')"
                 :class="{ valid: !$v.resetAccount.newPassword.$invalid, invalid: $v.resetAccount.newPassword.$invalid }"
                 v-model="$v.resetAccount.newPassword.$model"
-                minlength="4"
+                minlength="8"
                 maxlength="50"
                 required
                 data-cy="resetPassword"
               />
+              <!-- END added by JulioJu -->
               <div v-if="$v.resetAccount.newPassword.$anyDirty && $v.resetAccount.newPassword.$invalid">
                 <small
                   class="form-text text-danger"
@@ -51,12 +53,21 @@
                 >
                   Your password is required.
                 </small>
+                <!-- START added by JulioJu -->
+                <small
+                  class="form-text text-danger"
+                  v-if="!$v.resetAccount.newpassword.pattern"
+                  v-text="$t('global.messages.validate.newpassword.pattern')"
+                >
+                  Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un nombre et un caractère spécial
+                </small>
+                <!-- END added by JulioJu -->
                 <small
                   class="form-text text-danger"
                   v-if="!$v.resetAccount.newPassword.minLength"
                   v-text="$t('global.messages.validate.newpassword.minlength')"
                 >
-                  Your password is required to be at least 4 characters.
+                  Your password is required to be at least 8 characters.
                 </small>
                 <small
                   class="form-text text-danger"

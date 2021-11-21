@@ -120,6 +120,7 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="firstPassword" v-text="$t('global.form[\'newpassword.label\']')">New password</label>
+            <!-- START added by JulioJu -->
             <input
               type="password"
               class="form-control"
@@ -127,12 +128,13 @@
               name="password"
               :class="{ valid: !$v.registerAccount.password.$invalid, invalid: $v.registerAccount.password.$invalid }"
               v-model="$v.registerAccount.password.$model"
-              minlength="4"
+              minlength="8"
               maxlength="50"
               required
               v-bind:placeholder="$t('global.form[\'newpassword.placeholder\']')"
               data-cy="firstPassword"
             />
+            <!-- END added by JulioJu -->
             <div v-if="$v.registerAccount.password.$anyDirty && $v.registerAccount.password.$invalid">
               <small
                 class="form-text text-danger"
@@ -141,13 +143,22 @@
               >
                 Your password is required.
               </small>
+              <!-- START added by JulioJu -->
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerAccount.password.pattern"
+                v-text="$t('global.messages.validate.newpassword.pattern')"
+              >
+                Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un nombre et un caractère spécial
+              </small>
               <small
                 class="form-text text-danger"
                 v-if="!$v.registerAccount.password.minLength"
                 v-text="$t('global.messages.validate.newpassword.minlength')"
               >
-                Your password is required to be at least 4 characters.
+                Your password is required to be at least 8 characters.
               </small>
+              <!-- END added by JulioJu -->
               <small
                 class="form-text text-danger"
                 v-if="!$v.registerAccount.password.maxLength"
