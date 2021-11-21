@@ -132,8 +132,8 @@ public class BatimentService {
                 if (batiment.getUsageBatiment() != null) {
                     existingBatiment.setUsageBatiment(batiment.getUsageBatiment());
                 }
-                if (batiment.getUsageBatimentAutre() != null) {
-                    existingBatiment.setUsageBatimentAutre(batiment.getUsageBatimentAutre());
+                if (batiment.getUsageBatimentInfos() != null) {
+                    existingBatiment.setUsageBatimentInfos(batiment.getUsageBatimentInfos());
                 }
                 if (batiment.getCout() != null) {
                     existingBatiment.setCout(batiment.getCout());
@@ -168,8 +168,8 @@ public class BatimentService {
                 if (batiment.getBottesTaille() != null) {
                     existingBatiment.setBottesTaille(batiment.getBottesTaille());
                 }
-                if (batiment.getBotteTailleAutre() != null) {
-                    existingBatiment.setBotteTailleAutre(batiment.getBotteTailleAutre());
+                if (batiment.getBottesTailleInfos() != null) {
+                    existingBatiment.setBottesTailleInfos(batiment.getBottesTailleInfos());
                 }
                 if (batiment.getBottesDensite() != null) {
                     existingBatiment.setBottesDensite(batiment.getBottesDensite());
@@ -192,9 +192,6 @@ public class BatimentService {
                 if (batiment.getStructComplNature() != null) {
                     existingBatiment.setStructComplNature(batiment.getStructComplNature());
                 }
-                if (batiment.getStructComplAutre() != null) {
-                    existingBatiment.setStructComplAutre(batiment.getStructComplAutre());
-                }
                 if (batiment.getStructComplInfos() != null) {
                     existingBatiment.setStructComplInfos(batiment.getStructComplInfos());
                 }
@@ -210,26 +207,26 @@ public class BatimentService {
                 if (batiment.getIntegBaie() != null) {
                     existingBatiment.setIntegBaie(batiment.getIntegBaie());
                 }
-                if (batiment.getIntegBaieAutre() != null) {
-                    existingBatiment.setIntegBaieAutre(batiment.getIntegBaieAutre());
+                if (batiment.getIntegBaieInfos() != null) {
+                    existingBatiment.setIntegBaieInfos(batiment.getIntegBaieInfos());
                 }
                 if (batiment.getSupportAncrage() != null) {
                     existingBatiment.setSupportAncrage(batiment.getSupportAncrage());
                 }
-                if (batiment.getSupportAncrageAutre() != null) {
-                    existingBatiment.setSupportAncrageAutre(batiment.getSupportAncrageAutre());
+                if (batiment.getSupportAncrageInfos() != null) {
+                    existingBatiment.setSupportAncrageInfos(batiment.getSupportAncrageInfos());
                 }
                 if (batiment.getRevetInt() != null) {
                     existingBatiment.setRevetInt(batiment.getRevetInt());
                 }
-                if (batiment.getRevetIntAutre() != null) {
-                    existingBatiment.setRevetIntAutre(batiment.getRevetIntAutre());
+                if (batiment.getRevetIntInfos() != null) {
+                    existingBatiment.setRevetIntInfos(batiment.getRevetIntInfos());
                 }
                 if (batiment.getRevetExt() != null) {
                     existingBatiment.setRevetExt(batiment.getRevetExt());
                 }
-                if (batiment.getRevetExtAutre() != null) {
-                    existingBatiment.setRevetExtAutre(batiment.getRevetExtAutre());
+                if (batiment.getRevetExtInfos() != null) {
+                    existingBatiment.setRevetExtInfos(batiment.getRevetExtInfos());
                 }
                 if (batiment.getMaitreDOuvrage() != null) {
                     existingBatiment.setMaitreDOuvrage(batiment.getMaitreDOuvrage());
@@ -281,6 +278,9 @@ public class BatimentService {
                 }
                 if (batiment.getProfilPublic() != null) {
                     existingBatiment.setProfilPublic(batiment.getProfilPublic());
+                }
+                if (batiment.getConditionsAcceptees() != null) {
+                    existingBatiment.setConditionsAcceptees(batiment.getConditionsAcceptees());
                 }
                 if (batiment.getCreatedDate() != null) {
                     existingBatiment.setCreatedDate(batiment.getCreatedDate());

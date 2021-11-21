@@ -148,11 +148,13 @@ public class Batiment implements Serializable {
     private UsageBatiment usageBatiment;
 
     /**
-     * Si \"Autre\", préciser
+     * Infos sur l'usage du bâtiment
      */
-    @ApiModelProperty(value = "Si \"Autre\", préciser")
-    @Column(name = "usage_batiment_autre")
-    private String usageBatimentAutre;
+    @ApiModelProperty(value = "Infos sur l'usage du bâtiment")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "usage_batiment_infos")
+    private String usageBatimentInfos;
 
     /**
      * Coût [€]
@@ -234,11 +236,13 @@ public class Batiment implements Serializable {
     private TaillesBottes bottesTaille;
 
     /**
-     * Si \"Autre\", préciser
+     * Infos sur la taille des bottes
      */
-    @ApiModelProperty(value = "Si \"Autre\", préciser")
-    @Column(name = "botte_taille_autre")
-    private String botteTailleAutre;
+    @ApiModelProperty(value = "Infos sur la taille des bottes")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "bottes_taille_infos")
+    private String bottesTailleInfos;
 
     /**
      * Densité sur base sèche [kg/m³]
@@ -294,14 +298,6 @@ public class Batiment implements Serializable {
     private StructureComplementaire structComplNature;
 
     /**
-     * Si \"Autre\", préciser
-     */
-    @ApiModelProperty(value = "Si \"Autre\", préciser")
-    @Size(max = 512)
-    @Column(name = "struct_compl_autre", length = 512)
-    private String structComplAutre;
-
-    /**
      * Infos sur la structure complémentaire
      */
     @ApiModelProperty(value = "Infos sur la structure complémentaire")
@@ -340,11 +336,13 @@ public class Batiment implements Serializable {
     private IntegBaie integBaie;
 
     /**
-     * Si \"Autre\", préciser
+     * Infos sur l'intégration des baies
      */
-    @ApiModelProperty(value = "Si \"Autre\", préciser")
-    @Column(name = "integ_baie_autre")
-    private String integBaieAutre;
+    @ApiModelProperty(value = "Infos sur l'intégration des baies")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "integ_baie_infos")
+    private String integBaieInfos;
 
     /**
      * Nature du support d'ancrage
@@ -355,11 +353,13 @@ public class Batiment implements Serializable {
     private SupportAncrage supportAncrage;
 
     /**
-     * Si \"Autre\", préciser
+     * Infos sur le support d'ancrage
      */
-    @ApiModelProperty(value = "Si \"Autre\", préciser")
-    @Column(name = "support_ancrage_autre")
-    private String supportAncrageAutre;
+    @ApiModelProperty(value = "Infos sur le support d'ancrage")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "support_ancrage_infos")
+    private String supportAncrageInfos;
 
     /**
      * Revêtement intérieur
@@ -370,11 +370,13 @@ public class Batiment implements Serializable {
     private RevetInt revetInt;
 
     /**
-     * Si \"Autre\", préciser
+     * Infos sur le revêtement intérieur
      */
-    @ApiModelProperty(value = "Si \"Autre\", préciser")
-    @Column(name = "revet_int_autre")
-    private String revetIntAutre;
+    @ApiModelProperty(value = "Infos sur le revêtement intérieur")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "revet_int_infos")
+    private String revetIntInfos;
 
     /**
      * Revêtement extérieur
@@ -385,11 +387,13 @@ public class Batiment implements Serializable {
     private RevetExt revetExt;
 
     /**
-     * Si \"Autre\", préciser
+     * Infos sur le revêtement extérieur
      */
-    @ApiModelProperty(value = "Si \"Autre\", préciser")
-    @Column(name = "revet_ext_autre")
-    private String revetExtAutre;
+    @ApiModelProperty(value = "Infos sur le revêtement extérieur")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "revet_ext_infos")
+    private String revetExtInfos;
 
     /**
      * Maître d'ouvrage
@@ -528,6 +532,13 @@ public class Batiment implements Serializable {
     )
     @Column(name = "profil_public")
     private Boolean profilPublic;
+
+    /**
+     * Conditions lues et acceptées
+     */
+    @ApiModelProperty(value = "Conditions lues et acceptées")
+    @Column(name = "conditions_acceptees")
+    private Boolean conditionsAcceptees;
 
     /**
      * Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)
@@ -940,17 +951,17 @@ public class Batiment implements Serializable {
         this.usageBatiment = usageBatiment;
     }
 
-    public String getUsageBatimentAutre() {
-        return this.usageBatimentAutre;
+    public String getUsageBatimentInfos() {
+        return this.usageBatimentInfos;
     }
 
-    public Batiment usageBatimentAutre(String usageBatimentAutre) {
-        this.setUsageBatimentAutre(usageBatimentAutre);
+    public Batiment usageBatimentInfos(String usageBatimentInfos) {
+        this.setUsageBatimentInfos(usageBatimentInfos);
         return this;
     }
 
-    public void setUsageBatimentAutre(String usageBatimentAutre) {
-        this.usageBatimentAutre = usageBatimentAutre;
+    public void setUsageBatimentInfos(String usageBatimentInfos) {
+        this.usageBatimentInfos = usageBatimentInfos;
     }
 
     public Integer getCout() {
@@ -1096,17 +1107,17 @@ public class Batiment implements Serializable {
         this.bottesTaille = bottesTaille;
     }
 
-    public String getBotteTailleAutre() {
-        return this.botteTailleAutre;
+    public String getBottesTailleInfos() {
+        return this.bottesTailleInfos;
     }
 
-    public Batiment botteTailleAutre(String botteTailleAutre) {
-        this.setBotteTailleAutre(botteTailleAutre);
+    public Batiment bottesTailleInfos(String bottesTailleInfos) {
+        this.setBottesTailleInfos(bottesTailleInfos);
         return this;
     }
 
-    public void setBotteTailleAutre(String botteTailleAutre) {
-        this.botteTailleAutre = botteTailleAutre;
+    public void setBottesTailleInfos(String bottesTailleInfos) {
+        this.bottesTailleInfos = bottesTailleInfos;
     }
 
     public Integer getBottesDensite() {
@@ -1200,19 +1211,6 @@ public class Batiment implements Serializable {
         this.structComplNature = structComplNature;
     }
 
-    public String getStructComplAutre() {
-        return this.structComplAutre;
-    }
-
-    public Batiment structComplAutre(String structComplAutre) {
-        this.setStructComplAutre(structComplAutre);
-        return this;
-    }
-
-    public void setStructComplAutre(String structComplAutre) {
-        this.structComplAutre = structComplAutre;
-    }
-
     public String getStructComplInfos() {
         return this.structComplInfos;
     }
@@ -1278,17 +1276,17 @@ public class Batiment implements Serializable {
         this.integBaie = integBaie;
     }
 
-    public String getIntegBaieAutre() {
-        return this.integBaieAutre;
+    public String getIntegBaieInfos() {
+        return this.integBaieInfos;
     }
 
-    public Batiment integBaieAutre(String integBaieAutre) {
-        this.setIntegBaieAutre(integBaieAutre);
+    public Batiment integBaieInfos(String integBaieInfos) {
+        this.setIntegBaieInfos(integBaieInfos);
         return this;
     }
 
-    public void setIntegBaieAutre(String integBaieAutre) {
-        this.integBaieAutre = integBaieAutre;
+    public void setIntegBaieInfos(String integBaieInfos) {
+        this.integBaieInfos = integBaieInfos;
     }
 
     public SupportAncrage getSupportAncrage() {
@@ -1304,17 +1302,17 @@ public class Batiment implements Serializable {
         this.supportAncrage = supportAncrage;
     }
 
-    public String getSupportAncrageAutre() {
-        return this.supportAncrageAutre;
+    public String getSupportAncrageInfos() {
+        return this.supportAncrageInfos;
     }
 
-    public Batiment supportAncrageAutre(String supportAncrageAutre) {
-        this.setSupportAncrageAutre(supportAncrageAutre);
+    public Batiment supportAncrageInfos(String supportAncrageInfos) {
+        this.setSupportAncrageInfos(supportAncrageInfos);
         return this;
     }
 
-    public void setSupportAncrageAutre(String supportAncrageAutre) {
-        this.supportAncrageAutre = supportAncrageAutre;
+    public void setSupportAncrageInfos(String supportAncrageInfos) {
+        this.supportAncrageInfos = supportAncrageInfos;
     }
 
     public RevetInt getRevetInt() {
@@ -1330,17 +1328,17 @@ public class Batiment implements Serializable {
         this.revetInt = revetInt;
     }
 
-    public String getRevetIntAutre() {
-        return this.revetIntAutre;
+    public String getRevetIntInfos() {
+        return this.revetIntInfos;
     }
 
-    public Batiment revetIntAutre(String revetIntAutre) {
-        this.setRevetIntAutre(revetIntAutre);
+    public Batiment revetIntInfos(String revetIntInfos) {
+        this.setRevetIntInfos(revetIntInfos);
         return this;
     }
 
-    public void setRevetIntAutre(String revetIntAutre) {
-        this.revetIntAutre = revetIntAutre;
+    public void setRevetIntInfos(String revetIntInfos) {
+        this.revetIntInfos = revetIntInfos;
     }
 
     public RevetExt getRevetExt() {
@@ -1356,17 +1354,17 @@ public class Batiment implements Serializable {
         this.revetExt = revetExt;
     }
 
-    public String getRevetExtAutre() {
-        return this.revetExtAutre;
+    public String getRevetExtInfos() {
+        return this.revetExtInfos;
     }
 
-    public Batiment revetExtAutre(String revetExtAutre) {
-        this.setRevetExtAutre(revetExtAutre);
+    public Batiment revetExtInfos(String revetExtInfos) {
+        this.setRevetExtInfos(revetExtInfos);
         return this;
     }
 
-    public void setRevetExtAutre(String revetExtAutre) {
-        this.revetExtAutre = revetExtAutre;
+    public void setRevetExtInfos(String revetExtInfos) {
+        this.revetExtInfos = revetExtInfos;
     }
 
     public String getMaitreDOuvrage() {
@@ -1590,6 +1588,19 @@ public class Batiment implements Serializable {
         this.profilPublic = profilPublic;
     }
 
+    public Boolean getConditionsAcceptees() {
+        return this.conditionsAcceptees;
+    }
+
+    public Batiment conditionsAcceptees(Boolean conditionsAcceptees) {
+        this.setConditionsAcceptees(conditionsAcceptees);
+        return this;
+    }
+
+    public void setConditionsAcceptees(Boolean conditionsAcceptees) {
+        this.conditionsAcceptees = conditionsAcceptees;
+    }
+
     public Instant getCreatedDate() {
         return this.createdDate;
     }
@@ -1681,7 +1692,7 @@ public class Batiment implements Serializable {
             ", photo5Legende='" + getPhoto5Legende() + "'" +
             ", photo5Description='" + getPhoto5Description() + "'" +
             ", usageBatiment='" + getUsageBatiment() + "'" +
-            ", usageBatimentAutre='" + getUsageBatimentAutre() + "'" +
+            ", usageBatimentInfos='" + getUsageBatimentInfos() + "'" +
             ", cout=" + getCout() +
             ", surfacePlancher=" + getSurfacePlancher() +
             ", niveaux=" + getNiveaux() +
@@ -1693,7 +1704,7 @@ public class Batiment implements Serializable {
             ", constructionDebut='" + getConstructionDebut() + "'" +
             ", constructionFin='" + getConstructionFin() + "'" +
             ", bottesTaille='" + getBottesTaille() + "'" +
-            ", botteTailleAutre='" + getBotteTailleAutre() + "'" +
+            ", bottesTailleInfos='" + getBottesTailleInfos() + "'" +
             ", bottesDensite=" + getBottesDensite() +
             ", bottesCereale='" + getBottesCereale() + "'" +
             ", distanceAppro=" + getDistanceAppro() +
@@ -1701,19 +1712,18 @@ public class Batiment implements Serializable {
             ", participatif='" + getParticipatif() + "'" +
             ", structCompl='" + getStructCompl() + "'" +
             ", structComplNature='" + getStructComplNature() + "'" +
-            ", structComplAutre='" + getStructComplAutre() + "'" +
             ", structComplInfos='" + getStructComplInfos() + "'" +
             ", longMaxSansMurRefend=" + getLongMaxSansMurRefend() +
             ", noteCalcul='" + getNoteCalcul() + "'" +
             ", nbrRangDeBottes=" + getNbrRangDeBottes() +
             ", integBaie='" + getIntegBaie() + "'" +
-            ", integBaieAutre='" + getIntegBaieAutre() + "'" +
+            ", integBaieInfos='" + getIntegBaieInfos() + "'" +
             ", supportAncrage='" + getSupportAncrage() + "'" +
-            ", supportAncrageAutre='" + getSupportAncrageAutre() + "'" +
+            ", supportAncrageInfos='" + getSupportAncrageInfos() + "'" +
             ", revetInt='" + getRevetInt() + "'" +
-            ", revetIntAutre='" + getRevetIntAutre() + "'" +
+            ", revetIntInfos='" + getRevetIntInfos() + "'" +
             ", revetExt='" + getRevetExt() + "'" +
-            ", revetExtAutre='" + getRevetExtAutre() + "'" +
+            ", revetExtInfos='" + getRevetExtInfos() + "'" +
             ", maitreDOuvrage='" + getMaitreDOuvrage() + "'" +
             ", maitreDOeuvre='" + getMaitreDOeuvre() + "'" +
             ", architecte='" + getArchitecte() + "'" +
@@ -1731,6 +1741,7 @@ public class Batiment implements Serializable {
             ", contactPhone='" + getContactPhone() + "'" +
             ", codePostal='" + getCodePostal() + "'" +
             ", profilPublic='" + getProfilPublic() + "'" +
+            ", conditionsAcceptees='" + getConditionsAcceptees() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";

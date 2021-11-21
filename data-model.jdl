@@ -158,9 +158,9 @@ entity Batiment {
       */
     usageBatiment UsageBatiment,
     /**
-      * Si "Autre", préciser
+      * Infos sur l'usage du bâtiment
       */
-    usageBatimentAutre String,
+    usageBatimentInfos TextBlob,
     /**
       * Coût [€]
       */
@@ -215,9 +215,9 @@ entity Batiment {
       */
     bottesTaille TaillesBottes,
     /**
-      * Si "Autre", préciser
+      * Infos sur la taille des bottes
       */
-    botteTailleAutre String,
+    bottesTailleInfos TextBlob,
     /**
       * Densité sur base sèche [kg/m³]
       */
@@ -254,10 +254,6 @@ entity Batiment {
       */
     structComplNature StructureComplementaire,
     /**
-      * Si "Autre", préciser
-      */
-    structComplAutre String maxlength(512),
-    /**
       * Infos sur la structure complémentaire
       */
     structComplInfos TextBlob,
@@ -280,18 +276,18 @@ entity Batiment {
 
     integBaie IntegBaie,
     /**
-      * Si "Autre", préciser
+      * Infos sur l'intégration des baies
       */
-    integBaieAutre String,
+    integBaieInfos TextBlob,
 
     /**
       * Nature du support d'ancrage
       */
     supportAncrage SupportAncrage,
     /**
-      * Si "Autre", préciser
+      * Infos sur le support d'ancrage
       */
-    supportAncrageAutre String,
+    supportAncrageInfos TextBlob,
 
         // Sub-section "Revêtement"
         // ==============
@@ -300,17 +296,17 @@ entity Batiment {
          */
         revetInt RevetInt,
         /**
-         * Si "Autre", préciser
+         * Infos sur le revêtement intérieur
          */
-        revetIntAutre String,
+        revetIntInfos TextBlob,
         /**
          * Revêtement extérieur
          */
         revetExt RevetExt,
         /**
-         * Si "Autre", préciser
+         * Infos sur le revêtement extérieur
          */
-        revetExtAutre String,
+        revetExtInfos TextBlob,
 
     // Section "Actrices / acteurs"
     // =========================================================================
@@ -395,6 +391,11 @@ entity Batiment {
      * coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)
      */
     profilPublic Boolean,
+
+    /**
+     * Conditions lues et acceptées
+     */
+    conditionsAcceptees Boolean,
 
     // =========================================================================
     // Autogénéré

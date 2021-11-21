@@ -119,9 +119,10 @@
       "fieldValues": "LOGEMENT_COLLECTIF (Logement collectif),LOGEMENT_INDIVIDUEL (Logement individuel),LOGEMENT_INDIVIDUEL_GROUPE (Logement individuel groupé),BATIMENT_ADMINISTRATIF (Bâtiment administratif),BATIMENT_COMMERCIAL (Bâtiment commercial),BATIMENT_INDUSTRIEL (Bâtiment industriel),BATIMENT_DE_LOISIRS (Bâtiment de loisirs),BATIMENT_DE_SANTE (Bâtiment de santé),BATIMENT_DE_RETRAITE (Bâtiment de retraite),BATIMENT_EDUCATIF (Bâtiment éducatif),BATIMENT_SOCIO_CULTUREl (Bâtiment socio-culturel),BATIMENT_AGRICOLE (Bâtiment agricole),OUVRAGE_EXCEPTIONNEL (Ouvrage exceptionnel),AUTRE (Autre)"
     },
     {
-      "fieldName": "usageBatimentAutre",
-      "fieldType": "String",
-      "javadoc": "Si \"Autre\", préciser"
+      "fieldName": "usageBatimentInfos",
+      "fieldType": "byte[]",
+      "javadoc": "Infos sur l'usage du bâtiment",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "cout",
@@ -183,9 +184,10 @@
       "fieldTypeJavadoc": "Taille des bottes"
     },
     {
-      "fieldName": "botteTailleAutre",
-      "fieldType": "String",
-      "javadoc": "Si \"Autre\", préciser"
+      "fieldName": "bottesTailleInfos",
+      "fieldType": "byte[]",
+      "javadoc": "Infos sur la taille des bottes",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "bottesDensite",
@@ -229,13 +231,6 @@
       "fieldTypeJavadoc": "Nature support complémentaire"
     },
     {
-      "fieldName": "structComplAutre",
-      "fieldType": "String",
-      "javadoc": "Si \"Autre\", préciser",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "512"
-    },
-    {
       "fieldName": "structComplInfos",
       "fieldType": "byte[]",
       "javadoc": "Infos sur la structure complémentaire",
@@ -264,9 +259,10 @@
       "fieldTypeJavadoc": "Intégration des baies"
     },
     {
-      "fieldName": "integBaieAutre",
-      "fieldType": "String",
-      "javadoc": "Si \"Autre\", préciser"
+      "fieldName": "integBaieInfos",
+      "fieldType": "byte[]",
+      "javadoc": "Infos sur l'intégration des baies",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "supportAncrage",
@@ -276,9 +272,10 @@
       "fieldTypeJavadoc": "Nature du support d'ancrage"
     },
     {
-      "fieldName": "supportAncrageAutre",
-      "fieldType": "String",
-      "javadoc": "Si \"Autre\", préciser"
+      "fieldName": "supportAncrageInfos",
+      "fieldType": "byte[]",
+      "javadoc": "Infos sur le support d'ancrage",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "revetInt",
@@ -288,9 +285,10 @@
       "fieldTypeJavadoc": "Revêtement intérieur"
     },
     {
-      "fieldName": "revetIntAutre",
-      "fieldType": "String",
-      "javadoc": "Si \"Autre\", préciser"
+      "fieldName": "revetIntInfos",
+      "fieldType": "byte[]",
+      "javadoc": "Infos sur le revêtement intérieur",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "revetExt",
@@ -300,9 +298,10 @@
       "fieldTypeJavadoc": "Revêtement extérieur"
     },
     {
-      "fieldName": "revetExtAutre",
-      "fieldType": "String",
-      "javadoc": "Si \"Autre\", préciser"
+      "fieldName": "revetExtInfos",
+      "fieldType": "byte[]",
+      "javadoc": "Infos sur le revêtement extérieur",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "maitreDOuvrage",
@@ -410,6 +409,11 @@
       "fieldName": "profilPublic",
       "fieldType": "Boolean",
       "javadoc": "coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)"
+    },
+    {
+      "fieldName": "conditionsAcceptees",
+      "fieldType": "Boolean",
+      "javadoc": "Conditions lues et acceptées"
     },
     {
       "fieldName": "createdDate",

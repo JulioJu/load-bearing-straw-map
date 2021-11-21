@@ -193,10 +193,10 @@
             <span v-text="$t('cartoPaillePorteuseApp.UsageBatiment.' + batiment.usageBatiment)">{{ batiment.usageBatiment }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartoPaillePorteuseApp.batiment.usageBatimentAutre')">Usage Batiment Autre</span>
+            <span v-text="$t('cartoPaillePorteuseApp.batiment.usageBatimentInfos')">Usage Batiment Infos</span>
           </dt>
           <dd>
-            <span>{{ batiment.usageBatimentAutre }}</span>
+            <span>{{ batiment.usageBatimentInfos }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.cout')">Cout</span>
@@ -265,10 +265,10 @@
             <span v-text="$t('cartoPaillePorteuseApp.TaillesBottes.' + batiment.bottesTaille)">{{ batiment.bottesTaille }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartoPaillePorteuseApp.batiment.botteTailleAutre')">Botte Taille Autre</span>
+            <span v-text="$t('cartoPaillePorteuseApp.batiment.bottesTailleInfos')">Bottes Taille Infos</span>
           </dt>
           <dd>
-            <span>{{ batiment.botteTailleAutre }}</span>
+            <span>{{ batiment.bottesTailleInfos }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.bottesDensite')">Bottes Densite</span>
@@ -315,12 +315,6 @@
             }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartoPaillePorteuseApp.batiment.structComplAutre')">Struct Compl Autre</span>
-          </dt>
-          <dd>
-            <span>{{ batiment.structComplAutre }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.structComplInfos')">Struct Compl Infos</span>
           </dt>
           <dd>
@@ -351,10 +345,10 @@
             <span v-text="$t('cartoPaillePorteuseApp.IntegBaie.' + batiment.integBaie)">{{ batiment.integBaie }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartoPaillePorteuseApp.batiment.integBaieAutre')">Integ Baie Autre</span>
+            <span v-text="$t('cartoPaillePorteuseApp.batiment.integBaieInfos')">Integ Baie Infos</span>
           </dt>
           <dd>
-            <span>{{ batiment.integBaieAutre }}</span>
+            <span>{{ batiment.integBaieInfos }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.supportAncrage')">Support Ancrage</span>
@@ -363,10 +357,10 @@
             <span v-text="$t('cartoPaillePorteuseApp.SupportAncrage.' + batiment.supportAncrage)">{{ batiment.supportAncrage }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartoPaillePorteuseApp.batiment.supportAncrageAutre')">Support Ancrage Autre</span>
+            <span v-text="$t('cartoPaillePorteuseApp.batiment.supportAncrageInfos')">Support Ancrage Infos</span>
           </dt>
           <dd>
-            <span>{{ batiment.supportAncrageAutre }}</span>
+            <span>{{ batiment.supportAncrageInfos }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.revetInt')">Revet Int</span>
@@ -375,10 +369,10 @@
             <span v-text="$t('cartoPaillePorteuseApp.RevetInt.' + batiment.revetInt)">{{ batiment.revetInt }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartoPaillePorteuseApp.batiment.revetIntAutre')">Revet Int Autre</span>
+            <span v-text="$t('cartoPaillePorteuseApp.batiment.revetIntInfos')">Revet Int Infos</span>
           </dt>
           <dd>
-            <span>{{ batiment.revetIntAutre }}</span>
+            <span>{{ batiment.revetIntInfos }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.revetExt')">Revet Ext</span>
@@ -387,10 +381,10 @@
             <span v-text="$t('cartoPaillePorteuseApp.RevetExt.' + batiment.revetExt)">{{ batiment.revetExt }}</span>
           </dd>
           <dt>
-            <span v-text="$t('cartoPaillePorteuseApp.batiment.revetExtAutre')">Revet Ext Autre</span>
+            <span v-text="$t('cartoPaillePorteuseApp.batiment.revetExtInfos')">Revet Ext Infos</span>
           </dt>
           <dd>
-            <span>{{ batiment.revetExtAutre }}</span>
+            <span>{{ batiment.revetExtInfos }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.maitreDOuvrage')">Maitre D Ouvrage</span>
@@ -493,6 +487,12 @@
           </dt>
           <dd>
             <span>{{ batiment.profilPublic }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('cartoPaillePorteuseApp.batiment.conditionsAcceptees')">Conditions Acceptees</span>
+          </dt>
+          <dd>
+            <span>{{ batiment.conditionsAcceptees }}</span>
           </dd>
           <dt>
             <span v-text="$t('cartoPaillePorteuseApp.batiment.createdDate')">Created Date</span>

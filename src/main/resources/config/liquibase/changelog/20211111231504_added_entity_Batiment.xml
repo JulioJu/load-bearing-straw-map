@@ -98,7 +98,7 @@
             <column name="usage_batiment" type="varchar(255)" remarks="Usage">
                 <constraints nullable="true" />
             </column>
-            <column name="usage_batiment_autre" type="varchar(255)" remarks="Si &quot;Autre&quot;, préciser">
+            <column name="usage_batiment_infos" type="${clobType}" remarks="Infos sur l&apos;usage du bâtiment">
                 <constraints nullable="true" />
             </column>
             <column name="cout" type="integer" remarks="Coût [€]">
@@ -134,7 +134,7 @@
             <column name="bottes_taille" type="varchar(255)" remarks="Taille des bottes">
                 <constraints nullable="true" />
             </column>
-            <column name="botte_taille_autre" type="varchar(255)" remarks="Si &quot;Autre&quot;, préciser">
+            <column name="bottes_taille_infos" type="${clobType}" remarks="Infos sur la taille des bottes">
                 <constraints nullable="true" />
             </column>
             <column name="bottes_densite" type="integer" remarks="Densité sur base sèche [kg/m³]">
@@ -158,9 +158,6 @@
             <column name="struct_compl_nature" type="varchar(255)" remarks="Nature de la structure complémentaire">
                 <constraints nullable="true" />
             </column>
-            <column name="struct_compl_autre" type="varchar(512)" remarks="Si &quot;Autre&quot;, préciser">
-                <constraints nullable="true" />
-            </column>
             <column name="struct_compl_infos" type="${clobType}" remarks="Infos sur la structure complémentaire">
                 <constraints nullable="true" />
             </column>
@@ -176,25 +173,25 @@
             <column name="integ_baie" type="varchar(255)" remarks="Intégration des baies">
                 <constraints nullable="true" />
             </column>
-            <column name="integ_baie_autre" type="varchar(255)" remarks="Si &quot;Autre&quot;, préciser">
+            <column name="integ_baie_infos" type="${clobType}" remarks="Infos sur l&apos;intégration des baies">
                 <constraints nullable="true" />
             </column>
             <column name="support_ancrage" type="varchar(255)" remarks="Nature du support d&apos;ancrage">
                 <constraints nullable="true" />
             </column>
-            <column name="support_ancrage_autre" type="varchar(255)" remarks="Si &quot;Autre&quot;, préciser">
+            <column name="support_ancrage_infos" type="${clobType}" remarks="Infos sur le support d&apos;ancrage">
                 <constraints nullable="true" />
             </column>
             <column name="revet_int" type="varchar(255)" remarks="Revêtement intérieur">
                 <constraints nullable="true" />
             </column>
-            <column name="revet_int_autre" type="varchar(255)" remarks="Si &quot;Autre&quot;, préciser">
+            <column name="revet_int_infos" type="${clobType}" remarks="Infos sur le revêtement intérieur">
                 <constraints nullable="true" />
             </column>
             <column name="revet_ext" type="varchar(255)" remarks="Revêtement extérieur">
                 <constraints nullable="true" />
             </column>
-            <column name="revet_ext_autre" type="varchar(255)" remarks="Si &quot;Autre&quot;, préciser">
+            <column name="revet_ext_infos" type="${clobType}" remarks="Infos sur le revêtement extérieur">
                 <constraints nullable="true" />
             </column>
             <column name="maitre_d_ouvrage" type="varchar(512)" remarks="Maître d&apos;ouvrage">
@@ -246,6 +243,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="profil_public" type="boolean" remarks="coché : le profil est visible pour les utilisateurs non authentifiés, à l&apos;exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)">
+                <constraints nullable="true" />
+            </column>
+            <column name="conditions_acceptees" type="boolean" remarks="Conditions lues et acceptées">
                 <constraints nullable="true" />
             </column>
             <column name="created_date" type="${datetimeType}" remarks="Date de création de l&apos;enregistrement dans la Base de donnée\n(autogénéré en back)">
@@ -308,7 +308,7 @@
             <column name="photo_5_legende" type="string"/>
             <column name="photo_5_description" type="string"/>
             <column name="usage_batiment" type="string"/>
-            <column name="usage_batiment_autre" type="string"/>
+            <column name="usage_batiment_infos" type="clob"/>
             <column name="cout" type="numeric"/>
             <column name="surface_plancher" type="numeric"/>
             <column name="niveaux" type="numeric"/>
@@ -320,7 +320,7 @@
             <column name="construction_debut" type="date"/>
             <column name="construction_fin" type="date"/>
             <column name="bottes_taille" type="string"/>
-            <column name="botte_taille_autre" type="string"/>
+            <column name="bottes_taille_infos" type="clob"/>
             <column name="bottes_densite" type="numeric"/>
             <column name="bottes_cereale" type="string"/>
             <column name="distance_appro" type="numeric"/>
@@ -328,19 +328,18 @@
             <column name="participatif" type="string"/>
             <column name="struct_compl" type="boolean"/>
             <column name="struct_compl_nature" type="string"/>
-            <column name="struct_compl_autre" type="string"/>
             <column name="struct_compl_infos" type="clob"/>
             <column name="long_max_sans_mur_refend" type="numeric"/>
             <column name="note_calcul" type="boolean"/>
             <column name="nbr_rang_de_bottes" type="numeric"/>
             <column name="integ_baie" type="string"/>
-            <column name="integ_baie_autre" type="string"/>
+            <column name="integ_baie_infos" type="clob"/>
             <column name="support_ancrage" type="string"/>
-            <column name="support_ancrage_autre" type="string"/>
+            <column name="support_ancrage_infos" type="clob"/>
             <column name="revet_int" type="string"/>
-            <column name="revet_int_autre" type="string"/>
+            <column name="revet_int_infos" type="clob"/>
             <column name="revet_ext" type="string"/>
-            <column name="revet_ext_autre" type="string"/>
+            <column name="revet_ext_infos" type="clob"/>
             <column name="maitre_d_ouvrage" type="string"/>
             <column name="maitre_d_oeuvre" type="string"/>
             <column name="architecte" type="string"/>
@@ -358,6 +357,7 @@
             <column name="contact_phone" type="string"/>
             <column name="code_postal" type="string"/>
             <column name="profil_public" type="boolean"/>
+            <column name="conditions_acceptees" type="boolean"/>
             <column name="created_date" type="date"/>
             <column name="last_modified_date" type="date"/>
             <column name="created_by_id" type="numeric"/>

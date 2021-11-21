@@ -39,7 +39,7 @@ export interface IBatiment {
   photo5Legende?: string | null;
   photo5Description?: string | null;
   usageBatiment?: UsageBatiment | null;
-  usageBatimentAutre?: string | null;
+  usageBatimentInfos?: string | null;
   cout?: number | null;
   surfacePlancher?: number | null;
   niveaux?: number | null;
@@ -51,7 +51,7 @@ export interface IBatiment {
   constructionDebut?: Date | null;
   constructionFin?: Date | null;
   bottesTaille?: TaillesBottes | null;
-  botteTailleAutre?: string | null;
+  bottesTailleInfos?: string | null;
   bottesDensite?: number | null;
   bottesCereale?: Cereale | null;
   distanceAppro?: number | null;
@@ -59,19 +59,18 @@ export interface IBatiment {
   participatif?: YesNoPartial | null;
   structCompl?: boolean | null;
   structComplNature?: StructureComplementaire | null;
-  structComplAutre?: string | null;
   structComplInfos?: string | null;
   longMaxSansMurRefend?: number | null;
   noteCalcul?: boolean | null;
   nbrRangDeBottes?: number | null;
   integBaie?: IntegBaie | null;
-  integBaieAutre?: string | null;
+  integBaieInfos?: string | null;
   supportAncrage?: SupportAncrage | null;
-  supportAncrageAutre?: string | null;
+  supportAncrageInfos?: string | null;
   revetInt?: RevetInt | null;
-  revetIntAutre?: string | null;
+  revetIntInfos?: string | null;
   revetExt?: RevetExt | null;
-  revetExtAutre?: string | null;
+  revetExtInfos?: string | null;
   maitreDOuvrage?: string | null;
   maitreDOeuvre?: string | null;
   architecte?: string | null;
@@ -89,6 +88,7 @@ export interface IBatiment {
   contactPhone?: string | null;
   codePostal?: string | null;
   profilPublic?: boolean | null;
+  conditionsAcceptees?: boolean | null;
   createdDate?: Date | null;
   lastModifiedDate?: Date | null;
   createdBy?: IUser;
@@ -125,7 +125,7 @@ export class Batiment implements IBatiment {
     public photo5Legende?: string | null,
     public photo5Description?: string | null,
     public usageBatiment?: UsageBatiment | null,
-    public usageBatimentAutre?: string | null,
+    public usageBatimentInfos?: string | null,
     public cout?: number | null,
     public surfacePlancher?: number | null,
     public niveaux?: number | null,
@@ -137,7 +137,7 @@ export class Batiment implements IBatiment {
     public constructionDebut?: Date | null,
     public constructionFin?: Date | null,
     public bottesTaille?: TaillesBottes | null,
-    public botteTailleAutre?: string | null,
+    public bottesTailleInfos?: string | null,
     public bottesDensite?: number | null,
     public bottesCereale?: Cereale | null,
     public distanceAppro?: number | null,
@@ -145,19 +145,18 @@ export class Batiment implements IBatiment {
     public participatif?: YesNoPartial | null,
     public structCompl?: boolean | null,
     public structComplNature?: StructureComplementaire | null,
-    public structComplAutre?: string | null,
     public structComplInfos?: string | null,
     public longMaxSansMurRefend?: number | null,
     public noteCalcul?: boolean | null,
     public nbrRangDeBottes?: number | null,
     public integBaie?: IntegBaie | null,
-    public integBaieAutre?: string | null,
+    public integBaieInfos?: string | null,
     public supportAncrage?: SupportAncrage | null,
-    public supportAncrageAutre?: string | null,
+    public supportAncrageInfos?: string | null,
     public revetInt?: RevetInt | null,
-    public revetIntAutre?: string | null,
+    public revetIntInfos?: string | null,
     public revetExt?: RevetExt | null,
-    public revetExtAutre?: string | null,
+    public revetExtInfos?: string | null,
     public maitreDOuvrage?: string | null,
     public maitreDOeuvre?: string | null,
     public architecte?: string | null,
@@ -175,6 +174,7 @@ export class Batiment implements IBatiment {
     public contactPhone?: string | null,
     public codePostal?: string | null,
     public profilPublic?: boolean | null,
+    public conditionsAcceptees?: boolean | null,
     public createdDate?: Date | null,
     public lastModifiedDate?: Date | null,
     public createdBy?: IUser
@@ -187,5 +187,6 @@ export class Batiment implements IBatiment {
     this.structCompl = this.structCompl ?? false;
     this.noteCalcul = this.noteCalcul ?? false;
     this.profilPublic = this.profilPublic ?? false;
+    this.conditionsAcceptees = this.conditionsAcceptees ?? false;
   }
 }

@@ -764,19 +764,18 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartoPaillePorteuseApp.batiment.usageBatimentAutre')"
-              for="batiment-usageBatimentAutre"
-              >Usage Batiment Autre</label
+              v-text="$t('cartoPaillePorteuseApp.batiment.usageBatimentInfos')"
+              for="batiment-usageBatimentInfos"
+              >Usage Batiment Infos</label
             >
-            <input
-              type="text"
+            <textarea
               class="form-control"
-              name="usageBatimentAutre"
-              id="batiment-usageBatimentAutre"
-              data-cy="usageBatimentAutre"
-              :class="{ valid: !$v.batiment.usageBatimentAutre.$invalid, invalid: $v.batiment.usageBatimentAutre.$invalid }"
-              v-model="$v.batiment.usageBatimentAutre.$model"
-            />
+              name="usageBatimentInfos"
+              id="batiment-usageBatimentInfos"
+              data-cy="usageBatimentInfos"
+              :class="{ valid: !$v.batiment.usageBatimentInfos.$invalid, invalid: $v.batiment.usageBatimentInfos.$invalid }"
+              v-model="$v.batiment.usageBatimentInfos.$model"
+            ></textarea>
           </div>
           <!-- START added by JulioJu -->
         </b-card>
@@ -1012,19 +1011,18 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartoPaillePorteuseApp.batiment.botteTailleAutre')"
-              for="batiment-botteTailleAutre"
-              >Botte Taille Autre</label
+              v-text="$t('cartoPaillePorteuseApp.batiment.bottesTailleInfos')"
+              for="batiment-bottesTailleInfos"
+              >Bottes Taille Infos</label
             >
-            <input
-              type="text"
+            <textarea
               class="form-control"
-              name="botteTailleAutre"
-              id="batiment-botteTailleAutre"
-              data-cy="botteTailleAutre"
-              :class="{ valid: !$v.batiment.botteTailleAutre.$invalid, invalid: $v.batiment.botteTailleAutre.$invalid }"
-              v-model="$v.batiment.botteTailleAutre.$model"
-            />
+              name="bottesTailleInfos"
+              id="batiment-bottesTailleInfos"
+              data-cy="bottesTailleInfos"
+              :class="{ valid: !$v.batiment.bottesTailleInfos.$invalid, invalid: $v.batiment.bottesTailleInfos.$invalid }"
+              v-model="$v.batiment.bottesTailleInfos.$model"
+            ></textarea>
           </div>
           <!-- START added by JulioJu -->
         </b-card>
@@ -1191,32 +1189,6 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartoPaillePorteuseApp.batiment.structComplAutre')"
-              for="batiment-structComplAutre"
-              >Struct Compl Autre</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="structComplAutre"
-              id="batiment-structComplAutre"
-              data-cy="structComplAutre"
-              :class="{ valid: !$v.batiment.structComplAutre.$invalid, invalid: $v.batiment.structComplAutre.$invalid }"
-              v-model="$v.batiment.structComplAutre.$model"
-            />
-            <div v-if="$v.batiment.structComplAutre.$anyDirty && $v.batiment.structComplAutre.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.batiment.structComplAutre.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 512 })"
-              >
-                This field cannot be longer than 512 characters.
-              </small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label
-              class="form-control-label"
               v-text="$t('cartoPaillePorteuseApp.batiment.structComplInfos')"
               for="batiment-structComplInfos"
               >Struct Compl Infos</label
@@ -1304,18 +1276,17 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.integBaieAutre')" for="batiment-integBaieAutre"
-              >Integ Baie Autre</label
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.integBaieInfos')" for="batiment-integBaieInfos"
+              >Integ Baie Infos</label
             >
-            <input
-              type="text"
+            <textarea
               class="form-control"
-              name="integBaieAutre"
-              id="batiment-integBaieAutre"
-              data-cy="integBaieAutre"
-              :class="{ valid: !$v.batiment.integBaieAutre.$invalid, invalid: $v.batiment.integBaieAutre.$invalid }"
-              v-model="$v.batiment.integBaieAutre.$model"
-            />
+              name="integBaieInfos"
+              id="batiment-integBaieInfos"
+              data-cy="integBaieInfos"
+              :class="{ valid: !$v.batiment.integBaieInfos.$invalid, invalid: $v.batiment.integBaieInfos.$invalid }"
+              v-model="$v.batiment.integBaieInfos.$model"
+            ></textarea>
           </div>
           <!-- START added by JulioJu -->
         </b-card>
@@ -1346,19 +1317,18 @@
           <div class="form-group">
             <label
               class="form-control-label"
-              v-text="$t('cartoPaillePorteuseApp.batiment.supportAncrageAutre')"
-              for="batiment-supportAncrageAutre"
-              >Support Ancrage Autre</label
+              v-text="$t('cartoPaillePorteuseApp.batiment.supportAncrageInfos')"
+              for="batiment-supportAncrageInfos"
+              >Support Ancrage Infos</label
             >
-            <input
-              type="text"
+            <textarea
               class="form-control"
-              name="supportAncrageAutre"
-              id="batiment-supportAncrageAutre"
-              data-cy="supportAncrageAutre"
-              :class="{ valid: !$v.batiment.supportAncrageAutre.$invalid, invalid: $v.batiment.supportAncrageAutre.$invalid }"
-              v-model="$v.batiment.supportAncrageAutre.$model"
-            />
+              name="supportAncrageInfos"
+              id="batiment-supportAncrageInfos"
+              data-cy="supportAncrageInfos"
+              :class="{ valid: !$v.batiment.supportAncrageInfos.$invalid, invalid: $v.batiment.supportAncrageInfos.$invalid }"
+              v-model="$v.batiment.supportAncrageInfos.$model"
+            ></textarea>
           </div>
           <!-- START added by JulioJu -->
         </b-card>
@@ -1389,18 +1359,17 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetIntAutre')" for="batiment-revetIntAutre"
-              >Revet Int Autre</label
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetIntInfos')" for="batiment-revetIntInfos"
+              >Revet Int Infos</label
             >
-            <input
-              type="text"
+            <textarea
               class="form-control"
-              name="revetIntAutre"
-              id="batiment-revetIntAutre"
-              data-cy="revetIntAutre"
-              :class="{ valid: !$v.batiment.revetIntAutre.$invalid, invalid: $v.batiment.revetIntAutre.$invalid }"
-              v-model="$v.batiment.revetIntAutre.$model"
-            />
+              name="revetIntInfos"
+              id="batiment-revetIntInfos"
+              data-cy="revetIntInfos"
+              :class="{ valid: !$v.batiment.revetIntInfos.$invalid, invalid: $v.batiment.revetIntInfos.$invalid }"
+              v-model="$v.batiment.revetIntInfos.$model"
+            ></textarea>
           </div>
           <!-- START added by JulioJu -->
         </b-card>
@@ -1429,18 +1398,17 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetExtAutre')" for="batiment-revetExtAutre"
-              >Revet Ext Autre</label
+            <label class="form-control-label" v-text="$t('cartoPaillePorteuseApp.batiment.revetExtInfos')" for="batiment-revetExtInfos"
+              >Revet Ext Infos</label
             >
-            <input
-              type="text"
+            <textarea
               class="form-control"
-              name="revetExtAutre"
-              id="batiment-revetExtAutre"
-              data-cy="revetExtAutre"
-              :class="{ valid: !$v.batiment.revetExtAutre.$invalid, invalid: $v.batiment.revetExtAutre.$invalid }"
-              v-model="$v.batiment.revetExtAutre.$model"
-            />
+              name="revetExtInfos"
+              id="batiment-revetExtInfos"
+              data-cy="revetExtInfos"
+              :class="{ valid: !$v.batiment.revetExtInfos.$invalid, invalid: $v.batiment.revetExtInfos.$invalid }"
+              v-model="$v.batiment.revetExtInfos.$model"
+            ></textarea>
           </div>
           <!-- START added by JulioJu -->
         </b-card>
@@ -1816,22 +1784,37 @@
               v-model="$v.batiment.profilPublic.$model"
             />
           </div>
-          <!-- START added by JulioJu -->
+
+          <div class="form-group">
+            <!-- START added by JulioJu -->
+            <label
+              class="form-control-label"
+              for="batiment-conditionsAcceptees"
+            >
+              <strong class="text-danger">
+                En cliquant sur "{{ $t('entity.action.save') }}" vous vous engagagez à avoir lu
+                <a class="text-info" target="_blank" to="/legal"
+                                  >les Conditions générales d'utilisation, les limitations de responsabilité, la politique de traitement des données</a
+                                >
+                                et vous manifestez votre acceptation de toutes les dispositions sans restriction. Vous vous engagez également à ce que votre enregistrement soit conforme aux dispositions énoncées.
+              </strong>
+            </label>
+            <!-- END added by JulioJu -->
+            <input
+              type="checkbox"
+              class="form-check"
+              name="conditionsAcceptees"
+              id="batiment-conditionsAcceptees"
+              data-cy="conditionsAcceptees"
+              :class="{ valid: !$v.batiment.conditionsAcceptees.$invalid, invalid: $v.batiment.conditionsAcceptees.$invalid }"
+              v-model="$v.batiment.conditionsAcceptees.$model"
+            />
+          </div>
+        <!-- START added by JulioJu -->
         </b-card>
 
-          <!-- START added by JulioJu -->
-          <div class="mb-3">
-            <strong class="text-danger">
-              En cliquant sur "{{ $t('entity.action.save') }}" vous vous engagagez à avoir lu
-              <a class="text-info" target="_blank" to="/legal"
-                                 >les Conditions générales d'utilisation, les limitations de responsabilité, la politique de traitement des données</a
-                               >
-                               et vous manifestez votre acceptation de toutes les dispositions sans restriction. Vous vous engagez également à ce que votre enregistrement soit conforme aux dispositions énoncées.
-            </strong>
-          </div>
+          <!-- Some fields are deleted here -->
           <!-- END added by JulioJu -->
-          <!-- END added by JulioJu -->
-
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">

@@ -29,11 +29,11 @@ alter type tailles_bottes rename value '50 x 80 cm' to 'T_50_X_80_X_110_a_200_CM
 alter type tailles_bottes rename value '37 x 47 cm' to 'T_36_X_46_X_70_a_120_CM';
 alter type tailles_bottes rename value 'Autre' to 'AUTRE';
 
--- botte_taille_autre il manque un 's' au moment de la création
+-- bottes_taille_autre
 
-alter table batiments add column botte_taille_autre varchar(255);
+alter table batiments add column bottes_taille_infos varchar(255);
 
-update batiments set botte_taille_autre = '26 x 45 cm' where bottes_taille = '26 x 45 cm';
+update batiments set bottes_taille_infos = '26 x 45 cm' where bottes_taille = '26 x 45 cm';
 -- UPDATE 2
 
 update batiments set bottes_taille = 'AUTRE' where bottes_taille = '26 x 45 cm';
@@ -151,20 +151,20 @@ alter table batiments rename materiau_sb to support_ancrage;
 alter type support_ancrage rename value 'Béton armé' to 'BETON_ARME';
 alter type support_ancrage rename value 'Autre' to                        'AUTRE';
 
-alter table batiments add column support_ancrage_autre varchar(255);
-update batiments set support_ancrage_autre = 'Parpaing de ciment'     where support_ancrage = 'Parpaing de ciment';
+alter table batiments add column support_ancrage_infos text;
+update batiments set support_ancrage_infos = 'Parpaing de ciment'     where support_ancrage = 'Parpaing de ciment';
 -- UPDATE 10
 
-update batiments set support_ancrage_autre = 'Brique de terre cuite'  where support_ancrage = 'Brique de terre cuite';
+update batiments set support_ancrage_infos = 'Brique de terre cuite'  where support_ancrage = 'Brique de terre cuite';
 -- UPDATE 4
 
-update batiments set support_ancrage_autre = 'Brique de pierre ponce' where support_ancrage = 'Brique de pierre ponce';
+update batiments set support_ancrage_infos = 'Brique de pierre ponce' where support_ancrage = 'Brique de pierre ponce';
 -- UPDATE 1
 
-update batiments set support_ancrage_autre = 'Béton léger isolant'    where support_ancrage = 'Béton léger isolant';
+update batiments set support_ancrage_infos = 'Béton léger isolant'    where support_ancrage = 'Béton léger isolant';
 -- UPDATE 4
 
-update batiments set support_ancrage_autre = 'Pierre'                 where support_ancrage = 'Pierre';
+update batiments set support_ancrage_infos = 'Pierre'                 where support_ancrage = 'Pierre';
 -- UPDATE 4
 
 alter type support_ancrage add value 'MACONNERIE';
