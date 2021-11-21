@@ -53,7 +53,11 @@ public class UserJWTController {
 
         // START added by JulioJu
         // Not very optimized, but well.
+        System.out.println("loginVM.getUsername(): " + loginVM.getUsername());
         var user = userRepository.findOneByLogin(loginVM.getUsername());
+        if (user.isEmpty()) {
+            user = userRepository.findOneByEmailIgnoreCase(loginVM.getUsername());
+        }
         var authHistory = new org.julioju.lbstrawmap.domain.AuthHistory();
         authHistory.setUserId(user.get().getId());
         authHistory.setDate(java.time.Instant.now());
