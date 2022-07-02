@@ -4,7 +4,7 @@
       <section>
         <h2>Mentions légales</h2>
         <ul>
-          <li><strong>Nom de l'association</strong>&nbsp;: Nebraksa</li>
+          <li><strong>Nom de l'association</strong>&nbsp;: Nebraska</li>
           <li>
             <strong>Numéro RNA</strong>&nbsp;:
             <a target="_blank" href="https://www.journal-officiel.gouv.fr/associations/detail-annonce/associations_b/20160027/582"
@@ -26,18 +26,19 @@
         <ul>
           <li>
             Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par l'association Nebraska pour
-            cartographier les bâtiments français en paille porteuse. La base légale du traitement est celle du consentement.
+            cartographier les bâtiments français en France métropolitaine en paille porteuse. La base légale du traitement est celle du
+            consentement.
           </li>
           <li>
             Les données enregistrées par les utilisateurs restent la propriété exclusive de leur(s) auteur(s). La responsabilité juridique
-            de ces données incombe à l'utilisateur. En cas où les données violent les lois française, Nebraska se doit de prévenir les
-            autorités compétences et de leur transmettre tout information permettant d'identifier l'auteur.
-            <strong>Nébraska agit en tant que simple hébergeur de contenu.</strong>.
+            de ces données incombe à l'utilisateur. En cas où les données violent les lois françaises, Nebraska se doit de prévenir les
+            autorités compétentes et de leur transmettre toute information permettant d'identifier l'auteur.
+            <strong>Nebraska agit en tant que simple hébergeur de contenu.</strong>.
           </li>
           <li>Les données collectées sont publiées sur le présent site.</li>
           <li>
-            Les données collectées anonymisées peuvent être utilisées à fins d'information ou de communication externe.
-            <strong>Elles ne peuvent être utilisées à des fins de prospection commerciale et être vendues.</strong>
+            Les données collectées anonymisées peuvent être utilisées à des fins d'information ou de communication externe.
+            <strong>Elles ne peuvent être utilisées à des fins de prospection commerciale et/ou être vendues.</strong>
           </li>
           <li>La responsabilité légale peut-être cedée à titre gratuit par Nebraska.</li>
           <li>Le présent site n'a pas pour objet des gains financiers. Il est dénué de publicité.</li>
@@ -63,14 +64,14 @@
           <li>L'utilisateur s'engage à ne pas avoir d'action malveillante sur ce site internet.</li>
           <li>L'utilisateur s'engage à respecter les règles commune de politesse.</li>
           <li>
-            Toute personne visitant ce site se doit de signaler à Nebraksa et aux autorités compétentes tout contenu qui lui paraîtrait
+            Toute personne visitant ce site se doit de signaler à Nebraska et aux autorités compétentes tout contenu qui lui paraîtrait
             illicite.
           </li>
           <li>
-            Nebraska se réserve le droit de supprimer tout information enregistrée par un utilisateur, et ce sans avertissement ni exposé de
-            motif.
+            Nebraska se réserve le droit de supprimer toute information enregistrée par un utilisateur, et ce sans avertissement ni exposer
+            de motif.
           </li>
-          <li>L'utilisateur sera avertis de toute modification des conditions générales d'utilisation par voie électronique.</li>
+          <li>L'utilisateur sera averti des modifications majeures des conditions générales d'utilisation par voie électronique.</li>
           <li>
             L'utilisateur s'engage à fournir une adresse qui reste valide afin de pouvoir être contacté pour quelque motif que ce soit, à
             l'exception de motifs commerciaux. L'utilisateur s'engage à mettre à jour son adresse email à cette fin.
@@ -85,7 +86,7 @@
             par la loi, l'ajout de précisions / explications ne modifiant pas l'esprit de la CGU.
           </li>
           <li>
-            Nebraska s'engage à ne pas céder la responsabilité de ce site à des personnes morales ou physiques non soumises à la loi
+            Nebraska s'engage à ne pas cédée la responsabilité de ce site à des personnes morales ou physiques non soumises à la loi
             française.
           </li>
           <li>
@@ -93,8 +94,8 @@
             particulier œuvrant pour la valorisation de la paille porteuse.
           </li>
           <li>
-            L'utilisateur s'engage à publier des données sur lesquels il a les droits. Il est notamment rappelé que les photos de bâtis sont
-            soumis à une autorisation de publication de la part de l'architecte et du propriétaire.
+            L'utilisateur s'engage à publier des données sur lesquelles il a les droits. Il est notamment rappelé que les photos de bâtis
+            sont soumises à une autorisation de publication de la part de l'architecte et du propriétaire.
           </li>
           <li>
             <i>
@@ -107,7 +108,6 @@
               >).
             </i>
           </li>
-          <li>L'utilisateur s'engage à respecter les règles commune de politesse.</li>
           <li>L'utilisateur s'engage à ne pas surcharger le site internet.</li>
           <li>
             L'utilisateur s'engage à consulter ce site avec une machine, un navigateur, un antivirus à jour afin de limiter les risques
@@ -115,20 +115,20 @@
             l'ordinateur servant à la consultation de ce site web.
           </li>
           <li>
-            L'utilisateur s'engage à respecter les conseils de la CNIL au sujet l'enregistrement d'un mot de passe sur ce présent site
+            L'utilisateur s'engage à respecter les conseils de la CNIL au sujet de l'enregistrement d'un mot de passe sur ce présent site
             internet. Voir
             <a target="_blank" href="https://www.cnil.fr/fr/les-conseils-de-la-cnil-pour-un-bon-mot-de-passe"
               >cnil.fr/fr/les-conseils-de-la-cnil-pour-un-bon-mot-de-passe</a
             >.
           </li>
           <li>
-            En navigant sur ce site, l'utilisateur s'engage à suivre les recommendations pour se protéger de la cybermalveillance
+            En naviguant sur ce site, l'utilisateur s'engage à suivre les recommandations pour se protéger de la cybermalveillance
             <a target="_blank" href="https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/comment-se-proteger-sur-internet"
               >cybermalveillance.gouv.fr </a
             >.
           </li>
           <li>Nebraska se réserve le droit de mettre fin à ce service, et ce sans préavis.</li>
-          <li>Nebraska est autorisé à enregistrer des informations à des fin d'analyse de fréquentation et d'utilisation du site.</li>
+          <li>Nebraska est autorisé à enregistrer des informations à des fins d'analyse de fréquentation et d'utilisation du site.</li>
         </ul>
         <h2>Limitation de responsabilité</h2>
         <ul>
@@ -173,7 +173,7 @@
           </li>
           <li>Nebraska ne vérifie aucunement la validité des données transmises.</li>
           <li>
-            Nebreska n'assume aucne responsabilité concernant tout dommage psychique, physique, matériel, logiciel ou financier résultant de
+            Nebraska n'assume aucne responsabilité concernant tout dommage psychique, physique, matériel, logiciel ou financier résultant de
             l'utilisation du site.
           </li>
           <li>
@@ -208,7 +208,7 @@
           </li>
           <li>
             L'utilisateur est avertis que le présent site internet est sujet à des bugs (erreur de fonctionnement). Dans ce cas, il est
-            apprécié qu'il avertisse Nebreska.
+            apprécié qu'il avertisse Nebraska.
           </li>
           <li>
             L'utilisateur est avertis que Nebraska <strong>ne</strong> s'engage pas à corriger les bugs ou les failles de sécurité qui lui
