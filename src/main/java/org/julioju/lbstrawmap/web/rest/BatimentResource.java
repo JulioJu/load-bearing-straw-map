@@ -134,7 +134,7 @@ public class BatimentResource {
         batiment.setCreatedBy(null);
         // END added by JulioJu
 
-        Batiment result = batimentService.save(batiment);
+        Batiment result = batimentService.update(batiment);
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, batiment.getId().toString()))
@@ -186,12 +186,21 @@ public class BatimentResource {
      * {@code GET  /batiments} : get all the batiments.
      *
      * @param pageable the pagination information.
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of batiments in body.
      */
     @GetMapping("/batiments")
-    public ResponseEntity<List<Batiment>> getAllBatiments(Pageable pageable) {
+    public ResponseEntity<List<Batiment>> getAllBatiments(
+        @org.springdoc.api.annotations.ParameterObject Pageable pageable,
+        @RequestParam(required = false, defaultValue = "true") boolean eagerload
+    ) {
         log.debug("REST request to get a page of Batiments");
-        Page<Batiment> page = batimentService.findAll(pageable);
+        Page<Batiment> page;
+        if (eagerload) {
+            page = batimentService.findAllWithEagerRelationships(pageable);
+        } else {
+            page = batimentService.findAll(pageable);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

@@ -12,7 +12,7 @@
 
 eureka:
   instance:
-    hostname: carte-paille-porteuse.herokuapp.com
+    hostname: carto-paille-porteuse.herokuapp.com
     non-secure-port: 80
     prefer-ip-address: false
 

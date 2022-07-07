@@ -2,6 +2,7 @@ package org.julioju.lbstrawmap.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -9,6 +10,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -27,10 +29,16 @@ import org.julioju.lbstrawmap.domain.enumeration.UsageBatiment;
 import org.julioju.lbstrawmap.domain.enumeration.YesNoPartial;
 import org.julioju.lbstrawmap.domain.enumeration.YesNoPartial;
 import org.julioju.lbstrawmap.repository.BatimentRepository;
+import org.julioju.lbstrawmap.service.BatimentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -41,6 +49,7 @@ import org.springframework.util.Base64Utils;
  * Integration tests for the {@link BatimentResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class BatimentResourceIT {
@@ -287,6 +296,12 @@ class BatimentResourceIT {
 
     @Autowired
     private BatimentRepository batimentRepository;
+
+    @Mock
+    private BatimentRepository batimentRepositoryMock;
+
+    @Mock
+    private BatimentService batimentServiceMock;
 
     @Autowired
     private EntityManager em;
@@ -732,6 +747,24 @@ class BatimentResourceIT {
             .andExpect(jsonPath("$.[*].conditionsAcceptees").value(hasItem(DEFAULT_CONDITIONS_ACCEPTEES.booleanValue())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
             .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllBatimentsWithEagerRelationshipsIsEnabled() throws Exception {
+        when(batimentServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restBatimentMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(batimentServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllBatimentsWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(batimentServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restBatimentMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(batimentServiceMock, times(1)).findAllWithEagerRelationships(any());
     }
 
     @Test

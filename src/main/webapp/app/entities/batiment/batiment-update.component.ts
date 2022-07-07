@@ -9,7 +9,7 @@ import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 
 import AlertService from '@/shared/alert/alert.service';
 
-import UserService from '@/admin/user-management/user-management.service';
+import UserService from '@/entities/user/user.service';
 
 import { IBatiment, Batiment } from '@/shared/model/batiment.model';
 import BatimentService from './batiment.service';
@@ -148,9 +148,7 @@ const validations: any = {
     createdDate: {},
     lastModifiedDate: {},
     createdBy: {
-      // START added by JulioJu
-      // required,
-      // END added by JulioJu
+      required,
     },
   },
 };

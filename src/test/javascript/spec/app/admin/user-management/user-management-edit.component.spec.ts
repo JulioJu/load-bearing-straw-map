@@ -8,10 +8,12 @@ import UserManagementEdit from '@/admin/user-management/user-management-edit.vue
 import UserManagementEditClass from '@/admin/user-management/user-management-edit.component';
 import UserManagementService from '@/admin/user-management/user-management.service';
 import VueRouter from 'vue-router';
+import { ToastPlugin } from 'bootstrap-vue';
 import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
+localVue.use(ToastPlugin);
 
 config.initVueApp(localVue);
 const i18n = config.initI18N(localVue);
@@ -36,7 +38,7 @@ describe('UserManagementEdit Component', () => {
       i18n,
       localVue,
       provide: {
-        userService: () => new UserManagementService(),
+        userManagementService: () => new UserManagementService(),
         alertService: () => new AlertService(),
       },
     });
@@ -76,8 +78,8 @@ describe('UserManagementEdit Component', () => {
       // GIVEN
       axiosStub.put.resolves({
         headers: {
-          'x-jhipsterapp-alert': '',
-          'x-jhipsterapp-params': '',
+          'x-cartopailleporteuseapp-alert': '',
+          'x-cartopailleporteuseapp-params': '',
         },
       });
       userManagementEdit.userAccount = { id: 123, authorities: [] };
@@ -95,8 +97,8 @@ describe('UserManagementEdit Component', () => {
       // GIVEN
       axiosStub.post.resolves({
         headers: {
-          'x-jhipsterapp-alert': '',
-          'x-jhipsterapp-params': '',
+          'x-cartopailleporteuseapp-alert': '',
+          'x-cartopailleporteuseapp-params': '',
         },
       });
       userManagementEdit.userAccount = { authorities: [] };

@@ -3,7 +3,13 @@ import LoginService from '@/account/login.service';
 import AccountService from '@/account/account.service';
 import TranslationService from '@/locale/translation.service';
 
-@Component
+import EntitiesMenu from '@/entities/entities-menu.vue';
+
+@Component({
+  components: {
+    'entities-menu': EntitiesMenu,
+  },
+})
 export default class JhiNavbar extends Vue {
   @Inject('loginService')
   private loginService: () => LoginService;
@@ -13,7 +19,7 @@ export default class JhiNavbar extends Vue {
   public version = 'v' + VERSION;
   private currentLanguage = this.$store.getters.currentLanguage;
   private languages: any = this.$store.getters.languages;
-  private hasAnyAuthorityValue = false;
+  private hasAnyAuthorityValues = {};
 
   created() {
     this.translationService().refreshTranslation(this.currentLanguage);
@@ -34,11 +40,14 @@ export default class JhiNavbar extends Vue {
     return key === this.$store.getters.currentLanguage;
   }
 
-  public logout(): void {
+  public logout(): Promise<any> {
     localStorage.removeItem('jhi-authenticationToken');
     sessionStorage.removeItem('jhi-authenticationToken');
     this.$store.commit('logout');
-    this.$router.push('/');
+    if (this.$route.path !== '/') {
+      return this.$router.push('/');
+    }
+    return Promise.resolve(this.$router.currentRoute);
   }
 
   public openLogin(): void {
@@ -53,9 +62,9 @@ export default class JhiNavbar extends Vue {
     this.accountService()
       .hasAnyAuthorityAndCheckAuth(authorities)
       .then(value => {
-        this.hasAnyAuthorityValue = value;
+        this.hasAnyAuthorityValues[authorities] = value;
       });
-    return this.hasAnyAuthorityValue;
+    return this.hasAnyAuthorityValues[authorities] ?? false;
   }
 
   public get openAPIEnabled(): boolean {

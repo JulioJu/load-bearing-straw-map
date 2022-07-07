@@ -1,6 +1,6 @@
 package org.julioju.lbstrawmap.domain;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -50,7 +50,7 @@ public class Batiment implements Serializable {
     /**
      * Nom du bâtiment
      */
-    @ApiModelProperty(value = "Nom du bâtiment")
+    @Schema(description = "Nom du bâtiment")
     @Size(max = 40)
     @Column(name = "nom_batiment", length = 40)
     private String nomBatiment;
@@ -142,7 +142,7 @@ public class Batiment implements Serializable {
     /**
      * Usage
      */
-    @ApiModelProperty(value = "Usage")
+    @Schema(description = "Usage")
     @Enumerated(EnumType.STRING)
     @Column(name = "usage_batiment")
     private UsageBatiment usageBatiment;
@@ -150,7 +150,7 @@ public class Batiment implements Serializable {
     /**
      * Infos sur l'usage du bâtiment
      */
-    @ApiModelProperty(value = "Infos sur l'usage du bâtiment")
+    @Schema(description = "Infos sur l'usage du bâtiment")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "usage_batiment_infos")
@@ -159,21 +159,21 @@ public class Batiment implements Serializable {
     /**
      * Coût [€]
      */
-    @ApiModelProperty(value = "Coût [€]")
+    @Schema(description = "Coût [€]")
     @Column(name = "cout")
     private Integer cout;
 
     /**
      * Surface de plancher [m²]
      */
-    @ApiModelProperty(value = "Surface de plancher [m²]")
+    @Schema(description = "Surface de plancher [m²]")
     @Column(name = "surface_plancher")
     private Integer surfacePlancher;
 
     /**
      * Nombre de niveaux du bâtiment (ex: RDC = 1, 1 étage = 2 niveau, sous-sol non compté)
      */
-    @ApiModelProperty(value = "Nombre de niveaux du bâtiment (ex: RDC = 1, 1 étage = 2 niveau, sous-sol non compté)")
+    @Schema(description = "Nombre de niveaux du bâtiment (ex: RDC = 1, 1 étage = 2 niveau, sous-sol non compté)")
     @Min(value = 1)
     @Column(name = "niveaux")
     private Integer niveaux;
@@ -181,56 +181,56 @@ public class Batiment implements Serializable {
     /**
      * Neuf
      */
-    @ApiModelProperty(value = "Neuf")
+    @Schema(description = "Neuf")
     @Column(name = "travaux_neuf")
     private Boolean travauxNeuf;
 
     /**
      * Extension
      */
-    @ApiModelProperty(value = "Extension")
+    @Schema(description = "Extension")
     @Column(name = "travaux_extension")
     private Boolean travauxExtension;
 
     /**
      * Rénovation
      */
-    @ApiModelProperty(value = "Rénovation")
+    @Schema(description = "Rénovation")
     @Column(name = "travaux_renov")
     private Boolean travauxRenov;
 
     /**
      * Isolation thermique par l'extérieure
      */
-    @ApiModelProperty(value = "Isolation thermique par l'extérieure")
+    @Schema(description = "Isolation thermique par l'extérieure")
     @Column(name = "travaux_ite")
     private Boolean travauxIte;
 
     /**
      * Isolation thermique par l'intérieur
      */
-    @ApiModelProperty(value = "Isolation thermique par l'intérieur")
+    @Schema(description = "Isolation thermique par l'intérieur")
     @Column(name = "travaux_iti")
     private Boolean travauxIti;
 
     /**
      * Début de construction
      */
-    @ApiModelProperty(value = "Début de construction")
+    @Schema(description = "Début de construction")
     @Column(name = "construction_debut")
     private LocalDate constructionDebut;
 
     /**
      * Achèvement
      */
-    @ApiModelProperty(value = "Achèvement")
+    @Schema(description = "Achèvement")
     @Column(name = "construction_fin")
     private LocalDate constructionFin;
 
     /**
      * Taille des bottes
      */
-    @ApiModelProperty(value = "Taille des bottes")
+    @Schema(description = "Taille des bottes")
     @Enumerated(EnumType.STRING)
     @Column(name = "bottes_taille")
     private TaillesBottes bottesTaille;
@@ -238,7 +238,7 @@ public class Batiment implements Serializable {
     /**
      * Infos sur la taille des bottes
      */
-    @ApiModelProperty(value = "Infos sur la taille des bottes")
+    @Schema(description = "Infos sur la taille des bottes")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "bottes_taille_infos")
@@ -247,14 +247,14 @@ public class Batiment implements Serializable {
     /**
      * Densité sur base sèche [kg/m³]
      */
-    @ApiModelProperty(value = "Densité sur base sèche [kg/m³]")
+    @Schema(description = "Densité sur base sèche [kg/m³]")
     @Column(name = "bottes_densite")
     private Integer bottesDensite;
 
     /**
      * Céréale
      */
-    @ApiModelProperty(value = "Céréale")
+    @Schema(description = "Céréale")
     @Enumerated(EnumType.STRING)
     @Column(name = "bottes_cereale")
     private Cereale bottesCereale;
@@ -262,14 +262,14 @@ public class Batiment implements Serializable {
     /**
      * Distance d'approvisionnement [km]
      */
-    @ApiModelProperty(value = "Distance d'approvisionnement [km]")
+    @Schema(description = "Distance d'approvisionnement [km]")
     @Column(name = "distance_appro")
     private Integer distanceAppro;
 
     /**
      * Autoconstruction
      */
-    @ApiModelProperty(value = "Autoconstruction")
+    @Schema(description = "Autoconstruction")
     @Enumerated(EnumType.STRING)
     @Column(name = "autoconstruction")
     private YesNoPartial autoconstruction;
@@ -277,7 +277,7 @@ public class Batiment implements Serializable {
     /**
      * Participatif
      */
-    @ApiModelProperty(value = "Participatif")
+    @Schema(description = "Participatif")
     @Enumerated(EnumType.STRING)
     @Column(name = "participatif")
     private YesNoPartial participatif;
@@ -285,14 +285,14 @@ public class Batiment implements Serializable {
     /**
      * Structure complémentaire à la structure en paille porteuse (poteau, mur de refend, …)
      */
-    @ApiModelProperty(value = "Structure complémentaire à la structure en paille porteuse (poteau, mur de refend, …)")
+    @Schema(description = "Structure complémentaire à la structure en paille porteuse (poteau, mur de refend, …)")
     @Column(name = "struct_compl")
     private Boolean structCompl;
 
     /**
      * Nature de la structure complémentaire
      */
-    @ApiModelProperty(value = "Nature de la structure complémentaire")
+    @Schema(description = "Nature de la structure complémentaire")
     @Enumerated(EnumType.STRING)
     @Column(name = "struct_compl_nature")
     private StructureComplementaire structComplNature;
@@ -300,7 +300,7 @@ public class Batiment implements Serializable {
     /**
      * Infos sur la structure complémentaire
      */
-    @ApiModelProperty(value = "Infos sur la structure complémentaire")
+    @Schema(description = "Infos sur la structure complémentaire")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "struct_compl_infos")
@@ -309,28 +309,28 @@ public class Batiment implements Serializable {
     /**
      * Longueur maximum sans mur de refend (mètre)
      */
-    @ApiModelProperty(value = "Longueur maximum sans mur de refend (mètre)")
+    @Schema(description = "Longueur maximum sans mur de refend (mètre)")
     @Column(name = "long_max_sans_mur_refend")
     private Float longMaxSansMurRefend;
 
     /**
      * Note de calcul
      */
-    @ApiModelProperty(value = "Note de calcul")
+    @Schema(description = "Note de calcul")
     @Column(name = "note_calcul")
     private Boolean noteCalcul;
 
     /**
      * Nombre de rangs de bottes
      */
-    @ApiModelProperty(value = "Nombre de rangs de bottes")
+    @Schema(description = "Nombre de rangs de bottes")
     @Column(name = "nbr_rang_de_bottes")
     private Integer nbrRangDeBottes;
 
     /**
      * Intégration des baies
      */
-    @ApiModelProperty(value = "Intégration des baies")
+    @Schema(description = "Intégration des baies")
     @Enumerated(EnumType.STRING)
     @Column(name = "integ_baie")
     private IntegBaie integBaie;
@@ -338,7 +338,7 @@ public class Batiment implements Serializable {
     /**
      * Infos sur l'intégration des baies
      */
-    @ApiModelProperty(value = "Infos sur l'intégration des baies")
+    @Schema(description = "Infos sur l'intégration des baies")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "integ_baie_infos")
@@ -347,7 +347,7 @@ public class Batiment implements Serializable {
     /**
      * Nature du support d'ancrage
      */
-    @ApiModelProperty(value = "Nature du support d'ancrage")
+    @Schema(description = "Nature du support d'ancrage")
     @Enumerated(EnumType.STRING)
     @Column(name = "support_ancrage")
     private SupportAncrage supportAncrage;
@@ -355,7 +355,7 @@ public class Batiment implements Serializable {
     /**
      * Infos sur le support d'ancrage
      */
-    @ApiModelProperty(value = "Infos sur le support d'ancrage")
+    @Schema(description = "Infos sur le support d'ancrage")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "support_ancrage_infos")
@@ -364,7 +364,7 @@ public class Batiment implements Serializable {
     /**
      * Revêtement intérieur
      */
-    @ApiModelProperty(value = "Revêtement intérieur")
+    @Schema(description = "Revêtement intérieur")
     @Enumerated(EnumType.STRING)
     @Column(name = "revet_int")
     private RevetInt revetInt;
@@ -372,7 +372,7 @@ public class Batiment implements Serializable {
     /**
      * Infos sur le revêtement intérieur
      */
-    @ApiModelProperty(value = "Infos sur le revêtement intérieur")
+    @Schema(description = "Infos sur le revêtement intérieur")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "revet_int_infos")
@@ -381,7 +381,7 @@ public class Batiment implements Serializable {
     /**
      * Revêtement extérieur
      */
-    @ApiModelProperty(value = "Revêtement extérieur")
+    @Schema(description = "Revêtement extérieur")
     @Enumerated(EnumType.STRING)
     @Column(name = "revet_ext")
     private RevetExt revetExt;
@@ -389,7 +389,7 @@ public class Batiment implements Serializable {
     /**
      * Infos sur le revêtement extérieur
      */
-    @ApiModelProperty(value = "Infos sur le revêtement extérieur")
+    @Schema(description = "Infos sur le revêtement extérieur")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "revet_ext_infos")
@@ -398,7 +398,7 @@ public class Batiment implements Serializable {
     /**
      * Maître d'ouvrage
      */
-    @ApiModelProperty(value = "Maître d'ouvrage")
+    @Schema(description = "Maître d'ouvrage")
     @Size(max = 512)
     @Column(name = "maitre_d_ouvrage", length = 512)
     private String maitreDOuvrage;
@@ -406,7 +406,7 @@ public class Batiment implements Serializable {
     /**
      * Maître d'œuvre
      */
-    @ApiModelProperty(value = "Maître d'œuvre")
+    @Schema(description = "Maître d'œuvre")
     @Size(max = 512)
     @Column(name = "maitre_d_oeuvre", length = 512)
     private String maitreDOeuvre;
@@ -414,7 +414,7 @@ public class Batiment implements Serializable {
     /**
      * Architecte
      */
-    @ApiModelProperty(value = "Architecte")
+    @Schema(description = "Architecte")
     @Size(max = 512)
     @Column(name = "architecte", length = 512)
     private String architecte;
@@ -422,7 +422,7 @@ public class Batiment implements Serializable {
     /**
      * Bureau d'étude Structure
      */
-    @ApiModelProperty(value = "Bureau d'étude Structure")
+    @Schema(description = "Bureau d'étude Structure")
     @Size(max = 512)
     @Column(name = "bureau_d_etude_structure", length = 512)
     private String bureauDEtudeStructure;
@@ -430,7 +430,7 @@ public class Batiment implements Serializable {
     /**
      * Bureau contrôle
      */
-    @ApiModelProperty(value = "Bureau contrôle")
+    @Schema(description = "Bureau contrôle")
     @Size(max = 512)
     @Column(name = "bureau_control", length = 512)
     private String bureauControl;
@@ -438,7 +438,7 @@ public class Batiment implements Serializable {
     /**
      * Entreprise de mise en oeuvre des bottes, si autoconstruction le préciser
      */
-    @ApiModelProperty(value = "Entreprise de mise en oeuvre des bottes, si autoconstruction le préciser")
+    @Schema(description = "Entreprise de mise en oeuvre des bottes, si autoconstruction le préciser")
     @Size(max = 512)
     @Column(name = "entreprise_bottes", length = 512)
     private String entrepriseBottes;
@@ -446,7 +446,7 @@ public class Batiment implements Serializable {
     /**
      * Entreprise de mise en oeuvre de la charpente, si autoconstruction le préciser
      */
-    @ApiModelProperty(value = "Entreprise de mise en oeuvre de la charpente, si autoconstruction le préciser")
+    @Schema(description = "Entreprise de mise en oeuvre de la charpente, si autoconstruction le préciser")
     @Size(max = 512)
     @Column(name = "entreprise_charpente", length = 512)
     private String entrepriseCharpente;
@@ -454,7 +454,7 @@ public class Batiment implements Serializable {
     /**
      * Entreprise de mise en oeuvre des enduits, si autoconstruction le préciser
      */
-    @ApiModelProperty(value = "Entreprise de mise en oeuvre des enduits, si autoconstruction le préciser")
+    @Schema(description = "Entreprise de mise en oeuvre des enduits, si autoconstruction le préciser")
     @Size(max = 512)
     @Column(name = "entreprise_enduits", length = 512)
     private String entrepriseEnduits;
@@ -462,7 +462,7 @@ public class Batiment implements Serializable {
     /**
      * Description du projet
      */
-    @ApiModelProperty(value = "Description du projet")
+    @Schema(description = "Description du projet")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "description_projet")
@@ -471,7 +471,7 @@ public class Batiment implements Serializable {
     /**
      * Difficultés rencontrés
      */
-    @ApiModelProperty(value = "Difficultés rencontrés")
+    @Schema(description = "Difficultés rencontrés")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "difficultees")
@@ -480,7 +480,7 @@ public class Batiment implements Serializable {
     /**
      * Trucs et astuces
      */
-    @ApiModelProperty(value = "Trucs et astuces")
+    @Schema(description = "Trucs et astuces")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "astuces")
@@ -489,7 +489,7 @@ public class Batiment implements Serializable {
     /**
      * Autre commentaires
      */
-    @ApiModelProperty(value = "Autre commentaires")
+    @Schema(description = "Autre commentaires")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "divers")
@@ -498,28 +498,28 @@ public class Batiment implements Serializable {
     /**
      * Nom
      */
-    @ApiModelProperty(value = "Nom")
+    @Schema(description = "Nom")
     @Column(name = "contact_nom")
     private String contactNom;
 
     /**
      * Mail
      */
-    @ApiModelProperty(value = "Mail")
+    @Schema(description = "Mail")
     @Column(name = "contact_mail")
     private String contactMail;
 
     /**
      * Téléphone
      */
-    @ApiModelProperty(value = "Téléphone")
+    @Schema(description = "Téléphone")
     @Column(name = "contact_phone")
     private String contactPhone;
 
     /**
      * Code postal
      */
-    @ApiModelProperty(value = "Code postal")
+    @Schema(description = "Code postal")
     @Size(max = 6)
     @Column(name = "code_postal", length = 6)
     private String codePostal;
@@ -527,8 +527,8 @@ public class Batiment implements Serializable {
     /**
      * coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)
      */
-    @ApiModelProperty(
-        value = "coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)"
+    @Schema(
+        description = "coché : le profil est visible pour les utilisateurs non authentifiés, à l'exception des contacts. Non coché : uniquement la localisation et la surface sont visibles publiquement sur la carte (nous recommendons de positionner le bâti à une certaine distance de sa position exacte)"
     )
     @Column(name = "profil_public")
     private Boolean profilPublic;
@@ -536,14 +536,14 @@ public class Batiment implements Serializable {
     /**
      * Conditions lues et acceptées
      */
-    @ApiModelProperty(value = "Conditions lues et acceptées")
+    @Schema(description = "Conditions lues et acceptées")
     @Column(name = "conditions_acceptees")
     private Boolean conditionsAcceptees;
 
     /**
      * Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)
      */
-    @ApiModelProperty(value = "Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)")
+    @Schema(description = "Date de création de l'enregistrement dans la Base de donnée\n(autogénéré en back)")
     // START added by JulioJu
     @Column(name = "created_date", updatable = false)
     @org.hibernate.annotations.CreationTimestamp
@@ -554,7 +554,7 @@ public class Batiment implements Serializable {
     /**
      * Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)
      */
-    @ApiModelProperty(value = "Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)")
+    @Schema(description = "Date de modification de l'enregistrement dans la Base de donnée\n(autogénéré en back)")
     @Column(name = "last_modified_date")
     // START added by JulioJu
     @org.hibernate.annotations.UpdateTimestamp
@@ -565,8 +565,9 @@ public class Batiment implements Serializable {
     /**
      * Only createdBy of a Batiment could update or delete it (set in back at creation)
      */
-    @ApiModelProperty(value = "Only createdBy of a Batiment could update or delete it (set in back at creation)")
+    @Schema(description = "Only createdBy of a Batiment could update or delete it (set in back at creation)")
     @ManyToOne(optional = false)
+    @NotNull
     // START added by JulioJu
     @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
     // END added by JulioJu

@@ -1,5 +1,9 @@
 {
-  "name": "AuthHistory",
+  "applications": "*",
+  "changelogDate": "20211114202157",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "auth_history",
   "fields": [
     {
       "fieldName": "userId",
@@ -12,16 +16,12 @@
       "fieldValidateRules": ["required"]
     }
   ],
-  "relationships": [],
-  "entityTableName": "auth_history",
-  "dto": "no",
-  "pagination": "no",
-  "service": "no",
-  "jpaMetamodelFiltering": false,
   "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AuthHistory",
+  "pagination": "no",
   "readOnly": false,
-  "embedded": false,
-  "applications": "*",
-  "skipClient": true,
-  "changelogDate": "20211114202157"
+  "relationships": [],
+  "service": "no",
+  "skipClient": true
 }

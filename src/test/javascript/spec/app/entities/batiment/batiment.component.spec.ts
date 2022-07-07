@@ -1,6 +1,7 @@
 /* tslint:disable max-line-length */
 import { shallowMount, createLocalVue, Wrapper } from '@vue/test-utils';
 import sinon, { SinonStubbedInstance } from 'sinon';
+import { ToastPlugin } from 'bootstrap-vue';
 
 import * as config from '@/shared/config/config';
 import BatimentComponent from '@/entities/batiment/batiment.vue';
@@ -9,6 +10,7 @@ import BatimentService from '@/entities/batiment/batiment.service';
 import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
+localVue.use(ToastPlugin);
 
 config.initVueApp(localVue);
 const i18n = config.initI18N(localVue);
@@ -131,12 +133,14 @@ describe('Component Tests', () => {
 
       // WHEN
       comp.prepareRemove({ id: 123 });
+      expect(batimentServiceStub.retrieve.callCount).toEqual(1);
+
       comp.removeBatiment();
       await comp.$nextTick();
 
       // THEN
       expect(batimentServiceStub.delete.called).toBeTruthy();
-      expect(batimentServiceStub.retrieve.callCount).toEqual(1);
+      expect(batimentServiceStub.retrieve.callCount).toEqual(2);
     });
   });
 });

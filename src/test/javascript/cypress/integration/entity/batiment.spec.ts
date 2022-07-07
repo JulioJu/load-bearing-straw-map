@@ -14,20 +14,15 @@ import {
 describe('Batiment e2e test', () => {
   const batimentPageUrl = '/batiment';
   const batimentPageUrlPattern = new RegExp('/batiment(\\?.*)?$');
-  const username = Cypress.env('E2E_USERNAME') ?? 'admin';
-  const password = Cypress.env('E2E_PASSWORD') ?? 'admin';
+  const username = Cypress.env('E2E_USERNAME') ?? 'user';
+  const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const batimentSample = { latitude: -80, longitude: -51 };
 
   let batiment: any;
   //let user: any;
 
-  before(() => {
-    cy.window().then(win => {
-      win.sessionStorage.clear();
-    });
-    cy.visit('');
+  beforeEach(() => {
     cy.login(username, password);
-    cy.get(entityItemSelector).should('exist');
   });
 
   /* Disabled due to incompatibility
@@ -106,11 +101,11 @@ describe('Batiment e2e test', () => {
       });
 
       it('should load create Batiment page', () => {
-        cy.get(entityCreateButtonSelector).click({ force: true });
+        cy.get(entityCreateButtonSelector).click();
         cy.url().should('match', new RegExp('/batiment/new$'));
         cy.getEntityCreateUpdateHeading('Batiment');
         cy.get(entityCreateSaveButtonSelector).should('exist');
-        cy.get(entityCreateCancelButtonSelector).click({ force: true });
+        cy.get(entityCreateCancelButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response!.statusCode).to.equal(200);
         });
@@ -124,7 +119,6 @@ describe('Batiment e2e test', () => {
         cy.authenticatedRequest({
           method: 'POST',
           url: '/api/batiments',
-  
           body: {
             ...batimentSample,
             createdBy: user,
@@ -140,6 +134,9 @@ describe('Batiment e2e test', () => {
             },
             {
               statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/batiments?page=0&size=20>; rel="last",<http://localhost/api/batiments?page=0&size=20>; rel="first"',
+              },
               body: [batiment],
             }
           ).as('entitiesRequestInternal');
@@ -164,7 +161,7 @@ describe('Batiment e2e test', () => {
       it('detail button click should load details Batiment page', () => {
         cy.get(entityDetailsButtonSelector).first().click();
         cy.getEntityDetailsHeading('batiment');
-        cy.get(entityDetailsBackButtonSelector).click({ force: true });
+        cy.get(entityDetailsBackButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response!.statusCode).to.equal(200);
         });
@@ -175,7 +172,7 @@ describe('Batiment e2e test', () => {
         cy.get(entityEditButtonSelector).first().click();
         cy.getEntityCreateUpdateHeading('Batiment');
         cy.get(entityCreateSaveButtonSelector).should('exist');
-        cy.get(entityCreateCancelButtonSelector).click({ force: true });
+        cy.get(entityCreateCancelButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response!.statusCode).to.equal(200);
         });
@@ -185,7 +182,7 @@ describe('Batiment e2e test', () => {
       it.skip('last delete button click should delete instance of Batiment', () => {
         cy.get(entityDeleteButtonSelector).last().click();
         cy.getEntityDeleteDialogHeading('batiment').should('exist');
-        cy.get(entityConfirmDeleteButtonSelector).click({ force: true });
+        cy.get(entityConfirmDeleteButtonSelector).click();
         cy.wait('@deleteEntityRequest').then(({ response }) => {
           expect(response!.statusCode).to.equal(204);
         });
@@ -202,7 +199,7 @@ describe('Batiment e2e test', () => {
   describe('new Batiment page', () => {
     beforeEach(() => {
       cy.visit(`${batimentPageUrl}`);
-      cy.get(entityCreateButtonSelector).click({ force: true });
+      cy.get(entityCreateButtonSelector).click();
       cy.getEntityCreateUpdateHeading('Batiment');
     });
 

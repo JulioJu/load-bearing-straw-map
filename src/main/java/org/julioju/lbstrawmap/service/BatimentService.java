@@ -37,6 +37,17 @@ public class BatimentService {
     }
 
     /**
+     * Update a batiment.
+     *
+     * @param batiment the entity to save.
+     * @return the persisted entity.
+     */
+    public Batiment update(Batiment batiment) {
+        log.debug("Request to save Batiment : {}", batiment);
+        return batimentRepository.save(batiment);
+    }
+
+    /**
      * Partially update a batiment.
      *
      * @param batiment the entity to update partially.
@@ -307,6 +318,15 @@ public class BatimentService {
     }
 
     /**
+     * Get all the batiments with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    public Page<Batiment> findAllWithEagerRelationships(Pageable pageable) {
+        return batimentRepository.findAllWithEagerRelationships(pageable);
+    }
+
+    /**
      * Get one batiment by id.
      *
      * @param id the id of the entity.
@@ -315,7 +335,7 @@ public class BatimentService {
     @Transactional(readOnly = true)
     public Optional<Batiment> findOne(Long id) {
         log.debug("Request to get Batiment : {}", id);
-        return batimentRepository.findById(id);
+        return batimentRepository.findOneWithEagerRelationships(id);
     }
 
     /**

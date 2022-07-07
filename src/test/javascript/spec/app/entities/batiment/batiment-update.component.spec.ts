@@ -2,6 +2,7 @@
 import { shallowMount, createLocalVue, Wrapper } from '@vue/test-utils';
 import sinon, { SinonStubbedInstance } from 'sinon';
 import Router from 'vue-router';
+import { ToastPlugin } from 'bootstrap-vue';
 
 import dayjs from 'dayjs';
 import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
@@ -11,7 +12,7 @@ import BatimentUpdateComponent from '@/entities/batiment/batiment-update.vue';
 import BatimentClass from '@/entities/batiment/batiment-update.component';
 import BatimentService from '@/entities/batiment/batiment.service';
 
-import UserService from '@/admin/user-management/user-management.service';
+import UserService from '@/entities/user/user.service';
 import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
@@ -21,6 +22,7 @@ const i18n = config.initI18N(localVue);
 const store = config.initVueXStore(localVue);
 const router = new Router();
 localVue.use(Router);
+localVue.use(ToastPlugin);
 localVue.component('font-awesome-icon', {});
 localVue.component('b-input-group', {});
 localVue.component('b-input-group-prepend', {});
