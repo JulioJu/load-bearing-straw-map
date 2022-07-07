@@ -27,6 +27,9 @@ import AlertService from './shared/alert/alert.service';
 import '../content/scss/global.scss';
 import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
+// START added by JulioJu
+import BatimentService from './entities/batiment/batiment.service';
+// END added by JulioJu
 /* tslint:disable */
 
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
@@ -84,6 +87,11 @@ const vue = new Vue({
     metricsService: () => new MetricsService(),
 
     translationService: () => translationService,
+
+    // START added by JulioJu
+    batimentService: () => new BatimentService(),
+    // END added by JulioJu
+
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
     alertService: () => new AlertService(),

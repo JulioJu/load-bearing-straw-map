@@ -44,7 +44,7 @@ spring:
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: prod
-  # START aded by JulioJu
+  # START added by JulioJu
   # https://www.jhipster.tech/tips/011_tip_configuring_email_in_jhipster.html
   # TODO add OAuth + remove following less secure app configuration (see link above)
   mail:
@@ -58,7 +58,7 @@ spring:
       auth: true
       starttls.enable: true
       ssl.trust: smtp.gmail.com
-  # END aded by JulioJu
+  # END added by JulioJu
   thymeleaf:
     cache: true
   sleuth:
@@ -125,7 +125,7 @@ jhipster:
         # - In the JHipster Registry (which includes a Spring Cloud Config server)
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        # START aded by JulioJu
+        # START added by JulioJu
         base64-secret: ${JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET}
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
@@ -134,7 +134,7 @@ jhipster:
   mail: # specific JHipster mail property, for standard properties see MailProperties
     base-url: ${HTTPS_FQDN} # Modify according to your server's URL
     from: ${GOOGLE_MAIL_USERNAME}
-  # END aded by JulioJu
+  # END added by JulioJu
   logging:
     use-json-format: false # By default, logs are not in Json format
     logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
